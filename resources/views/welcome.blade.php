@@ -23,28 +23,28 @@
 </head>
 <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-amber-400 selection:text-zinc-950 font-sans min-h-screen flex flex-col">
 
-    <!-- Navbar Component -->
-    <x-navbar />
+    <!-- Navbar -->
+    @include('guest.partials.navbar')
 
     <!-- Main Content Sections -->
     <main class="flex-grow">
         <!-- Hero Section -->
-        <x-hero />
+        @include('guest.partials.hero')
 
         <!-- Facilities Section -->
-        <x-facilities />
+        @include('guest.partials.facilities')
 
         <!-- Products / Pricing Section (Bulanan, Mahasiswa, Personal Trainer) -->
-        <x-pricing />
+        @include('guest.partials.pricing')
 
         <!-- Personal Trainer Section -->
-        <x-trainers />
+        @include('guest.partials.trainers')
 
         <!-- Cara Daftar & Interactive Registration Form -->
-        <x-how-to-join />
+        @include('guest.partials.how-to-join')
 
         <!-- FAQ Section -->
-        <x-faq />
+        @include('guest.partials.faq')
     </main>
 
     <!-- Footer Component -->

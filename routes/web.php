@@ -10,6 +10,13 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberDashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GuestController;
+
+/*
+|--------------------------------------------------------------------------
+| Guest / Public Routes
+|--------------------------------------------------------------------------
+*/
 
 // Guest routes (dikerjakan oleh teman user)
 Route::get('/', [GuestController::class, 'index'])->name('home');
@@ -51,3 +58,39 @@ Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->g
     Route::get('/profile', [MemberDashboardController::class, 'profile'])->name('profile');
     Route::post('/profile/progress', [MemberDashboardController::class, 'storeProgress'])->name('progress.store');
 });
+
+Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+/*
+|--------------------------------------------------------------------------
+| Member Routes (nanti)
+|--------------------------------------------------------------------------
+*/
+
+// Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->group(function () {
+//     Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('dashboard');
+//     Route::resource('/profile', PhysicalProfileController::class);
+// });
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes (nanti)
+|--------------------------------------------------------------------------
+*/
+
+// Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+//     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+//     Route::resource('/members', AdminMemberController::class);
+//     Route::resource('/products', ProductController::class);
+//     Route::resource('/trainers', TrainerController::class);
+// });
