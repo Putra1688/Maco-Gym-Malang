@@ -1,81 +1,55 @@
-# Struktur Project
-
-## Views
+# Struktur Project View & Controller (Maco Gym)
 
 ```
-resources/views/
-├── welcome.blade.php                   # Landing page (guest entry point)
-│
-├── components/                         # Reusable UI — dipakai lebih dari satu role
-│   ├── footer.blade.php                # <x-footer /> — guest, member, admin
-│   ├── modal.blade.php                 # <x-modal /> — popup login, notifikasi
-│   ├── table.blade.php                 # <x-table /> — (nanti) admin & member
-│   └── chart.blade.php                 # <x-chart /> — (nanti) admin
-│
-├── guest/
-│   ├── partials/                       # Section-section landing page (hanya guest)
-│   │   ├── navbar.blade.php            # Navbar dengan tombol login
-│   │   ├── hero.blade.php
-│   │   ├── facilities.blade.php
-│   │   ├── pricing.blade.php
-│   │   ├── trainers.blade.php
-│   │   ├── how-to-join.blade.php
-│   │   └── faq.blade.php
-│   └── register.blade.php              # Form registrasi guest
-│
-├── auth/
-│   └── login.blade.php                 # Form login (atau sebagai modal)
-│
-├── member/                             # (nanti)
-│   ├── dashboard.blade.php             # Status membership, sisa hari aktif
-│   └── profile.blade.php              # Log berat & tinggi badan
-│
-└── admin/                              # (nanti)
-    ├── dashboard.blade.php             # Summary cards + charts
-    ├── members/
-    │   ├── index.blade.php
-    │   └── show.blade.php
-    ├── products/
-    │   ├── index.blade.php
-    │   ├── create.blade.php
-    │   └── edit.blade.php
-    └── trainers/
-        ├── index.blade.php
-        ├── create.blade.php
-        └── edit.blade.php
-```
-
-## Konvensi Pemanggilan
-
-| Tipe file | Cara panggil | Contoh |
-|---|---|---|
-| `components/` | `<x-nama />` | `<x-footer />` |
-| `guest/partials/` | `@include('guest.partials.nama')` | `@include('guest.partials.hero')` |
-| `auth/`, `guest/` | `return view('auth.login')` | dari controller |
-
-## Aturan Penempatan
-
-- **`components/`** → kalau dipakai oleh lebih dari satu role
-- **`guest/partials/`** → kalau hanya untuk landing page guest
-- **Sidebar** → akan masuk `components/sidebar.blade.php` (dipakai admin & member)
-- **Navbar** → tetap di `guest/partials/navbar.blade.php` (hanya guest)
-
-## Routes
-
-```
-GET  /                  → welcome.blade.php       (guest landing page)
-POST /register          → GuestController@register
-GET  /login             → auth/login.blade.php
-POST /login             → AuthController@login
-POST /logout            → AuthController@logout
-
-# Member (auth + role:member)
-GET  /member/dashboard  → member/dashboard.blade.php
-GET  /member/profile    → member/profile.blade.php
-
-# Admin (auth + role:admin)
-GET  /admin/dashboard   → admin/dashboard.blade.php
-     /admin/members     → resource
-     /admin/products    → resource
-     /admin/trainers    → resource
+resources/
+└── views/
+    ├── layouts/
+    │   ├── guest.blade.php        # Layout landing page publik (Dark Luxury)
+    │   ├── admin.blade.php        # Layout dashboard admin & staf resepsionis
+    │   └── member.blade.php       # Layout portal member (read-only sisa hari)
+    │
+    ├── guest/                     # Halaman publik (no auth)
+    │   ├── index.blade.php        # Landing page utama
+    │   ├── partials/
+    │   │   ├── hero.blade.php
+    │   │   ├── facilities.blade.php
+    │   │   ├── packages.blade.php # Daftar paket & harga tiket harian
+    │   │   ├── trainers.blade.php
+    │   │   ├── location.blade.php # Lokasi Google Maps & jam buka
+    │   │   └── faq.blade.php
+    │   └── register_interest.blade.php # Form pra-pendaftaran / minat member
+    │
+    ├── admin/                     # Admin & Staf Resepsionis
+    │   ├── dashboard.blade.php    # Summary card metrik harian & grafik
+    │   │
+    │   ├── frontdesk/             # Modul Utama Resepsionis (Operasional Meja Depan)
+    │   │   └── index.blade.php    # Layar presensi kartu member + input tamu harian cepat
+    │   │
+    │   ├── members/               # Manajemen Member
+    │   │   ├── index.blade.php    # Tabel data member (filter status, sisa hari, tombol WA)
+    │   │   ├── create.blade.php   # Form pendaftaran member walk-in + assign ID kartu fisik
+    │   │   ├── show.blade.php     # Detail member, log riwayat presensi & transaksi
+    │   │   └── edit.blade.php
+    │   │
+    │   ├── packages/              # CMS Paket Membership & Tiket Harian
+    │   │   ├── index.blade.php
+    │   │   ├── create.blade.php
+    │   │   └── edit.blade.php
+    │   │
+    │   ├── transactions/          # Laporan Keuangan Sederhana
+    │   │   └── index.blade.php    # Rekap kas masuk harian/bulanan (Cash vs QRIS)
+    │   │
+    │   └── trainers/              # CMS Personal Trainer
+    │       ├── index.blade.php
+    │       ├── create.blade.php
+    │       └── edit.blade.php
+    │
+    ├── member/                    # Portal Member (auth member)
+    │   ├── dashboard.blade.php    # Status aktif, sisa hari, riwayat kehadiran
+    │   └── profile.blade.php      # Profil member & log fisik opsional
+    │
+    └── auth/
+        ├── login.blade.php        # Login Admin/Staf/Member
+        └── passwords/
+            └── reset.blade.php
 ```

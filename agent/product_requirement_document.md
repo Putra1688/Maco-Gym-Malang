@@ -1,89 +1,230 @@
 # Product Requirement Document (PRD)
-## Makro Gym Malang Management System
+## Maco Gym Malang Management System
 
 ### 1. Document Overview
-* **Project Name:** Makro Gym Malang Web System
+* **Project Name:** Maco Gym Malang Web & Management System
 * **Version:** 1.0.0
-* **Date:** October 26, 2026
-* **Target Stack:** PHP (Laravel), Google Sheets API (Initial DB) transitionable to MySQL (via phpMyAdmin), Responsive Web (SEO Optimized)
+* **Date:** November 2026
+* **Target Stack:** PHP (Laravel 11+), Tailwind CSS (Dark/Light Mode), MySQL (via Laragon / phpMyAdmin), Responsive Web (SEO & Mobile Optimized)
+* **Design Concept:** Sederhana tapi Mewah (Luxury Minimalist dengan dukungan **Dark & Light Mode Toggle**)
+* **Core Philosophy:** Tepat guna, efisien untuk staf, tidak berbelit-belit, dan **anti-overkill**.
 
 ---
 
-### 2. Product Objectives & Scope
-The objective is to create a lightweight, responsive, and SEO-optimized web application for Makro Gym Malang to manage public landing pages, user registrations, membership tracking, and basic admin metrics.
+### 2. Background & Product Objectives
+
+#### 2.1. Latar Belakang
+Operasional Maco Gym Malang saat ini masih sepenuhnya manual menggunakan buku catatan kertas:
+* Pencatatan pendaftaran member ditulis di buku.
+* Pemantauan masa aktif member diperiksa manual lembar demi lembar.
+* Presensi kedatangan member dan tiket tamu harian dicatat di buku tamu.
+* Rekap pemasukan harian berisiko selisih karena catatan tercecer.
+
+#### 2.2. Tujuan Sistem
+1. **Digitalisasi Meja Resepsionis (Frontdesk):** Menggantikan buku manual dengan sistem kasir & presensi instan yang cepat (3–5 detik per orang).
+2. **Branding & Promosi Online (Landing Page):** Menampilkan profil gym yang berkelas, fasilitas, katalog harga, dan kemudahan kontak via WhatsApp.
+3. **Tertib Administrasi & Anti-Bocor:** Semua uang masuk (membership & tiket harian) tercatat otomatis dan transparan.
+4. **Follow-up Member Otomatis/Mudah:** Notifikasi member yang hampir habis masa aktifnya via WhatsApp 1-klik tanpa biaya gateway berbayar.
 
 ---
 
-### 3. User Roles & Key Features
+### 3. User Roles & Pembagian Alur Operasional
 
-#### 3.1. Guest Mode (Public Landing Page)
-* **Hero Section:** Branding, CTA for registration.
-* **Facilities Section:** Showcase of gym equipment and amenities.
-* **Product Catalog:** List of membership plans and single/group sessions.
-* **Personal Trainer Directory:** Bios, specialties, and schedules of available trainers.
-* **FAQ Section:** Frequently asked questions for quick user resolution.
-* **Registration Form:** Guest signup form capturing basic details. Submissions trigger a status update sent to the Admin queue for verification.
+Prinsip Utama: **Staf Resepsionis adalah operator utama penginputan data di tempat** untuk menjamin kontrol pembayaran (Cash/QRIS) dan mencegah kecurangan presensi.
 
-#### 3.2. Admin Role
-* **Dashboard:**
-  * Summary Cards: Total Members, Active Members, Pending Verification Registrations, Near-Expiration Members.
-  * Revenue Analytics: Bar chart tracking revenue from verified memberships.
-  * Member Demographics: Pie chart showing gender breakdown and age distribution.
-* **Member Data Management:** Table view showing active status, expiration dates, and verification triggers.
-* **Product & Trainer Management (CMS):** Interface to create, update, or disable membership plans, packages, and trainer profiles.
+```
+                           +------------------------+
+                           |  PENGUNJUNG / TAMU GYM |
+                           +-----------+------------+
+                                       |
+                 +---------------------+---------------------+
+                 | (Datang ke Gym)                           | (Akses dari Rumah)
+                 v                                           v
+      +---------------------+                     +---------------------+
+      |   MEJA RESEPSIONIS  |                     |     LANDING PAGE    |
+      | (Diinputkan Staf)   |                     | (Mandiri / Publik)  |
+      +----------+----------+                     +----------+----------+
+                 |                                           |
+    +------------+------------+                              v
+    |                         |                     Lihat Fasilitas & Harga,
+    v                         v                     Kirim Form Minat / Chat WA
+[Member: Scan Kartu/ID]   [Tamu Harian / Baru]
+    |                         |
+Presensi Instan           Input Nama & Bayar
+(Cek Sisa Hari)           (Cetak/Log Masuk)
+```
 
-#### 3.3. Member Role
-* **Member Dashboard:** Real-time display of current membership status and remaining active days.
-* **Physical Profile:** Personal tracking tool for members to log and view changes in weight and height over time.
+#### 3.1. Guest / Calon Member (Public Landing Page - Mandiri)
+* **Hero Section:** Foto gym berkelas dengan atmosfer pencahayaan atletis, slogan, dan tombol CTA WhatsApp.
+* **Facilities & Equipment:** Galeri fasilitas (alat beban, kardio, loker, shower, area fungsional).
+* **Paket & Harga:** Tabel harga transparan (Harian/Visit, Bulanan, 3 Bulan, 6 Bulan, 1 Tahun, Personal Trainer).
+* **Profil Personal Trainer:** Foto, keahlian, dan portofolio singkat pelatih Maco Gym.
+* **FAQ & Lokasi:** Jam buka, Google Maps interaktif, fasilitas pendukung.
+* **Formulir Minat / Pra-Pendaftaran:** Calon member bisa mengisi nama dan nomor WhatsApp dari rumah. Data tersimpan sebagai status `Pending` di sistem resepsionis.
+
+#### 3.2. Frontdesk / Kasir (Dioperasikan Resepsionis di Meja Depan)
+* **Layar Presensi Cepat (Quick Check-in):**
+  * Input 1 kolom pencarian: Cukup ketik ID Kartu Member (misal: `MC-001`) atau nama member, tekan Enter.
+  * Respon visual seketika:
+    * 🟢 **AKTIF:** Menampilkan sisa hari aktif (misal: "Sisa 18 Hari"). Presensi langsung tercatat otomatis.
+    * 🟡 **HAMPIR HABIS (H-3):** Menampilkan peringatan sisa hari dengan opsi perpanjangan.
+    * 🔴 **KADALUARSA:** Peringatan kartu mati. Muncul opsi langsung `[Perpanjang]` atau `[Bayar Visit Harian]`.
+* **Tiket Tamu Harian (+ Non-Member Visit):**
+  * Tombol 1-klik di resepsionis untuk tamu non-member.
+  * Form kilat: Nama, Nomor WhatsApp (opsional untuk prospek promo), Nominal Paket Harian, Metode Bayar (Cash / QRIS / Transfer).
+  * Data langsung tersimpan di kas harian dan log pengunjung hari ini.
+* **Pendaftaran Member Baru di Tempat (Walk-in Registration):**
+  * Resepsionis menginput data member baru: Nama, No. WhatsApp, Paket Membership, dan memasukkan Nomor ID Kartu Fisik yang diserahkan.
+* **Perpanjangan Membership (Renewal):**
+  * 1-klik perpanjang masa aktif dari profil member saat member membayar.
+
+#### 3.3. Admin & Owner (Monitoring, Kontrol, & Laporan)
+* **Dashboard Metrik Utama:**
+  * Total Member Aktif saat ini.
+  * Member yang mendekati habis masa aktif (H-3 / H-1).
+  * Kunjungan Hari Ini (Perbandingan Member vs Tamu Harian).
+  * Rekap Keuangan Masuk (Hari Ini & Bulan Ini).
+* **Manajemen Member & Follow-Up WhatsApp:**
+  * Tabel data member lengkap dengan status masa aktif.
+  * **Tombol WhatsApp 1-Klik (`wa.me`):** Template pesan pengingat masa aktif otomatis tanpa biaya API pihak ketiga:
+    > *"Halo Kak [Nama], membership Maco Gym kamu akan berakhir pada [Tanggal]. Yuk perpanjang agar latihanmu tetap rutin!"*
+* **Laporan Kas Sederhana (Arus Kas Masuk):**
+  * Rekap uang masuk per rentang tanggal.
+  * Filter berdasarkan: Tipe (Membership vs Visit Harian) dan Metode Pembayaran (Cash vs QRIS/Transfer).
+* **CMS Manajemen Paket & Trainer:**
+  * Pengaturan harga tiket harian, paket membership bulanan, serta data pelatih.
+
+#### 3.4. Member Role (Portal Mandiri - Read-Only)
+* **Akses Dashboard Member:**
+  * Member dapat login menggunakan Nomor WhatsApp / ID Kartu & Password.
+  * Menampilkan: Sisa hari aktif membership, masa berlaku, riwayat tanggal kunjungan.
+  * Log Profil Fisik (Opsional): Catatan sederhana perkembangan berat/tinggi badan.
+  * *Catatan:* Member **tidak** dapat menginput presensi sendiri agar tidak terjadi kecurangan titip absen.
 
 ---
 
 ### 4. Technical Architecture & Database Design
 
 #### 4.1. Tech Stack
-* **Frontend/Backend Framework:** Laravel (PHP) for server-side rendering, SEO performance, and modular role expansion.
-* **Initial Database Layer:** Google Sheets API integration.
-* **Target Database Layer:** MySQL managed via phpMyAdmin (for future scalability).
+* **Backend:** Laravel 11+ (PHP 8.3)
+* **Frontend:** Blade Templating + Tailwind CSS (Class-based Dark/Light Mode) + Alpine.js (Ringan, interaktif, tanpa beban kompilasi SPA yang rumit)
+* **Database:** MySQL / MariaDB (Dikelola via Laragon / phpMyAdmin)
+* **Theme Switching:** Dark / Light Mode Toggle (Persistent via `localStorage` / session, default: Dark Mode untuk kesan eksklusif gym)
 
-#### 4.2. Initial Data Schema (Spreadsheet Structure)
+#### 4.2. Skema Database Relasional (MySQL)
 
-1. **`Members` Sheet**
-   | Column Name | Type | Description |
-   |---|---|---|
-   | `ID` | String/INT | Unique Identifier |
-   | `Name` | String | Full Name |
-   | `Email` | String | Contact Email |
-   | `Phone` | String | Contact Number |
-   | `Status` | Enum | `Active`, `Pending`, `Inactive` |
-   | `Start_Date` | Date | Membership Start Date |
-   | `End_Date` | Date | Membership Expiration Date |
+1. **Tabel `users`**
+   * `id` (PK, BigInt)
+   * `name` (String)
+   * `username` / `phone` (String, Unique)
+   * `password` (String)
+   * `role` (Enum: `admin`, `staff`, `member`)
+   * `timestamps`
 
-2. **`Products` Sheet**
-   | Column Name | Type | Description |
-   |---|---|---|
-   | `Product_ID` | String/INT | Unique Product Identifier |
-   | `Product_Name` | String | Package/Service Title |
-   | `Price` | Numeric | Cost in IDR |
-   | `Duration_Days` | INT | Active Duration |
+2. **Tabel `members`**
+   * `id` (PK, BigInt)
+   * `user_id` (FK ke `users`, Nullable)
+   * `card_id` (String, Unique) -> *ID yang tercetak pada kartu fisik*
+   * `name` (String)
+   * `phone` (String)
+   * `gender` (Enum: `male`, `female`, Nullable)
+   * `join_date` (Date)
+   * `current_expiry_date` (Date) -> *Tanggal jatuh tempo membership*
+   * `status` (Enum: `active`, `expired`, `pending_verification`)
+   * `timestamps`
 
-3. **`Attendance` Sheet**
-   | Column Name | Type | Description |
-   |---|---|---|
-   | `Checkin_ID` | String/INT | Entry Log ID |
-   | `Member_ID` | String/INT | Foreign Key from Members |
-   | `Date` | Date | Check-in Date |
-   | `Time` | Time | Check-in Time |
+3. **Tabel `packages` (Paket Membership & Layanan)**
+   * `id` (PK, Int)
+   * `name` (String) -> *Contoh: Visit Harian, 1 Bulan, 3 Bulan, Pelajar/Mahasiswa*
+   * `type` (Enum: `membership`, `daily_visit`, `personal_trainer`)
+   * `price` (Decimal/BigInt)
+   * `duration_days` (Int) -> *1 untuk harian, 30 untuk 1 bulan, dll.*
+   * `is_active` (Boolean)
+   * `timestamps`
 
-4. **`Trainers` Sheet**
-   | Column Name | Type | Description |
-   |---|---|---|
-   | `Trainer_ID` | String/INT | Unique Trainer Identifier |
-   | `Name` | String | Trainer Name |
-   | `Specialty` | String | Focus Area/Skill |
+4. **Tabel `transactions` (Pencatatan Keuangan Masuk)**
+   * `id` (PK, BigInt)
+   * `invoice_code` (String, Unique)
+   * `member_id` (FK ke `members`, Nullable untuk tamu harian)
+   * `package_id` (FK ke `packages`)
+   * `customer_name` (String) -> *Nama member atau nama tamu harian*
+   * `customer_phone` (String, Nullable)
+   * `amount` (BigInt)
+   * `payment_method` (Enum: `cash`, `qris`, `transfer`)
+   * `created_by` (FK ke `users` - staf yang bertugas)
+   * `created_at` (Timestamp)
+
+5. **Tabel `attendances` (Presensi Harian)**
+   * `id` (PK, BigInt)
+   * `type` (Enum: `member`, `daily_guest`)
+   * `member_id` (FK ke `members`, Nullable)
+   * `guest_name` (String, Nullable)
+   * `checkin_time` (Timestamp)
+   * `notes` (String, Nullable)
+
+6. **Tabel `trainers`**
+   * `id` (PK, Int)
+   * `name` (String)
+   * `specialty` (String)
+   * `phone` (String, Nullable)
+   * `photo_path` (String, Nullable)
+   * `is_active` (Boolean)
+
+7. **Tabel `member_progress` (Opsional - Log Fisik)**
+   * `id` (PK, BigInt)
+   * `member_id` (FK ke `members`)
+   * `weight_kg` (Decimal)
+   * `height_cm` (Decimal)
+   * `recorded_at` (Date)
 
 ---
 
-### 5. Future Enhancements
-* Migration from Google Sheets to MySQL database.
-* Granular access control for expanded admin and member sub-roles.
-* Automated WhatsApp/Email notifications for membership renewal.
+### 5. UI/UX Style Guide: Sederhana tapi Mewah (Dark & Light Mode)
+
+Sistem mendukung **dua mode tampilan** yang dapat diubah kapan saja dengan tombol switch (ikon Bulan 🌙 / Matahari ☀️) di navbar/header. Pilihan mode otomatis tersimpan di browser (`localStorage`).
+
+#### 5.1. Dark Mode (Default - Exclusive Luxury Gym)
+* **Background Utama:** `#0B0F19` (Midnight Obsidian / Deep Slate)
+* **Card / Container:** `#161F30` / `#1E293B` (Navy Slate) dengan border tipis `border-slate-800`
+* **Teks Utama:** `#F8FAFC` (Pure White) & Teks Sekunder: `#94A3B8` (Slate-400)
+* **Aksen Utama:** `#F59E0B` (Amber Gold) & `#D97706` (Warm Bronze)
+* **Kelebihan:** Sangat elegan, modern, nyaman di mata resepsionis saat shift sore/malam, dan memberikan impresi gym premium di landing page.
+
+#### 5.2. Light Mode (Crisp & Clean Luxury)
+* **Background Utama:** `#F8FAFC` (Slate-50 / Clean Off-White)
+* **Card / Container:** `#FFFFFF` (Pure White) dengan border halus `border-slate-200` dan `shadow-sm`
+* **Teks Utama:** `#0F172A` (Slate-900) & Teks Sekunder: `#64748B` (Slate-500)
+* **Aksen Utama:** `#D97706` (Deep Amber Gold)
+* **Kelebihan:** Sangat jelas dan bersemangat, cocok digunakan staf resepsionis jika meja kasir berada di dekat pintu masuk/area terang terkena sinar matahari siang.
+
+#### 5.3. Status Badges (Konsisten di Kedua Mode)
+* 🟢 **Status Aktif:** 
+  * Dark: Background `rgba(16, 185, 129, 0.15)`, teks `#34D399` (Emerald-400)
+  * Light: Background `#ECFDF5`, teks `#059669` (Emerald-600)
+* 🟡 **Peringatan / H-3:** 
+  * Dark: Background `rgba(245, 158, 11, 0.15)`, teks `#FBBF24` (Amber-400)
+  * Light: Background `#FFFBEB`, teks `#D97706` (Amber-600)
+* 🔴 **Kadaluarsa (Expired):** 
+  * Dark: Background `rgba(239, 68, 68, 0.15)`, teks `#F87171` (Red-400)
+  * Light: Background `#FEF2F2`, teks `#DC2626` (Red-600)
+
+#### 5.4. Karakteristik Komponen
+* Kontras tinggi dengan font tajam (*Inter* / *Plus Jakarta Sans*).
+* Sudut rounded modern (`rounded-xl` hingga `rounded-2xl`).
+* Tombol aksi cepat di meja kasir berukuran lapang (`px-6 py-3`) agar bebas dari salah klik.
+
+---
+
+### 6. Rencana Implementasi Bertahap
+
+* **Fase 1 (Inti Operasional Meja Depan):**
+  1. Setup database MySQL & model migration (Member, Package, Transaction, Attendance).
+  2. Halaman Kasir / Frontdesk: Form pencarian presensi kartu member (3 detik) & tombol input tamu harian.
+  3. CRUD Member & input nomor kartu fisik.
+  4. Laporan kas harian sederhana.
+* **Fase 2 (Landing Page & Branding):**
+  1. Halaman landing page publik bertema Dark Luxury.
+  2. Info paket, fasilitas, trainer, Google Maps & tombol WhatsApp resepsionis.
+* **Fase 3 (Penyempurnaan & Fitur Tambahan):**
+  1. Tombol WhatsApp pengingat kadaluarsa (H-3).
+  2. Portal member mandiri untuk cek masa aktif via HP.
