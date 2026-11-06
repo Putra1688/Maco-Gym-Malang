@@ -1,4 +1,4 @@
-# Struktur Project
+# Struktur Project View & Controller (Maco Gym)
 
 ## Views
 
