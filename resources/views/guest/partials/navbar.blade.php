@@ -77,6 +77,9 @@
                     <a href="#facilities" class="text-xs font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600 transition-colors">
                         PROGRAMS
                     </a>
+                    <a href="#bmi" class="text-xs font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600 transition-colors">
+                        BMI
+                    </a>
                     <a href="#trainers" class="text-xs font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600 transition-colors">
                         TRAINERS
                     </a>
@@ -151,6 +154,9 @@
         </a>
         <a href="#facilities" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600">
             PROGRAMS & FASILITAS
+        </a>
+        <a href="#bmi" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600">
+            KALKULATOR BMI
         </a>
         <a href="#trainers" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600">
             TRAINERS

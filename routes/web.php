@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // Guest routes (dikerjakan oleh teman user)
 Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::view('/kalkulator-bmi', 'guest.bmi')->name('bmi.index');
 Route::post('/register-interest', [GuestController::class, 'registerInterest'])->name('register.interest');
 
 // Auth routes
