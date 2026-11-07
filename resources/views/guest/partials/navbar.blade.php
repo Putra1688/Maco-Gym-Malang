@@ -94,15 +94,35 @@
                     </a>
                 </nav>
 
-                <!-- Right Action Button: JOIN NOW -->
+                <!-- Right Action Button: LOGIN / DASHBOARD -->
                 <div class="hidden sm:flex items-center gap-3">
-                    <a href="#cara-daftar"
-                       class="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md shadow-red-600/20 transform hover:-translate-y-0.5 transition-all">
-                        <span>JOIN NOW</span>
-                        <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
+                    @auth
+                        @if(auth()->user()->isAdmin() || auth()->user()->isStaff())
+                            <a href="{{ route('admin.dashboard') }}"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md shadow-red-600/20 transform hover:-translate-y-0.5 transition-all">
+                                <span>DASHBOARD</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        @elseif(auth()->user()->isMember())
+                            <a href="{{ route('member.dashboard') }}"
+                               class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md shadow-red-600/20 transform hover:-translate-y-0.5 transition-all">
+                                <span>PORTAL MEMBER</span>
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('login') }}"
+                           class="inline-flex items-center gap-2 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md shadow-red-600/20 transform hover:-translate-y-0.5 transition-all">
+                            <span>LOGIN</span>
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                            </svg>
+                        </a>
+                    @endauth
                 </div>
 
                 <!-- Mobile Hamburger Button -->
@@ -148,10 +168,24 @@
             CONTACT
         </a>
         <div class="pt-4 border-t border-zinc-200 flex flex-col gap-3">
-            <a href="#cara-daftar"
-               class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 text-sm font-bold uppercase text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md">
-                <span>JOIN NOW &rarr;</span>
-            </a>
+            @auth
+                @if(auth()->user()->isAdmin() || auth()->user()->isStaff())
+                    <a href="{{ route('admin.dashboard') }}"
+                       class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 text-sm font-bold uppercase text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md">
+                        <span>DASHBOARD ADMIN &rarr;</span>
+                    </a>
+                @elseif(auth()->user()->isMember())
+                    <a href="{{ route('member.dashboard') }}"
+                       class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 text-sm font-bold uppercase text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md">
+                        <span>PORTAL MEMBER &rarr;</span>
+                    </a>
+                @endif
+            @else
+                <a href="{{ route('login') }}"
+                   class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 text-sm font-bold uppercase text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md">
+                    <span>LOGIN KE SISTEM &rarr;</span>
+                </a>
+            @endauth
             <a href="https://wa.me/6281250207403"
                target="_blank"
                rel="noopener noreferrer"

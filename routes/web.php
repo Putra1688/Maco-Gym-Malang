@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FrontdeskController;
 use App\Http\Controllers\Admin\MemberController;
@@ -11,9 +9,6 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberDashboardController;
-use Illuminate\Support\Facades\Route;
->>>>>>> c9aa7c6c93edb808a5ae7cc0645fc1918d346f9a
-use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,16 +59,6 @@ Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->g
 });
 
 Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
-
-/*
-|--------------------------------------------------------------------------
-| Auth Routes
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
 
 /*
 |--------------------------------------------------------------------------
