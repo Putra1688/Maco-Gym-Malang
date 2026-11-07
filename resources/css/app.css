@@ -5,12 +5,25 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Plus Jakarta Sans', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     --font-heading: 'Montserrat', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --color-brand-red: #ef233c;
+    --color-brand-red-hover: #dc2626;
+    --color-brand-dark: #0e1014;
+    --color-card-dark: #15171d;
+    --color-card-border: #262934;
+}
+
+/* Headings & Taglines font family */
+h1, h2, h3, h4, h5, h6, .font-heading, .font-montserrat, .tagline {
+    font-family: var(--font-heading);
+    font-weight: 700;
 }
 
 html {
     scroll-behavior: smooth;
+    background-color: #ffffff;
 }
 
 /* Custom scrollbar */
@@ -18,12 +31,12 @@ html {
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #09090b;
+    background: #f4f4f5;
 }
 ::-webkit-scrollbar-thumb {
-    background: #27272a;
+    background: #d4d4d8;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #eab308;
+    background: #ef233c;
 }

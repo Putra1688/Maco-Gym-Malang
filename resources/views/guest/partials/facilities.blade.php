@@ -1,177 +1,226 @@
-<!-- Facilities Section -->
-<section id="facilities" class="py-24 bg-zinc-900/60 border-y border-zinc-800/80 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Programs & Facilities Section (Clean Light Theme with Red Accents) -->
+<section id="facilities" class="py-24 bg-zinc-50 border-t border-zinc-200 relative">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
         
-        <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider">
-                Fasilitas Unggulan
+        <!-- Header with "OUR PROGRAMS" & "VIEW ALL PROGRAMS ->" -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                    <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">OUR PROGRAMS</span>
+                </div>
+                <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
+                    PROGRAM LATIHAN & <span class="text-red-600">FASILITAS GYM</span>
+                </h2>
             </div>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
-                Fasilitas Lengkap & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Standar Premium</span>
-            </h2>
-            <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
-                Kami menyediakan sarana fitness yang higienis, terawat, dan lengkap untuk mendukung setiap program latihanmu mulai dari pembentukan otot, pembakaran lemak, hingga kekuatan fungsional.
-            </p>
+            <div>
+                <a href="#pricing" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red-600 hover:text-red-700 transition-colors">
+                    <span>VIEW ALL PROGRAMS</span>
+                    <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
         </div>
 
-        <!-- Facilities Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            <!-- Facility 1: Free Weights Area -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h3m12 0h3M5 6v12M19 6v12M3 18h3m12 0h3M7 10h10M7 14h10M7 7h2v10H7zm8 0h2v10h-2z" />
-                    </svg>
+        <!-- 4 Top Programs Grid with Real Fitness Photography -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            
+            <!-- Program 1: Strength Training -->
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
+                <!-- Program Image Header -->
+                <div class="relative h-52 overflow-hidden">
+                    <img src="{{ asset('images/programs/strength.jpg') }}"
+                         alt="Strength Training"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <!-- Icon in Circle on Image -->
+                    <div class="absolute bottom-3 left-4 w-10 h-10 rounded-lg bg-white/95 text-red-600 border border-zinc-200 shadow-md flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h3m12 0h3M5 6v12M19 6v12M3 18h3m12 0h3M7 10h10M7 14h10M7 7h2v10H7zm8 0h2v10h-2z" />
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Free Weights Zone
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Set Dumbbell lengkap dari 1 kg hingga 50 kg, Olympic Barbells, Squat Racks kokoh, dan multi bench (flat, incline, decline).
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Kapasitas Latihan Bebas</span>
+
+                <div class="p-6 pt-4 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2 group-hover:text-red-600 transition-colors">
+                            STRENGTH TRAINING
+                        </h3>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-4">
+                            Build muscle and progressive strength with compound lifts, olympic barbells, squat racks, and heavy benches.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="#cara-daftar" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase text-red-600 group-hover:underline">
+                            <span>LEARN MORE</span>
+                            <span class="text-sm">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Facility 2: Machine & Plate-Loaded -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
+            <!-- Program 2: Weight Loss -->
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="{{ asset('images/programs/weightloss.jpg') }}"
+                         alt="Weight Loss"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-3 left-4 w-10 h-10 rounded-lg bg-white/95 text-red-600 border border-zinc-200 shadow-md flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Machine & Plate-Loaded
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Smith Machine, Hack Squat, Leg Press, Lat Pulldown, Cable Crossover, dan Seated Row untuk isolasi otot presisi dan aman bagi pemula.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Biomekanik Aman & Ergonomis</span>
+
+                <div class="p-6 pt-4 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2 group-hover:text-red-600 transition-colors">
+                            WEIGHT LOSS
+                        </h3>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-4">
+                            Effective HIIT workouts, metabolic conditioning, and cardio programs designed to burn stubborn calories fast.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="#cara-daftar" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase text-red-600 group-hover:underline">
+                            <span>LEARN MORE</span>
+                            <span class="text-sm">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Facility 3: Cardio Theater -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
+            <!-- Program 3: Muscle Building -->
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="{{ asset('images/programs/muscle.jpg') }}"
+                         alt="Muscle Building"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-3 left-4 w-10 h-10 rounded-lg bg-white/95 text-red-600 border border-zinc-200 shadow-md flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Cardio Theater
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Commercial Treadmill dengan auto-incline, Elliptical Trainer, Spinning Bike, dan Stairmaster untuk membakar kalori dan melatih stamina jantung.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Fat Burning & Heart Health</span>
+
+                <div class="p-6 pt-4 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2 group-hover:text-red-600 transition-colors">
+                            MUSCLE BUILDING
+                        </h3>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-4">
+                            Targeted hypertrophy routines with plate-loaded machines, cable stations, and isolation form exercises.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="#cara-daftar" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase text-red-600 group-hover:underline">
+                            <span>LEARN MORE</span>
+                            <span class="text-sm">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Facility 4: Functional Training -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
+            <!-- Program 4: Yoga & Flexibility -->
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
+                <div class="relative h-52 overflow-hidden">
+                    <img src="{{ asset('images/programs/flexibility.jpg') }}"
+                         alt="Yoga and Flexibility"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-3 left-4 w-10 h-10 rounded-lg bg-white/95 text-red-600 border border-zinc-200 shadow-md flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Functional & Calisthenics
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Kettlebells, Battle Ropes, Plyometric Boxes, Slam Balls, Pull-up Bar, dan Matras Yoga untuk latihan HIIT, agility, serta mobilitas tubuh.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Core & Athletic Performance</span>
-                </div>
-            </div>
 
-            <!-- Facility 5: Shower & Locker -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Locker & Shower Air Hangat
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Loker penyimpanan barang berkeamanan kunci, kamar bilas higienis dengan water heater, wastafel, cermin luas, dan hair dryer.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Higienis & Selalu Bersih</span>
-                </div>
-            </div>
-
-            <!-- Facility 6: Musholla Bersih -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Musholla & Area Wudhu
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Tersedia musholla bersih, tenang, dan ber-AC lengkap dengan sarung/mukena serta tempat wudhu khusus di dalam gym.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Ibadah Nyaman Tanpa Keluar Gym</span>
-                </div>
-            </div>
-
-            <!-- Facility 7: Suplemen Bar -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Protein & Supplement Corner
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Sedia Whey Protein Shakes segar per serving, pre-workout booster, BCAA drink, snack berprotein, dan air mineral dingin.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Nutrisi Pemulihan Instan</span>
-                </div>
-            </div>
-
-            <!-- Facility 8: AC & Audio Ambience -->
-            <div class="group relative bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-800 hover:border-amber-400/50 rounded-2xl p-6 transition-all duration-300 transform hover:-translate-y-1.5 shadow-lg">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 group-hover:bg-amber-400 text-amber-400 group-hover:text-zinc-950 flex items-center justify-center transition-colors mb-5">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                    </svg>
-                </div>
-                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                    Full AC & Sound Berenergi
-                </h3>
-                <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                    Ruangan luas berpendingin udara (full AC) bebas bau apek, sirkulasi udara optimal, serta dentuman playlist musik workout yang memompa adrenaline.
-                </p>
-                <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center text-xs font-semibold text-amber-400/90">
-                    <span>Fokus & Nyaman Berlatih</span>
+                <div class="p-6 pt-4 flex flex-col flex-1 justify-between">
+                    <div>
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2 group-hover:text-red-600 transition-colors">
+                            YOGA & FLEXIBILITY
+                        </h3>
+                        <p class="text-xs text-zinc-600 leading-relaxed mb-4">
+                            Improve joint mobility, posture, core stability, and athletic stamina with functional stretching routines.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="#cara-daftar" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase text-red-600 group-hover:underline">
+                            <span>LEARN MORE</span>
+                            <span class="text-sm">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Facility Footer Note -->
-        <div class="mt-12 text-center">
-            <p class="text-xs sm:text-sm text-zinc-400">
-                Tertarik mencoba alat kami langsung? Anda bisa berkunjung untuk <span class="text-amber-400 font-semibold">Gym Tour gratis</span> atau mencoba <span class="text-white font-semibold">Daily Pass Rp 25.000</span> di resepsionis.
-            </p>
+        <!-- 8 Detailed Facilities Grid -->
+        <div class="pt-10 border-t border-zinc-200">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 px-3.5 py-1.5 rounded-full border border-red-200">
+                    FASILITAS LENGKAP MACO GYM
+                </span>
+                <h3 class="font-montserrat text-2xl sm:text-3xl font-bold uppercase text-zinc-900 mt-3">
+                    STANDAR PERALATAN & KENYAMANAN TERBAIK
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                
+                <!-- Fac 1 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Free Weights Zone</div>
+                    <p class="text-xs text-zinc-600">Dumbbell 1kg - 50kg lengkap, Olympic Barbells, Incline/Flat Bench, dan Squat Racks kokoh.</p>
+                </div>
+
+                <!-- Fac 2 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Plate-Loaded Machines</div>
+                    <p class="text-xs text-zinc-600">Smith Machine, Hack Squat, Leg Press, Lat Pulldown, dan Cable Crossover dengan biomekanik presisi.</p>
+                </div>
+
+                <!-- Fac 3 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Cardio Theater</div>
+                    <p class="text-xs text-zinc-600">Treadmill auto-incline, Elliptical Trainer, Spinning Bike, dan Stairmaster dengan monitor detak jantung.</p>
+                </div>
+
+                <!-- Fac 4 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Functional Zone</div>
+                    <p class="text-xs text-zinc-600">Kettlebells, Battle Ropes, Plyometric Boxes, Slam Balls, dan Monkey Bar untuk melatih stamina.</p>
+                </div>
+
+                <!-- Fac 5 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Locker & Shower Hangat</div>
+                    <p class="text-xs text-zinc-600">Loker berkunci aman, shower air hangat bersih, wastafel higienis, dan cermin luas.</p>
+                </div>
+
+                <!-- Fac 6 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Musholla Ber-AC</div>
+                    <p class="text-xs text-zinc-600">Tempat ibadah tenang, sejuk, dan wudhu bersih di dalam gym agar ibadah tetap tepat waktu.</p>
+                </div>
+
+                <!-- Fac 7 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Protein & Supplement Bar</div>
+                    <p class="text-xs text-zinc-600">Sedia Whey Protein shaker segar, pre-workout, BCAA, snack sehat berprotein, dan air dingin.</p>
+                </div>
+
+                <!-- Fac 8 -->
+                <div class="p-5 rounded-xl bg-white border border-zinc-200 hover:border-red-300 transition-all shadow-xs hover:shadow-md">
+                    <div class="text-red-600 font-bold text-sm mb-1.5">Full AC & High Sound</div>
+                    <p class="text-xs text-zinc-600">Sirkulasi udara sejuk berpendingin AC bebas apek dengan dentuman musik workout pemacu semangat.</p>
+                </div>
+
+            </div>
         </div>
 
     </div>
 </section>
-
