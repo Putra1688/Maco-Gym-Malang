@@ -1,210 +1,200 @@
-<!-- Personal Trainer Section -->
-<section id="trainers" class="py-24 bg-zinc-900/40 border-t border-zinc-800/80 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Personal Trainer Section (Clean Light Theme with Red Accents & Bright Coach Photos) -->
+<section id="trainers" class="py-24 bg-zinc-50 border-t border-zinc-200 relative">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
         
         <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider">
-                Tim Pelatih Profesional
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                    <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">COACHING STAFF</span>
+                </div>
+                <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
+                    OUR EXPERT <span class="text-red-600">TRAINERS</span>
+                </h2>
             </div>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
-                Latihan Terarah Bersama <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Certified Trainer</span>
-            </h2>
-            <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
-                Hindari salah gerakan dan risiko cedera. Pelatih berpengalaman kami siap membimbing program latihan yang dipersonalisasi sesuai target spesifikmu.
-            </p>
+            <div>
+                <p class="text-xs sm:text-sm text-zinc-600 max-w-md">
+                    Dipandu langsung oleh pelatih berlisensi nasional & internasional untuk memastikan form latihan benar dan hasil yang maksimal.
+                </p>
+            </div>
         </div>
 
-        <!-- Trainers Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- 4 Trainers Grid with Real Athletic Photos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <!-- Trainer 1 -->
-            <div class="group relative rounded-3xl bg-zinc-950 border border-zinc-800 hover:border-amber-400/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-xl">
-                <!-- Avatar / Visual Area -->
-                <div class="relative h-64 bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 flex items-center justify-center overflow-hidden">
-                    <!-- Subtle Glow -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10"></div>
-                    <!-- Athletic Avatar SVG -->
-                    <div class="w-32 h-32 rounded-full bg-zinc-800 border-2 border-amber-400/40 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform duration-300 shadow-xl">
-                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                    </div>
-                    <span class="absolute top-4 left-4 z-20 text-[11px] font-bold uppercase tracking-wider bg-amber-400 text-zinc-950 px-2.5 py-0.5 rounded-full shadow">
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl">
+                <!-- Visual Area with Real Coach Photo -->
+                <div class="relative h-72 overflow-hidden">
+                    <img src="{{ asset('images/trainers/coach-rangga.jpg') }}"
+                         alt="Coach Rangga Pratama"
+                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    
+                    <span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-2.5 py-0.5 rounded shadow">
                         Head Coach
                     </span>
-                    <span class="absolute top-4 right-4 z-20 text-[11px] font-semibold text-zinc-300 bg-zinc-900/90 px-2.5 py-0.5 rounded-full border border-zinc-700">
-                        7+ Th Pengalaman
+                    <span class="absolute top-3 right-3 text-[10px] font-semibold text-white bg-black/80 backdrop-blur-sm px-2.5 py-0.5 rounded border border-white/20">
+                        7+ Th Exp
                     </span>
                 </div>
 
-                <!-- Info Area -->
-                <div class="p-6 pt-2 flex flex-col flex-1 justify-between space-y-4">
+                <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                     <div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                             Coach Rangga Pratama, S.Or
                         </h3>
-                        <p class="text-xs text-amber-400/90 font-medium">Hypertrophy & Body Recomposition</p>
+                        <p class="text-xs text-red-600 font-semibold mt-0.5">Hypertrophy & Body Recomposition</p>
                         
-                        <div class="mt-3 inline-block text-[11px] font-semibold text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-                            Sertifikasi: APKI Certified & Sarjana Olahraga
+                        <div class="mt-2 text-[10px] font-bold text-zinc-700 bg-zinc-100 px-2 py-1 rounded border border-zinc-200 inline-block">
+                            APKI Certified & Sarjana Olahraga
                         </div>
 
-                        <p class="text-xs text-zinc-400 mt-3 leading-relaxed">
-                            Spesialis pembentukan massa otot kering, perbaikan proporsi tubuh, dan periodisasi program latihan beban terstruktur.
+                        <p class="text-xs text-zinc-600 mt-2.5 leading-relaxed">
+                            Spesialis program pembentukan massa otot kering dan adaptasi biomekanik latihan angkat beban.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-zinc-800">
-                        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Rangga."
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="https://wa.me/6281250207403?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Rangga."
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-zinc-900 hover:bg-amber-400 text-zinc-300 hover:text-zinc-950 border border-zinc-700 hover:border-amber-400 transition-all">
-                            <span>Konsultasi Coach Rangga</span>
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
+                           class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 hover:bg-red-600 text-zinc-800 hover:text-white border border-zinc-200 hover:border-red-600 transition-colors">
+                            <span>KONSULTASI COACH</span>
+                            <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Trainer 2 -->
-            <div class="group relative rounded-3xl bg-zinc-950 border border-zinc-800 hover:border-amber-400/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-xl">
-                <div class="relative h-64 bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10"></div>
-                    <div class="w-32 h-32 rounded-full bg-zinc-800 border-2 border-amber-400/40 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform duration-300 shadow-xl">
-                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                    </div>
-                    <span class="absolute top-4 left-4 z-20 text-[11px] font-bold uppercase tracking-wider bg-orange-500 text-white px-2.5 py-0.5 rounded-full shadow">
-                        Fat Loss Specialist
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl">
+                <div class="relative h-72 overflow-hidden">
+                    <img src="{{ asset('images/trainers/coach-kevin.jpg') }}"
+                         alt="Coach Kevin Ardian"
+                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+                    <span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-2.5 py-0.5 rounded shadow">
+                        Senior Coach
                     </span>
-                    <span class="absolute top-4 right-4 z-20 text-[11px] font-semibold text-zinc-300 bg-zinc-900/90 px-2.5 py-0.5 rounded-full border border-zinc-700">
-                        5+ Th Pengalaman
+                    <span class="absolute top-3 right-3 text-[10px] font-semibold text-white bg-black/80 backdrop-blur-sm px-2.5 py-0.5 rounded border border-white/20">
+                        5+ Th Exp
                     </span>
                 </div>
 
-                <div class="p-6 pt-2 flex flex-col flex-1 justify-between space-y-4">
+                <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                     <div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                            Coach Kevin Ardian
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
+                            Coach Kevin Ardian, CPT
                         </h3>
-                        <p class="text-xs text-amber-400/90 font-medium">Weight Management & HIIT</p>
+                        <p class="text-xs text-red-600 font-semibold mt-0.5">Weight Management & HIIT</p>
                         
-                        <div class="mt-3 inline-block text-[11px] font-semibold text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-                            Sertifikasi: CSCS & Functional Conditioning
+                        <div class="mt-2 text-[10px] font-bold text-zinc-700 bg-zinc-100 px-2 py-1 rounded border border-zinc-200 inline-block">
+                            NASM Certified Personal Trainer
                         </div>
 
-                        <p class="text-xs text-zinc-400 mt-3 leading-relaxed">
-                            Fokus pada pembakaran lemak membandel, peningkatan stamina, dan panduan pola makan sehat yang realistis tanpa tersiksa.
+                        <p class="text-xs text-zinc-600 mt-2.5 leading-relaxed">
+                            Pakar fat loss terarah dengan kombinasi kardio fungsional dan pola nutrisi berkelanjutan.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-zinc-800">
-                        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Kevin."
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="https://wa.me/6281250207403?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Kevin."
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-zinc-900 hover:bg-amber-400 text-zinc-300 hover:text-zinc-950 border border-zinc-700 hover:border-amber-400 transition-all">
-                            <span>Konsultasi Coach Kevin</span>
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
+                           class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 hover:bg-red-600 text-zinc-800 hover:text-white border border-zinc-200 hover:border-red-600 transition-colors">
+                            <span>KONSULTASI COACH</span>
+                            <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Trainer 3 -->
-            <div class="group relative rounded-3xl bg-zinc-950 border border-zinc-800 hover:border-amber-400/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-xl">
-                <div class="relative h-64 bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10"></div>
-                    <div class="w-32 h-32 rounded-full bg-zinc-800 border-2 border-amber-400/40 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform duration-300 shadow-xl">
-                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                    </div>
-                    <span class="absolute top-4 left-4 z-20 text-[11px] font-bold uppercase tracking-wider bg-yellow-500 text-zinc-950 px-2.5 py-0.5 rounded-full shadow">
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl">
+                <div class="relative h-72 overflow-hidden">
+                    <img src="{{ asset('images/trainers/coach-dimas.jpg') }}"
+                         alt="Coach Dimas Wicaksono"
+                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+
+                    <span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-2.5 py-0.5 rounded shadow">
                         Strength Coach
                     </span>
-                    <span class="absolute top-4 right-4 z-20 text-[11px] font-semibold text-zinc-300 bg-zinc-900/90 px-2.5 py-0.5 rounded-full border border-zinc-700">
-                        6+ Th Pengalaman
+                    <span class="absolute top-3 right-3 text-[10px] font-semibold text-white bg-black/80 backdrop-blur-sm px-2.5 py-0.5 rounded border border-white/20">
+                        6+ Th Exp
                     </span>
                 </div>
 
-                <div class="p-6 pt-2 flex flex-col flex-1 justify-between space-y-4">
+                <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                     <div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                            Coach Dimas Setiawan
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
+                            Coach Dimas Wicaksono
                         </h3>
-                        <p class="text-xs text-amber-400/90 font-medium">Powerlifting & Strength</p>
+                        <p class="text-xs text-red-600 font-semibold mt-0.5">Strength & Powerlifting</p>
                         
-                        <div class="mt-3 inline-block text-[11px] font-semibold text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-                            Sertifikasi: Powerlifting Coach & Posture Specialist
+                        <div class="mt-2 text-[10px] font-bold text-zinc-700 bg-zinc-100 px-2 py-1 rounded border border-zinc-200 inline-block">
+                            National Powerlifting Champion 2023
                         </div>
 
-                        <p class="text-xs text-zinc-400 mt-3 leading-relaxed">
-                            Pakar teknik Big 3 (Squat, Bench Press, Deadlift). Membantu meningkatkan kekuatan maksimal dengan postur biomekanik yang benar.
+                        <p class="text-xs text-zinc-600 mt-2.5 leading-relaxed">
+                            Membimbing teknik Squat, Bench Press, dan Deadlift dari level pemula hingga kompetisi.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-zinc-800">
-                        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Dimas."
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="https://wa.me/6281250207403?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Dimas."
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-zinc-900 hover:bg-amber-400 text-zinc-300 hover:text-zinc-950 border border-zinc-700 hover:border-amber-400 transition-all">
-                            <span>Konsultasi Coach Dimas</span>
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
+                           class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 hover:bg-red-600 text-zinc-800 hover:text-white border border-zinc-200 hover:border-red-600 transition-colors">
+                            <span>KONSULTASI COACH</span>
+                            <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Trainer 4 -->
-            <div class="group relative rounded-3xl bg-zinc-950 border border-zinc-800 hover:border-amber-400/50 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-xl">
-                <div class="relative h-64 bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10"></div>
-                    <div class="w-32 h-32 rounded-full bg-zinc-800 border-2 border-amber-400/40 flex items-center justify-center text-amber-400 group-hover:scale-105 transition-transform duration-300 shadow-xl">
-                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                        </svg>
-                    </div>
-                    <span class="absolute top-4 left-4 z-20 text-[11px] font-bold uppercase tracking-wider bg-rose-500 text-white px-2.5 py-0.5 rounded-full shadow">
+            <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-xl">
+                <div class="relative h-72 overflow-hidden">
+                    <img src="{{ asset('images/trainers/coach-sarah.jpg') }}"
+                         alt="Coach Sarah Melinda"
+                         class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    
+                    <span class="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-2.5 py-0.5 rounded shadow">
                         Female Coach
                     </span>
-                    <span class="absolute top-4 right-4 z-20 text-[11px] font-semibold text-zinc-300 bg-zinc-900/90 px-2.5 py-0.5 rounded-full border border-zinc-700">
-                        4+ Th Pengalaman
+                    <span class="absolute top-3 right-3 text-[10px] font-semibold text-white bg-black/80 backdrop-blur-sm px-2.5 py-0.5 rounded border border-white/20">
+                        4+ Th Exp
                     </span>
                 </div>
 
-                <div class="p-6 pt-2 flex flex-col flex-1 justify-between space-y-4">
+                <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                     <div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                        <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                             Coach Sarah Melinda
                         </h3>
-                        <p class="text-xs text-amber-400/90 font-medium">Female Fitness & Core Toning</p>
+                        <p class="text-xs text-red-600 font-semibold mt-0.5">Female Fitness & Core Toning</p>
                         
-                        <div class="mt-3 inline-block text-[11px] font-semibold text-zinc-400 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-                            Sertifikasi: Female Functional & Glutes Specialist
+                        <div class="mt-2 text-[10px] font-bold text-zinc-700 bg-zinc-100 px-2 py-1 rounded border border-zinc-200 inline-block">
+                            Female Functional & Pilates Spec
                         </div>
 
-                        <p class="text-xs text-zinc-400 mt-3 leading-relaxed">
-                            Bimbingan khusus member wanita untuk membentuk postur tegak, glutes kencang, perut rata, dan peningkatan fleksibilitas tubuh.
+                        <p class="text-xs text-zinc-600 mt-2.5 leading-relaxed">
+                            Bimbingan khusus wanita untuk mengencangkan glutes, posture alignment, perut kencang, dan kelenturan.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-zinc-800">
-                        <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Sarah."
+                    <div class="pt-3 border-t border-zinc-100">
+                        <a href="https://wa.me/6281250207403?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20untuk%20konsultasi%20dengan%20Coach%20Sarah."
                            target="_blank"
                            rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-bold bg-zinc-900 hover:bg-amber-400 text-zinc-300 hover:text-zinc-950 border border-zinc-700 hover:border-amber-400 transition-all">
-                            <span>Konsultasi Coach Sarah</span>
-                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
+                           class="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 hover:bg-red-600 text-zinc-800 hover:text-white border border-zinc-200 hover:border-red-600 transition-colors">
+                            <span>KONSULTASI COACH</span>
+                            <span class="text-sm">&rarr;</span>
                         </a>
                     </div>
                 </div>
@@ -214,4 +204,3 @@
 
     </div>
 </section>
-

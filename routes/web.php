@@ -10,7 +10,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberDashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GuestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +17,10 @@ use App\Http\Controllers\GuestController;
 |--------------------------------------------------------------------------
 */
 
-// Guest routes (dikerjakan oleh teman user)
 Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::view('/kalkulator-bmi', 'guest.bmi')->name('bmi.index');
 Route::post('/register-interest', [GuestController::class, 'registerInterest'])->name('register.interest');
+Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
 
 // Auth routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -29,7 +29,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot-password', [AuthController::class, 'showResetPassword'])->name('password.request');
 Route::get('/reset-password', [AuthController::class, 'showResetPassword'])->name('password.reset');
 
-// Admin & Staff routes
+// Direct Preview Route for Member Portal
+Route::get('/member-preview', [MemberDashboardController::class, 'preview'])->name('member.preview');
+
+/*
+|--------------------------------------------------------------------------
+| Admin & Staff Routes
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth', 'role:admin,staff'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -52,45 +59,18 @@ Route::middleware(['auth', 'role:admin,staff'])->prefix('admin')->name('admin.')
     Route::resource('trainers', TrainerController::class)->except(['show']);
 });
 
-// Member routes
+/*
+|--------------------------------------------------------------------------
+| Member Routes
+|--------------------------------------------------------------------------
+*/
 Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->group(function () {
     Route::get('/dashboard', [MemberDashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [MemberDashboardController::class, 'profile'])->name('profile');
     Route::post('/profile/progress', [MemberDashboardController::class, 'storeProgress'])->name('progress.store');
+    Route::post('/routine/{routine}/toggle', [MemberDashboardController::class, 'toggleRoutineExercise'])->name('routine.toggle');
+    Route::post('/routine/{routine}/exercise', [MemberDashboardController::class, 'addRoutineExercise'])->name('routine.exercise.add');
+    Route::delete('/routine/{routine}/exercise/{index}', [MemberDashboardController::class, 'deleteRoutineExercise'])->name('routine.exercise.delete');
+    Route::post('/routine/{routine}/reset', [MemberDashboardController::class, 'resetRoutineChecklist'])->name('routine.reset');
+    Route::post('/routine/template', [MemberDashboardController::class, 'applyRoutineTemplate'])->name('routine.template');
 });
-
-Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
-
-/*
-|--------------------------------------------------------------------------
-| Auth Routes
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-
-/*
-|--------------------------------------------------------------------------
-| Member Routes (nanti)
-|--------------------------------------------------------------------------
-*/
-
-// Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->group(function () {
-//     Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('dashboard');
-//     Route::resource('/profile', PhysicalProfileController::class);
-// });
-
-/*
-|--------------------------------------------------------------------------
-| Admin Routes (nanti)
-|--------------------------------------------------------------------------
-*/
-
-// Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-//     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-//     Route::resource('/members', AdminMemberController::class);
-//     Route::resource('/products', ProductController::class);
-//     Route::resource('/trainers', TrainerController::class);
-// });

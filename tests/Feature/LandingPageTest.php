@@ -15,25 +15,32 @@ class LandingPageTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Navbar & Brand
+        // Navbar & Brand & Logo
         $response->assertSee('MACO');
         $response->assertSee('GYM');
+        $response->assertSee('images/logo/macogym.jpg');
 
-        // Hero Section
-        $response->assertSee('Bentuk Tubuh');
-        $response->assertSee('Maco Gym');
+        // Hero Section (Matching Reference: Become The Best Version Of Yourself)
+        $response->assertSee('BEST VERSION');
+        $response->assertSee('TRAIN HARD. STAY STRONG.');
 
-        // Facilities Section
-        $response->assertSee('Fasilitas Lengkap');
+        // Facilities & Programs Section
+        $response->assertSee('OUR PROGRAMS');
+        $response->assertSee('STRENGTH TRAINING');
         $response->assertSee('Free Weights Zone');
-        $response->assertSee('Cardio Theater');
-        $response->assertSee('Locker');
-        $response->assertSee('Shower');
+
+        // About & Philosophy Section
+        $response->assertSee('DISCIPLINE');
+        $response->assertSee('CONSISTENT');
+        $response->assertSee('ABOUT MACO GYM');
+
+        // Testimonials Section
+        $response->assertSee('WHAT OUR MEMBERS SAY');
 
         // Pricing Section (Bulanan, Mahasiswa, Personal Trainer)
+        $response->assertSee('CHOOSE YOUR PLAN');
         $response->assertSee('1 Bulan Reguler');
         $response->assertSee('1 Bulan Mahasiswa');
-        $response->assertSee('PT 5 Sesi');
         $response->assertSee('PT 12 Sesi');
 
         // Personal Trainer Section
@@ -41,14 +48,13 @@ class LandingPageTest extends TestCase
         $response->assertSee('Coach Kevin Ardian');
 
         // Cara Daftar Section
-        $response->assertSee('Cara Daftar Member');
-        $response->assertSee('Formulir Registrasi Cepat');
+        $response->assertSee('CARA DAFTAR MEMBER');
 
         // FAQ Section
-        $response->assertSee('Frequently Asked Questions');
+        $response->assertSee('FREQUENTLY ASKED QUESTIONS');
 
-        // Footer Section
+        // Pre-Footer Banner & Footer Section
+        $response->assertSee('READY TO REACH YOUR PEAK?');
         $response->assertSee('Lowokwaru, Kota Malang');
-        $response->assertSee('Jam Operasional');
     }
 }

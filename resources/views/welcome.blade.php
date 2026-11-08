@@ -3,54 +3,69 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Maco Gym Malang | Pusat Kebugaran & Fitness Terbaik di Kota Malang</title>
-    <meta name="description" content="Pusat kebugaran & fitness club terlengkap di Kota Malang dengan alat modern, paket bulanan, promo mahasiswa terjangkau, dan bimbingan Personal Trainer bersertifikat.">
-    <meta name="keywords" content="gym malang, fitness malang, maco gym malang, paket gym mahasiswa malang, personal trainer malang, tempat fitness murah di malang">
+    <title>Maco Gym Malang | Train Hard. Stay Strong. Fitness Club Terbaik di Malang</title>
+    <meta name="description" content="Pusat kebugaran & fitness club terlengkap di Kota Malang. Fasilitas modern, pelatih bersertifikasi, paket mahasiswa terjangkau, dan atmosfer gym berenergi tinggi.">
+    <meta name="keywords" content="gym malang, maco gym malang, fitness club malang, paket mahasiswa gym, personal trainer malang">
 
-    <!-- Open Graph / Meta Sosial -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Maco Gym Malang | Pusat Kebugaran & Fitness Terbaik">
-    <meta property="og:description" content="Alat gym lengkap standar internasional, promo mahasiswa mulai Rp 135rb, fasilitas shower air hangat, loker, dan coach profesional.">
-    <meta property="og:site_name" content="Maco Gym Malang">
+    <meta property="og:title" content="Maco Gym Malang | Train Hard. Stay Strong.">
+    <meta property="og:description" content="Alat gym lengkap standar internasional, promo mahasiswa mulai Rp 135k/bulan, bimbingan Coach profesional, dan shower air hangat.">
+    <meta property="og:image" content="{{ asset('images/logo/macogym.jpg') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/logo/macogym.jpg') }}">
 
     <!-- Styles & Scripts via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-amber-400 selection:text-zinc-950 font-sans min-h-screen flex flex-col">
 
-    <!-- Navbar -->
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-white text-zinc-800 antialiased selection:bg-red-600 selection:text-white font-sans min-h-screen flex flex-col">
+
+    <!-- Navbar & Top Info Bar (Guest Partial) -->
     @include('guest.partials.navbar')
 
-    <!-- Main Content Sections -->
+    <!-- Main Content -->
     <main class="flex-grow">
-        <!-- Hero Section -->
+        <!-- Hero Section (Become The Best Version Of Yourself) -->
         @include('guest.partials.hero')
 
-        <!-- Facilities Section -->
+        <!-- Programs & Facilities (Our Programs) -->
         @include('guest.partials.facilities')
 
-        <!-- Products / Pricing Section (Bulanan, Mahasiswa, Personal Trainer) -->
+        <!-- Interactive BMI Calculator -->
+        @include('guest.partials.bmi-calculator')
+
+        <!-- About Section (Discipline Focus Strong Consistent) -->
+        @include('guest.partials.about')
+
+        <!-- Testimonials (What Our Members Say) -->
+        @include('guest.partials.testimonials')
+
+        <!-- Pricing (Choose Your Plan) -->
         @include('guest.partials.pricing')
 
-        <!-- Personal Trainer Section -->
+        <!-- Personal Trainers (Our Expert Trainers) -->
         @include('guest.partials.trainers')
 
-        <!-- Cara Daftar & Interactive Registration Form -->
+        <!-- Schedule & How to Join (Cara Daftar) -->
         @include('guest.partials.how-to-join')
 
-        <!-- FAQ Section -->
+        <!-- FAQ Section (Questions & Answers) -->
         @include('guest.partials.faq')
     </main>
 
-    <!-- Footer Component -->
+    <!-- Pre-Footer Banner & Footer (Shared Component) -->
     <x-footer />
 
-    <!-- Mobile Navigation Toggle Script -->
+    <!-- Mobile Nav Toggle & Header Scroll Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('mobile-menu-btn');
@@ -73,7 +88,6 @@
                     }
                 });
 
-                // Close menu when a link is clicked
                 navLinks.forEach(link => {
                     link.addEventListener('click', () => {
                         mobileMenu.classList.add('hidden');
@@ -83,13 +97,12 @@
                 });
             }
 
-            // Navbar scroll background effect
             const header = document.getElementById('main-header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 40) {
-                    header.classList.add('shadow-xl', 'bg-zinc-950/95');
+                if (window.scrollY > 30) {
+                    header.classList.add('shadow-2xl');
                 } else {
-                    header.classList.remove('shadow-xl');
+                    header.classList.remove('shadow-2xl');
                 }
             });
         });
