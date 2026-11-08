@@ -1,463 +1,316 @@
-<!-- Pricing & Membership Section -->
-<section id="pricing" class="py-24 bg-zinc-950 relative overflow-hidden">
-    <!-- Glow Effect -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-amber-500/10 blur-[150px] pointer-events-none rounded-full"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Pricing Section (Clean Light Theme with Red Accents) -->
+<section id="pricing" class="py-24 bg-white border-t border-zinc-200 relative">
+    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
         
         <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider">
-                Pilihan Paket & Investasi Kebugaran
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <div class="flex items-center justify-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">MEMBERSHIP PACKAGES</span>
+                <span class="w-2 h-2 rounded-full bg-red-600"></span>
             </div>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
-                Harga Transparan, <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300">Tanpa Biaya Tersembunyi</span>
+            <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
+                CHOOSE YOUR PLAN
             </h2>
-            <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
-                Pilih paket yang paling pas untuk tujuan kebugaran dan budget kamu. Tersedia harga bulanan reguler, tarif hemat khusus mahasiswa Malang, serta pendampingan Personal Trainer berlisensi.
+            <p class="text-xs sm:text-sm text-zinc-600">
+                Pilih paket membership terbaik yang sesuai kebutuhanmu. Harga transparan tanpa biaya registrasi tersembunyi.
             </p>
 
             <!-- Filter Buttons / Tabs -->
             <div class="pt-4 flex flex-wrap items-center justify-center gap-2">
-                <button type="button" onclick="filterPricing('all')" id="btn-tab-all" class="pricing-tab-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-400 text-zinc-950 shadow-lg shadow-amber-500/20 transition-all">
-                    Semua Paket
+                <button type="button" onclick="filterPricing('all')" id="btn-tab-all" class="pricing-tab-btn px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-red-600 text-white shadow-md shadow-red-600/25 transition-all">
+                    SEMUA PAKET
                 </button>
-                <button type="button" onclick="filterPricing('bulanan')" id="btn-tab-bulanan" class="pricing-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 hover:border-zinc-700 transition-all">
-                    Paket Bulanan
+                <button type="button" onclick="filterPricing('bulanan')" id="btn-tab-bulanan" class="pricing-tab-btn px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 text-zinc-700 hover:text-zinc-900 border border-zinc-200 transition-all">
+                    BULANAN REGULER
                 </button>
-                <button type="button" onclick="filterPricing('mahasiswa')" id="btn-tab-mahasiswa" class="pricing-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 hover:border-zinc-700 transition-all">
-                    🎓 Khusus Mahasiswa
+                <button type="button" onclick="filterPricing('mahasiswa')" id="btn-tab-mahasiswa" class="pricing-tab-btn px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 text-zinc-700 hover:text-zinc-900 border border-zinc-200 transition-all">
+                    🎓 PROMO MAHASISWA
                 </button>
-                <button type="button" onclick="filterPricing('pt')" id="btn-tab-pt" class="pricing-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 hover:border-zinc-700 transition-all">
-                    🔥 Personal Trainer
+                <button type="button" onclick="filterPricing('pt')" id="btn-tab-pt" class="pricing-tab-btn px-4 py-2 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-100 text-zinc-700 hover:text-zinc-900 border border-zinc-200 transition-all">
+                    🔥 PERSONAL TRAINER
                 </button>
             </div>
         </div>
 
         <!-- Pricing Cards Container Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
 
-            <!-- Card 1: 1 Bulan Reguler (Bulanan) -->
-            <div class="pricing-card package-bulanan relative rounded-3xl bg-zinc-900/90 border border-zinc-800 p-8 flex flex-col justify-between hover:border-zinc-600 transition-all duration-300 hover:-translate-y-1">
+            <!-- Card 1: BASIC PLAN (1 Bulan Reguler) -->
+            <div class="pricing-card package-bulanan relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-zinc-400 bg-zinc-800/80 px-3 py-1 rounded-md">
-                            Membership Reguler
-                        </span>
-                        <span class="text-xs text-zinc-400 font-medium">Buka Tiap Hari</span>
+                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 text-center mb-4">
+                        BASIC PLAN
+                    </h3>
+
+                    <!-- Price -->
+                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-3xl sm:text-4xl font-bold text-zinc-900">Rp 175K</span>
+                            <span class="text-xs text-zinc-500 font-bold">/month</span>
+                        </div>
+                        <span class="text-[11px] text-zinc-500 mt-1 block">Akses 30 Hari Penuh</span>
                     </div>
 
-                    <h3 class="text-2xl font-black text-white">1 Bulan Reguler</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Pilihan fleksibel untuk memulai rutinitas latihan fisik.</p>
-
-                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-zinc-800">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">175.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 30 Hari</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
+                    <!-- Checklist -->
+                    <ul class="space-y-3.5 text-xs text-zinc-600">
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Akses bebas seluruh alat tanpa batasan jam</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Gym Access Unlimited 06:00 - 22:00</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Gratis penggunaan loker penyimpanan & shower</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Basic & Advanced Equipment</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Akses musholla & parkir gratis aman ber-CCTV</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Locker Room & Hot Shower Access</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Free orientasi gym & pengenalan alat bagi pemula</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Free Fitness & Equipment Orientation</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('1 Bulan Reguler - Rp 175.000')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-zinc-800 hover:bg-zinc-700 text-white transition-colors text-center border border-zinc-700">
-                        Pilih Paket 1 Bulan
+                <div class="mt-8 pt-6 border-t border-zinc-100">
+                    <button type="button" onclick="selectPackage('1 Bulan Reguler - Rp 175.000')" class="w-full py-3 px-4 rounded-md font-bold text-xs uppercase tracking-wider bg-zinc-900 hover:bg-red-600 text-white transition-colors">
+                        CHOOSE PLAN
                     </button>
                 </div>
             </div>
 
-            <!-- Card 2: 3 Bulan Reguler (Bulanan - Best Value) -->
-            <div class="pricing-card package-bulanan relative rounded-3xl bg-gradient-to-b from-zinc-800/90 via-zinc-900 to-zinc-950 border-2 border-amber-400 p-8 flex flex-col justify-between shadow-2xl shadow-amber-500/15 transform hover:-translate-y-2 transition-all duration-300">
-                <!-- Highlight Badge -->
-                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-zinc-950 text-xs font-black uppercase tracking-wider shadow-md">
-                    ★ Paling Populer (Hemat)
+            <!-- Card 2: STANDARD / POPULAR PLAN (3 Bulan Hemat) - Highlighted with Angled Red POPULAR Badge -->
+            <div class="pricing-card package-bulanan relative rounded-2xl bg-white border-2 border-red-600 p-8 flex flex-col justify-between shadow-xl shadow-red-600/10 transform lg:-translate-y-2 transition-all duration-300 overflow-hidden">
+                <!-- POPULAR Badge -->
+                <div class="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded shadow">
+                    POPULAR
                 </div>
 
                 <div>
-                    <div class="flex items-center justify-between mb-4 mt-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-md border border-amber-400/30">
-                            Best Value Plan
-                        </span>
-                        <span class="text-xs text-amber-300 font-bold">Hemat Rp 75.000</span>
+                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-red-600 text-center mb-4">
+                        STANDARD PLAN
+                    </h3>
+
+                    <!-- Price -->
+                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-3xl sm:text-4xl font-bold text-zinc-900">Rp 450K</span>
+                            <span class="text-xs text-zinc-500 font-bold">/3 months</span>
+                        </div>
+                        <span class="text-[11px] text-red-600 font-bold mt-1 block">Setara Rp 150.000 /bulan (Hemat Rp 75k)</span>
                     </div>
 
-                    <h3 class="text-2xl font-black text-white">3 Bulan Hemat</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Komitmen terbaik untuk transformasi tubuh yang nyata.</p>
-
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">450.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 90 Hari</span>
-                    </div>
-                    <div class="text-[11px] text-amber-400/90 font-medium mb-6 pb-6 border-b border-zinc-800">
-                        Hanya setara <strong>Rp 150.000 / bulan</strong>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-200">
+                    <!-- Checklist -->
+                    <ul class="space-y-3.5 text-xs text-zinc-700">
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Akses unlimited gym 90 hari tanpa jam batas</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Gym Access Unlimited (90 Hari)</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Bonus 1x Body Composition & BMI Check</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>All Equipment & Cardio Theater</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Konsultasi program dasar latihan mingguan</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Locker, Hot Shower & Musholla</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Fasilitas lengkap: Loker, Shower Hangat, Musholla</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Personal Assessment & BMI Tracking</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
+                            <span class="text-red-600 font-bold">✓</span>
                             <span>Free Exclusive Shaker Bottle Maco Gym</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('3 Bulan Hemat - Rp 450.000')" class="w-full py-3.5 px-4 rounded-xl font-black text-sm bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 text-zinc-950 shadow-lg shadow-amber-500/25 transition-all text-center">
-                        Daftar Paket 3 Bulan &rarr;
+                <div class="mt-8 pt-6 border-t border-zinc-100">
+                    <button type="button" onclick="selectPackage('3 Bulan Hemat - Rp 450.000')" class="w-full py-3 px-4 rounded-md font-bold text-xs uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-colors shadow-lg shadow-red-600/25">
+                        CHOOSE PLAN
                     </button>
                 </div>
             </div>
 
-            <!-- Card 3: 1 Bulan Mahasiswa (Mahasiswa) -->
-            <div class="pricing-card package-mahasiswa relative rounded-3xl bg-zinc-900/90 border border-blue-500/40 p-8 flex flex-col justify-between hover:border-blue-400 transition-all duration-300 hover:-translate-y-1">
+            <!-- Card 3: STUDENT SPECIAL PLAN (1 Bulan Mahasiswa) -->
+            <div class="pricing-card package-mahasiswa relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-md border border-blue-500/30">
-                            🎓 Khusus Pelajar & Mahasiswa
-                        </span>
-                        <span class="text-xs text-blue-300 font-medium">Wajib KTM</span>
+                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 text-center mb-4">
+                        STUDENT PLAN (KTM)
+                    </h3>
+
+                    <!-- Price -->
+                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-3xl sm:text-4xl font-bold text-zinc-900">Rp 135K</span>
+                            <span class="text-xs text-zinc-500 font-bold">/month</span>
+                        </div>
+                        <span class="text-[11px] text-zinc-500 mt-1 block">Khusus Mahasiswa & Pelajar Malang</span>
                     </div>
 
-                    <h3 class="text-2xl font-black text-white">1 Bulan Mahasiswa</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Tarif subsidi untuk mahasiswa UB, UM, UIN, Polinema, UMM, dll.</p>
-
-                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-zinc-800">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">135.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 30 Hari</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
+                    <!-- Checklist -->
+                    <ul class="space-y-3.5 text-xs text-zinc-600">
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Akses penuh semua alat gym tanpa batasan jam</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Gym Access Unlimited Seharian Penuh</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Loker harian aman & kamar mandi shower bersih</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>All Equipment Bebas Dipakai Kapan Saja</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Wi-Fi kencang & area istirahat nyaman</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Locker Room & Shower Air Hangat</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Cukup tunjukkan KTM fisik atau screenshot SIAKAD</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Cukup Tunjukkan KTM (UB/UM/Polinema/UIN/dll)</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('1 Bulan Mahasiswa - Rp 135.000')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-500 text-white transition-colors text-center shadow-lg shadow-blue-600/20">
-                        Pilih Paket Mahasiswa (1 Bln)
+                <div class="mt-8 pt-6 border-t border-zinc-100">
+                    <button type="button" onclick="selectPackage('1 Bulan Mahasiswa - Rp 135.000')" class="w-full py-3 px-4 rounded-md font-bold text-xs uppercase tracking-wider bg-zinc-900 hover:bg-red-600 text-white transition-colors">
+                        CHOOSE PLAN
                     </button>
                 </div>
             </div>
 
-            <!-- Card 4: 3 Bulan Mahasiswa (Mahasiswa Super Hemat) -->
-            <div class="pricing-card package-mahasiswa relative rounded-3xl bg-zinc-900/90 border border-blue-500/50 p-8 flex flex-col justify-between hover:border-blue-400 transition-all duration-300 hover:-translate-y-1">
+            <!-- Extra Card: 3 Bulan Mahasiswa (Student Semester) -->
+            <div class="pricing-card package-mahasiswa relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-md border border-blue-500/30">
-                            🎓 Semesteran Mahasiswa
-                        </span>
-                        <span class="text-xs text-emerald-400 font-bold">Termurah!</span>
+                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-red-600 text-center mb-4">
+                        3 BULAN MAHASISWA
+                    </h3>
+
+                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-3xl sm:text-4xl font-bold text-zinc-900">Rp 360K</span>
+                            <span class="text-xs text-zinc-500 font-bold">/3 months</span>
+                        </div>
+                        <span class="text-[11px] text-red-600 font-bold mt-1 block">Hanya Rp 120.000 /bulan (Termurah!)</span>
                     </div>
 
-                    <h3 class="text-2xl font-black text-white">3 Bulan Mahasiswa</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Investasi hemat 1 semester untuk tubuh bugar dan atletis.</p>
-
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">360.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 90 Hari</span>
-                    </div>
-                    <div class="text-[11px] text-blue-400 font-medium mb-6 pb-6 border-b border-zinc-800">
-                        Cuma setara <strong>Rp 120.000 / bulan</strong> (Hemat Rp 45.000)
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
+                    <ul class="space-y-3.5 text-xs text-zinc-600">
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Akses bebas seluruh alat selama 90 hari</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Akses 90 Hari Penuh Tanpa Batas Jam</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Semua fasilitas loker, shower air hangat, musholla</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Semua Alat Gym & Fasilitas Loker Shower</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Bebas latihan kapan pun (pagi, sore, atau malam)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-blue-400 font-bold">✓</span>
-                            <span>Syarat hanya KTM aktif perguruan tinggi Malang</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Paket Terbaik untuk 1 Semester Aktif Kuliah</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('3 Bulan Mahasiswa - Rp 360.000')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-blue-600 hover:bg-blue-500 text-white transition-colors text-center shadow-lg shadow-blue-600/20">
-                        Pilih 3 Bulan Mahasiswa
+                <div class="mt-8 pt-6 border-t border-zinc-100">
+                    <button type="button" onclick="selectPackage('3 Bulan Mahasiswa - Rp 360.000')" class="w-full py-3 px-4 rounded-md font-bold text-xs uppercase tracking-wider bg-zinc-900 hover:bg-red-600 text-white transition-colors">
+                        CHOOSE PLAN
                     </button>
                 </div>
             </div>
 
-            <!-- Card 5: Starter Personal Trainer (5 Sesi) -->
-            <div class="pricing-card package-pt relative rounded-3xl bg-zinc-900/90 border border-orange-500/40 p-8 flex flex-col justify-between hover:border-orange-400 transition-all duration-300 hover:-translate-y-1">
+            <!-- Extra Card: PT 12 Sesi (Intensive Transformation) -->
+            <div class="pricing-card package-pt relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-orange-400 bg-orange-500/10 px-3 py-1 rounded-md border border-orange-500/30">
-                            🔥 Personal Trainer Starter
-                        </span>
-                        <span class="text-xs text-zinc-400 font-medium">1-on-1 Coaching</span>
+                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-red-600 text-center mb-4">
+                        PT 12 SESI (INTENSIVE)
+                    </h3>
+
+                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-3xl sm:text-4xl font-bold text-zinc-900">Rp 1.250K</span>
+                            <span class="text-xs text-zinc-500 font-bold">/12 sessions</span>
+                        </div>
+                        <span class="text-[11px] text-zinc-500 mt-1 block">Rekomendasi Coach untuk Transformasi Cepat</span>
                     </div>
 
-                    <h3 class="text-2xl font-black text-white">PT 5 Sesi (Starter)</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Sempurna untuk pemula agar paham gerakan dan tidak cedera.</p>
-
-                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-zinc-800">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">600.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 5 Sesi</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
+                    <ul class="space-y-3.5 text-xs text-zinc-600">
                         <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>5 sesi latihan privat 1-on-1 bersama Certified Coach</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>12 Sesi Pendampingan 1-on-1 dengan Certified Coach</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Koreksi biomekanik & form teknik angkatan beban</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Personalized Meal Plan & Nutrition Guidance</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Program pengenalan alat agar percaya diri saat latihan</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Jadwal latihan fleksibel disepakati dengan pelatih</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Evaluasi Mingguan & Koreksi Form Biomekanik</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('Personal Trainer 5 Sesi - Rp 600.000')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-orange-600 hover:bg-orange-500 text-white transition-colors text-center shadow-lg shadow-orange-600/20">
-                        Pilih PT Starter (5 Sesi)
+                <div class="mt-8 pt-6 border-t border-zinc-100">
+                    <button type="button" onclick="selectPackage('Personal Trainer 12 Sesi - Rp 1.250.000')" class="w-full py-3 px-4 rounded-md font-bold text-xs uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-colors shadow-lg shadow-red-600/25">
+                        CHOOSE PLAN
                     </button>
                 </div>
             </div>
 
-            <!-- Card 6: Intensive PT (12 Sesi) - Rekomendasi Coach -->
-            <div class="pricing-card package-pt relative rounded-3xl bg-gradient-to-b from-orange-950/40 via-zinc-900 to-zinc-950 border-2 border-orange-500 p-8 flex flex-col justify-between shadow-2xl shadow-orange-500/20 hover:-translate-y-2 transition-all duration-300">
-                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-black uppercase tracking-wider shadow-md">
-                    ★ Rekomendasi Transformasi Cepat
-                </div>
-
+            <!-- Extra Card: Daily Pass Harian -->
+            <div class="pricing-card package-bulanan relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
                 <div>
-                    <div class="flex items-center justify-between mb-4 mt-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-orange-400 bg-orange-500/10 px-3 py-1 rounded-md border border-orange-500/30">
-                            Intensive Body Transformation
-                        </span>
-                        <span class="text-xs text-amber-400 font-bold">Hasil Terbukti</span>
+                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 text-center mb-4">
+                        DAILY PASS (HARIAN)
+                    </h3>
+
+                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
+                        <div class="flex items-baseline justify-center gap-1">
+                            <span class="text-3xl sm:text-4xl font-bold text-zinc-900">Rp 25K</span>
+                            <span class="text-xs text-zinc-500 font-bold">/visit</span>
+                        </div>
+                        <span class="text-[11px] text-zinc-500 mt-1 block">Sekali Datang Tanpa Kewajiban Member</span>
                     </div>
 
-                    <h3 class="text-2xl font-black text-white">PT 12 Sesi (Intensive)</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Target Fat Loss / Muscle Hypertrophy dalam 1 bulan terarah.</p>
-
-                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-zinc-800">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">1.250.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 12 Sesi</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-200">
+                    <ul class="space-y-3.5 text-xs text-zinc-600">
                         <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>12 sesi pendampingan intensif bersama Certified Coach</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Akses Seharian Penuh ke Seluruh Alat</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Customized Workout Routine sesuai target tubuh</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Termasuk Fasilitas Loker & Kamar Bilas</span>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Panduan pola makan harian (Meal Plan & Kalori)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Evaluasi mingguan & tracking lingkar badan/lemak</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Konsultasi privat via WhatsApp 7 hari seminggu</span>
+                            <span class="text-red-600 font-bold">✓</span>
+                            <span>Langsung Datang ke Kasir Maco Gym</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('Personal Trainer 12 Sesi - Rp 1.250.000')" class="w-full py-3.5 px-4 rounded-xl font-black text-sm bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white shadow-lg shadow-orange-500/25 transition-all text-center">
-                        Pilih PT Intensive (12 Sesi) &rarr;
+                <div class="mt-8 pt-6 border-t border-zinc-100">
+                    <button type="button" onclick="selectPackage('Daily Pass Harian - Rp 25.000')" class="w-full py-3 px-4 rounded-md font-bold text-xs uppercase tracking-wider bg-zinc-900 hover:bg-red-600 text-white transition-colors">
+                        CHOOSE PLAN
                     </button>
                 </div>
             </div>
 
-            <!-- Card 7: Daily Pass & 24 Sesi PT Extra Cards inside Bulanan & PT filters -->
-            <div class="pricing-card package-bulanan relative rounded-3xl bg-zinc-900/90 border border-zinc-800 p-8 flex flex-col justify-between hover:border-zinc-700 transition-all duration-300">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-zinc-400 bg-zinc-800 px-3 py-1 rounded-md">
-                            Harian / Non-Member
-                        </span>
-                        <span class="text-xs text-zinc-400 font-medium">Bebas Datang</span>
-                    </div>
-
-                    <h3 class="text-2xl font-black text-white">Daily Pass (Harian)</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Solusi bagi yang ingin coba-coba atau pengunjung luar kota.</p>
-
-                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-zinc-800">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">25.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ Sekali Datang</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
-                        <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Akses semua alat gym seharian penuh</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Akses loker dan shower air hangat</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-amber-400 font-bold">✓</span>
-                            <span>Bebas datang langsung tanpa perlu booking</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('Daily Pass Harian - Rp 25.000')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-zinc-800 hover:bg-zinc-700 text-white transition-colors text-center border border-zinc-700">
-                        Pilih Daily Pass
-                    </button>
-                </div>
-            </div>
-
-            <!-- Card 8: Pro Transformation PT (24 Sesi) -->
-            <div class="pricing-card package-pt relative rounded-3xl bg-zinc-900/90 border border-orange-500/40 p-8 flex flex-col justify-between hover:border-orange-400 transition-all duration-300">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-orange-400 bg-orange-500/10 px-3 py-1 rounded-md border border-orange-500/30">
-                            👑 Elite Transformation
-                        </span>
-                        <span class="text-xs text-amber-400 font-bold">2 Bulan Penuh</span>
-                    </div>
-
-                    <h3 class="text-2xl font-black text-white">PT 24 Sesi (Elite)</h3>
-                    <p class="text-xs text-zinc-400 mt-1 mb-6">Program total re-komposisi tubuh dari nol sampai hasil maksimal.</p>
-
-                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-zinc-800">
-                        <span class="text-sm font-bold text-amber-400">Rp</span>
-                        <span class="text-4xl font-black text-white">2.200.000</span>
-                        <span class="text-xs text-zinc-400 font-medium">/ 24 Sesi</span>
-                    </div>
-
-                    <ul class="space-y-3 text-xs sm:text-sm text-zinc-300">
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>24 sesi latihan tatap muka (3x seminggu x 8 minggu)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Full Nutrition & Meal Blueprint terpersonalisasi</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Garansi progres teknik & peningkatan massa otot/fat loss</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-orange-400 font-bold">✓</span>
-                            <span>Pendampingan 24/7 konsultasi nutrisi & suplemen</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="mt-8 pt-4">
-                    <button type="button" onclick="selectPackage('Personal Trainer 24 Sesi - Rp 2.200.000')" class="w-full py-3.5 px-4 rounded-xl font-bold text-sm bg-orange-600 hover:bg-orange-500 text-white transition-colors text-center shadow-lg shadow-orange-600/20">
-                        Pilih PT Elite (24 Sesi)
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Custom / Annual Consultation Notice -->
-        <div class="mt-12 p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="space-y-1 text-center sm:text-left">
-                <div class="text-white font-bold text-sm sm:text-base">Butuh Paket Tahunan atau Paket Komunitas / Kantor?</div>
-                <div class="text-zinc-400 text-xs sm:text-sm">Kami menyediakan diskon korporat dan paket tahunan khusus dengan penawaran menarik.</div>
-            </div>
-            <a href="https://wa.me/6281234567890?text=Halo%20Admin%20Maco%20Gym%2C%20saya%20tertarik%20dengan%20paket%20tahunan%20atau%20korporat."
-               target="_blank"
-               rel="noopener noreferrer"
-               class="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-amber-400 font-bold text-xs sm:text-sm border border-zinc-700 transition-colors whitespace-nowrap">
-                Hubungi Kami via WA &rarr;
-            </a>
         </div>
 
     </div>
 </section>
 
-<!-- Script for Pricing Filter and Selection -->
+<!-- Filter Script -->
 <script>
     function filterPricing(category) {
         const cards = document.querySelectorAll('.pricing-card');
         const buttons = document.querySelectorAll('.pricing-tab-btn');
 
         buttons.forEach(btn => {
-            btn.classList.remove('active', 'bg-amber-400', 'text-zinc-950', 'shadow-lg', 'shadow-amber-500/20');
-            btn.classList.add('bg-zinc-900', 'text-zinc-300');
+            btn.classList.remove('bg-red-600', 'text-white', 'shadow-md', 'shadow-red-600/25');
+            btn.classList.add('bg-zinc-100', 'text-zinc-700');
         });
 
         const activeBtn = document.getElementById(`btn-tab-${category}`);
         if (activeBtn) {
-            activeBtn.classList.remove('bg-zinc-900', 'text-zinc-300');
-            activeBtn.classList.add('active', 'bg-amber-400', 'text-zinc-950', 'shadow-lg', 'shadow-amber-500/20');
+            activeBtn.classList.remove('bg-zinc-100', 'text-zinc-700');
+            activeBtn.classList.add('bg-red-600', 'text-white', 'shadow-md', 'shadow-red-600/25');
         }
 
         cards.forEach(card => {
@@ -481,11 +334,9 @@
                 }
             }
         }
-        // Scroll smoothly to registration
         const regSection = document.getElementById('cara-daftar');
         if (regSection) {
             regSection.scrollIntoView({ behavior: 'smooth' });
         }
     }
 </script>
-

@@ -10,7 +10,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberDashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GuestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,16 +59,6 @@ Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->g
 });
 
 Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
-
-/*
-|--------------------------------------------------------------------------
-| Auth Routes
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
 
 /*
 |--------------------------------------------------------------------------
