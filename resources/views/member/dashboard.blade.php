@@ -186,7 +186,7 @@
                         <div class="font-montserrat font-black text-sm tracking-widest text-white uppercase leading-none">
                             MACO<span class="text-red-500">GYM</span>
                         </div>
-                        <p class="text-[9px] uppercase tracking-widest text-zinc-400 font-mono mt-1">ALL ACCESS PASS • KARTU ANGGOTA RESMI</p>
+                        <p class="text-[9px] uppercase tracking-widest text-zinc-400 font-mono mt-1">ALL ACCESS PASS • Kartu Anggota Resmi</p>
                     </div>
                 </div>
 

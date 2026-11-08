@@ -8,6 +8,18 @@
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="{{ asset('images/logo/macogym.jpg') }}">
 
+    <!-- Theme Initialization Script (Prevents flash of unstyled theme) -->
+    <script>
+        (function() {
+            const saved = localStorage.getItem('darkMode');
+            if (saved === 'true' || saved === null || (!('darkMode' in localStorage))) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
+
     <!-- Google Fonts: Montserrat & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,16 +41,24 @@
 </head>
 <body class="bg-slate-50/70 dark:bg-[#0a0c10] text-zinc-800 dark:text-zinc-100 font-sans min-h-screen flex flex-col antialiased selection:bg-red-600 selection:text-white transition-colors duration-200 pb-20 md:pb-0"
       x-data="{ 
-          darkMode: localStorage.getItem('darkMode') === 'true' || (localStorage.getItem('darkMode') === null && window.matchMedia('(prefers-color-scheme: dark)').matches),
+          darkMode: document.documentElement.classList.contains('dark'),
           showQrModal: false,
           copiedId: false,
+          toggleDark() {
+              this.darkMode = !this.darkMode;
+              localStorage.setItem('darkMode', this.darkMode);
+              if (this.darkMode) {
+                  document.documentElement.classList.add('dark');
+              } else {
+                  document.documentElement.classList.remove('dark');
+              }
+          },
           copyCardId(id) {
               navigator.clipboard.writeText(id);
               this.copiedId = true;
               setTimeout(() => this.copiedId = false, 2500);
           }
-      }"
-      :class="{ 'dark': darkMode }">
+      }">
 
     <!-- Top Navigation Bar (Frosted Glass Modern Minimalist) -->
     <header class="bg-white/80 dark:bg-[#0e1014]/80 backdrop-blur-xl border-b border-zinc-200/70 dark:border-[#1e222d] sticky top-0 z-40 transition-colors">
@@ -105,7 +125,7 @@
                     </button>
 
                     <!-- Dark / Light Mode Switcher -->
-                    <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)"
+                    <button @click="toggleDark()"
                             type="button"
                             title="Ganti Tema Tampilan"
                             class="p-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:text-red-600 dark:hover:text-red-400 border border-zinc-200/80 dark:border-zinc-800 transition-all duration-200 cursor-pointer">

@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source '../views/**/*.blade.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -13,6 +15,15 @@
     --color-brand-dark: #0e1014;
     --color-card-dark: #15171d;
     --color-card-border: #262934;
+    
+    /* Athletic spacing scale */
+    --spacing-section: 3rem;
+    --spacing-element: 1.5rem;
+    
+    /* Border radius - purposeful, not decorative */
+    --radius-sharp: 0px;
+    --radius-subtle: 4px;
+    --radius-medium: 8px;
 }
 
 /* Headings & Taglines font family */
@@ -23,7 +34,10 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-montserrat, .tagline {
 
 html {
     scroll-behavior: smooth;
-    background-color: #ffffff;
+}
+
+html.dark {
+    color-scheme: dark;
 }
 
 /* Custom scrollbar */
@@ -33,9 +47,15 @@ html {
 ::-webkit-scrollbar-track {
     background: #f4f4f5;
 }
+.dark ::-webkit-scrollbar-track {
+    background: #18181b;
+}
 ::-webkit-scrollbar-thumb {
     background: #d4d4d8;
     border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+    background: #3f3f46;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #ef233c;
