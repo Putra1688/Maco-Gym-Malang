@@ -23,6 +23,9 @@
 
     <!-- Styles & Scripts via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-white text-zinc-800 antialiased selection:bg-red-600 selection:text-white font-sans min-h-screen flex flex-col">
 
@@ -36,6 +39,9 @@
 
         <!-- Programs & Facilities (Our Programs) -->
         @include('guest.partials.facilities')
+
+        <!-- Interactive BMI Calculator -->
+        @include('guest.partials.bmi-calculator')
 
         <!-- About Section (Discipline Focus Strong Consistent) -->
         @include('guest.partials.about')
