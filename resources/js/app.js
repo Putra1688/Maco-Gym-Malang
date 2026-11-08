@@ -1,1 +1,1 @@
-//
+// Main application JS
