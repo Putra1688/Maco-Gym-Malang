@@ -7,28 +7,39 @@ use App\Models\Attendance;
 use App\Models\Member;
 use App\Models\Package;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class FrontdeskController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
         $packages = Package::where('is_active', true)->get();
         $dailyPackages = Package::where('type', 'daily_visit')->where('is_active', true)->get();
         $membershipPackages = Package::where('type', 'membership')->where('is_active', true)->get();
 
+        $selectedDate = $request->query('date', today()->toDateString());
+        try {
+            $filterDate = Carbon::parse($selectedDate)->startOfDay();
+        } catch (\Throwable $e) {
+            $filterDate = today();
+            $selectedDate = today()->toDateString();
+        }
+
+        $isToday = $filterDate->isToday();
+
         $todayAttendances = Attendance::with('member')
-            ->whereDate('checkin_time', today())
+            ->whereDate('checkin_time', $filterDate)
             ->latest('checkin_time')
-            ->limit(20)
+            ->limit(50)
             ->get();
 
         $todayStats = [
-            'total' => Attendance::whereDate('checkin_time', today())->count(),
-            'member' => Attendance::where('type', 'member')->whereDate('checkin_time', today())->count(),
-            'guest' => Attendance::where('type', 'daily_guest')->whereDate('checkin_time', today())->count(),
+            'total' => Attendance::whereDate('checkin_time', $filterDate)->count(),
+            'member' => Attendance::where('type', 'member')->whereDate('checkin_time', $filterDate)->count(),
+            'guest' => Attendance::where('type', 'daily_guest')->whereDate('checkin_time', $filterDate)->count(),
         ];
 
         return view('admin.frontdesk.index', compact(
@@ -36,7 +47,9 @@ class FrontdeskController extends Controller
             'dailyPackages',
             'membershipPackages',
             'todayAttendances',
-            'todayStats'
+            'todayStats',
+            'selectedDate',
+            'isToday'
         ));
     }
 
@@ -66,7 +79,9 @@ class FrontdeskController extends Controller
         if ($isExpired) {
             return back()
                 ->with('checkin_status', 'expired')
+                ->with('checked_member_id', $member->id)
                 ->with('checked_member', $member)
+                ->with('days_remaining', $daysRemaining)
                 ->with('warning', "Membership {$member->name} ({$member->card_id}) SUDAH KADALUARSA sejak {$member->current_expiry_date->format('d M Y')}. Silakan perpanjang membership atau beli tiket harian.");
         }
 
@@ -82,14 +97,18 @@ class FrontdeskController extends Controller
         if ($daysRemaining <= 3) {
             return back()
                 ->with('checkin_status', 'expiring_soon')
+                ->with('checked_member_id', $member->id)
                 ->with('checked_member', $member)
+                ->with('days_remaining', $daysRemaining)
                 ->with('warning', "Check-in Berhasil! PERINGATAN: Masa aktif {$member->name} tersisa {$daysRemaining} hari lagi (jatuh tempo {$member->current_expiry_date->format('d M Y')}).");
         }
 
         // Status Aktif Normal
         return back()
             ->with('checkin_status', 'active')
+            ->with('checked_member_id', $member->id)
             ->with('checked_member', $member)
+            ->with('days_remaining', $daysRemaining)
             ->with('success', "Check-in Berhasil! {$member->name} ({$member->card_id}) aktif (Sisa {$daysRemaining} hari).");
     }
 

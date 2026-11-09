@@ -123,7 +123,7 @@ class DashboardController extends Controller
         $dayCounts = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0];
         $distinctDatesPerDay = [1 => [], 2 => [], 3 => [], 4 => [], 5 => [], 6 => [], 7 => []];
 
-        $allAttendances = Attendance::select('checkin_time')->get();
+        $allAttendances = Attendance::with('member')->latest('checkin_time')->get();
         foreach ($allAttendances as $att) {
             if (! $att->checkin_time) {
                 continue;
@@ -206,10 +206,18 @@ class DashboardController extends Controller
                 $attendancesByDate[$dateKey] = [
                     'total' => 0,
                     'hours' => [],
+                    'records' => [],
                 ];
             }
             $attendancesByDate[$dateKey]['total']++;
             $attendancesByDate[$dateKey]['hours'][$hourKey] = ($attendancesByDate[$dateKey]['hours'][$hourKey] ?? 0) + 1;
+            $attendancesByDate[$dateKey]['records'][] = [
+                'time' => $dt->format('H:i').' WIB',
+                'name' => $att->type === 'member' ? ($att->member?->name ?? 'Member') : ($att->guest_name ?? 'Tamu Harian'),
+                'card_id' => $att->type === 'member' ? ($att->member?->card_id ?? '-') : 'Tiket Non-Member',
+                'type' => $att->type,
+                'notes' => $att->notes ?? 'Presensi reguler',
+            ];
         }
 
         // Daftar Pilihan Bulan (Mulai 6 Bulan Lalu s/d 2 Bulan Mendatang untuk Pengujian Masa Depan)

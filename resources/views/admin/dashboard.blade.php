@@ -210,9 +210,9 @@
         <div class="w-full bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-5 sm:p-6 shadow-xs">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4 pb-4 border-b border-zinc-100 dark:border-zinc-800">
                 <!-- Judul & Tombol Kembali ke Mingguan -->
-                <div class="flex items-start gap-3">
+                <div class="flex items-start gap-3 min-w-0">
                     <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0 mt-1"></span>
-                    <div>
+                    <div class="min-w-0">
                         <div class="flex flex-wrap items-center gap-2.5">
                             <h3 id="attendance-title" class="font-montserrat font-bold text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                                 Grafik Rata-Rata Kehadiran Member
@@ -220,7 +220,8 @@
                             <button id="attendance-back-btn"
                                     type="button"
                                     onclick="backToWeeklyView()"
-                                    class="hidden inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono font-bold bg-blue-600 hover:bg-blue-700 text-white transition shadow-xs cursor-pointer">
+                                    style="display: none;"
+                                    class="hidden inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-600 hover:bg-blue-700 text-white transition shadow-xs cursor-pointer shrink-0">
                                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                                 </svg>
@@ -405,9 +406,9 @@
                     <span class="w-2 h-2 rounded bg-red-600"></span>
                     <h4 class="font-montserrat font-bold text-xs uppercase tracking-wider text-zinc-900 dark:text-white">Arus Kas Masuk Terbaru</h4>
                 </div>
-                <a href="{{ route('admin.transactions.index') }}" class="text-[11px] font-mono font-bold uppercase tracking-wider text-red-600 dark:text-red-400 hover:underline">
-                    Semua Transaksi &rarr;
-                </a>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                    Kasir & Frontdesk
+                </span>
             </div>
             <div class="p-3 sm:p-4 space-y-2">
                 @forelse($recentTransactions as $tx)
@@ -868,7 +869,10 @@ document.addEventListener('DOMContentLoaded', () => {
         currentWeekData = week;
         currentDayData = null;
 
-        if (backBtn) backBtn.classList.add('hidden');
+        if (backBtn) {
+            backBtn.classList.add('hidden');
+            backBtn.style.display = 'none';
+        }
 
         // Periode masa depan: tampilkan informasi "Data belum ada"
         if (week.isFuture) {
@@ -927,6 +931,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (backBtn) {
             backBtn.classList.remove('hidden');
+            backBtn.style.display = 'inline-flex';
         }
         if (badgeEl) {
             badgeEl.textContent = `${day.dayName}`;

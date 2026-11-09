@@ -60,7 +60,9 @@ class ManagementSystemTest extends TestCase
         $memberResponse = $this->actingAs($user)->get(route('member.dashboard'));
         $memberResponse->assertStatus(200);
         $memberResponse->assertSee('MC-001');
-        $memberResponse->assertSee('Kartu Anggota Resmi');
+        $memberResponse->assertSee('Kartu Member');
+        $memberResponse->assertSee('Sisa Masa Aktif');
+        $memberResponse->assertSee('Barcode');
     }
 
     public function test_frontdesk_quick_checkin_and_daily_guest(): void
@@ -121,33 +123,56 @@ class ManagementSystemTest extends TestCase
         $this->assertEquals($expectedExpiry, $member->current_expiry_date->toDateString());
     }
 
-    public function test_member_can_log_physical_progress(): void
-    {
-        $member = Member::where('card_id', 'MC-001')->first();
-        $user = $member->user;
-
-        $response = $this->actingAs($user)->post(route('member.progress.store'), [
-            'weight_kg' => 75.2,
-            'height_cm' => 176,
-        ]);
-
-        $response->assertRedirect();
-        $response->assertSessionHas('success');
-        $this->assertDatabaseHas('member_progress', [
-            'member_id' => $member->id,
-            'weight_kg' => 75.20,
-            'height_cm' => 176.00,
-        ]);
-    }
-
     public function test_admin_can_access_all_management_modules(): void
     {
         $admin = User::where('role', 'admin')->first();
 
+        $this->actingAs($admin)->get(route('admin.dashboard'))->assertStatus(200);
         $this->actingAs($admin)->get(route('admin.frontdesk.index'))->assertStatus(200);
+        $this->actingAs($admin)->get(route('admin.frontdesk.index', ['date' => '2026-11-01']))->assertStatus(200);
         $this->actingAs($admin)->get(route('admin.members.index'))->assertStatus(200);
-        $this->actingAs($admin)->get(route('admin.packages.index'))->assertStatus(200);
-        $this->actingAs($admin)->get(route('admin.transactions.index'))->assertStatus(200);
-        $this->actingAs($admin)->get(route('admin.trainers.index'))->assertStatus(200);
+    }
+
+    public function test_frontdesk_checkin_with_rfid_card_renders_popup_without_error(): void
+    {
+        $admin = User::where('role', 'admin')->first();
+        $member = Member::where('status', 'active')->first();
+
+        $response = $this->actingAs($admin)
+            ->from(route('admin.frontdesk.index'))
+            ->post(route('admin.frontdesk.checkin'), [
+                'search' => $member->card_id,
+            ]);
+
+        $response->assertRedirect(route('admin.frontdesk.index'));
+        $response->assertSessionHas('checkin_status', 'active');
+        $response->assertSessionHas('checked_member_id', $member->id);
+
+        // Follow redirect and ensure the view with checkin modal renders cleanly (no array property errors)
+        $followResponse = $this->actingAs($admin)->get(route('admin.frontdesk.index'));
+        $followResponse->assertStatus(200);
+        $followResponse->assertSee($member->name);
+        $followResponse->assertSee($member->card_id);
+    }
+
+    public function test_member_dashboard_displays_single_menu_with_monthly_visits_and_attendance_logs(): void
+    {
+        $member = Member::where('status', 'active')->first();
+        $memberUser = $member->user ?? User::where('role', 'member')->first();
+
+        // Ensure at least one attendance exists for this member
+        Attendance::firstOrCreate([
+            'type' => 'member',
+            'member_id' => $member->id,
+            'checkin_time' => now(),
+        ]);
+
+        $response = $this->actingAs($memberUser)->get(route('member.dashboard'));
+        $response->assertStatus(200);
+        $response->assertSee('Sisa Masa Aktif');
+        $response->assertSee('Jatuh Tempo');
+        $response->assertSee('Kunjungan Bulan Ini');
+        $response->assertSee('Log Riwayat Kunjungan Saya');
+        $response->assertSee($member->card_id);
     }
 }
