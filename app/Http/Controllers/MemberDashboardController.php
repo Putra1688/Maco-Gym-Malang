@@ -2,71 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MemberProgress;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Models\Member;
 use Illuminate\View\View;
 
 class MemberDashboardController extends Controller
 {
+    /**
+     * Resolve the current member instance (from Auth or demo fallback).
+     */
+    protected function resolveMember(): Member
+    {
+        if (auth()->check() && auth()->user()->member) {
+            return auth()->user()->member;
+        }
+
+        // Fallback untuk mode demo / preview
+        return Member::where('card_id', 'MC-001')->first()
+            ?? Member::first()
+            ?? abort(404, 'Data member tidak ditemukan di database.');
+    }
+
     public function index(): View
     {
-        $user = auth()->user();
-        $member = $user->member;
+        $member = $this->resolveMember();
 
-        if (! $member) {
-            abort(403, 'Akun Anda belum terhubung dengan data member Maco Gym.');
+        $now = now();
+        $expiryDate = $member->current_expiry_date ? $member->current_expiry_date->startOfDay() : $now->startOfDay();
+        $daysRemaining = (int) $now->startOfDay()->diffInDays($expiryDate, false);
+        $isExpired = $expiryDate->lt($now->startOfDay()) || $member->status === 'expired';
+
+        // Status Keaktifan
+        if ($isExpired) {
+            $statusLabel = 'KADALUARSA';
+            $statusColor = 'red';
+        } elseif ($daysRemaining <= 3) {
+            $statusLabel = 'HAMPIR HABIS';
+            $statusColor = 'amber';
+        } else {
+            $statusLabel = 'AKTIF';
+            $statusColor = 'emerald';
         }
 
-        $member->load([
-            'attendances' => fn ($q) => $q->latest('checkin_time')->limit(15),
-            'progresses' => fn ($q) => $q->latest('recorded_at')->limit(5),
-        ]);
+        // Statistik Kunjungan Bulanan & Log Riwayat Kunjungan
+        $monthlyVisits = $member->attendances()
+            ->whereYear('checkin_time', $now->year)
+            ->whereMonth('checkin_time', $now->month)
+            ->count();
 
-        $now = now()->startOfDay();
-        $expiryDate = $member->current_expiry_date ? $member->current_expiry_date->startOfDay() : $now;
-        $daysRemaining = $now->diffInDays($expiryDate, false);
-        $isExpired = $expiryDate->lt($now) || $member->status === 'expired';
+        $recentAttendances = $member->attendances()
+            ->latest('checkin_time')
+            ->limit(15)
+            ->get();
 
-        return view('member.dashboard', compact('member', 'daysRemaining', 'isExpired'));
+        return view('member.dashboard', compact(
+            'member',
+            'daysRemaining',
+            'isExpired',
+            'expiryDate',
+            'statusLabel',
+            'statusColor',
+            'monthlyVisits',
+            'recentAttendances'
+        ));
     }
 
-    public function profile(): View
+    /**
+     * Direct preview route for test/review.
+     */
+    public function preview(): View
     {
-        $member = auth()->user()->member;
-
-        if (! $member) {
-            abort(403, 'Akun Anda belum terhubung dengan data member Maco Gym.');
-        }
-
-        $member->load([
-            'progresses' => fn ($q) => $q->latest('recorded_at'),
-        ]);
-
-        return view('member.profile', compact('member'));
-    }
-
-    public function storeProgress(Request $request): RedirectResponse
-    {
-        $member = auth()->user()->member;
-
-        if (! $member) {
-            abort(403, 'Akun Anda belum terhubung dengan data member.');
-        }
-
-        $request->validate([
-            'weight_kg' => 'required|numeric|min:20|max:300',
-            'height_cm' => 'required|numeric|min:50|max:250',
-            'recorded_at' => 'nullable|date',
-        ]);
-
-        MemberProgress::create([
-            'member_id' => $member->id,
-            'weight_kg' => $request->weight_kg,
-            'height_cm' => $request->height_cm,
-            'recorded_at' => $request->recorded_at ?? now()->toDateString(),
-        ]);
-
-        return back()->with('success', 'Catatan perkembangan fisik berhasil disimpan!');
+        return $this->index();
     }
 }

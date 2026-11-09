@@ -25,9 +25,9 @@
     <!-- Navbar & Top Info Bar -->
     @include('guest.partials.navbar')
 
-    <!-- Main Content -->
-    <main class="flex-grow pt-28 sm:pt-36">
-        @include('guest.partials.bmi-calculator')
+    <!-- Main Content (Full-width edge-to-edge under navbar) -->
+    <main class="flex-grow pt-[64px] sm:pt-[80px] lg:pt-[106px]">
+        @include('bmi.bmi-calculator')
     </main>
 
     <!-- Footer -->

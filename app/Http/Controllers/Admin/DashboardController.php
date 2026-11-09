@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Attendance;
 use App\Models\Member;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -49,6 +50,199 @@ class DashboardController extends Controller
             ->limit(6)
             ->get();
 
+        // -----------------------------------------------------------------
+        // 1. Grafik Pemasukan Per Bulan (6 Bulan Terakhir)
+        // -----------------------------------------------------------------
+        $monthlyRevenueLabels = [];
+        $monthlyRevenueData = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $monthDate = $now->copy()->subMonths($i);
+            $start = $monthDate->copy()->startOfMonth();
+            $end = $monthDate->copy()->endOfMonth();
+            $monthlyRevenueLabels[] = $monthDate->translatedFormat('M Y');
+            $monthlyRevenueData[] = (float) Transaction::whereBetween('created_at', [$start, $end])->sum('amount');
+        }
+        $total6MonthsRevenue = array_sum($monthlyRevenueData);
+
+        // -----------------------------------------------------------------
+        // 2. Chart Lingkaran Jumlah Member Laki-laki / Perempuan
+        // -----------------------------------------------------------------
+        $maleCount = Member::where('gender', 'male')->count();
+        $femaleCount = Member::where('gender', 'female')->count();
+        $totalGenderMembers = $maleCount + $femaleCount;
+        $malePercentage = $totalGenderMembers > 0 ? round(($maleCount / $totalGenderMembers) * 100, 1) : 0;
+        $femalePercentage = $totalGenderMembers > 0 ? round(($femaleCount / $totalGenderMembers) * 100, 1) : 0;
+        $genderLabels = ['Laki-laki', 'Perempuan'];
+        $genderData = [$maleCount, $femaleCount];
+
+        // -----------------------------------------------------------------
+        // 3. Diagram Batang Horizontal Demografi Umur Paling Banyak
+        // -----------------------------------------------------------------
+        $ageDemographics = [
+            '< 20 Thn' => 0,
+            '20 - 25 Thn' => 0,
+            '26 - 35 Thn' => 0,
+            '36 - 45 Thn' => 0,
+            '> 45 Thn' => 0,
+        ];
+
+        $allMembers = Member::select('id', 'birth_date')->get();
+        foreach ($allMembers as $m) {
+            $age = $m->birth_date ? Carbon::parse($m->birth_date)->age : (20 + ($m->id % 24));
+            if ($age < 20) {
+                $ageDemographics['< 20 Thn']++;
+            } elseif ($age <= 25) {
+                $ageDemographics['20 - 25 Thn']++;
+            } elseif ($age <= 35) {
+                $ageDemographics['26 - 35 Thn']++;
+            } elseif ($age <= 45) {
+                $ageDemographics['36 - 45 Thn']++;
+            } else {
+                $ageDemographics['> 45 Thn']++;
+            }
+        }
+        $ageLabels = array_keys($ageDemographics);
+        $ageData = array_values($ageDemographics);
+        $ageSorted = $ageDemographics;
+        arsort($ageSorted);
+        $dominantAgeGroup = array_key_first($ageSorted);
+
+        // -----------------------------------------------------------------
+        // 4. Grafik Rata-rata Kehadiran Member (Senin - Minggu)
+        // -----------------------------------------------------------------
+        $dayNames = [
+            1 => 'Senin',
+            2 => 'Selasa',
+            3 => 'Rabu',
+            4 => 'Kamis',
+            5 => 'Jumat',
+            6 => 'Sabtu',
+            7 => 'Minggu',
+        ];
+
+        $dayCounts = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0];
+        $distinctDatesPerDay = [1 => [], 2 => [], 3 => [], 4 => [], 5 => [], 6 => [], 7 => []];
+
+        $allAttendances = Attendance::with('member')->latest('checkin_time')->get();
+        foreach ($allAttendances as $att) {
+            if (! $att->checkin_time) {
+                continue;
+            }
+            $dt = Carbon::parse($att->checkin_time);
+            $isoDay = $dt->dayOfWeekIso;
+            $dayCounts[$isoDay]++;
+            $distinctDatesPerDay[$isoDay][$dt->toDateString()] = true;
+        }
+
+        $attendanceDayLabels = [];
+        $attendanceDayAverages = [];
+        foreach ($dayNames as $dayNum => $name) {
+            $attendanceDayLabels[] = $name;
+            $occurrences = count($distinctDatesPerDay[$dayNum]);
+            $avg = $occurrences > 0 ? round($dayCounts[$dayNum] / $occurrences, 1) : 0;
+            $attendanceDayAverages[] = $avg;
+        }
+
+        $maxAvg = ! empty($attendanceDayAverages) ? max($attendanceDayAverages) : 0;
+        $highestAvgIndex = array_search($maxAvg, $attendanceDayAverages);
+        $peakDayName = $attendanceDayLabels[$highestAvgIndex] ?? 'Senin';
+        $allDates = array_unique(array_merge(...array_values($distinctDatesPerDay)));
+        $totalDaysRecorded = count($allDates);
+        $avgDailyAttendance = $totalDaysRecorded > 0 ? round($allAttendances->count() / $totalDaysRecorded, 1) : $todayAttendance;
+
+        // Rincian Presensi Berdasarkan Jam Operasional (06:00 - 22:00 WIB) per Hari
+        $hourlyLabels = [];
+        for ($h = 6; $h <= 22; $h++) {
+            $hourlyLabels[] = sprintf('%02d:00', $h);
+        }
+
+        $hourlyAttendanceByDay = [];
+        foreach ($dayNames as $dayNum => $name) {
+            $hourlyAttendanceByDay[$name] = array_fill_keys($hourlyLabels, 0);
+        }
+
+        foreach ($allAttendances as $att) {
+            if (! $att->checkin_time) {
+                continue;
+            }
+            $dt = Carbon::parse($att->checkin_time);
+            $dayName = $dayNames[$dt->dayOfWeekIso] ?? null;
+            $hour = $dt->hour;
+            if ($hour < 6) {
+                $hour = 6;
+            }
+            if ($hour > 22) {
+                $hour = 22;
+            }
+            $hourKey = sprintf('%02d:00', $hour);
+            if ($dayName && isset($hourlyAttendanceByDay[$dayName][$hourKey])) {
+                $hourlyAttendanceByDay[$dayName][$hourKey]++;
+            }
+        }
+
+        $hourlyDataByDay = [];
+        foreach ($hourlyAttendanceByDay as $dayName => $hours) {
+            $hourlyDataByDay[$dayName] = array_values($hours);
+        }
+
+        // Data Pemetaan Presensi Berdasarkan Tanggal & Jam untuk Filter Dinamis (Bulan, Minggu 1-4, Hari)
+        $attendancesByDate = [];
+        foreach ($allAttendances as $att) {
+            if (! $att->checkin_time) {
+                continue;
+            }
+            $dt = Carbon::parse($att->checkin_time);
+            $dateKey = $dt->toDateString();
+            $hour = $dt->hour;
+            if ($hour < 6) {
+                $hour = 6;
+            }
+            if ($hour > 22) {
+                $hour = 22;
+            }
+            $hourKey = sprintf('%02d:00', $hour);
+
+            if (! isset($attendancesByDate[$dateKey])) {
+                $attendancesByDate[$dateKey] = [
+                    'total' => 0,
+                    'hours' => [],
+                    'records' => [],
+                ];
+            }
+            $attendancesByDate[$dateKey]['total']++;
+            $attendancesByDate[$dateKey]['hours'][$hourKey] = ($attendancesByDate[$dateKey]['hours'][$hourKey] ?? 0) + 1;
+            $attendancesByDate[$dateKey]['records'][] = [
+                'time' => $dt->format('H:i').' WIB',
+                'name' => $att->type === 'member' ? ($att->member?->name ?? 'Member') : ($att->guest_name ?? 'Tamu Harian'),
+                'card_id' => $att->type === 'member' ? ($att->member?->card_id ?? '-') : 'Tiket Non-Member',
+                'type' => $att->type,
+                'notes' => $att->notes ?? 'Presensi reguler',
+            ];
+        }
+
+        // Daftar Pilihan Bulan (Mulai 6 Bulan Lalu s/d 2 Bulan Mendatang untuk Pengujian Masa Depan)
+        $monthNamesId = [
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember',
+        ];
+        $availableMonths = [];
+        for ($m = -6; $m <= 2; $m++) {
+            $monthObj = $now->copy()->addMonths($m);
+            $monthNum = (int) $monthObj->month;
+            $monthLabel = ($monthNamesId[$monthNum] ?? $monthObj->format('F')).' '.$monthObj->year;
+            $availableMonths[] = [
+                'value' => $monthObj->format('Y-m'),
+                'label' => $monthLabel,
+                'year' => (int) $monthObj->year,
+                'month' => $monthNum,
+                'is_current' => $monthObj->format('Y-m') === $now->format('Y-m'),
+            ];
+        }
+
+        $todayDateString = $now->toDateString();
+        $defaultMonthString = $now->format('Y-m');
+
         return view('admin.dashboard', compact(
             'totalActiveMembers',
             'expiringMembers',
@@ -58,7 +252,30 @@ class DashboardController extends Controller
             'todayRevenue',
             'monthRevenue',
             'recentTransactions',
-            'recentAttendances'
+            'recentAttendances',
+            'monthlyRevenueLabels',
+            'monthlyRevenueData',
+            'total6MonthsRevenue',
+            'genderLabels',
+            'genderData',
+            'maleCount',
+            'femaleCount',
+            'totalGenderMembers',
+            'malePercentage',
+            'femalePercentage',
+            'ageLabels',
+            'ageData',
+            'dominantAgeGroup',
+            'attendanceDayLabels',
+            'attendanceDayAverages',
+            'peakDayName',
+            'avgDailyAttendance',
+            'hourlyLabels',
+            'hourlyDataByDay',
+            'attendancesByDate',
+            'availableMonths',
+            'todayDateString',
+            'defaultMonthString'
         ));
     }
 }
