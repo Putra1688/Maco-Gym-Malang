@@ -102,7 +102,6 @@ class MemberController extends Controller
         $member->load([
             'transactions' => fn ($q) => $q->with('package', 'creator')->latest('created_at'),
             'attendances' => fn ($q) => $q->latest('checkin_time')->limit(30),
-            'progresses' => fn ($q) => $q->latest('recorded_at'),
         ]);
 
         $packages = Package::where('type', 'membership')

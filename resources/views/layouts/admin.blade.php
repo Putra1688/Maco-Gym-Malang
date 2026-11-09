@@ -27,6 +27,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased font-sans min-h-screen selection:bg-red-600 selection:text-white"
       x-data="{
@@ -59,14 +60,14 @@
              class="fixed inset-0 z-40 bg-black/70 lg:hidden"
              style="display: none;"></div>
 
-        <!-- Sidebar: Industrial, Athletic, Solid -->
+        <!-- Sidebar: Industrial, Athletic, Solid (Sticky on Desktop) -->
         <aside :class="[
                    mobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
                    sidebarOpen ? 'lg:w-64' : 'lg:w-20'
                ]"
-               class="fixed inset-y-0 left-0 z-50 w-72 lg:translate-x-0 lg:static lg:inset-auto
+               class="fixed inset-y-0 left-0 z-50 w-72 lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen lg:inset-auto
                       bg-white dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-800
-                      transition-all duration-200 flex flex-col">
+                      transition-all duration-200 flex flex-col shrink-0">
 
             <!-- Sidebar Header / Brand -->
             <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between shrink-0 h-16">
@@ -109,9 +110,6 @@
                         ['route' => 'admin.dashboard', 'routeIs' => 'admin.dashboard', 'label' => 'Dashboard', 'icon' => 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'],
                         ['route' => 'admin.frontdesk.index', 'routeIs' => 'admin.frontdesk.*', 'label' => 'Frontdesk & Kasir', 'icon' => 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
                         ['route' => 'admin.members.index', 'routeIs' => 'admin.members.*', 'label' => 'Data Member', 'icon' => 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'],
-                        ['route' => 'admin.packages.index', 'routeIs' => 'admin.packages.*', 'label' => 'Paket Layanan', 'icon' => 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z'],
-                        ['route' => 'admin.transactions.index', 'routeIs' => 'admin.transactions.*', 'label' => 'Laporan Transaksi', 'icon' => 'M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z'],
-                        ['route' => 'admin.trainers.index', 'routeIs' => 'admin.trainers.*', 'label' => 'Personal Trainer', 'icon' => 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'],
                     ];
                 @endphp
 
@@ -234,5 +232,6 @@
         </div>
     </div>
 
+    @stack('scripts')
 </body>
 </html>

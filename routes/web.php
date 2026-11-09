@@ -3,9 +3,6 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FrontdeskController;
 use App\Http\Controllers\Admin\MemberController;
-use App\Http\Controllers\Admin\PackageController;
-use App\Http\Controllers\Admin\TrainerController;
-use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberDashboardController;
@@ -18,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [GuestController::class, 'index'])->name('home');
-Route::view('/kalkulator-bmi', 'guest.bmi')->name('bmi.index');
+Route::view('/kalkulator-bmi', 'bmi.bmi')->name('bmi.index');
+Route::view('/register', 'guest.register')->name('register');
 Route::post('/register-interest', [GuestController::class, 'registerInterest'])->name('register.interest');
 Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
 
@@ -48,15 +46,6 @@ Route::middleware(['auth', 'role:admin,staff'])->prefix('admin')->name('admin.')
     // Members
     Route::resource('members', MemberController::class);
     Route::post('/members/{member}/renew', [MemberController::class, 'renew'])->name('members.renew');
-
-    // Packages
-    Route::resource('packages', PackageController::class)->except(['show']);
-
-    // Transactions
-    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
-
-    // Trainers
-    Route::resource('trainers', TrainerController::class)->except(['show']);
 });
 
 /*
@@ -66,11 +55,4 @@ Route::middleware(['auth', 'role:admin,staff'])->prefix('admin')->name('admin.')
 */
 Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->group(function () {
     Route::get('/dashboard', [MemberDashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [MemberDashboardController::class, 'profile'])->name('profile');
-    Route::post('/profile/progress', [MemberDashboardController::class, 'storeProgress'])->name('progress.store');
-    Route::post('/routine/{routine}/toggle', [MemberDashboardController::class, 'toggleRoutineExercise'])->name('routine.toggle');
-    Route::post('/routine/{routine}/exercise', [MemberDashboardController::class, 'addRoutineExercise'])->name('routine.exercise.add');
-    Route::delete('/routine/{routine}/exercise/{index}', [MemberDashboardController::class, 'deleteRoutineExercise'])->name('routine.exercise.delete');
-    Route::post('/routine/{routine}/reset', [MemberDashboardController::class, 'resetRoutineChecklist'])->name('routine.reset');
-    Route::post('/routine/template', [MemberDashboardController::class, 'applyRoutineTemplate'])->name('routine.template');
 });

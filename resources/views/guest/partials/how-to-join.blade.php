@@ -44,7 +44,7 @@
                     </div>
                     <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2">ISI FORMULIR</h3>
                     <p class="text-xs text-zinc-600 leading-relaxed">
-                        Lengkapi formulir pendaftaran singkat di bawah atau hubungi admin WhatsApp untuk verifikasi kilat.
+                        Lengkapi formulir pendaftaran singkat secara online atau hubungi admin WhatsApp untuk verifikasi kilat.
                     </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-zinc-200 text-[10px] font-bold text-red-600 uppercase tracking-wider">
@@ -86,126 +86,45 @@
 
         </div>
 
-        <!-- Interactive Direct Registration Form Box -->
-        <div class="max-w-4xl mx-auto rounded-2xl bg-zinc-50 border border-zinc-200 p-6 sm:p-10 shadow-lg">
-            <div class="text-center mb-8 space-y-2">
-                <span class="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-red-600 bg-red-100 px-3 py-1 rounded border border-red-200">
-                    ONLINE REGISTRATION
-                </span>
-                <h3 class="font-montserrat text-2xl sm:text-3xl font-bold uppercase text-zinc-900">DAFTARKAN DIRIMU SEKARANG</h3>
-                <p class="text-xs text-zinc-600">
-                    Data kamu akan otomatis terhubung ke WhatsApp Admin Maco Gym Malang untuk proses verifikasi instan.
+        <!-- Direct Registration CTA Box (Replacing the inline form) -->
+        <div class="max-w-4xl mx-auto rounded-3xl bg-zinc-950 text-white p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl border border-zinc-800">
+            <div class="absolute -top-16 -right-16 w-56 h-56 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/50 backdrop-blur-md mb-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-red-400 font-montserrat">
+                        ONLINE REGISTRATION
+                    </span>
+                </div>
+
+                <h3 class="font-montserrat text-2xl sm:text-4xl font-extrabold uppercase text-white tracking-tight">
+                    DAFTARKAN DIRIMU SEKARANG
+                </h3>
+
+                <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed">
+                    Mulai perjalanan kebugaranmu hari ini. Daftar secara online untuk mendapatkan akses instan, panduan latihan awal, dan fasilitas gym terlengkap di Maco Gym Malang.
                 </p>
-            </div>
 
-            <form id="registration-form" onsubmit="submitRegistration(event)" class="space-y-5">
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label for="member_name" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-800 mb-2">
-                            Nama Lengkap <span class="text-red-600">*</span>
-                        </label>
-                        <input type="text"
-                               id="member_name"
-                               required
-                               placeholder="Nama lengkap kamu"
-                               class="w-full bg-white border border-zinc-300 rounded-md px-4 py-3 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 shadow-xs transition-colors">
-                    </div>
-
-                    <div>
-                        <label for="member_phone" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-800 mb-2">
-                            Nomor WhatsApp <span class="text-red-600">*</span>
-                        </label>
-                        <input type="tel"
-                               id="member_phone"
-                               required
-                               placeholder="081234567890"
-                               class="w-full bg-white border border-zinc-300 rounded-md px-4 py-3 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 shadow-xs transition-colors">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label for="selected_package" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-800 mb-2">
-                            Pilihan Paket Membership <span class="text-red-600">*</span>
-                        </label>
-                        <select id="selected_package"
-                                required
-                                class="w-full bg-white border border-zinc-300 rounded-md px-4 py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 shadow-xs transition-colors">
-                            <option value="1 Bulan Reguler (Rp 175.000)">1 Bulan Reguler - Rp 175.000</option>
-                            <option value="3 Bulan Hemat (Rp 450.000)" selected>3 Bulan Hemat - Rp 450.000 (Popular)</option>
-                            <option value="1 Bulan Mahasiswa (Rp 135.000)">1 Bulan Mahasiswa - Rp 135.000 (KTM)</option>
-                            <option value="3 Bulan Mahasiswa (Rp 360.000)">3 Bulan Mahasiswa - Rp 360.000 (KTM)</option>
-                            <option value="Personal Trainer 5 Sesi (Rp 600.000)">PT 5 Sesi Starter - Rp 600.000</option>
-                            <option value="Personal Trainer 12 Sesi (Rp 1.250.000)">PT 12 Sesi Intensive - Rp 1.250.000</option>
-                            <option value="Personal Trainer 24 Sesi (Rp 2.200.000)">PT 24 Sesi Elite - Rp 2.200.000</option>
-                            <option value="Daily Pass Harian (Rp 25.000)">Daily Pass Harian - Rp 25.000</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="fitness_goal" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-800 mb-2">
-                            Target Kebugaran
-                        </label>
-                        <select id="fitness_goal"
-                                class="w-full bg-white border border-zinc-300 rounded-md px-4 py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 shadow-xs transition-colors">
-                            <option value="Muscle Building / Hypertrophy">Membentuk Otot & Tubuh Proporsional</option>
-                            <option value="Weight Loss / Fat Burn">Menurunkan Berat Badan / Fat Loss</option>
-                            <option value="General Fitness & Stamina">Kebugaran & Kesehatan Sehari-hari</option>
-                            <option value="Strength & Powerlifting">Meningkatkan Kekuatan / Powerlifting</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="member_notes" class="block text-[11px] font-bold uppercase tracking-wider text-zinc-800 mb-2">
-                        Catatan / Waktu Rencana Mulai (Opsional)
-                    </label>
-                    <textarea id="member_notes"
-                              rows="2"
-                              placeholder="Misal: Mahasiswa UB semester 4, rencana mulai latihan hari Senin..."
-                              class="w-full bg-white border border-zinc-300 rounded-md px-4 py-3 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 shadow-xs transition-colors"></textarea>
-                </div>
-
-                <div class="pt-2">
-                    <button type="submit"
-                            class="w-full py-4 px-6 rounded-md font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 shadow-xl shadow-red-600/25 transition-all flex items-center justify-center gap-2">
-                        <span>KIRIM PENDAFTARAN VIA WHATSAPP</span>
-                        <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="{{ route('register') }}"
+                       class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/40 hover:-translate-y-0.5 transition-all w-full sm:w-auto">
+                        <span>DAFTAR SEKARANG</span>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                    </button>
-                    <p class="text-center text-[10px] text-zinc-500 mt-2">
-                        Konfirmasi pembayaran dan barcode member akan dipandu oleh CS Maco Gym Malang.
-                    </p>
+                    </a>
+                    
+                    <a href="https://wa.me/6281250207403?text=Halo%20Admin%20Maco%20Gym%20Malang,%20saya%20ingin%20tanya%20seputar%20pendaftaran%20member."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 active:scale-95 text-white font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider rounded-xl backdrop-blur-md transition-all w-full sm:w-auto">
+                        <span>KONSULTASI VIA WHATSAPP</span>
+                    </a>
                 </div>
-
-            </form>
+            </div>
         </div>
 
     </div>
 </section>
-
-<!-- Registration Submission JS -->
-<script>
-    function submitRegistration(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('member_name').value.trim();
-        const phone = document.getElementById('member_phone').value.trim();
-        const selectedPackage = document.getElementById('selected_package').value;
-        const goal = document.getElementById('fitness_goal').value;
-        const notes = document.getElementById('member_notes').value.trim();
-
-        const message = `Halo Admin Maco Gym Malang, saya ingin mendaftar membership:%0A%0A` +
-                        `• *Nama:* ${encodeURIComponent(name)}%0A` +
-                        `• *No. WhatsApp:* ${encodeURIComponent(phone)}%0A` +
-                        `• *Pilihan Paket:* ${encodeURIComponent(selectedPackage)}%0A` +
-                        `• *Target Fitness:* ${encodeURIComponent(goal)}%0A` +
-                        (notes ? `• *Catatan:* ${encodeURIComponent(notes)}%0A%0A` : `%0A`) +
-                        `Mohon info langkah konfirmasi pembayaran. Terima kasih!`;
-
-        const waUrl = `https://wa.me/6281250207403?text=${message}`;
-        window.open(waUrl, '_blank');
-    }
-</script>

@@ -40,14 +40,8 @@
         <!-- Programs & Facilities (Our Programs) -->
         @include('guest.partials.facilities')
 
-        <!-- Interactive BMI Calculator -->
-        @include('guest.partials.bmi-calculator')
-
         <!-- About Section (Discipline Focus Strong Consistent) -->
         @include('guest.partials.about')
-
-        <!-- Testimonials (What Our Members Say) -->
-        @include('guest.partials.testimonials')
 
         <!-- Pricing (Choose Your Plan) -->
         @include('guest.partials.pricing')
@@ -57,6 +51,9 @@
 
         <!-- Schedule & How to Join (Cara Daftar) -->
         @include('guest.partials.how-to-join')
+
+        <!-- Testimonials (What Our Members Say) -->
+        @include('guest.partials.testimonials')
 
         <!-- FAQ Section (Questions & Answers) -->
         @include('guest.partials.faq')

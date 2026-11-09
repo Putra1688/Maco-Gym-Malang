@@ -28,8 +28,8 @@
     <!-- Stylesheets via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Chart.js v4 UMD (High Performance Canvas Rendering) -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <!-- JsBarcode (Pure SVG Barcode Generator) -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
 
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -84,21 +84,12 @@
                         </div>
                     </a>
 
-                    <!-- Desktop Navigation Links -->
+                    <!-- Desktop Navigation Links (Menu Tunggal) -->
                     <nav class="hidden md:flex items-center gap-1.5 pl-6 border-l border-zinc-200 dark:border-zinc-800/80">
                         <a href="{{ route('member.dashboard') }}"
-                           class="relative px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 {{ request()->routeIs('member.dashboard') || request()->routeIs('member.preview') ? 'text-red-600 dark:text-red-400 bg-red-600/10 dark:bg-red-500/10' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-900/60' }}">
-                            <span>Dashboard</span>
-                            @if(request()->routeIs('member.dashboard') || request()->routeIs('member.preview'))
+                           class="relative px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 text-red-600 dark:text-red-400 bg-red-600/10 dark:bg-red-500/10">
+                            <span>Kartu Member</span>
                             <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-red-600"></span>
-                            @endif
-                        </a>
-                        <a href="{{ route('member.profile') }}"
-                           class="relative px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 {{ request()->routeIs('member.profile') ? 'text-red-600 dark:text-red-400 bg-red-600/10 dark:bg-red-500/10' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-zinc-900/60' }}">
-                            <span>Profil & Fisik</span>
-                            @if(request()->routeIs('member.profile'))
-                            <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-red-600"></span>
-                            @endif
                         </a>
                         <a href="{{ route('home') }}" target="_blank"
                            class="px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors flex items-center gap-1.5">
@@ -174,33 +165,26 @@
         </div>
     </header>
 
-    <!-- Floating Mobile Bottom Navigation Bar (Gym-Ergonomic Mobile Dock) -->
-    <div class="fixed bottom-4 inset-x-4 z-40 md:hidden bg-white/90 dark:bg-[#15171d]/90 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl p-1.5 shadow-2xl shadow-black/20 flex items-center justify-around">
+    <!-- Floating Mobile Bottom Navigation Bar (Gym-Ergonomic Mobile Dock - Menu Tunggal) -->
+    <div class="fixed bottom-4 inset-x-6 z-40 md:hidden bg-white/90 dark:bg-[#15171d]/90 backdrop-blur-xl border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl p-2 shadow-2xl shadow-black/20 flex items-center justify-around">
         <a href="{{ route('member.dashboard') }}"
-           class="flex-1 flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all {{ request()->routeIs('member.dashboard') || request()->routeIs('member.preview') ? 'text-red-600 dark:text-red-400 bg-red-600/10' : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white' }}">
-            <svg class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+           class="flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400 bg-red-600/10">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
             </svg>
-            <span>Dashboard</span>
+            <span>Kartu Member</span>
         </a>
 
-        <!-- Center Scan Button -->
+        <!-- Quick Scan Barcode Button -->
         <button @click="showQrModal = true"
                 type="button"
                 title="Buka Scan Barcode ID"
-                class="flex flex-col items-center justify-center -mt-5 w-12 h-12 rounded-full bg-red-600 text-white shadow-lg shadow-red-600/40 border-4 border-slate-50 dark:border-[#0a0c10] transform active:scale-95 transition cursor-pointer">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                class="flex items-center justify-center gap-1.5 ml-2 py-2 px-4 rounded-xl bg-zinc-900 dark:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider shadow-xs transform active:scale-95 transition cursor-pointer">
+            <svg class="w-4 h-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
             </svg>
+            <span>Barcode</span>
         </button>
-
-        <a href="{{ route('member.profile') }}"
-           class="flex-1 flex flex-col items-center justify-center py-1.5 px-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all {{ request()->routeIs('member.profile') ? 'text-red-600 dark:text-red-400 bg-red-600/10' : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white' }}">
-            <svg class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-            </svg>
-            <span>Profil</span>
-        </a>
     </div>
 
     <!-- Main Content Area -->
