@@ -33,6 +33,16 @@ class ManagementSystemTest extends TestCase
         $dashboardResponse->assertStatus(200);
         $dashboardResponse->assertSee('Total Member Aktif');
         $dashboardResponse->assertSee('Dashboard Monitoring');
+
+        // Verify the 4 New Analytics Charts
+        $dashboardResponse->assertSee('Grafik Pemasukan Per Bulan');
+        $dashboardResponse->assertSee('monthlyRevenueChart');
+        $dashboardResponse->assertSee('Gender Member');
+        $dashboardResponse->assertSee('genderDonutChart');
+        $dashboardResponse->assertSee('Demografi Umur Member');
+        $dashboardResponse->assertSee('ageDemographicChart');
+        $dashboardResponse->assertSee('Rata-Rata Kehadiran Member');
+        $dashboardResponse->assertSee('attendanceAvgChart');
     }
 
     public function test_member_can_login_with_card_id_and_access_member_portal(): void

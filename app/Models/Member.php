@@ -14,6 +14,7 @@ class Member extends Model
         'name',
         'phone',
         'gender',
+        'birth_date',
         'branch',
         'target_weight_kg',
         'fitness_goal',
@@ -23,6 +24,7 @@ class Member extends Model
     ];
 
     protected $casts = [
+        'birth_date' => 'date',
         'join_date' => 'date',
         'current_expiry_date' => 'date',
         'target_weight_kg' => 'decimal:2',

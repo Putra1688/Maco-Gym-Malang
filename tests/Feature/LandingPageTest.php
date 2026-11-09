@@ -37,11 +37,12 @@ class LandingPageTest extends TestCase
         // Testimonials Section
         $response->assertSee('WHAT OUR MEMBERS SAY');
 
-        // Pricing Section (Bulanan, Mahasiswa, Personal Trainer)
-        $response->assertSee('CHOOSE YOUR PLAN');
-        $response->assertSee('1 Bulan Reguler');
-        $response->assertSee('1 Bulan Mahasiswa');
-        $response->assertSee('PT 12 Sesi');
+        // Pricing Section (3 Main Plans: Basic, Standard, Student)
+        $response->assertSee('CHOOSE YOUR');
+        $response->assertSee('PLAN');
+        $response->assertSee('BASIC PLAN');
+        $response->assertSee('STANDARD PLAN');
+        $response->assertSee('STUDENT PLAN');
 
         // Personal Trainer Section
         $response->assertSee('Coach Rangga Pratama');
@@ -56,5 +57,34 @@ class LandingPageTest extends TestCase
         // Pre-Footer Banner & Footer Section
         $response->assertSee('READY TO REACH YOUR PEAK?');
         $response->assertSee('Lowokwaru, Kota Malang');
+    }
+
+    /**
+     * Test that the register page renders correctly.
+     */
+    public function test_register_page_renders_correctly(): void
+    {
+        $response = $this->get('/register');
+
+        $response->assertStatus(200);
+        $response->assertSee('Bergabung');
+        $response->assertSee('Maco Gym');
+        $response->assertSee('Pendaftaran');
+        $response->assertSee('Alamat Domisili');
+        $response->assertSee('KIRIM PENDAFTARAN KE WHATSAPP ADMIN');
+    }
+
+    /**
+     * Test that the BMI page renders correctly.
+     */
+    public function test_bmi_page_renders_correctly(): void
+    {
+        $response = $this->get('/kalkulator-bmi');
+
+        $response->assertStatus(200);
+        $response->assertSee('Tentang');
+        $response->assertSee('BMI');
+        $response->assertSee('Hitung BMI');
+        $response->assertSee('Cara Cek BMI');
     }
 }

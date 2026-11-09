@@ -45,6 +45,7 @@ class MemberSeeder extends Seeder
             'name' => 'Bima Arya',
             'phone' => '081234567899',
             'gender' => 'male',
+            'birth_date' => '1999-05-14',
             'branch' => 'Pandanwangi Green Park',
             'target_weight_kg' => 70.0,
             'fitness_goal' => 'Fat Loss & Lean Muscle',
@@ -155,6 +156,7 @@ class MemberSeeder extends Seeder
             'name' => 'Siti Rahma',
             'phone' => '081234567898',
             'gender' => 'female',
+            'birth_date' => '2003-08-20',
             'branch' => 'Pandanwangi Green Park',
             'target_weight_kg' => 52.0,
             'fitness_goal' => 'Toning & Core Strength',
@@ -235,6 +237,7 @@ class MemberSeeder extends Seeder
             'name' => 'Doni Kusuma',
             'phone' => '081234567897',
             'gender' => 'male',
+            'birth_date' => '1993-11-10',
             'branch' => 'Lowokwaru',
             'target_weight_kg' => 80.0,
             'fitness_goal' => 'Hypertrophy & Strength',
@@ -266,5 +269,112 @@ class MemberSeeder extends Seeder
                 ['name' => 'Dips (Weighted)', 'sets' => '3 Sets x 8-10 Reps', 'done' => false],
             ],
         ]);
+
+        // -------------------------------------------------------------
+        // 4. Tambahan Member untuk Demografi Gender, Umur & Kehadiran
+        // -------------------------------------------------------------
+        $extraMembers = [
+            // Remaja / Pelajar (< 20 Tahun)
+            ['card' => 'MC-004', 'name' => 'Fajar Hidayat', 'phone' => '081234567810', 'gender' => 'male', 'birth_date' => '2007-04-12', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 2, 'months_ago' => 5],
+            ['card' => 'MC-005', 'name' => 'Nadia Safitri', 'phone' => '081234567811', 'gender' => 'female', 'birth_date' => '2008-01-25', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 2, 'months_ago' => 4],
+            ['card' => 'MC-006', 'name' => 'Rizky Ramadhan', 'phone' => '081234567812', 'gender' => 'male', 'birth_date' => '2007-09-08', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 2, 'months_ago' => 2],
+
+            // Mahasiswa & Fresh Graduate (20 - 25 Tahun)
+            ['card' => 'MC-007', 'name' => 'Amanda Putri', 'phone' => '081234567813', 'gender' => 'female', 'birth_date' => '2004-03-15', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 3, 'months_ago' => 5],
+            ['card' => 'MC-008', 'name' => 'Reza Pratama', 'phone' => '081234567814', 'gender' => 'male', 'birth_date' => '2002-11-20', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 3, 'months_ago' => 4],
+            ['card' => 'MC-009', 'name' => 'Dimas Anggara', 'phone' => '081234567815', 'gender' => 'male', 'birth_date' => '2001-07-22', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 2, 'months_ago' => 3],
+            ['card' => 'MC-010', 'name' => 'Clara Anindya', 'phone' => '081234567816', 'gender' => 'female', 'birth_date' => '2003-12-01', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 3, 'months_ago' => 1],
+            ['card' => 'MC-011', 'name' => 'Ilham Maulana', 'phone' => '081234567817', 'gender' => 'male', 'birth_date' => '2002-05-18', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 4, 'months_ago' => 3],
+
+            // Dewasa Muda & Profesional (26 - 35 Tahun)
+            ['card' => 'MC-012', 'name' => 'Dewi Lestari', 'phone' => '081234567818', 'gender' => 'female', 'birth_date' => '1998-04-18', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 4, 'months_ago' => 5],
+            ['card' => 'MC-013', 'name' => 'Fitri Handayani', 'phone' => '081234567819', 'gender' => 'female', 'birth_date' => '1995-10-30', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 3, 'months_ago' => 4],
+            ['card' => 'MC-014', 'name' => 'Bagus Wicaksono', 'phone' => '081234567820', 'gender' => 'male', 'birth_date' => '1996-08-14', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 5, 'months_ago' => 2],
+            ['card' => 'MC-015', 'name' => 'Rian Saputra', 'phone' => '081234567821', 'gender' => 'male', 'birth_date' => '1992-06-25', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 3, 'months_ago' => 1],
+
+            // Dewasa Matang (36 - 45 Tahun)
+            ['card' => 'MC-016', 'name' => 'Hendra Wijaya', 'phone' => '081234567822', 'gender' => 'male', 'birth_date' => '1988-06-25', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 5, 'months_ago' => 5],
+            ['card' => 'MC-017', 'name' => 'Rina Kartika', 'phone' => '081234567823', 'gender' => 'female', 'birth_date' => '1985-02-14', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 4, 'months_ago' => 3],
+            ['card' => 'MC-018', 'name' => 'Agus Setiawan', 'phone' => '081234567824', 'gender' => 'male', 'birth_date' => '1983-08-19', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 3, 'months_ago' => 2],
+
+            // Senior (> 45 Tahun)
+            ['card' => 'MC-019', 'name' => 'Bambang Soedjarwo', 'phone' => '081234567825', 'gender' => 'male', 'birth_date' => '1974-12-05', 'branch' => 'Lowokwaru', 'status' => 'active', 'pkg_id' => 5, 'months_ago' => 5],
+            ['card' => 'MC-020', 'name' => 'Sri Wahyuni', 'phone' => '081234567826', 'gender' => 'female', 'birth_date' => '1972-04-03', 'branch' => 'Pandanwangi Green Park', 'status' => 'active', 'pkg_id' => 4, 'months_ago' => 3],
+        ];
+
+        $packagesList = Package::all()->keyBy('id');
+
+        foreach ($extraMembers as $idx => $data) {
+            $user = User::create([
+                'name' => $data['name'],
+                'phone' => $data['phone'],
+                'password' => Hash::make('member123'),
+                'role' => 'member',
+            ]);
+
+            $joinDate = now()->subMonths($data['months_ago'])->subDays($idx * 2);
+            $expiryDate = $joinDate->copy()->addDays(90);
+
+            $member = Member::create([
+                'user_id' => $user->id,
+                'card_id' => $data['card'],
+                'name' => $data['name'],
+                'phone' => $data['phone'],
+                'gender' => $data['gender'],
+                'birth_date' => $data['birth_date'],
+                'branch' => $data['branch'],
+                'target_weight_kg' => $data['gender'] === 'male' ? 72.0 : 54.0,
+                'fitness_goal' => 'Healthy Lifestyle & Strength',
+                'join_date' => $joinDate->toDateString(),
+                'current_expiry_date' => $expiryDate->toDateString(),
+                'status' => $data['status'],
+            ]);
+
+            $pkg = $packagesList[$data['pkg_id']] ?? $packagesList->first();
+
+            // Transaksi pendaftaran/perpanjangan pada bulan bergabung
+            Transaction::create([
+                'invoice_code' => 'INV-'.$joinDate->format('Ymd').'-'.str_pad((string) ($idx + 10), 4, '0', STR_PAD_LEFT),
+                'member_id' => $member->id,
+                'package_id' => $pkg->id,
+                'customer_name' => $member->name,
+                'customer_phone' => $member->phone,
+                'amount' => $pkg->price,
+                'payment_method' => $idx % 2 === 0 ? 'qris' : 'transfer',
+                'created_by' => $admin?->id ?? 1,
+                'created_at' => $joinDate,
+            ]);
+
+            // Tambahkan juga transaksi bulanan tambahan agar grafik pemasukan 6 bulan terisi merata
+            if ($data['months_ago'] > 1) {
+                $renewalDate = $joinDate->copy()->addMonths(2);
+                if ($renewalDate->isPast()) {
+                    Transaction::create([
+                        'invoice_code' => 'INV-'.$renewalDate->format('Ymd').'-'.str_pad((string) ($idx + 50), 4, '0', STR_PAD_LEFT),
+                        'member_id' => $member->id,
+                        'package_id' => $pkg->id,
+                        'customer_name' => $member->name,
+                        'customer_phone' => $member->phone,
+                        'amount' => $pkg->price,
+                        'payment_method' => 'qris',
+                        'created_by' => $admin?->id ?? 1,
+                        'created_at' => $renewalDate,
+                    ]);
+                }
+            }
+
+            // Catat presensi kehadiran secara acak di berbagai hari dalam 30 hari terakhir dengan jam sibuk gym (pagi & sore)
+            $peakHours = [6, 7, 7, 8, 8, 9, 12, 16, 17, 18, 18, 19, 19, 20, 21];
+            for ($d = 1; $d <= 28; $d += ($idx % 3 === 0 ? 2 : 3)) {
+                $chosenHour = $peakHours[($idx + $d) % count($peakHours)];
+                $checkin = now()->subDays($d)->setHour($chosenHour)->setMinute(10 + ($d * 2) % 45);
+                Attendance::create([
+                    'type' => 'member',
+                    'member_id' => $member->id,
+                    'checkin_time' => $checkin,
+                    'notes' => 'Presensi rutin member '.$member->card_id,
+                ]);
+            }
+        }
     }
 }

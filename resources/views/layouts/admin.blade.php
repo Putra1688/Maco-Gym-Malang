@@ -27,6 +27,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased font-sans min-h-screen selection:bg-red-600 selection:text-white"
       x-data="{
@@ -234,5 +235,6 @@
         </div>
     </div>
 
+    @stack('scripts')
 </body>
 </html>
