@@ -16,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [GuestController::class, 'index'])->name('home');
 Route::view('/kalkulator-bmi', 'bmi.bmi')->name('bmi.index');
-Route::view('/register', 'guest.register')->name('register');
+Route::get('/register', [GuestController::class, 'showRegister'])->name('register');
 Route::post('/register-interest', [GuestController::class, 'registerInterest'])->name('register.interest');
 Route::post('/register', [GuestController::class, 'store'])->name('guest.register');
+
+// Pricing Routes
+Route::get('/pricing/membership', [GuestController::class, 'pricingMembership'])->name('pricing.membership');
+Route::get('/pricing/pt-single', [GuestController::class, 'pricingPtSingle'])->name('pricing.pt-single');
+Route::get('/pricing/pt-couples', [GuestController::class, 'pricingPtCouples'])->name('pricing.pt-couples');
+Route::redirect('/pricing', '/#pricing')->name('pricing.index');
 
 // Auth routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -46,6 +52,7 @@ Route::middleware(['auth', 'role:admin,staff'])->prefix('admin')->name('admin.')
     // Members
     Route::resource('members', MemberController::class);
     Route::post('/members/{member}/renew', [MemberController::class, 'renew'])->name('members.renew');
+    Route::post('/members/{member}/verify', [MemberController::class, 'verify'])->name('members.verify');
 });
 
 /*

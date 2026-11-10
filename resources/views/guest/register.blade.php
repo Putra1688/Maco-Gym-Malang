@@ -92,7 +92,7 @@
                                         <div class="w-5 h-5 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 shadow-sm shadow-red-600/50">
                                             ✓
                                         </div>
-                                        <span>Kartu member digital / fisik dengan integrasi check-in instan.</span>
+                                        <span>Kartu member fisik resmi & pencatatan data keanggotaan terintegrasi.</span>
                                     </li>
                                 </ul>
                             </div>
@@ -120,12 +120,86 @@
                                 Pendaftaran <span class="text-red-600">Member</span>
                             </h2>
                             <p class="text-zinc-500 text-xs mt-1 leading-relaxed font-sans">
-                                Silakan lengkapi biodata pendaftaran kamu di bawah ini untuk memulai latihan.
+                                Lengkapi biodata pendaftaran kamu. Data akan otomatis tercatat di sistem Maco Gym dan diteruskan ke kasir untuk verifikasi pembayaran.
                             </p>
                         </div>
 
-                        <!-- Registration Form -->
-                        <form id="online-register-form" onsubmit="handleRegistrationSubmit(event)" class="space-y-4">
+                        <!-- Flash Alerts (Success, Warning, Errors) -->
+                        @if(session('success'))
+                        <div class="mb-5 p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs space-y-2">
+                            <div class="flex items-center gap-2 font-bold font-montserrat">
+                                <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">✓</span>
+                                <span>{{ session('success') }}</span>
+                            </div>
+                            <p class="text-emerald-700">
+                                WhatsApp resepsionis akan segera terbuka. Jika tidak terbuka otomatis, silakan klik tombol di bawah ini:
+                            </p>
+                            @if(session('wa_redirect_url'))
+                            <div class="pt-1">
+                                <a href="{{ session('wa_redirect_url') }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm transition">
+                                    <span>Buka Chat WhatsApp Kasir</span>
+                                    <span>&rarr;</span>
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                        @endif
+
+                        @if(session('warning'))
+                        <div class="mb-5 p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs flex items-start gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-amber-500 text-zinc-950 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">!</span>
+                            <div>
+                                <strong class="font-bold block mb-0.5">Pemberitahuan Pendaftaran</strong>
+                                <span>{{ session('warning') }}</span>
+                            </div>
+                        </div>
+                        @endif
+
+                        @if(session('info'))
+                        <div class="mb-5 p-4 rounded-xl bg-blue-50 border border-blue-300 text-blue-900 text-xs space-y-2">
+                            <div class="flex items-start gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">i</span>
+                                <div>
+                                    <strong class="font-bold block mb-0.5">Data Sudah Terdaftar</strong>
+                                    <span>{{ session('info') }}</span>
+                                </div>
+                            </div>
+                            @if(session('wa_redirect_url'))
+                            <div class="pt-1">
+                                <a href="{{ session('wa_redirect_url') }}"
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-lg transition">
+                                    <span>Lanjut Konfirmasi via WhatsApp</span>
+                                </a>
+                            </div>
+                            @endif
+                        </div>
+                        @endif
+
+                        @if($errors->any())
+                        <div class="mb-5 p-4 rounded-xl bg-red-50 border border-red-300 text-red-900 text-xs">
+                            <strong class="font-bold block mb-1">Mohon lengkapi formulir dengan benar:</strong>
+                            <ul class="list-disc pl-5 space-y-0.5">
+                                @foreach($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <!-- Form Pendaftaran -->
+                        @php
+                            $requestedPackage = request('package', old('package', '3 Month - Rp 375.000'));
+                        @endphp
+                        <form id="online-register-form"
+                              action="{{ route('guest.register') }}"
+                              method="POST"
+                              onsubmit="handleRegistrationSubmit(this, event)"
+                              class="space-y-4">
+                            @csrf
                             
                             <!-- 1. Nama Lengkap & No WhatsApp -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -135,7 +209,9 @@
                                     </label>
                                     <input type="text"
                                            id="reg_name"
+                                           name="name"
                                            required
+                                           value="{{ old('name') }}"
                                            placeholder="Nama lengkap kamu"
                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
                                 </div>
@@ -146,9 +222,11 @@
                                     </label>
                                     <input type="tel"
                                            id="reg_phone"
+                                           name="phone"
                                            required
+                                           value="{{ old('phone') }}"
                                            placeholder="081234567890"
-                                           class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
+                                           class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition font-mono">
                                 </div>
                             </div>
 
@@ -159,14 +237,84 @@
                                         Pilihan Paket <span class="text-red-600">*</span>
                                     </label>
                                     <select id="reg_package"
+                                            name="package"
                                             required
-                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
-                                        <option value="1 Bulan Reguler - Rp 175.000">1 Bulan Reguler (Rp 175.000)</option>
-                                        <option value="3 Bulan Hemat - Rp 450.000" selected>3 Bulan Hemat (Rp 450.000) - Terpopuler</option>
-                                        <option value="1 Bulan Mahasiswa - Rp 135.000">1 Bulan Mahasiswa / KTM (Rp 135.000)</option>
-                                        <option value="3 Bulan Mahasiswa - Rp 360.000">3 Bulan Mahasiswa / KTM (Rp 360.000)</option>
-                                        <option value="Personal Trainer 12 Sesi - Rp 1.250.000">Personal Trainer 12 Sesi (Rp 1.250.000)</option>
-                                        <option value="Daily Pass - Rp 25.000">Daily Pass Harian (Rp 25.000)</option>
+                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition font-medium">
+                                        
+                                        <optgroup label="── Kategori: Membership ──">
+                                            <option value="1 Month - Rp 130.000" {{ str_contains($requestedPackage, '1 Month') ? 'selected' : '' }}>
+                                                1 Month (Rp 130.000)
+                                            </option>
+                                            <option value="3 Month - Rp 375.000" {{ str_contains($requestedPackage, '3 Month') ? 'selected' : '' }}>
+                                                3 Month (Rp 375.000) - Terpopuler
+                                            </option>
+                                            <option value="6 Month - Rp 750.000" {{ str_contains($requestedPackage, '6 Month') ? 'selected' : '' }}>
+                                                6 Month (Rp 750.000)
+                                            </option>
+                                            <option value="12 Month - Rp 1.450.000" {{ str_contains($requestedPackage, '12 Month') ? 'selected' : '' }}>
+                                                12 Month (Rp 1.450.000) - 1 Tahun
+                                            </option>
+                                            <option value="Mahasiswa - Rp 110.000" {{ str_contains($requestedPackage, 'Mahasiswa') ? 'selected' : '' }}>
+                                                Mahasiswa / KTM (Rp 110.000)
+                                            </option>
+                                            <option value="Pelajar (maksimal SMA) - Rp 100.000" {{ str_contains($requestedPackage, 'Pelajar') ? 'selected' : '' }}>
+                                                Pelajar SMP/SMA (Rp 100.000)
+                                            </option>
+                                            <option value="Insidentil - Rp 30.000" {{ str_contains($requestedPackage, 'Insidentil') ? 'selected' : '' }}>
+                                                Insidentil Harian (Rp 30.000)
+                                            </option>
+                                            <option value="Regular Membership - Rp 20.000" {{ str_contains($requestedPackage, 'Regular Membership') ? 'selected' : '' }}>
+                                                Regular Membership / Kartu (Rp 20.000)
+                                            </option>
+                                        </optgroup>
+
+                                        <optgroup label="── Kategori: Personal Trainer (Single Session) ──">
+                                            <option value="1 PT (Single) - Rp 130.000" {{ str_contains($requestedPackage, '1 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                1 PT Single Session (Rp 130.000)
+                                            </option>
+                                            <option value="4 PT (Single) - Rp 520.000" {{ str_contains($requestedPackage, '4 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                4 PT Single Session (Rp 520.000 - 10 Hari)
+                                            </option>
+                                            <option value="8 PT (Single) - Rp 950.000" {{ str_contains($requestedPackage, '8 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                8 PT Single Session (Rp 950.000 - 20 Hari)
+                                            </option>
+                                            <option value="12 PT (Single) - Rp 1.150.000" {{ str_contains($requestedPackage, '12 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                12 PT Single Session (Rp 1.150.000 - 30 Hari)
+                                            </option>
+                                            <option value="16 PT (Single) - Rp 1.450.000" {{ str_contains($requestedPackage, '16 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                16 PT Single Session (Rp 1.450.000 - 40 Hari)
+                                            </option>
+                                            <option value="20 PT (Single) - Rp 1.850.000" {{ str_contains($requestedPackage, '20 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                20 PT Single Session (Rp 1.850.000 - 50-60 Hari)
+                                            </option>
+                                        </optgroup>
+
+                                        <optgroup label="── Kategori: Personal Trainer (Couples Session) ──">
+                                            <option value="1 PT (Couples) - Rp 210.000" {{ str_contains($requestedPackage, '1 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                1 PT Couples Session (Rp 210.000 - 2 Orang)
+                                            </option>
+                                            <option value="4 PT (Couples) - Rp 950.000" {{ str_contains($requestedPackage, '4 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                4 PT Couples Session (Rp 950.000 - 15 Hari)
+                                            </option>
+                                            <option value="8 PT (Couples) - Rp 1.200.000" {{ str_contains($requestedPackage, '8 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                8 PT Couples Session (Rp 1.200.000 - 30 Hari)
+                                            </option>
+                                            <option value="12 PT (Couples) - Rp 1.850.000" {{ str_contains($requestedPackage, '12 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                12 PT Couples Session (Rp 1.850.000 - 30 Hari)
+                                            </option>
+                                            <option value="16 PT (Couples) - Rp 2.150.000" {{ str_contains($requestedPackage, '16 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                16 PT Couples Session (Rp 2.150.000 - 40 Hari)
+                                            </option>
+                                            <option value="20 PT (Couples) - Rp 2.650.000" {{ str_contains($requestedPackage, '20 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
+                                                20 PT Couples Session (Rp 2.650.000 - 60 Hari)
+                                            </option>
+                                        </optgroup>
+
+                                        <optgroup label="── Kategori: Tiket Tamu Harian Kasir ──">
+                                            <option value="Daily Pass - Rp 25.000" {{ str_contains($requestedPackage, 'Daily Pass') ? 'selected' : '' }}>
+                                                Daily Pass Harian Kasir (Rp 25.000)
+                                            </option>
+                                        </optgroup>
                                     </select>
                                 </div>
 
@@ -175,10 +323,11 @@
                                         Jenis Kelamin <span class="text-red-600">*</span>
                                     </label>
                                     <select id="reg_gender"
+                                            name="gender"
                                             required
                                             class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="Laki-laki" {{ old('gender') === 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                        <option value="Perempuan" {{ old('gender') === 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     </select>
                                 </div>
                             </div>
@@ -191,7 +340,9 @@
                                     </label>
                                     <input type="text"
                                            id="reg_address"
+                                           name="address"
                                            required
+                                           value="{{ old('address') }}"
                                            placeholder="Contoh: Lowokwaru / Jl. Soekarno Hatta"
                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
                                 </div>
@@ -202,9 +353,10 @@
                                     </label>
                                     <input type="date"
                                            id="reg_start_date"
+                                           name="start_date"
                                            required
-                                           value="{{ date('Y-m-d') }}"
-                                           class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
+                                           value="{{ old('start_date', date('Y-m-d')) }}"
+                                           class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition font-mono">
                                 </div>
                             </div>
 
@@ -214,22 +366,24 @@
                                     Catatan Tambahan (Opsional)
                                 </label>
                                 <textarea id="reg_notes"
+                                          name="notes"
                                           rows="2"
-                                          placeholder="Misal: Mahasiswa UB semester 4, ada riwayat cedera bahu, dll."
-                                          class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition"></textarea>
+                                          placeholder="Misal: Mahasiswa UB semester 4, ada riwayat cedera bahu, ingin program pembentukan otot, dll."
+                                          class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">{{ old('notes') }}</textarea>
                             </div>
 
                             <!-- 5. Submit Button -->
                             <div class="pt-2">
                                 <button type="submit"
-                                        class="w-full py-3.5 px-6 rounded-xl bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white font-montserrat font-bold text-sm uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer">
-                                    <span>KIRIM PENDAFTARAN KE WHATSAPP ADMIN</span>
-                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        id="submit-register-btn"
+                                        class="w-full py-3.5 px-6 rounded-xl bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white font-montserrat font-bold text-sm uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <span id="btn-text">KIRIM PENDAFTARAN KE WHATSAPP ADMIN</span>
+                                    <svg id="btn-icon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                                     </svg>
                                 </button>
                                 <p class="text-[11px] text-zinc-400 text-center mt-2.5">
-                                    Pembayaran QRIS & cetak ID kartu member akan dikonfirmasi oleh resepsionis Maco Gym Malang.
+                                    Data akan tersimpan aman di database Maco Gym dan dikonfirmasi kasir via WhatsApp.
                                 </p>
                             </div>
 
@@ -239,13 +393,12 @@
 
             </div>
 
-            <!-- ================= BOTTOM PROMOTIONAL BADGES (MATCHING BMI PAGE STYLE) ================= -->
+            <!-- ================= BOTTOM PROMOTIONAL BADGES ================= -->
             <div class="w-full bg-zinc-50 border-t border-zinc-200 py-10 sm:py-12">
                 <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
                     
-                    <!-- Promo Badge 1: Membership Mulai dari Rp 135 ribu/bulan -->
+                    <!-- Promo Badge 1 -->
                     <div class="rounded-3xl bg-zinc-950 text-white min-h-[300px] flex flex-col items-center justify-center p-6 sm:p-8 text-center relative overflow-hidden group shadow-2xl border border-zinc-800">
-                        <!-- Dark gym atmosphere background -->
                         <div class="absolute inset-0 z-0">
                             <img src="{{ asset('images/about-gym.jpg') }}" 
                                  alt="Gym Facilities" 
@@ -254,7 +407,6 @@
                             <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
                         </div>
                         
-                        <!-- Promo Content -->
                         <div class="relative z-10 text-center flex flex-col items-center">
                             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest font-montserrat mb-3 shadow-md">
                                 <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
@@ -265,12 +417,12 @@
                                 Membership mulai dari
                             </span>
                             <div class="font-montserrat font-black text-3xl sm:text-4xl text-white mb-5 tracking-tight drop-shadow-md">
-                                Rp 135 ribu<span class="text-sm sm:text-base font-bold text-red-500"> /bulan</span>
+                                Rp 100 ribu<span class="text-sm sm:text-base font-bold text-red-500"> /bulan</span>
                             </div>
                             
                             <a href="{{ route('home') }}#pricing" 
                                class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg shadow-red-600/40 hover:-translate-y-0.5 active:translate-y-0 transition duration-200">
-                                <span>Lihat Paket Membership</span>
+                                <span>Lihat Daftar Harga Resmi</span>
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                                 </svg>
@@ -278,9 +430,8 @@
                         </div>
                     </div>
 
-                    <!-- Promo Badge 2: Ingin tahu lebih banyak tentang Maco Gym? -->
+                    <!-- Promo Badge 2 -->
                     <div class="rounded-3xl bg-white border-2 border-zinc-200 hover:border-red-600 shadow-2xl min-h-[300px] flex flex-col items-center justify-center p-6 sm:p-8 text-center relative overflow-hidden group transition-all duration-500">
-                        <!-- Ambient Glow Accents -->
                         <div class="absolute -top-12 -right-12 w-40 h-40 bg-red-500/10 rounded-full blur-2xl pointer-events-none"></div>
                         <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-zinc-900/5 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -290,7 +441,6 @@
                                 <span>CUSTOMER SUPPORT</span>
                             </div>
 
-                            <!-- Headset / Support Icon -->
                             <div class="w-14 h-14 rounded-2xl bg-red-50 border border-red-100 text-red-600 flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
                                 <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
@@ -298,7 +448,6 @@
                                 </svg>
                             </div>
                             
-                            <!-- Title & Description -->
                             <h3 class="text-xl sm:text-2xl font-black text-zinc-900 font-montserrat uppercase tracking-tight mb-2 max-w-sm leading-snug">
                                 Ingin Tahu Lebih Banyak Tentang <span class="text-red-600">Maco Gym</span>?
                             </h3>
@@ -306,7 +455,6 @@
                                 Tim resepsionis & coach kami siap bantu jawab semua pertanyaan kamu seputar fasilitas, program latihan, & membership.
                             </p>
                             
-                            <!-- WhatsApp CTA Button -->
                             <a href="https://wa.me/6281250207403?text=Halo%20Maco%20Gym%20Malang,%20saya%20ingin%20tanya%20seputar%20membership%20dan%20fasilitas%20gym." 
                                target="_blank" 
                                rel="noopener noreferrer" 
@@ -328,32 +476,34 @@
     <!-- Footer -->
     <x-footer />
 
-    <!-- Script to Submit via WhatsApp & Mobile Nav Toggle -->
+    <!-- Script: Submit handler & WhatsApp auto-open -->
     <script>
-        function handleRegistrationSubmit(event) {
-            event.preventDefault();
+        let isSubmitting = false;
 
-            const name = document.getElementById('reg_name').value.trim();
-            const phone = document.getElementById('reg_phone').value.trim();
-            const selectedPackage = document.getElementById('reg_package').value;
-            const gender = document.getElementById('reg_gender').value;
-            const address = document.getElementById('reg_address').value.trim();
-            const startDate = document.getElementById('reg_start_date').value;
-            const notes = document.getElementById('reg_notes').value.trim();
+        function handleRegistrationSubmit(form, event) {
+            if (isSubmitting) {
+                event.preventDefault();
+                return false;
+            }
+            isSubmitting = true;
 
-            const message = `Halo Admin Maco Gym Malang, saya ingin mendaftar membership baru:%0A%0A` +
-                            `• *Nama Lengkap:* ${encodeURIComponent(name)}%0A` +
-                            `• *No. WhatsApp:* ${encodeURIComponent(phone)}%0A` +
-                            `• *Jenis Kelamin:* ${encodeURIComponent(gender)}%0A` +
-                            `• *Pilihan Paket:* ${encodeURIComponent(selectedPackage)}%0A` +
-                            `• *Alamat Domisili:* ${encodeURIComponent(address)}%0A` +
-                            `• *Rencana Mulai:* ${encodeURIComponent(startDate)}%0A` +
-                            (notes ? `• *Catatan:* ${encodeURIComponent(notes)}%0A%0A` : `%0A`) +
-                            `Mohon dipandu untuk pembayaran QRIS dan aktivasi kartu member. Terima kasih!`;
-
-            const waUrl = `https://wa.me/6281250207403?text=${message}`;
-            window.open(waUrl, '_blank');
+            const btn = document.getElementById('submit-register-btn');
+            const btnText = document.getElementById('btn-text');
+            if (btn && btnText) {
+                btn.disabled = true;
+                btnText.textContent = 'Menyimpan ke Sistem...';
+            }
+            return true;
         }
+
+        // Jika terdapat session wa_redirect_url setelah submit, buka WhatsApp secara otomatis
+        @if(session('wa_redirect_url'))
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                window.open("{{ session('wa_redirect_url') }}", '_blank');
+            }, 600);
+        });
+        @endif
 
         // Mobile Nav Toggle Script
         document.addEventListener('DOMContentLoaded', () => {

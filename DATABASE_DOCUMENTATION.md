@@ -56,6 +56,7 @@ erDiagram
         date join_date "Tanggal mulai bergabung"
         date current_expiry_date "Tanggal jatuh tempo masa aktif"
         enum status "active, expired, pending_verification"
+        string package_name "Pilihan paket awal / saat registrasi (nullable)"
     }
 
     packages {
@@ -125,6 +126,7 @@ Tabel profil anggota gym terdaftar. Terhubung secara satu-ke-satu (`1:1`) dengan
   - Menghitung sisa hari aktif (*countdown*).
   - Indikator peringatan jatuh tempo (*H-3 Hampir Habis* atau *Expired*).
 - **`status`** (`enum('active', 'expired', 'pending_verification')`): Status keanggotaan.
+- **`package_name`** (`varchar(255)`, Nullable): Paket yang dipilih oleh calon member saat mendaftar online atau walk-in sebelum aktivasi kasir.
 - **`created_at` & `updated_at`** (`timestamp`): Waktu pendaftaran dan update data.
 
 ---
