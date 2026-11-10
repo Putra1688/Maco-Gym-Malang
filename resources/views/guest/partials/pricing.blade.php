@@ -4,10 +4,10 @@
         
         <!-- Header -->
         <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div class="flex items-center justify-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+            <div class="flex items-center justify-center gap-3 mb-1">
+                <span class="w-8 h-[2px] bg-red-600"></span>
                 <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">MEMBERSHIP PACKAGES</span>
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <span class="w-8 h-[2px] bg-red-600"></span>
             </div>
             <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
                 CHOOSE YOUR <span class="text-red-600">PLAN</span>

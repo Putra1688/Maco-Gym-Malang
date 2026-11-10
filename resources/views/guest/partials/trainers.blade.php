@@ -5,8 +5,8 @@
         <!-- Header -->
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
             <div>
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <div class="flex items-center gap-2.5 mb-2">
+                    <span class="w-6 h-[2px] bg-red-600"></span>
                     <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">COACHING STAFF</span>
                 </div>
                 <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">

@@ -19,6 +19,11 @@ class GuestController extends Controller
         return view('welcome', compact('packages'));
     }
 
+    public function facilities()
+    {
+        return view('guest.facilities');
+    }
+
     public function registerInterest(Request $request)
     {
         $request->validate([
