@@ -46,7 +46,7 @@
       }"
       @resize.window="if (window.innerWidth >= 1024) { mobileMenuOpen = false; sidebarOpen = true; }">
 
-    <div class="flex min-h-screen">
+    <div class="flex min-h-screen lg:h-screen lg:overflow-hidden">
 
         <!-- Mobile Sidebar Overlay -->
         <div x-show="mobileMenuOpen"
@@ -60,12 +60,12 @@
              class="fixed inset-0 z-40 bg-black/70 lg:hidden"
              style="display: none;"></div>
 
-        <!-- Sidebar: Industrial, Athletic, Solid (Sticky on Desktop) -->
+        <!-- Sidebar: Industrial, Athletic, Solid (Fixed/Sticky on Desktop) -->
         <aside :class="[
                    mobileMenuOpen ? 'translate-x-0' : '-translate-x-full',
                    sidebarOpen ? 'lg:w-64' : 'lg:w-20'
                ]"
-               class="fixed inset-y-0 left-0 z-50 w-72 lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen lg:inset-auto
+               class="fixed inset-y-0 left-0 z-50 w-72 lg:translate-x-0 lg:static lg:h-screen lg:inset-auto
                       bg-white dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-800
                       transition-all duration-200 flex flex-col shrink-0">
 
@@ -140,20 +140,21 @@
         </aside>
 
         <!-- Main Content Area -->
-        <div class="flex-1 flex flex-col min-w-0">
+        <div class="flex-1 flex flex-col min-w-0 lg:h-screen lg:overflow-hidden">
             <!-- Top Bar: Crisp, Solid, Functional -->
-            <header class="sticky top-0 z-30 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 sm:px-6 py-3 h-16 flex items-center justify-between">
+            <header class="shrink-0 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 px-4 sm:px-6 py-3 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <!-- Mobile hamburger -->
                     <button @click="mobileMenuOpen = true"
-                            class="lg:hidden p-1.5 -ml-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded text-zinc-600 dark:text-zinc-400 transition">
+                            class="lg:hidden p-1.5 -ml-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded text-zinc-600 dark:text-zinc-400 transition"
+                            title="Buka Menu Navigasi">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
                     <div>
-                        <h2 class="font-montserrat text-sm sm:text-base font-bold uppercase tracking-wider text-zinc-900 dark:text-white leading-tight">@yield('header', 'Dashboard')</h2>
-                        <p class="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 hidden sm:block">{{ now()->translatedFormat('l, d F Y') }}</p>
+                        <h2 class="font-montserrat text-sm sm:text-base font-bold uppercase tracking-wider text-zinc-900 dark:text-white leading-tight">@yield('header', 'Dashboard Monitoring')</h2>
+                        <p class="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">{{ now()->translatedFormat('l, d F Y') }}</p>
                     </div>
                 </div>
 

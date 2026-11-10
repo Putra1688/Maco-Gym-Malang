@@ -15,19 +15,16 @@ class Member extends Model
         'phone',
         'gender',
         'birth_date',
-        'branch',
-        'target_weight_kg',
-        'fitness_goal',
         'join_date',
         'current_expiry_date',
         'status',
+        'package_name',
     ];
 
     protected $casts = [
         'birth_date' => 'date',
         'join_date' => 'date',
         'current_expiry_date' => 'date',
-        'target_weight_kg' => 'decimal:2',
     ];
 
     public function user(): BelongsTo
@@ -45,19 +42,28 @@ class Member extends Model
         return $this->hasMany(Attendance::class);
     }
 
-    public function progresses(): HasMany
-    {
-        return $this->hasMany(MemberProgress::class);
-    }
-
-    public function routines(): HasMany
-    {
-        return $this->hasMany(MemberRoutine::class);
-    }
-
     public function isActive(): bool
     {
         return $this->status === 'active' && $this->current_expiry_date >= now()->startOfDay();
+    }
+
+    public function isPending(): bool
+    {
+        return $this->status === 'pending_verification';
+    }
+
+    public function getSelectedPackageNameAttribute(): string
+    {
+        if (! empty($this->package_name)) {
+            return $this->package_name;
+        }
+
+        $latestTx = $this->transactions->sortByDesc('created_at')->first();
+        if ($latestTx?->package) {
+            return $latestTx->package->name;
+        }
+
+        return 'Paket Reguler';
     }
 
     public function daysRemaining(): int
@@ -70,35 +76,5 @@ class Member extends Model
         return $this->attendances()
             ->where('checkin_time', '>=', now()->startOfMonth())
             ->count();
-    }
-
-    public function latestProgress(): ?MemberProgress
-    {
-        return $this->progresses()->latest('recorded_at')->first();
-    }
-
-    public function latestBmi(): ?float
-    {
-        $latest = $this->latestProgress();
-        if (! $latest || $latest->height_cm <= 0) {
-            return null;
-        }
-
-        $heightInMeters = $latest->height_cm / 100;
-
-        return round($latest->weight_kg / ($heightInMeters * $heightInMeters), 1);
-    }
-
-    public function weightChange(): ?float
-    {
-        $all = $this->progresses()->oldest('recorded_at')->get();
-        if ($all->count() < 2) {
-            return 0.0;
-        }
-
-        $first = (float) $all->first()->weight_kg;
-        $latest = (float) $all->last()->weight_kg;
-
-        return round($latest - $first, 1);
     }
 }

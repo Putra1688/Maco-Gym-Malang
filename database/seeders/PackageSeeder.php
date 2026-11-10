@@ -9,42 +9,50 @@ class PackageSeeder extends Seeder
 {
     public function run(): void
     {
+        Package::query()->delete();
+
         $packages = [
             [
-                'name' => 'Visit Harian',
+                'name' => 'Daily Pass (Visit Harian)',
                 'type' => 'daily_visit',
                 'price' => 25000,
                 'duration_days' => 1,
+                'is_active' => true,
             ],
             [
-                'name' => '1 Bulan',
+                'name' => '1 Bulan Reguler (Basic Plan)',
                 'type' => 'membership',
-                'price' => 200000,
+                'price' => 175000,
                 'duration_days' => 30,
+                'is_active' => true,
             ],
             [
-                'name' => '3 Bulan',
+                'name' => '3 Bulan Hemat (Standard Plan)',
                 'type' => 'membership',
-                'price' => 500000,
+                'price' => 450000,
                 'duration_days' => 90,
+                'is_active' => true,
             ],
             [
-                'name' => '6 Bulan',
+                'name' => '1 Bulan Mahasiswa (KTM)',
                 'type' => 'membership',
-                'price' => 900000,
-                'duration_days' => 180,
+                'price' => 135000,
+                'duration_days' => 30,
+                'is_active' => true,
             ],
             [
-                'name' => '1 Tahun',
+                'name' => '3 Bulan Mahasiswa (KTM)',
                 'type' => 'membership',
-                'price' => 1500000,
-                'duration_days' => 365,
+                'price' => 360000,
+                'duration_days' => 90,
+                'is_active' => true,
             ],
             [
-                'name' => 'Personal Trainer / Sesi',
+                'name' => 'Personal Trainer 12 Sesi',
                 'type' => 'personal_trainer',
-                'price' => 150000,
-                'duration_days' => 1,
+                'price' => 1250000,
+                'duration_days' => 30,
+                'is_active' => true,
             ],
         ];
 

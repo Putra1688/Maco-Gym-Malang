@@ -26,7 +26,7 @@
                 <option value="">SEMUA STATUS</option>
                 <option value="active" {{ request('status') === 'active' ? 'selected' : '' }}>AKTIF</option>
                 <option value="expired" {{ request('status') === 'expired' ? 'selected' : '' }}>KADALUARSA</option>
-                <option value="pending_verification" {{ request('status') === 'pending_verification' ? 'selected' : '' }}>PENDING</option>
+                <option value="pending_verification" {{ in_array(request('status'), ['pending_verification', 'pending']) ? 'selected' : '' }}>PENDING</option>
             </select>
 
             <button type="submit" class="px-3.5 py-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 font-semibold text-xs rounded transition">
@@ -85,13 +85,23 @@
                             {{ $m->gender === 'male' ? 'LAKI-LAKI' : ($m->gender === 'female' ? 'PEREMPUAN' : '-') }}
                         </td>
                         <td class="px-4 sm:px-6 py-3.5 text-xs font-mono">
-                            <p class="font-bold text-zinc-800 dark:text-zinc-200">{{ $m->current_expiry_date->format('d M Y') }}</p>
-                            <p class="text-[11px] {{ $isExpired ? 'text-red-500 font-bold' : ($daysLeft <= 3 ? 'text-amber-500 font-bold' : 'text-zinc-400') }}">
-                                {{ $isExpired ? 'KADALUARSA' : "SISA {$daysLeft} HARI" }}
-                            </p>
+                            @if($m->status === 'pending_verification')
+                                <p class="font-bold text-zinc-800 dark:text-zinc-200">{{ $m->selected_package_name }}</p>
+                                <p class="text-[11px] text-amber-500 font-bold">MENUNGGU AKTIVASI</p>
+                            @else
+                                <p class="font-bold text-zinc-800 dark:text-zinc-200">{{ $m->current_expiry_date->format('d M Y') }}</p>
+                                <p class="text-[11px] {{ $isExpired ? 'text-red-500 font-bold' : ($daysLeft <= 3 ? 'text-amber-500 font-bold' : 'text-zinc-400') }}">
+                                    {{ $isExpired ? 'KADALUARSA' : "SISA {$daysLeft} HARI" }}
+                                </p>
+                            @endif
                         </td>
                         <td class="px-4 sm:px-6 py-3.5">
-                            @if($isExpired)
+                            @if($m->status === 'pending_verification')
+                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                PENDING
+                            </span>
+                            @elseif($isExpired)
                             <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60">
                                 EXPIRED
                             </span>
@@ -105,7 +115,7 @@
                             </span>
                             @else
                             <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
-                                PENDING
+                                {{ strtoupper($m->status) }}
                             </span>
                             @endif
                         </td>
@@ -113,7 +123,7 @@
                             <div class="inline-flex items-center gap-1.5">
                                 <a href="{{ $waUrl }}"
                                    target="_blank"
-                                   title="Chat WhatsApp Reminder"
+                                   title="Chat WhatsApp"
                                    class="p-1.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition border border-emerald-200 dark:border-emerald-900/60">
                                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
@@ -124,6 +134,13 @@
                                    class="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-semibold rounded transition border border-zinc-200 dark:border-zinc-700">
                                     Detail
                                 </a>
+
+                                @if($m->status === 'pending_verification')
+                                <a href="{{ route('admin.members.show', ['member' => $m->id, 'verify' => 1]) }}"
+                                   class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold font-montserrat uppercase tracking-wider rounded transition">
+                                    Verifikasi
+                                </a>
+                                @endif
 
                                 <a href="{{ route('admin.members.edit', $m) }}"
                                    class="p-1.5 text-zinc-400 hover:text-red-600 dark:hover:text-red-400 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"

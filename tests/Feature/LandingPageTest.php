@@ -37,12 +37,12 @@ class LandingPageTest extends TestCase
         // Testimonials Section
         $response->assertSee('WHAT OUR MEMBERS SAY');
 
-        // Pricing Section (3 Main Plans: Basic, Standard, Student)
+        // Pricing Section (3 Main Categories: Membership, PT Single, PT Couples)
         $response->assertSee('CHOOSE YOUR');
         $response->assertSee('PLAN');
-        $response->assertSee('BASIC PLAN');
-        $response->assertSee('STANDARD PLAN');
-        $response->assertSee('STUDENT PLAN');
+        $response->assertSee('MEMBERSHIP');
+        $response->assertSee('PERSONAL TRAINER SINGLE');
+        $response->assertSee('PERSONAL TRAINER COUPLES');
 
         // Personal Trainer Section
         $response->assertSee('Coach Rangga Pratama');

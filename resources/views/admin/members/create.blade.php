@@ -31,7 +31,10 @@
         </div>
         @endif
 
-        <form action="{{ route('admin.members.store') }}" method="POST" class="space-y-5">
+        <form action="{{ route('admin.members.store') }}"
+              method="POST"
+              onsubmit="if(this.submitting) return false; this.submitting = true; document.getElementById('submit-member-btn').disabled = true; document.getElementById('submit-member-btn').textContent = 'Mendaftarkan...';"
+              class="space-y-5">
             @csrf
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -46,7 +49,7 @@
                            required
                            placeholder="Contoh: MC-001"
                            class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded text-sm font-mono font-bold text-red-600 dark:text-red-400 uppercase outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
-                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Nomor fisik pada kartu member.</p>
+                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Nomor fisik pada kartu RFID/Barcode.</p>
                 </div>
 
                 <!-- Nama Lengkap -->
@@ -92,10 +95,25 @@
             </div>
 
             <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <!-- Status Pendaftaran -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
+                        Status Pendaftaran <span class="text-red-600">*</span>
+                    </label>
+                    <select name="status"
+                            class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 text-zinc-900 dark:text-white font-semibold">
+                        <option value="active" {{ old('status', 'active') === 'active' ? 'selected' : '' }}>AKTIF (Pembayaran Lunas & Verifikasi Langsung)</option>
+                        <option value="pending_verification" {{ old('status') === 'pending_verification' ? 'selected' : '' }}>PENDING (Menunggu Pembayaran & Verifikasi)</option>
+                    </select>
+                    <p class="text-[11px] text-zinc-400 font-mono mt-1">
+                        Pilih <strong>PENDING</strong> jika member baru mendaftar dan belum menyelesaikan proses aktivasi/pembayaran.
+                    </p>
+                </div>
+
                 <!-- Paket Membership Awal -->
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
-                        Paket Membership Awal <span class="text-red-600">*</span>
+                        Paket Membership yang Dipilih <span class="text-red-600">*</span>
                     </label>
                     <select name="package_id"
                             required
@@ -108,7 +126,9 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
 
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
                 <!-- Metode Pembayaran -->
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
@@ -128,6 +148,22 @@
                             <span>Transfer</span>
                         </label>
                     </div>
+                    <p class="text-[11px] text-zinc-400 font-mono mt-1">* Jika status Pending, transaksi kas baru tercatat saat diverifikasi.</p>
+                </div>
+
+                <!-- Opsi Langsung Check-in Walk-in -->
+                <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 flex items-center">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="checkbox"
+                               name="checkin_now"
+                               value="1"
+                               checked
+                               class="w-4 h-4 text-red-600 rounded focus:ring-red-500">
+                        <div>
+                            <span class="text-xs font-bold text-zinc-900 dark:text-white">Langsung catat presensi check-in hari ini</span>
+                            <p class="text-[11px] text-zinc-500">Otomatis mencatat check-in awal (khusus pendaftaran aktif).</p>
+                        </div>
+                    </label>
                 </div>
             </div>
 
@@ -137,7 +173,8 @@
                     Batal
                 </a>
                 <button type="submit"
-                        class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded transition">
+                        id="submit-member-btn"
+                        class="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded transition cursor-pointer disabled:opacity-50">
                     Simpan & Daftarkan Member
                 </button>
             </div>
