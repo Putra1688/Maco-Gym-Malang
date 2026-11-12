@@ -32,8 +32,8 @@
             <!-- Middle: About Copy & Action Button -->
             <div class="lg:col-span-5 space-y-6">
                 <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                    <div class="flex items-center gap-2.5 mb-2">
+                        <span class="w-6 h-[2px] bg-red-600"></span>
                         <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">ABOUT MACO GYM</span>
                     </div>
                     <h3 class="font-montserrat text-2xl sm:text-4xl font-bold uppercase text-zinc-900 tracking-tight">
@@ -46,60 +46,64 @@
                 </p>
 
                 <div>
-                    <a href="#cara-daftar" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/25">
-                        <span>MORE ABOUT US</span>
-                        <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    <a href="https://maps.app.goo.gl/E7yMwHe1PAcArsrH9" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold font-montserrat uppercase tracking-wider transition-all duration-200 shadow-lg shadow-red-600/25 hover:-translate-y-0.5">
+                        <i class="fa-solid fa-location-dot text-sm"></i>
+                        <span>LIHAT LOKASI DI GOOGLE MAPS</span>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                     </a>
                 </div>
             </div>
 
-            <!-- Right: 2x2 Stats Grid with Circular Icons -->
-            <div class="lg:col-span-3 grid grid-cols-2 gap-6 sm:gap-8">
+            <!-- Right: 2x2 Stats Grid with Athletic Icons -->
+            <div class="lg:col-span-3 grid grid-cols-2 gap-4 sm:gap-6">
                 
                 <!-- Stat 1 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2">
-                    <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
+                        <i class="fa-solid fa-clock"></i>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-bold text-zinc-900">7+</div>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500">YEARS EXPERIENCE</div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">7+</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">YEARS EXPERIENCE</div>
+                    </div>
                 </div>
 
                 <!-- Stat 2 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2">
-                    <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
+                        <i class="fa-solid fa-users"></i>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-bold text-zinc-900">1.5K+</div>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500">HAPPY MEMBERS</div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">1.5K+</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">HAPPY MEMBERS</div>
+                    </div>
                 </div>
 
                 <!-- Stat 3 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2">
-                    <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h3m12 0h3M5 6v12M19 6v12M3 18h3m12 0h3M7 10h10M7 14h10M7 7h2v10H7zm8 0h2v10h-2z" />
-                        </svg>
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
+                        <i class="fa-solid fa-dumbbell"></i>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-bold text-zinc-900">50+</div>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500">MODERN MACHINES</div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">50+</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">MODERN MACHINES</div>
+                    </div>
                 </div>
 
                 <!-- Stat 4 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2">
-                    <div class="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
+                        <i class="fa-solid fa-trophy"></i>
                     </div>
-                    <div class="text-2xl sm:text-3xl font-bold text-zinc-900">100+</div>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500">TRANSFORMATIONS</div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">100+</div>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">TRANSFORMATIONS</div>
+                    </div>
                 </div>
 
             </div>

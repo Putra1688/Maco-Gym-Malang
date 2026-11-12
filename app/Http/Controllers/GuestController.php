@@ -44,7 +44,12 @@ class GuestController extends Controller
         return view('guest.pricing.pt-couples');
     }
 
-    public function registerInterest(Request $request): RedirectResponse
+    public function facilities()
+    {
+        return view('guest.facilities');
+    }
+
+    public function registerInterest(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',

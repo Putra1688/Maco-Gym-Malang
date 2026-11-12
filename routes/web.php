@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::get('/fasilitas', [GuestController::class, 'facilities'])->name('facilities.index');
 Route::view('/kalkulator-bmi', 'bmi.bmi')->name('bmi.index');
 Route::get('/register', [GuestController::class, 'showRegister'])->name('register');
 Route::post('/register-interest', [GuestController::class, 'registerInterest'])->name('register.interest');
