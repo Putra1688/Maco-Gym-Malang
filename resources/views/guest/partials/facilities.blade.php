@@ -116,9 +116,6 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
             </a>
-            <p class="text-[11px] text-zinc-500 mt-2.5 font-medium">
-                Lihat detail 8 zona fasilitas gym, daftar program lengkap, dan jadwal bimbingan coach di Kota Malang.
-            </p>
         </div>
 
     </div>
