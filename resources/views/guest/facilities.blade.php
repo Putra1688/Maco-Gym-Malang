@@ -35,24 +35,25 @@
     <!-- Navbar & Top Info Bar -->
     @include('guest.partials.navbar')
 
-    <!-- Main Content Area with Top Spacing for Fixed Header -->
-    <main class="flex-grow pt-[64px] sm:pt-[80px] lg:pt-[106px]">
+    <!-- Main Content Area with Fullscreen Hero Matching Home Banner -->
+    <main class="flex-grow">
 
         <!-- ================= 1. HERO SECTION & BREADCRUMB ================= -->
-        <section class="relative bg-zinc-950 text-white overflow-hidden py-16 sm:py-20 lg:py-24 border-b border-zinc-200">
-            <!-- Background Image with Dark & Red Gradient -->
+        <section class="relative h-[100dvh] min-h-[520px] max-h-[920px] flex flex-col justify-center overflow-hidden bg-zinc-950 text-white pt-20 sm:pt-24 lg:pt-28 pb-6 border-b border-zinc-200">
+            <!-- Background Image with Directional Dark Gradient (Exact Match with Home Hero) -->
             <div class="absolute inset-0 z-0">
                 <img src="{{ asset('images/about-gym.jpg') }}"
                      alt="Fasilitas Maco Gym Malang"
-                     class="w-full h-full object-cover object-center filter brightness-40 contrast-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
+                     class="w-full h-full object-cover object-center filter brightness-50 contrast-105">
+                <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 sm:via-zinc-950/80 to-transparent w-full md:w-3/4 lg:w-3/5 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/30 to-transparent pointer-events-none"></div>
                 <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
             </div>
 
-            <div class="relative z-10 w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
+            <div class="relative z-10 w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 my-auto text-left flex flex-col items-start space-y-4 sm:space-y-5">
                 
                 <!-- Breadcrumb -->
-                <nav aria-label="Breadcrumb" class="mb-6">
+                <nav aria-label="Breadcrumb">
                     <ol class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
                         <li>
                             <a href="{{ route('home') }}" class="hover:text-red-500 transition-colors">Beranda</a>
@@ -67,9 +68,10 @@
                 </nav>
 
                 <div class="max-w-3xl space-y-4">
-                    <!-- Eyebrow Badge (Clean Minimalist Pill) -->
-                    <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-red-950/80 border border-red-500/50 backdrop-blur-md shadow-sm">
-                        <span class="text-[11px] font-bold uppercase tracking-widest text-red-400 font-montserrat">
+                    <!-- Eyebrow Tagline -->
+                    <div class="inline-flex items-center gap-2.5">
+                        <span class="w-6 h-[2px] bg-red-500"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-red-500 font-montserrat">
                             STANDAR ALAT & KENYAMANAN MEMBER
                         </span>
                     </div>
@@ -109,18 +111,17 @@
         <section id="zonasi-fasilitas" class="py-20 lg:py-24 bg-white border-b border-zinc-200">
             <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
                 
-                <!-- Section Header (Clean Athletic Accent) -->
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
-                    <div>
-                        <div class="inline-flex items-center gap-2.5 mb-2">
-                            <span class="w-6 h-[2px] bg-red-600"></span>
-                            <span class="text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">GYM FACILITIES</span>
-                        </div>
-                        <h2 class="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-black uppercase text-zinc-900 tracking-tight">
-                            8 ZONASI FASILITAS <span class="text-red-600">MACO GYM</span>
-                        </h2>
+                <!-- Section Header (Clean Centered Athletic Hierarchy) -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="flex items-center justify-center gap-3 mb-1">
+                        <span class="w-8 h-[2px] bg-red-600"></span>
+                        <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">GYM FACILITIES</span>
+                        <span class="w-8 h-[2px] bg-red-600"></span>
                     </div>
-                    <p class="text-xs sm:text-sm text-zinc-600 max-w-md leading-relaxed">
+                    <h2 class="font-montserrat text-3xl sm:text-5xl font-black uppercase text-zinc-900 tracking-tight">
+                        8 ZONASI FASILITAS <span class="text-red-600">MACO GYM</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
                         Seluruh area dirancang ergonomis dengan sirkulasi udara dingin dan ruang gerak lapang agar sesi latihanmu aman, fokus, dan efektif.
                     </p>
                 </div>
@@ -338,12 +339,10 @@
                                  alt="Strength and Powerbuilding Maco Gym"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-3 py-1 rounded-md shadow">
-                                Kekuatan Murni
-                            </span>
                         </div>
                         <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                             <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Kekuatan Murni</span>
                                 <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                                     Strength & Powerbuilding
                                 </h3>
@@ -371,12 +370,10 @@
                                  alt="Fat Loss & HIIT Conditioning Maco Gym"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-white px-3 py-1 rounded-md shadow">
-                                Pembakaran Kalori
-                            </span>
                         </div>
                         <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                             <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Pembakaran Kalori</span>
                                 <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                                     Fat Loss & HIIT Conditioning
                                 </h3>
@@ -404,12 +401,10 @@
                                  alt="Hypertrophy Program Maco Gym"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-3 py-1 rounded-md shadow">
-                                Pembentukan Tubuh
-                            </span>
                         </div>
                         <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                             <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Pembentukan Tubuh</span>
                                 <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                                     Hypertrophy & Muscle Sculpting
                                 </h3>
@@ -437,12 +432,10 @@
                                  alt="Functional Mobility Maco Gym"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider bg-zinc-900 text-white px-3 py-1 rounded-md shadow">
-                                Mobilitas Sendi
-                            </span>
                         </div>
                         <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                             <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Mobilitas Sendi</span>
                                 <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                                     Mobility & Active Recovery
                                 </h3>
@@ -470,12 +463,10 @@
                                  alt="Beginner and Student Gym Orientation"
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-3 py-1 rounded-md shadow">
-                                Ramah Pemula
-                            </span>
                         </div>
                         <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                             <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Ramah Pemula</span>
                                 <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                                     Student & Beginner Orientation
                                 </h3>
@@ -503,12 +494,10 @@
                                  alt="Personal Trainer Maco Gym"
                                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                            <span class="absolute top-3.5 left-3.5 text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white px-3 py-1 rounded-md shadow">
-                                Privat & Terarah
-                            </span>
                         </div>
                         <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
                             <div>
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Privat & Terarah</span>
                                 <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
                                     1-on-1 Personal Coaching
                                 </h3>
@@ -538,17 +527,17 @@
         <section class="py-20 lg:py-24 bg-white border-b border-zinc-200">
             <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
 
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
-                    <div>
-                        <div class="flex items-center gap-2.5 mb-2">
-                            <span class="w-6 h-[2px] bg-red-600"></span>
-                            <span class="text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">CERTIFIED COACHES</span>
-                        </div>
-                        <h2 class="font-montserrat text-2xl sm:text-4xl lg:text-5xl font-black uppercase text-zinc-900 tracking-tight">
-                            DIDUKUNG OLEH <span class="text-red-600">COACH BERPENGALAMAN</span>
-                        </h2>
+                <!-- Section Header (Clean Centered Athletic Hierarchy) -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <div class="flex items-center justify-center gap-3 mb-1">
+                        <span class="w-8 h-[2px] bg-red-600"></span>
+                        <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">CERTIFIED COACHES</span>
+                        <span class="w-8 h-[2px] bg-red-600"></span>
                     </div>
-                    <p class="text-xs sm:text-sm text-zinc-600 max-w-md leading-relaxed">
+                    <h2 class="font-montserrat text-3xl sm:text-5xl font-black uppercase text-zinc-900 tracking-tight">
+                        DIDUKUNG OLEH <span class="text-red-600">COACH BERPENGALAMAN</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
                         Form latihan yang benar adalah kunci utama menghindari cedera. Tim coach Maco Gym siap memberikan koreksi teknik dan konsultasi program.
                     </p>
                 </div>
@@ -613,10 +602,12 @@
             <div class="absolute -top-24 -right-24 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10 text-center space-y-6">
-                <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-red-950/80 border border-red-500/50">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-red-400 font-montserrat">
+                <div class="flex items-center justify-center gap-3">
+                    <span class="w-8 h-[2px] bg-red-600"></span>
+                    <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-500 font-montserrat">
                         GABUNG SEKARANG JUGA
                     </span>
+                    <span class="w-8 h-[2px] bg-red-600"></span>
                 </div>
 
                 <h2 class="font-montserrat text-3xl sm:text-5xl font-black uppercase text-white tracking-tight max-w-2xl mx-auto leading-tight">
