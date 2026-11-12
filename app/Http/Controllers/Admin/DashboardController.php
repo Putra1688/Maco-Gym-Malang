@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Attendance;
 use App\Models\Member;
+use App\Models\Package;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\View\View;
@@ -19,9 +20,33 @@ class DashboardController extends Controller
             ->where('current_expiry_date', '>=', $now->toDateString())
             ->count();
 
+        $totalPendingMembers = Member::where('status', 'pending_verification')->count();
+
+        $totalExpiredMembers = Member::where(function ($q) use ($now) {
+            $q->where('status', 'expired')
+                ->orWhere(function ($sub) use ($now) {
+                    $sub->where('status', 'active')
+                        ->where('current_expiry_date', '<', $now->toDateString());
+                });
+        })->count();
+
+        $totalExpiringCount = Member::where('status', 'active')
+            ->whereBetween('current_expiry_date', [$now->toDateString(), $now->copy()->addDays(3)->toDateString()])
+            ->count();
+
         $expiringMembers = Member::where('status', 'active')
             ->whereBetween('current_expiry_date', [$now->toDateString(), $now->copy()->addDays(3)->toDateString()])
             ->orderBy('current_expiry_date', 'asc')
+            ->limit(3)
+            ->get();
+
+        $pendingMembers = Member::where('status', 'pending_verification')
+            ->latest('created_at')
+            ->limit(3)
+            ->get();
+
+        $packages = Package::where('type', 'membership')
+            ->where('is_active', true)
             ->get();
 
         $todayMemberAttendance = Attendance::where('type', 'member')
@@ -42,12 +67,12 @@ class DashboardController extends Controller
 
         $recentTransactions = Transaction::with(['member', 'package', 'creator'])
             ->latest('created_at')
-            ->limit(6)
+            ->limit(3)
             ->get();
 
         $recentAttendances = Attendance::with('member')
             ->latest('checkin_time')
-            ->limit(6)
+            ->limit(3)
             ->get();
 
         // -----------------------------------------------------------------
@@ -123,7 +148,7 @@ class DashboardController extends Controller
         $dayCounts = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0, 7 => 0];
         $distinctDatesPerDay = [1 => [], 2 => [], 3 => [], 4 => [], 5 => [], 6 => [], 7 => []];
 
-        $allAttendances = Attendance::with('member')->latest('checkin_time')->get();
+        $allAttendances = Attendance::select('checkin_time')->latest('checkin_time')->get();
         foreach ($allAttendances as $att) {
             if (! $att->checkin_time) {
                 continue;
@@ -206,18 +231,10 @@ class DashboardController extends Controller
                 $attendancesByDate[$dateKey] = [
                     'total' => 0,
                     'hours' => [],
-                    'records' => [],
                 ];
             }
             $attendancesByDate[$dateKey]['total']++;
             $attendancesByDate[$dateKey]['hours'][$hourKey] = ($attendancesByDate[$dateKey]['hours'][$hourKey] ?? 0) + 1;
-            $attendancesByDate[$dateKey]['records'][] = [
-                'time' => $dt->format('H:i').' WIB',
-                'name' => $att->type === 'member' ? ($att->member?->name ?? 'Member') : ($att->guest_name ?? 'Tamu Harian'),
-                'card_id' => $att->type === 'member' ? ($att->member?->card_id ?? '-') : 'Tiket Non-Member',
-                'type' => $att->type,
-                'notes' => $att->notes ?? 'Presensi reguler',
-            ];
         }
 
         // Daftar Pilihan Bulan (Mulai 6 Bulan Lalu s/d 2 Bulan Mendatang untuk Pengujian Masa Depan)
@@ -245,7 +262,12 @@ class DashboardController extends Controller
 
         return view('admin.dashboard', compact(
             'totalActiveMembers',
+            'totalPendingMembers',
+            'totalExpiredMembers',
+            'totalExpiringCount',
             'expiringMembers',
+            'pendingMembers',
+            'packages',
             'todayMemberAttendance',
             'todayGuestAttendance',
             'todayAttendance',

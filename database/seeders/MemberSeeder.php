@@ -278,5 +278,38 @@ class MemberSeeder extends Seeder
                 'notes' => 'Tiket '.$dailyPkg->name,
             ]);
         }
+
+        // -------------------------------------------------------------
+        // 6. Calon Member Baru (Pending Verifikasi Registrasi Online)
+        // -------------------------------------------------------------
+        $pendingCandidates = [
+            [
+                'card_id' => 'REG-'.now()->format('ymd').'-77A1',
+                'name' => 'Gilang Purnomo',
+                'phone' => '081234567890',
+                'gender' => 'male',
+                'package_name' => '3 Month - Rp 375.000',
+            ],
+            [
+                'card_id' => 'REG-'.now()->format('ymd').'-88B2',
+                'name' => 'Nadia Amanda',
+                'phone' => '081287395627',
+                'gender' => 'female',
+                'package_name' => '1 Month - Rp 130.000',
+            ],
+        ];
+
+        foreach ($pendingCandidates as $cand) {
+            Member::create([
+                'card_id' => $cand['card_id'],
+                'name' => $cand['name'],
+                'phone' => $cand['phone'],
+                'gender' => $cand['gender'],
+                'join_date' => now()->toDateString(),
+                'current_expiry_date' => now()->toDateString(),
+                'status' => 'pending_verification',
+                'package_name' => $cand['package_name'],
+            ]);
+        }
     }
 }

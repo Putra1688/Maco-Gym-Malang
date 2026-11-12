@@ -18,6 +18,7 @@ class Member extends Model
         'join_date',
         'current_expiry_date',
         'status',
+        'package_name',
     ];
 
     protected $casts = [
@@ -44,6 +45,25 @@ class Member extends Model
     public function isActive(): bool
     {
         return $this->status === 'active' && $this->current_expiry_date >= now()->startOfDay();
+    }
+
+    public function isPending(): bool
+    {
+        return $this->status === 'pending_verification';
+    }
+
+    public function getSelectedPackageNameAttribute(): string
+    {
+        if (! empty($this->package_name)) {
+            return $this->package_name;
+        }
+
+        $latestTx = $this->transactions->sortByDesc('created_at')->first();
+        if ($latestTx?->package) {
+            return $latestTx->package->name;
+        }
+
+        return 'Paket Reguler';
     }
 
     public function daysRemaining(): int

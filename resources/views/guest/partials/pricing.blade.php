@@ -1,169 +1,189 @@
-<!-- Pricing Section (Clean Light Theme with Red Accents - 3 Main Cards) -->
-<section id="pricing" class="py-24 bg-white border-t border-zinc-200 relative">
-    <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
-        
-        <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div class="flex items-center justify-center gap-3 mb-1">
-                <span class="w-8 h-[2px] bg-red-600"></span>
-                <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">MEMBERSHIP PACKAGES</span>
-                <span class="w-8 h-[2px] bg-red-600"></span>
+<!-- Pricing Section (Official Price List Categories) -->
+<section id="pricing" class="py-20 sm:py-24 bg-white border-t border-zinc-200 relative">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+            <div class="flex items-center justify-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">OFFICIAL PRICE LIST</span>
+                <span class="w-2 h-2 rounded-full bg-red-600"></span>
             </div>
-            <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
+            <h2 class="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-zinc-900 tracking-tight">
                 CHOOSE YOUR <span class="text-red-600">PLAN</span>
             </h2>
-            <p class="text-xs sm:text-sm text-zinc-600">
-                Pilih paket membership terbaik yang sesuai kebutuhanmu. Harga transparan tanpa biaya registrasi tersembunyi.
+            <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
+                Pilihan program keanggotaan gym dan sesi latihan privat bersama Coach profesional Maco Gym Malang. Transparan, terjangkau, dan tanpa biaya tersembunyi.
             </p>
         </div>
 
-        <!-- 3 Main Pricing Cards Container Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+        <!-- 3 Main Category Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
 
-            <!-- Card 1: BASIC PLAN (1 Bulan Reguler) -->
-            <div class="pricing-card relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
+            <!-- Kategori 1: MEMBERSHIP -->
+            <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-red-600/10 flex flex-col justify-between overflow-hidden">
                 <div>
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 text-center mb-4 font-montserrat">
-                        BASIC PLAN
-                    </h3>
-
-                    <!-- Price -->
-                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
-                        <div class="flex items-baseline justify-center gap-1">
-                            <span class="text-3xl sm:text-4xl font-black text-zinc-900 font-montserrat">Rp 175K</span>
-                            <span class="text-xs text-zinc-500 font-bold">/bulan</span>
-                        </div>
-                        <span class="text-[11px] text-zinc-500 mt-1 block">Akses 30 Hari Penuh</span>
+                    <!-- Representative Image -->
+                    <div class="relative h-56 sm:h-60 w-full overflow-hidden bg-zinc-900">
+                        <img src="{{ asset('images/about-gym.jpg') }}"
+                             alt="Membership Maco Gym Malang"
+                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter brightness-90 contrast-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-red-600 text-white shadow-md">
+                            KEANGGOTAAN GYM
+                        </span>
                     </div>
 
-                    <!-- Checklist -->
-                    <ul class="space-y-3.5 text-xs text-zinc-600">
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Gym Access Unlimited 06:00 - 22:00</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Basic & Advanced Equipment</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Locker Room & Hot Shower Access</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Free Fitness & Equipment Orientation</span>
-                        </li>
-                    </ul>
+                    <!-- Card Body -->
+                    <div class="p-6 sm:p-7">
+                        <h3 class="font-montserrat text-xl sm:text-2xl font-black uppercase text-zinc-900 tracking-tight mb-2 group-hover:text-red-600 transition-colors">
+                            MEMBERSHIP
+                        </h3>
+                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed mb-6 font-sans">
+                            Pilihan keanggotaan gym untuk reguler, mahasiswa, dan pelajar.
+                        </p>
+
+                        <!-- Key Highlights -->
+                        <div class="space-y-2.5 pt-4 border-t border-zinc-100 text-xs text-zinc-700">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Akses alat beban & cardio unlimited</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Pilihan periode 1, 3, 6, dan 12 bulan</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Tarif hemat khusus pelajar & mahasiswa</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-zinc-100">
-                    <a href="{{ route('register') }}" 
-                       class="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider bg-zinc-900 hover:bg-red-600 text-white transition-all text-center block shadow-sm">
-                        PILIH PAKET INI
+                <!-- CTA Button -->
+                <div class="p-6 sm:p-7 pt-0">
+                    <a href="{{ route('pricing.membership') }}"
+                       class="w-full py-3.5 px-5 rounded-xl bg-zinc-900 group-hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-sm group-hover:shadow-md group-hover:shadow-red-600/30">
+                        <span>LIHAT DETAIL PAKET</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
                     </a>
                 </div>
             </div>
 
-            <!-- Card 2: STANDARD / POPULAR PLAN (3 Bulan Hemat) - Highlighted with Angled Red POPULAR Badge -->
-            <div class="pricing-card relative rounded-2xl bg-white border-2 border-red-600 p-8 flex flex-col justify-between shadow-xl shadow-red-600/15 transform md:-translate-y-2 transition-all duration-300 overflow-hidden">
-                <!-- POPULAR Badge -->
-                <div class="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded shadow">
-                    POPULAR
-                </div>
-
+            <!-- Kategori 2: PERSONAL TRAINER SINGLE -->
+            <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-red-600/10 flex flex-col justify-between overflow-hidden">
                 <div>
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-red-600 text-center mb-4 font-montserrat">
-                        STANDARD PLAN
-                    </h3>
-
-                    <!-- Price -->
-                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
-                        <div class="flex items-baseline justify-center gap-1">
-                            <span class="text-3xl sm:text-4xl font-black text-zinc-900 font-montserrat">Rp 450K</span>
-                            <span class="text-xs text-zinc-500 font-bold">/3 bulan</span>
-                        </div>
-                        <span class="text-[11px] text-red-600 font-bold mt-1 block">Setara Rp 150.000 /bulan (Hemat Rp 75k)</span>
+                    <!-- Representative Image -->
+                    <div class="relative h-56 sm:h-60 w-full overflow-hidden bg-zinc-900">
+                        <img src="{{ asset('images/trainers/coach-kevin.jpg') }}"
+                             alt="Personal Trainer Single Maco Gym"
+                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 filter brightness-90 contrast-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-zinc-900 text-white border border-zinc-700 shadow-md">
+                            1-ON-1 COACHING
+                        </span>
                     </div>
 
-                    <!-- Checklist -->
-                    <ul class="space-y-3.5 text-xs text-zinc-700">
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Gym Access Unlimited (90 Hari)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>All Equipment & Cardio Theater</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Locker, Hot Shower & Musholla</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Personal Assessment & BMI Tracking</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Free Exclusive Shaker Bottle Maco Gym</span>
-                        </li>
-                    </ul>
+                    <!-- Card Body -->
+                    <div class="p-6 sm:p-7">
+                        <h3 class="font-montserrat text-xl sm:text-2xl font-black uppercase text-zinc-900 tracking-tight mb-2 group-hover:text-red-600 transition-colors">
+                            PERSONAL TRAINER SINGLE
+                        </h3>
+                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed mb-6 font-sans">
+                            Program latihan personal dengan satu trainer untuk satu orang.
+                        </p>
+
+                        <!-- Key Highlights -->
+                        <div class="space-y-2.5 pt-4 border-t border-zinc-100 text-xs text-zinc-700">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Privat 1 klien bersama 1 Coach bersertifikat</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Durasi 1–1,5 jam setiap kedatangan</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Pilihan paket 1, 4, 8, 12, 16, hingga 20 sesi</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-zinc-100">
-                    <a href="{{ route('register') }}" 
-                       class="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all text-center block shadow-lg shadow-red-600/30">
-                        PILIH PAKET INI
+                <!-- CTA Button -->
+                <div class="p-6 sm:p-7 pt-0">
+                    <a href="{{ route('pricing.pt-single') }}"
+                       class="w-full py-3.5 px-5 rounded-xl bg-zinc-900 group-hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-sm group-hover:shadow-md group-hover:shadow-red-600/30">
+                        <span>LIHAT DETAIL PAKET</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
                     </a>
                 </div>
             </div>
 
-            <!-- Card 3: STUDENT SPECIAL PLAN (1 Bulan Mahasiswa) -->
-            <div class="pricing-card relative rounded-2xl bg-white border border-zinc-200 p-8 flex flex-col justify-between hover:border-zinc-300 shadow-sm hover:shadow-lg transition-all duration-300">
+            <!-- Kategori 3: PERSONAL TRAINER COUPLES -->
+            <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-600 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-red-600/10 flex flex-col justify-between overflow-hidden">
                 <div>
-                    <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 text-center mb-4 font-montserrat">
-                        STUDENT PLAN (KTM)
-                    </h3>
-
-                    <!-- Price -->
-                    <div class="text-center pb-6 mb-6 border-b border-zinc-100">
-                        <div class="flex items-baseline justify-center gap-1">
-                            <span class="text-3xl sm:text-4xl font-black text-zinc-900 font-montserrat">Rp 135K</span>
-                            <span class="text-xs text-zinc-500 font-bold">/bulan</span>
-                        </div>
-                        <span class="text-[11px] text-zinc-500 mt-1 block">Khusus Mahasiswa & Pelajar Malang</span>
+                    <!-- Representative Image -->
+                    <div class="relative h-56 sm:h-60 w-full overflow-hidden bg-zinc-900">
+                        <img src="{{ asset('images/programs/flexibility.jpg') }}"
+                             alt="Personal Trainer Couples Maco Gym"
+                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter brightness-90 contrast-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-zinc-900 text-white border border-zinc-700 shadow-md">
+                            PARTNER WORKOUT
+                        </span>
                     </div>
 
-                    <!-- Checklist -->
-                    <ul class="space-y-3.5 text-xs text-zinc-600">
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Gym Access Unlimited Seharian Penuh</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>All Equipment Bebas Dipakai Kapan Saja</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Locker Room & Shower Air Hangat</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-600 font-bold">✓</span>
-                            <span>Cukup Tunjukkan KTM (UB/UM/Polinema/UIN/dll)</span>
-                        </li>
-                    </ul>
+                    <!-- Card Body -->
+                    <div class="p-6 sm:p-7">
+                        <h3 class="font-montserrat text-xl sm:text-2xl font-black uppercase text-zinc-900 tracking-tight mb-2 group-hover:text-red-600 transition-colors">
+                            PERSONAL TRAINER COUPLES
+                        </h3>
+                        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed mb-6 font-sans">
+                            Program latihan personal untuk dua orang bersama satu trainer.
+                        </p>
+
+                        <!-- Key Highlights -->
+                        <div class="space-y-2.5 pt-4 border-t border-zinc-100 text-xs text-zinc-700">
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Latihan berdua (pasangan/sahabat) 1 Coach</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Durasi 1–1,5 jam setiap kedatangan</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-600 shrink-0"></span>
+                                <span>Tarif lebih hemat dengan motivasi berdua</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-zinc-100">
-                    <a href="{{ route('register') }}" 
-                       class="w-full py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider bg-zinc-900 hover:bg-red-600 text-white transition-all text-center block shadow-sm">
-                        PILIH PAKET INI
+                <!-- CTA Button -->
+                <div class="p-6 sm:p-7 pt-0">
+                    <a href="{{ route('pricing.pt-couples') }}"
+                       class="w-full py-3.5 px-5 rounded-xl bg-zinc-900 group-hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-sm group-hover:shadow-md group-hover:shadow-red-600/30">
+                        <span>LIHAT DETAIL PAKET</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
                     </a>
                 </div>
             </div>
 
+        </div>
+
+        <!-- Trust & Transparency Footer Note -->
+        <div class="mt-12 text-center text-xs text-zinc-500 font-mono">
+            <span>* Semua harga resmi, transparan, dan dapat diverifikasi langsung di resepsionis Maco Gym Malang.</span>
         </div>
 
     </div>

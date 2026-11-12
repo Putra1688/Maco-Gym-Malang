@@ -16,6 +16,9 @@ return new class extends Migration
             if (! Schema::hasColumn('members', 'birth_date')) {
                 $table->date('birth_date')->nullable()->after('gender');
             }
+            if (! Schema::hasColumn('members', 'package_name')) {
+                $table->string('package_name')->nullable()->after('status');
+            }
 
             $columnsToDrop = [];
             if (Schema::hasColumn('members', 'branch')) {
@@ -102,4 +105,3 @@ return new class extends Migration
         });
     }
 };
-

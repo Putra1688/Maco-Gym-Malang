@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('join_date');
             $table->date('current_expiry_date');
             $table->enum('status', ['active', 'expired', 'pending_verification'])->default('pending_verification');
+            $table->string('package_name')->nullable();
             $table->timestamps();
         });
     }
