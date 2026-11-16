@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none" class="w-full h-full drop-shadow-xl">
+  <defs>
+    <!-- Skin Gradients -->
+    <linearGradient id="skinBerlebih" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="55%" stop-color="#FDBA74"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+    <!-- Fuller Shirt Gradients -->
+    <linearGradient id="shirtBerlebih" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#F8FAFC"/>
+      <stop offset="85%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="softGlowBerlebih" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlowBerlebih)">
+    <!-- Fuller Neck -->
+    <path d="M124 34 C124 10, 196 10, 196 34 L204 92 C184 102, 136 102, 116 92 Z" fill="url(#skinBerlebih)"/>
+    <path d="M132 50 C146 58, 174 58, 188 50" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Left Arm (Fuller / Thicker) -->
+    <path d="M54 104 C40 140, 32 204, 38 268 C44 278, 82 278, 92 262 L112 160 Z" fill="url(#skinBerlebih)"/>
+    <!-- Right Arm (Fuller / Thicker) -->
+    <path d="M266 104 C280 140, 288 204, 282 268 C276 278, 238 278, 228 262 L208 160 Z" fill="url(#skinBerlebih)"/>
+
+    <!-- T-Shirt Torso (Berlebih / Fuller Midsection & Rounded Belly Curve) -->
+    <path d="M112 74 
+             C76 84, 48 104, 44 142 
+             L86 172 
+             L102 152 
+             C94 200, 92 260, 102 320 
+             C132 332, 188 332, 218 320 
+             C228 260, 226 200, 218 152 
+             L234 172 
+             L276 142 
+             C272 104, 244 84, 208 74 
+             C194 96, 126 96, 112 74 Z" 
+          fill="url(#shirtBerlebih)"/>
+
+    <!-- Collar Rim -->
+    <path d="M112 74 C130 100, 190 100, 208 74 C192 90, 128 90, 112 74 Z" fill="#E2E8F0"/>
+    <path d="M112 74 C130 98, 190 98, 208 74" stroke="#CBD5E1" stroke-width="2.2"/>
+
+    <!-- Full Chest Contours -->
+    <path d="M106 174 C130 190, 154 190, 160 182" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+    <path d="M214 174 C190 190, 166 190, 160 182" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- Rounded Abdominal / Midsection Folds (Berlebih) -->
+    <path d="M112 236 C136 254, 184 254, 208 236" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+    <path d="M116 280 C140 294, 180 294, 204 280" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- T-Shirt Bottom Rounded Hem & Shorts -->
+    <path d="M102 320 C132 332, 188 332, 218 320" stroke="#CBD5E1" stroke-width="2.5"/>
+    <path d="M104 322 L98 366 C130 376, 190 376, 222 366 L216 322 Z" fill="#F1F5F9" opacity="0.85"/>
+  </g>
+</svg>
+
