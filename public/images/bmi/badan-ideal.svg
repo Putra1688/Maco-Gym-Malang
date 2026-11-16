@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none" class="w-full h-full drop-shadow-xl">
+  <defs>
+    <!-- Skin Gradients -->
+    <linearGradient id="skinIdeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="50%" stop-color="#FDBA74"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+    <!-- Athletic Shirt Gradients -->
+    <linearGradient id="shirtIdeal" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#F8FAFC"/>
+      <stop offset="85%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <!-- Chest / Pectoral Shadow -->
+    <linearGradient id="chestShade" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlowIdeal" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlowIdeal)">
+    <!-- Muscular Neck & Traps -->
+    <path d="M128 32 C128 10, 192 10, 192 32 L198 90 C182 100, 138 100, 122 90 Z" fill="url(#skinIdeal)"/>
+    <path d="M136 46 C148 54, 172 54, 184 46" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Left Toned Arm & Bicep (Athletic V-Taper) -->
+    <path d="M64 104 C52 136, 44 200, 48 266 C52 276, 88 276, 96 260 L114 156 Z" fill="url(#skinIdeal)"/>
+    <!-- Bicep contour -->
+    <path d="M58 178 C62 196, 76 210, 84 212" stroke="#EA580C" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- Right Toned Arm & Bicep -->
+    <path d="M256 104 C268 136, 276 200, 272 266 C268 276, 232 276, 224 260 L206 156 Z" fill="url(#skinIdeal)"/>
+    <!-- Bicep contour -->
+    <path d="M262 178 C258 196, 244 210, 236 212" stroke="#EA580C" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- T-Shirt Torso (Athletic V-Taper Cut) -->
+    <path d="M116 72 
+             C84 82, 58 102, 54 138 
+             L94 168 
+             L108 148 
+             L112 316 
+             C136 324, 184 324, 208 316 
+             L212 148 
+             L226 168 
+             L266 138 
+             C262 102, 236 82, 204 72 
+             C190 94, 130 94, 116 72 Z" 
+          fill="url(#shirtIdeal)"/>
+
+    <!-- Collar Rim -->
+    <path d="M116 72 C132 98, 188 98, 204 72 C190 88, 130 88, 116 72 Z" fill="#E2E8F0"/>
+    <path d="M116 72 C132 96, 188 96, 204 72" stroke="#CBD5E1" stroke-width="2.2"/>
+
+    <!-- Athletic Pectoral Muscle Definition -->
+    <path d="M114 166 C136 182, 154 182, 160 174" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+    <path d="M206 166 C184 182, 166 182, 160 174" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+    <path d="M160 174 L160 216" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Athletic Abdominal / Core Folds -->
+    <path d="M128 228 C144 234, 176 234, 192 228" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+    <path d="M132 268 C146 274, 174 274, 188 268" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+
+    <!-- T-Shirt Bottom Hem & Shorts -->
+    <path d="M112 316 C136 324, 184 324, 208 316" stroke="#CBD5E1" stroke-width="2.5"/>
+    <path d="M114 318 L110 362 C134 370, 186 370, 210 362 L206 318 Z" fill="#F1F5F9" opacity="0.85"/>
+  </g>
+</svg>
+
