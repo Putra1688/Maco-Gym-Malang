@@ -88,7 +88,7 @@
                     </a>
 
                     @auth
-                        @if(auth()->user()->isAdmin() || auth()->user()->isStaff())
+                        @if(auth()->user()->isAdmin())
                             <a href="{{ route('admin.dashboard') }}"
                                class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md shadow-red-600/20 transform hover:-translate-y-0.5 transition-all">
                                 <span>DASHBOARD</span>
@@ -163,7 +163,7 @@
         </a>
         <div class="pt-4 border-t border-zinc-200 flex flex-col gap-3">
             @auth
-                @if(auth()->user()->isAdmin() || auth()->user()->isStaff())
+                @if(auth()->user()->isAdmin())
                     <a href="{{ route('admin.dashboard') }}"
                        class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 text-sm font-bold uppercase text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md">
                         <span>DASHBOARD ADMIN &rarr;</span>

@@ -20,16 +20,18 @@ class AuthController extends Controller
         $request->validate([
             'phone' => 'required|string',
             'password' => 'required|string',
+            'remember' => 'nullable|boolean',
         ]);
 
         $loginInput = trim($request->input('phone'));
         $password = $request->input('password');
+        $remember = $request->boolean('remember');
 
         // 1. Coba login dengan Nomor Telepon / WhatsApp
         $authenticated = Auth::attempt([
             'phone' => $loginInput,
             'password' => $password,
-        ]);
+        ], $remember);
 
         // 2. Jika gagal, coba login dengan ID Kartu Member (misal MC-001)
         if (! $authenticated) {
@@ -38,7 +40,7 @@ class AuthController extends Controller
                 $authenticated = Auth::attempt([
                     'id' => $member->user_id,
                     'password' => $password,
-                ]);
+                ], $remember);
             }
         }
 
@@ -47,7 +49,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
-            if ($user->isAdmin() || $user->isStaff()) {
+            if ($user->isAdmin()) {
                 return redirect()->intended(route('admin.dashboard'));
             }
 

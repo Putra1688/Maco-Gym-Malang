@@ -48,10 +48,10 @@
 
                 <!-- Header Title -->
                 <div class="max-w-3xl space-y-3">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/40 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
+                    <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/40 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
                         <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                         PARTNER WORKOUT (2 ORANG)
-                    </div>
+                    </div> -->
                     <h1 class="font-montserrat text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
                         PERSONAL TRAINER <span class="text-red-600">COUPLES</span>
                     </h1>
@@ -76,10 +76,10 @@
                         </div>
                         <div>
                             <h2 class="font-montserrat font-black text-sm uppercase tracking-wider text-red-600">
-                                Ketentuan Resmi Sesi Personal Trainer Couples
+                                Ketentuan Resmi Jasa Personal Trainer Couples (Duo)
                             </h2>
                             <p class="text-xs sm:text-sm text-zinc-700 mt-1">
-                                <strong class="text-zinc-900 font-semibold">Durasi latihan 1–1,5 jam per kedatangan</strong> untuk seluruh klien yang menggunakan jasa Personal Trainer Maco Gym Malang. Program ditujukan khusus untuk <span class="font-semibold text-zinc-900">dua orang klien dengan satu personal trainer</span>.
+                                <strong class="text-zinc-900 font-semibold">Durasi latihan 1–1,5 jam per kedatangan</strong> bersama Coach profesional Maco Gym Malang. Program ditujukan khusus untuk <span class="font-semibold text-zinc-900">dua orang klien dengan satu trainer</span>. Jasa Personal Trainer merupakan pendampingan latihan privat dan terpisah dari keanggotaan gym.
                             </p>
                         </div>
                     </div>
@@ -88,18 +88,42 @@
                     </div>
                 </div>
 
+                <!-- Navigation between Categories & WhatsApp Floating Contact -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-200">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Kategori Lain:</span>
+                        <a href="{{ route('pricing.membership') }}"
+                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
+                            &larr; Membership Reguler
+                        </a>
+                        <a href="{{ route('pricing.pt-single') }}"
+                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
+                            &larr; Personal Trainer Single
+                        </a>
+                    </div>
+
+                    <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym, saya ingin menanyakan informasi paket Personal Trainer Couples (2 orang).') }}"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all shadow-sm">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                        </svg>
+                        <span>Konsultasi Duo via WhatsApp</span>
+                    </a>
+                </div>
+
                 <!-- Official Price Table Card -->
                 <div class="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
                     <div class="p-5 sm:p-7 border-b border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span>
+                                <!-- <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span> -->
                                 <h2 class="font-montserrat text-lg sm:text-xl font-black uppercase text-zinc-900 tracking-tight">
                                     Daftar Paket Personal Trainer (Couples / Duo)
                                 </h2>
                             </div>
                             <p class="text-xs text-zinc-500 mt-1">
-                                Biaya tercantum sudah mencakup total untuk 2 orang sekaligus dengan 1 instruktur trainer.
+                                Biaya tercantum sudah mencakup total untuk 2 orang sekaligus dengan 1 instruktur trainer. Hubungi Admin via WhatsApp untuk pemesanan jadwal.
                             </p>
                         </div>
                         <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-zinc-200 text-zinc-800 self-start sm:self-auto shrink-0">
@@ -117,7 +141,7 @@
                                     <th class="px-5 py-3.5">Total Biaya (2 Org)</th>
                                     <th class="px-5 py-3.5 hidden md:table-cell">Setara / Orang / Sesi</th>
                                     <th class="px-5 py-3.5 hidden sm:table-cell">Keterangan</th>
-                                    <th class="px-5 py-3.5 text-right">Aksi</th>
+                                    <th class="px-5 py-3.5 text-right">Pemesanan Sesi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-zinc-200 text-zinc-800">
@@ -134,9 +158,12 @@
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 105.000 / orang</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Trial sesi berdua bersama teman/pasangan</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '1 PT (Couples) - Rp 210.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <span>Pilih</span>
+                                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Couples (1 PT Couples - Rp 210.000 untuk 2 orang).') }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                            <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -154,9 +181,12 @@
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 118.750 / orang</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Program pendek pembentukan rutinitas berdua</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '4 PT (Couples) - Rp 950.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <span>Pilih</span>
+                                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Couples (4 PT Couples - Rp 950.000 untuk 2 orang).') }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                            <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -179,9 +209,12 @@
                                     <td class="px-5 py-4 font-mono text-xs font-bold text-zinc-800 hidden md:table-cell">Rp 75.000 / orang</td>
                                     <td class="px-5 py-4 text-xs text-zinc-700 hidden sm:table-cell">Pilihan favorit sebulan: 2x seminggu bersama partner</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '8 PT (Couples) - Rp 1.200.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <span>Daftar</span>
+                                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Couples (8 PT Couples - Rp 1.200.000 untuk 2 orang).') }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                            <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -199,9 +232,12 @@
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 77.083 / orang</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Program 1 bulan intensif (3x seminggu berdua)</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '12 PT (Couples) - Rp 1.850.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <span>Pilih</span>
+                                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Couples (12 PT Couples - Rp 1.850.000 untuk 2 orang).') }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                            <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -219,9 +255,12 @@
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 67.187 / orang</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Transformasi postur & kebugaran jangka menengah</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '16 PT (Couples) - Rp 2.150.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <span>Pilih</span>
+                                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Couples (16 PT Couples - Rp 2.150.000 untuk 2 orang).') }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                            <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -244,9 +283,12 @@
                                     <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 hidden md:table-cell">Rp 66.250 / orang</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Paket paling hemat untuk transformasi berpasangan 2 bulan</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '20 PT (Couples) - Rp 2.650.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <span>Pilih</span>
+                                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Couples (20 PT Couples - Rp 2.650.000 untuk 2 orang).') }}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                            <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
@@ -299,31 +341,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Navigation between Categories & WhatsApp Floating Contact -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-200">
-                    <div class="flex flex-wrap items-center gap-3">
-                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Kategori Lain:</span>
-                        <a href="{{ route('pricing.membership') }}"
-                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
-                            &larr; Membership Reguler
-                        </a>
-                        <a href="{{ route('pricing.pt-single') }}"
-                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
-                            &larr; Personal Trainer Single
-                        </a>
-                    </div>
-
-                    <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym, saya ingin menanyakan informasi paket Personal Trainer Couples (2 orang).') }}"
-                       target="_blank"
-                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all shadow-sm">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-                        </svg>
-                        <span>Konsultasi Duo via WhatsApp</span>
-                    </a>
-                </div>
-
             </div>
         </section>
 

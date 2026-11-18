@@ -78,6 +78,10 @@ class ManagementSystemTest extends TestCase
         $checkinResponse->assertSessionHas('checkin_status', 'active');
 
         // Checkin Member MC-002 (Hampir Habis H-2)
+        Member::where('card_id', 'MC-002')->update([
+            'current_expiry_date' => now()->addDays(2)->toDateString(),
+            'status' => 'active',
+        ]);
         $h2Response = $this->actingAs($admin)->post(route('admin.frontdesk.checkin'), [
             'search' => 'MC-002',
         ]);
@@ -85,6 +89,10 @@ class ManagementSystemTest extends TestCase
         $h2Response->assertSessionHas('checkin_status', 'expiring_soon');
 
         // Checkin Member MC-003 (Kadaluarsa)
+        Member::where('card_id', 'MC-003')->update([
+            'current_expiry_date' => now()->subDays(5)->toDateString(),
+            'status' => 'expired',
+        ]);
         $expiredCountBefore = Attendance::where('member_id', Member::where('card_id', 'MC-003')->first()->id)->count();
         $expiredResponse = $this->actingAs($admin)->post(route('admin.frontdesk.checkin'), [
             'search' => 'MC-003',

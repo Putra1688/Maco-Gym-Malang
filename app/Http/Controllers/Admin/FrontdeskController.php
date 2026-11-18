@@ -202,6 +202,8 @@ class FrontdeskController extends Controller
             ]);
         });
 
-        return back()->with('success', "Tamu harian atas nama {$request->name} berhasil dicatat & dibayar via ".strtoupper($request->payment_method).'.');
+        $methodName = in_array(strtolower($request->payment_method), ['qris', 'transfer']) ? 'QRIS / TRANSFER' : 'CASH';
+
+        return back()->with('success', "Tamu harian atas nama {$request->name} berhasil dicatat & dibayar via {$methodName}.");
     }
 }
