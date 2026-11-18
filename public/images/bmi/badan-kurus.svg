@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none" class="w-full h-full drop-shadow-xl">
+  <defs>
+    <!-- Skin Gradients -->
+    <linearGradient id="skinKurus" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="60%" stop-color="#FDBA74"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+    <!-- Shirt Gradients -->
+    <linearGradient id="shirtKurus" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F8FAFC"/>
+      <stop offset="85%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <linearGradient id="shadowKurus" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlowKurus" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlowKurus)">
+    <!-- Neck -->
+    <path d="M136 28 C136 10, 184 10, 184 28 L188 88 C176 96, 144 96, 132 88 Z" fill="url(#skinKurus)"/>
+    <path d="M142 42 C150 48, 170 48, 178 42" stroke="#F97316" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- Left Arm (Slender) -->
+    <path d="M78 108 L54 260 C54 268, 86 270, 94 256 L112 152 Z" fill="url(#skinKurus)"/>
+    <!-- Right Arm (Slender) -->
+    <path d="M242 108 L266 260 C266 268, 234 270, 226 256 L208 152 Z" fill="url(#skinKurus)"/>
+
+    <!-- T-Shirt Torso (Kurus / Slender) -->
+    <path d="M124 74 
+             C98 84, 76 100, 72 136 
+             L102 160 
+             L112 144 
+             L118 316 
+             C138 322, 182 322, 202 316 
+             L208 144 
+             L218 160 
+             L248 136 
+             C244 100, 222 84, 196 74 
+             C186 94, 134 94, 124 74 Z" 
+          fill="url(#shirtKurus)"/>
+
+    <!-- Collar Rim -->
+    <path d="M124 74 C138 98, 182 98, 196 74 C184 88, 136 88, 124 74 Z" fill="#E2E8F0"/>
+    <path d="M124 74 C138 96, 182 96, 196 74" stroke="#CBD5E1" stroke-width="2"/>
+
+    <!-- Subtle Slender Chest & Rib Folds -->
+    <path d="M120 180 C136 194, 184 194, 200 180" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+    <path d="M130 220 C140 226, 180 226, 190 220" stroke="#94A3B8" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+    <path d="M136 260 C146 264, 174 264, 184 260" stroke="#94A3B8" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+
+    <!-- T-Shirt Hem Details -->
+    <path d="M118 316 C138 322, 182 322, 202 316" stroke="#CBD5E1" stroke-width="2.5"/>
+
+    <!-- Lower Shorts Trim -->
+    <path d="M120 318 L116 360 C136 366, 184 366, 204 360 L200 318 Z" fill="#F1F5F9" opacity="0.8"/>
+  </g>
+</svg>
+

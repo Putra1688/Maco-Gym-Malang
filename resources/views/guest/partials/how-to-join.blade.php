@@ -4,10 +4,10 @@
         
         <!-- Header -->
         <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div class="flex items-center justify-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+            <div class="flex items-center justify-center gap-3 mb-1">
+                <span class="w-8 h-[2px] bg-red-600"></span>
                 <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">SCHEDULE & JOINING</span>
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <span class="w-8 h-[2px] bg-red-600"></span>
             </div>
             <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
                 CARA DAFTAR MEMBER <span class="text-red-600">MACO GYM</span>
@@ -92,8 +92,7 @@
             <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="relative z-10 space-y-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/50 backdrop-blur-md mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-red-950/80 border border-red-500/50 backdrop-blur-md mb-2">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-red-400 font-montserrat">
                         ONLINE REGISTRATION
                     </span>

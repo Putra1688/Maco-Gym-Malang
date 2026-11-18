@@ -4,10 +4,10 @@
         
         <!-- Header -->
         <div class="text-center max-w-2xl mx-auto mb-14">
-            <div class="flex items-center justify-center gap-2 mb-2">
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <span class="w-8 h-[2px] bg-red-600"></span>
                 <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">TESTIMONIALS</span>
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <span class="w-8 h-[2px] bg-red-600"></span>
             </div>
             <h2 class="font-montserrat text-2xl sm:text-4xl font-bold uppercase text-zinc-900 tracking-tight">
                 WHAT OUR MEMBERS SAY

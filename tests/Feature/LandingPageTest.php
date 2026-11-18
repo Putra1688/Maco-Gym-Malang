@@ -27,7 +27,7 @@ class LandingPageTest extends TestCase
         // Facilities & Programs Section
         $response->assertSee('OUR PROGRAMS');
         $response->assertSee('STRENGTH TRAINING');
-        $response->assertSee('Free Weights Zone');
+        $response->assertSee('JELAJAHI FASILITAS & PROGRAM LENGKAP');
 
         // About & Philosophy Section
         $response->assertSee('DISCIPLINE');
@@ -86,5 +86,24 @@ class LandingPageTest extends TestCase
         $response->assertSee('BMI');
         $response->assertSee('Hitung BMI');
         $response->assertSee('Cara Cek BMI');
+    }
+
+    /**
+     * Test that the facilities & programs page renders correctly.
+     */
+    public function test_facilities_page_renders_correctly(): void
+    {
+        $response = $this->get('/fasilitas');
+
+        $response->assertStatus(200);
+        $response->assertSee('FASILITAS LENGKAP &');
+        $response->assertSee('PROGRAM LATIHAN');
+        $response->assertSee('Free Weights Zone');
+        $response->assertSee('Plate-Loaded Machines');
+        $response->assertSee('Cardio Theater');
+        $response->assertSee('Locker & Hot Shower');
+        $response->assertSee('Musholla Ber-AC');
+        $response->assertSee('Strength & Powerbuilding');
+        $response->assertSee('DAFTAR MEMBER SEKARANG');
     }
 }

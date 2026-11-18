@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" fill="none" class="w-full h-full drop-shadow-xl">
+  <defs>
+    <!-- Skin Gradients -->
+    <linearGradient id="skinObesitas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="55%" stop-color="#FDBA74"/>
+      <stop offset="100%" stop-color="#FB923C"/>
+    </linearGradient>
+    <!-- Heavy Torso Shirt Gradients -->
+    <linearGradient id="shirtObesitas" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#F8FAFC"/>
+      <stop offset="85%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="softGlowObesitas" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlowObesitas)">
+    <!-- Broad Neck -->
+    <path d="M120 36 C120 10, 200 10, 200 36 L210 94 C188 104, 132 104, 110 94 Z" fill="url(#skinObesitas)"/>
+    <path d="M130 54 C144 62, 176 62, 190 54" stroke="#F97316" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- Left Arm (Heaviest / Broad) -->
+    <path d="M46 104 C30 142, 22 208, 28 270 C34 280, 76 280, 86 264 L106 162 Z" fill="url(#skinObesitas)"/>
+    <!-- Right Arm (Heaviest / Broad) -->
+    <path d="M274 104 C290 142, 298 208, 292 270 C286 280, 244 280, 234 264 L214 162 Z" fill="url(#skinObesitas)"/>
+
+    <!-- T-Shirt Torso (Obesitas / Heaviest Rounded Belly Curve) -->
+    <path d="M108 76 
+             C68 86, 38 106, 34 146 
+             L78 176 
+             L96 154 
+             C84 204, 80 266, 94 324 
+             C128 338, 192 338, 226 324 
+             C240 266, 236 204, 224 154 
+             L242 176 
+             L286 146 
+             C282 106, 252 86, 212 76 
+             C198 98, 122 98, 108 76 Z" 
+          fill="url(#shirtObesitas)"/>
+
+    <!-- Collar Rim -->
+    <path d="M108 76 C128 102, 192 102, 212 76 C194 92, 126 92, 108 76 Z" fill="#E2E8F0"/>
+    <path d="M108 76 C128 100, 192 100, 212 76" stroke="#CBD5E1" stroke-width="2.2"/>
+
+    <!-- Heavy Midsection & Belly Sag Lines -->
+    <path d="M98 178 C124 196, 150 196, 160 188" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+    <path d="M222 178 C196 196, 170 196, 160 188" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- Deep rounded abdominal folds -->
+    <path d="M102 242 C132 264, 188 264, 218 242" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="round" opacity="0.5"/>
+    <path d="M106 288 C134 306, 186 306, 214 288" stroke="#94A3B8" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+
+    <!-- T-Shirt Bottom Hem & Shorts -->
+    <path d="M94 324 C128 338, 192 338, 226 324" stroke="#CBD5E1" stroke-width="2.5"/>
+    <path d="M96 326 L90 370 C126 380, 194 380, 230 370 L224 326 Z" fill="#F1F5F9" opacity="0.85"/>
+  </g>
+</svg>
+

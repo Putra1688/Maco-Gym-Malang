@@ -37,8 +37,7 @@
     <div class="relative z-10 w-full max-w-[1720px] mx-auto px-5 sm:px-8 lg:px-12 my-auto text-left flex flex-col items-start space-y-4 sm:space-y-5 py-2 sm:py-4">
         
         <!-- Tagline / Eyebrow -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/40 backdrop-blur-md">
-            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+        <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-red-950/60 border border-red-500/40 backdrop-blur-md">
             <span class="tagline text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-red-400 font-montserrat">
                 TRAIN HARD. STAY STRONG.
             </span>

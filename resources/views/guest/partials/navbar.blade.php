@@ -56,8 +56,8 @@
                     <a href="{{ route('home') }}#about" class="text-xs font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600 transition-colors">
                         ABOUT US
                     </a>
-                    <a href="{{ route('home') }}#facilities" class="text-xs font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600 transition-colors">
-                        PROGRAMS
+                    <a href="{{ route('facilities.index') }}" class="text-xs font-bold uppercase tracking-wider {{ request()->routeIs('facilities.index') ? 'text-red-600 font-extrabold' : 'text-zinc-700 hover:text-red-600' }} transition-colors">
+                        FASILITAS & KELAS
                     </a>
                     <a href="{{ route('home') }}#trainers" class="text-xs font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600 transition-colors">
                         TRAINERS
@@ -140,8 +140,8 @@
         <a href="{{ route('home') }}#about" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600">
             ABOUT US
         </a>
-        <a href="{{ route('home') }}#facilities" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider text-zinc-700 hover:text-red-600">
-            PROGRAMS & FASILITAS
+        <a href="{{ route('facilities.index') }}" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider {{ request()->routeIs('facilities.index') ? 'text-red-600 font-extrabold bg-red-50' : 'text-zinc-700 hover:text-red-600' }}">
+            FASILITAS & KELAS
         </a>
         <a href="{{ route('bmi.index') }}" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider {{ request()->routeIs('bmi.index') ? 'text-red-600 font-extrabold bg-red-50' : 'text-zinc-700 hover:text-red-600' }}">
             KALKULATOR BMI
