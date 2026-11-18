@@ -66,7 +66,7 @@
             <div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
                     <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span>
+                        <!-- <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span> -->
                         <h3 class="text-xs sm:text-sm font-montserrat font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
                             Presensi Cepat Member (Scan / ID Kartu)
                         </h3>
@@ -163,7 +163,7 @@
         <div class="lg:col-span-5 xl:col-span-4 bg-white dark:bg-zinc-900 rounded-lg p-4 sm:p-5 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between shadow-xs border-t-2 border-t-zinc-800 dark:border-t-zinc-200">
             <div>
                 <div class="flex items-center gap-2 pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
-                    <span class="w-2.5 h-2.5 rounded bg-zinc-800 dark:bg-zinc-200 shrink-0"></span>
+                    <!-- <span class="w-2.5 h-2.5 rounded bg-zinc-800 dark:bg-zinc-200 shrink-0"></span> -->
                     <h3 class="text-xs sm:text-sm font-montserrat font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
                         Aksi Meja Depan
                     </h3>
@@ -223,8 +223,9 @@
                 </div>
             </div>
 
-            <div class="mt-4 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono">
-                ⚡ Transaksi kasir langsung tercatat ke pembukuan resmi Maco Gym.
+            <div class="mt-4 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 shrink-0"></span>
+                <span>Transaksi kasir langsung tercatat ke pembukuan resmi Maco Gym.</span>
             </div>
         </div>
 
@@ -239,14 +240,14 @@
         <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full {{ ($isToday ?? true) ? 'bg-emerald-500 animate-pulse' : 'bg-blue-500' }}"></span>
+                    <!-- <span class="w-2.5 h-2.5 rounded-full {{ ($isToday ?? true) ? 'bg-emerald-500 animate-pulse' : 'bg-blue-500' }}"></span> -->
                     <div>
                         <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                             {{ ($isToday ?? true) ? 'Riwayat Kedatangan Hari Ini (Live Check-in)' : 'Riwayat Presensi: ' . \Carbon\Carbon::parse($selectedDate ?? today())->translatedFormat('d F Y') }}
                         </h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        <!-- <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
                             Menampilkan {{ $todayAttendances->total() }} presensi tercatat {{ $search ? '(Filter Pencarian: "' . $search . '")' : '' }}
-                        </p>
+                        </p> -->
                     </div>
                 </div>
 
@@ -492,18 +493,14 @@
                     <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1">
                         Metode Pembayaran <span class="text-red-500">*</span>
                     </label>
-                    <div class="grid grid-cols-3 gap-2">
+                    <div class="grid grid-cols-2 gap-2">
                         <label class="flex items-center justify-center gap-2 p-2.5 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 font-semibold text-xs text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
                             <span>Cash</span>
                         </label>
                         <label class="flex items-center justify-center gap-2 p-2.5 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 font-semibold text-xs text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS</span>
-                        </label>
-                        <label class="flex items-center justify-center gap-2 p-2.5 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 font-semibold text-xs text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="transfer" class="text-red-600 focus:ring-red-500">
-                            <span>Transfer</span>
+                            <span>QRIS / Transfer</span>
                         </label>
                     </div>
                 </div>

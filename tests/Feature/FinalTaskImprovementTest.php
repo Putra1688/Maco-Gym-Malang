@@ -42,7 +42,7 @@ class FinalTaskImprovementTest extends TestCase
         $ptSingleRes = $this->get(route('pricing.pt-single'));
         $ptSingleRes->assertStatus(200);
         $ptSingleRes->assertSee('Rp 130.000'); // 1 PT
-        $ptSingleRes->assertSee('Rp 550.000'); // 4 PT (10 hari)
+        $ptSingleRes->assertSee('Rp 520.000'); // 4 PT (10 hari)
         $ptSingleRes->assertSee('Rp 950.000'); // 8 PT (20 hari)
         $ptSingleRes->assertSee('Rp 1.150.000'); // 12 PT (30 hari)
         $ptSingleRes->assertSee('Rp 1.450.000'); // 16 PT (40 hari)

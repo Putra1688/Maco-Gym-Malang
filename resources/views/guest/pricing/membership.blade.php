@@ -48,10 +48,10 @@
 
                 <!-- Header Title -->
                 <div class="max-w-3xl space-y-3">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/40 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
+                    <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/40 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
                         <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                         OFFICIAL GYM MEMBERSHIP
-                    </div>
+                    </div> -->
                     <h1 class="font-montserrat text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
                         DAFTAR HARGA <span class="text-red-600">MEMBERSHIP</span>
                     </h1>
@@ -66,12 +66,36 @@
         <section class="py-12 sm:py-16">
             <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
+                <!-- Navigation between Categories & WhatsApp Floating Contact -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-zinc-200">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Kategori Lain:</span>
+                        <a href="{{ route('pricing.pt-single') }}"
+                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
+                            Personal Trainer Single &rarr;
+                        </a>
+                        <a href="{{ route('pricing.pt-couples') }}"
+                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
+                            Personal Trainer Couples &rarr;
+                        </a>
+                    </div>
+
+                    <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym, saya ingin menanyakan informasi paket Membership resmi.') }}"
+                       target="_blank"
+                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all shadow-sm">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                        </svg>
+                        <span>Konsultasi via WhatsApp</span>
+                    </a>
+                </div>
+
                 <!-- 1. MEMBERSHIP REGULER -->
                 <div class="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
                     <div class="p-5 sm:p-7 border-b border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span>
+                                <!-- <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span> -->
                                 <h2 class="font-montserrat text-lg sm:text-xl font-black uppercase text-zinc-900 tracking-tight">
                                     1. Membership Reguler
                                 </h2>
@@ -102,7 +126,7 @@
                                 <!-- 1 Month -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">1 Month</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900">Membership 1 Month</div>
                                         <div class="text-[11px] text-zinc-500 font-mono">Paket Fleksibel Bulanan</div>
                                     </td>
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600">30 Hari</td>
@@ -112,7 +136,7 @@
                                     <td class="px-5 py-4 text-xs font-mono text-zinc-500 hidden md:table-cell">Rp 130.000 / bln</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Tanpa komitmen jangka panjang</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '1 Month - Rp 130.000']) }}"
+                                        <a href="{{ route('register', ['package' => 'Membership 1 Month - Rp 130.000']) }}"
                                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
                                             <span>Daftar</span>
                                             <span>&rarr;</span>
@@ -124,7 +148,7 @@
                                 <tr class="bg-red-50/40 hover:bg-red-50/70 transition-colors border-l-4 border-l-red-600">
                                     <td class="px-5 py-4">
                                         <div class="flex items-center gap-2">
-                                            <div class="font-montserrat font-bold text-base text-zinc-900">3 Month</div>
+                                            <div class="font-montserrat font-bold text-base text-zinc-900">Membership 3 Month</div>
                                             <span class="px-2 py-0.5 rounded text-[9px] font-montserrat font-extrabold uppercase bg-red-600 text-white">POPULAR</span>
                                         </div>
                                         <div class="text-[11px] text-red-600 font-mono font-semibold">Paling Banyak Dipilih</div>
@@ -136,7 +160,7 @@
                                     <td class="px-5 py-4 text-xs font-mono text-zinc-700 font-semibold hidden md:table-cell">Rp 125.000 / bln</td>
                                     <td class="px-5 py-4 text-xs text-zinc-700 hidden sm:table-cell">Hemat Rp 15.000 dibanding bulanan</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '3 Month - Rp 375.000']) }}"
+                                        <a href="{{ route('register', ['package' => 'Membership 3 Month - Rp 375.000']) }}"
                                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm shadow-red-600/30">
                                             <span>Daftar</span>
                                             <span>&rarr;</span>
@@ -147,7 +171,7 @@
                                 <!-- 6 Month -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">6 Month</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900">Membership 6 Month</div>
                                         <div class="text-[11px] text-zinc-500 font-mono">Paket Setengah Tahun</div>
                                     </td>
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600">180 Hari</td>
@@ -157,7 +181,7 @@
                                     <td class="px-5 py-4 text-xs font-mono text-zinc-500 hidden md:table-cell">Rp 125.000 / bln</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Konsistensi latihan 6 bulan penuh</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '6 Month - Rp 750.000']) }}"
+                                        <a href="{{ route('register', ['package' => 'Membership 6 Month - Rp 750.000']) }}"
                                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
                                             <span>Daftar</span>
                                             <span>&rarr;</span>
@@ -169,7 +193,7 @@
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
                                         <div class="flex items-center gap-2">
-                                            <div class="font-montserrat font-bold text-base text-zinc-900">12 Month</div>
+                                            <div class="font-montserrat font-bold text-base text-zinc-900">Membership 12 Month</div>
                                             <span class="px-2 py-0.5 rounded text-[9px] font-montserrat font-bold uppercase bg-zinc-100 text-zinc-800 border border-zinc-200">MAX SAVINGS</span>
                                         </div>
                                         <div class="text-[11px] text-zinc-500 font-mono">Paket 1 Tahun Penuh</div>
@@ -181,7 +205,7 @@
                                     <td class="px-5 py-4 text-xs font-mono text-zinc-500 hidden md:table-cell">~Rp 120.800 / bln</td>
                                     <td class="px-5 py-4 text-xs text-emerald-600 font-semibold hidden sm:table-cell">Tarif tahunan paling hemat</td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => '12 Month - Rp 1.450.000']) }}"
+                                        <a href="{{ route('register', ['package' => 'Membership 12 Month - Rp 1.450.000']) }}"
                                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 hover:bg-red-600 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
                                             <span>Daftar</span>
                                             <span>&rarr;</span>
@@ -198,7 +222,7 @@
                     <div class="p-5 sm:p-7 border-b border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                             <div class="flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0"></span>
+                                <!-- <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0"></span> -->
                                 <h2 class="font-montserrat text-lg sm:text-xl font-black uppercase text-zinc-900 tracking-tight">
                                     2. Membership Khusus Pelajar dan Mahasiswa
                                 </h2>
@@ -262,7 +286,7 @@
                                         Wajib menunjukkan Kartu Pelajar aktif yang sah saat verifikasi di kasir.
                                     </td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => 'Pelajar (maksimal SMA) - Rp 100.000']) }}"
+                                        <a href="{{ route('register', ['package' => 'Pelajar - Rp 100.000']) }}"
                                            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
                                             <span>Daftar</span>
                                             <span>&rarr;</span>
@@ -289,7 +313,7 @@
                 <div class="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
                     <div class="p-5 sm:p-7 border-b border-zinc-200 bg-zinc-50/50">
                         <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded bg-zinc-800 shrink-0"></span>
+                            <!-- <span class="w-2.5 h-2.5 rounded bg-zinc-800 shrink-0"></span> -->
                             <h2 class="font-montserrat text-lg sm:text-xl font-black uppercase text-zinc-900 tracking-tight">
                                 3. Biaya Tambahan / Insidentil
                             </h2>
@@ -307,7 +331,7 @@
                                     <th class="px-5 py-3.5">Tarif Resmi</th>
                                     <th class="px-5 py-3.5">Frekuensi Bayar</th>
                                     <th class="px-5 py-3.5 hidden md:table-cell">Keterangan</th>
-                                    <th class="px-5 py-3.5 text-right">Aksi</th>
+                                    <th class="px-5 py-3.5 text-right">Informasi Kasir</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-zinc-100 font-sans">
@@ -315,20 +339,19 @@
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
                                         <div class="font-montserrat font-bold text-base text-zinc-900">Regular Membership (Joining Fee)</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">Biaya Pendaftaran & Kartu Member</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono">Biaya Pendaftaran & Kartu Fisik</div>
                                     </td>
                                     <td class="px-5 py-4">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 20.000</span>
                                     </td>
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600">1x di Awal</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden md:table-cell">
-                                        Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat bergabung perdana.
+                                        Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat registrasi perdana di meja kasir.
                                     </td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => 'Regular Membership - Rp 20.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-300">
-                                            <span>Registrasi</span>
-                                        </a>
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-zinc-200">
+                                            Biaya Registrasi Awal
+                                        </span>
                                     </td>
                                 </tr>
 
@@ -343,17 +366,26 @@
                                     </td>
                                     <td class="px-5 py-4 font-mono text-xs text-zinc-600">Per Kedatangan</td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 hidden md:table-cell">
-                                        Akses 1 sesi latihan ke seluruh area gym & shower air hangat untuk tamu non-member tanpa ikatan langganan.
+                                        Akses 1 sesi latihan ke seluruh area gym & shower air hangat untuk tamu non-member tanpa ikatan langganan membership.
                                     </td>
                                     <td class="px-5 py-4 text-right">
-                                        <a href="{{ route('register', ['package' => 'Insidentil - Rp 30.000']) }}"
-                                           class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors border border-zinc-300">
-                                            <span>Pilih</span>
-                                        </a>
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-amber-200">
+                                            Bayar Langsung di Kasir
+                                        </span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- Catatan Biaya Tambahan -->
+                    <div class="p-4 sm:p-5 bg-zinc-50 border-t border-zinc-200 text-xs text-zinc-600 flex items-start gap-2.5">
+                        <svg class="w-4 h-4 text-zinc-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>
+                            <strong>Informasi Biaya Non-Paket:</strong> Joining fee (Rp 20.000) dan tiket Insidentil (Rp 30.000) bukan merupakan paket keanggotaan berkala dan diproses langsung di meja kasir frontdesk Maco Gym Malang.
+                        </span>
                     </div>
                 </div>
 
@@ -380,30 +412,6 @@
                             <span>Free orientasi pengenalan alat bagi pemula</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Navigation between Categories & WhatsApp Floating Contact -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-200">
-                    <div class="flex flex-wrap items-center gap-3">
-                        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Kategori Lain:</span>
-                        <a href="{{ route('pricing.pt-single') }}"
-                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
-                            Personal Trainer Single &rarr;
-                        </a>
-                        <a href="{{ route('pricing.pt-couples') }}"
-                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
-                            Personal Trainer Couples &rarr;
-                        </a>
-                    </div>
-
-                    <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym, saya ingin menanyakan informasi paket Membership resmi.') }}"
-                       target="_blank"
-                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all shadow-sm">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-                        </svg>
-                        <span>Konsultasi via WhatsApp</span>
-                    </a>
                 </div>
 
             </div>

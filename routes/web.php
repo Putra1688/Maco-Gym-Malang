@@ -39,10 +39,10 @@ Route::get('/member-preview', [MemberDashboardController::class, 'preview'])->na
 
 /*
 |--------------------------------------------------------------------------
-| Admin & Staff Routes
+| Admin Routes
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth', 'role:admin,staff'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Frontdesk

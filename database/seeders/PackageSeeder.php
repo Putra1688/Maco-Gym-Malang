@@ -9,8 +9,6 @@ class PackageSeeder extends Seeder
 {
     public function run(): void
     {
-        Package::query()->delete();
-
         $packages = [
             [
                 'name' => 'Daily Pass (Visit Harian)',
@@ -20,44 +18,57 @@ class PackageSeeder extends Seeder
                 'is_active' => true,
             ],
             [
-                'name' => '1 Bulan Reguler (Basic Plan)',
+                'name' => 'Membership 1 Month',
                 'type' => 'membership',
-                'price' => 175000,
+                'price' => 130000,
                 'duration_days' => 30,
                 'is_active' => true,
             ],
             [
-                'name' => '3 Bulan Hemat (Standard Plan)',
+                'name' => 'Membership 3 Month',
                 'type' => 'membership',
-                'price' => 450000,
+                'price' => 375000,
                 'duration_days' => 90,
                 'is_active' => true,
             ],
             [
-                'name' => '1 Bulan Mahasiswa (KTM)',
+                'name' => 'Membership 6 Month',
                 'type' => 'membership',
-                'price' => 135000,
+                'price' => 750000,
+                'duration_days' => 180,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Membership 12 Month',
+                'type' => 'membership',
+                'price' => 1450000,
+                'duration_days' => 365,
+                'is_active' => true,
+            ],
+            [
+                'name' => 'Mahasiswa',
+                'type' => 'membership',
+                'price' => 110000,
                 'duration_days' => 30,
                 'is_active' => true,
             ],
             [
-                'name' => '3 Bulan Mahasiswa (KTM)',
+                'name' => 'Pelajar',
                 'type' => 'membership',
-                'price' => 360000,
-                'duration_days' => 90,
-                'is_active' => true,
-            ],
-            [
-                'name' => 'Personal Trainer 12 Sesi',
-                'type' => 'personal_trainer',
-                'price' => 1250000,
+                'price' => 100000,
                 'duration_days' => 30,
                 'is_active' => true,
             ],
         ];
 
-        foreach ($packages as $package) {
-            Package::create($package);
+        foreach ($packages as $pkg) {
+            Package::updateOrCreate(
+                ['name' => $pkg['name']],
+                $pkg
+            );
         }
+
+        // Pastikan paket bertipe personal_trainer nonaktif
+        Package::where('type', 'personal_trainer')->update(['is_active' => false]);
     }
 }

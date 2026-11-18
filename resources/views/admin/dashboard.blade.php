@@ -60,7 +60,7 @@
             </div>
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] font-mono">
                 <span class="inline-flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-400">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <!-- <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> -->
                     STATUS VALID
                 </span>
                 <span class="text-zinc-400">Expired: {{ $totalExpiredMembers }}</span>
@@ -82,7 +82,7 @@
             </div>
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] font-mono">
                 <span class="inline-flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    <!-- <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> -->
                     PERLU TINDAKAN
                 </span>
                 <a href="{{ route('admin.members.index', ['status' => 'pending_verification']) }}" class="text-blue-600 dark:text-blue-400 hover:underline font-bold">
@@ -138,7 +138,7 @@
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 shadow-xs">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
                 <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span>
+                    <!-- <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span> -->
                     <div>
                         <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                             Grafik Pemasukan Per Bulan
@@ -167,7 +167,7 @@
             <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 flex flex-col justify-between shadow-xs">
                 <div class="flex items-center justify-between mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
                     <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded bg-rose-500 shrink-0"></span>
+                        <!-- <span class="w-2.5 h-2.5 rounded bg-rose-500 shrink-0"></span> -->
                         <div>
                             <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                                 Gender Member
@@ -214,7 +214,7 @@
             <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 flex flex-col justify-between shadow-xs">
                 <div class="flex items-center justify-between mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
                     <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded bg-amber-500 shrink-0"></span>
+                        <!-- <span class="w-2.5 h-2.5 rounded bg-amber-500 shrink-0"></span> -->
                         <div>
                             <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                                 Demografi Umur Member
@@ -245,7 +245,7 @@
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 shadow-xs">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
                 <div class="flex items-start gap-2.5 min-w-0">
-                    <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0 mt-1"></span>
+                    <!-- <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0 mt-1"></span> -->
                     <div class="min-w-0">
                         <div class="flex flex-wrap items-center gap-2">
                             <h3 id="attendance-title" class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
@@ -338,7 +338,7 @@
     <div id="section-pendaftaran-baru" class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs border-t-2 border-t-blue-600">
         <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0"></span>
+                <!-- <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0"></span> -->
                 <div>
                     <div class="flex items-center gap-2">
                         <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
@@ -465,7 +465,7 @@
     <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs border-t-2 border-t-amber-500">
         <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded bg-amber-500 shrink-0"></span>
+                <!-- <span class="w-2.5 h-2.5 rounded bg-amber-500 shrink-0"></span> -->
                 <div>
                     <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                         MEMBER MENDEKATI JATUH TEMPO (H-3 s/d H-1)
@@ -569,7 +569,7 @@
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs">
             <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded bg-red-600"></span>
+                    <!-- <span class="w-2 h-2 rounded bg-red-600"></span> -->
                     <h4 class="font-montserrat font-bold text-xs uppercase tracking-wider text-zinc-900 dark:text-white">
                         Kas Masuk Terbaru
                     </h4>
@@ -587,7 +587,7 @@
                         <p class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 flex items-center gap-1.5 flex-wrap">
                             <span class="truncate">{{ $tx->package?->name ?? 'Layanan' }}</span>
                             <span class="text-zinc-300 dark:text-zinc-700">•</span>
-                            <span class="uppercase font-mono font-bold text-red-600 dark:text-red-400">{{ $tx->payment_method }}</span>
+                            <span class="uppercase font-mono font-bold text-red-600 dark:text-red-400">{{ in_array(strtolower($tx->payment_method), ['qris', 'transfer']) ? 'QRIS / Transfer' : 'Cash' }}</span>
                         </p>
                     </div>
                     <div class="text-right shrink-0 ml-2">
@@ -607,7 +607,7 @@
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs">
             <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded bg-blue-600"></span>
+                    <!-- <span class="w-2 h-2 rounded bg-blue-600"></span> -->
                     <h4 class="font-montserrat font-bold text-xs uppercase tracking-wider text-zinc-900 dark:text-white">
                         Presensi Kedatangan Terakhir
                     </h4>
@@ -1063,7 +1063,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (titleEl) titleEl.textContent = 'Grafik Kehadiran Member (Mingguan)';
         if (subtitleEl) subtitleEl.textContent = `Pola kehadiran member per hari pada ${week.label}. Klik batang hari untuk rincian jam.`;
         if (badgeEl) badgeEl.textContent = `Minggu ${week.index}`;
-        if (hintEl) hintEl.textContent = '💡 Klik salah satu batang hari di atas untuk membedah jam kedatangan (06:00 - 22:00 WIB).';
+        if (hintEl) hintEl.textContent = 'Klik salah satu batang hari di atas untuk membedah jam kedatangan (06:00 - 22:00 WIB).';
 
         const labels = week.days.map(d => [d.dayShort, d.dayNum]);
         const counts = week.days.map(d => d.total);

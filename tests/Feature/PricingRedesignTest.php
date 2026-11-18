@@ -89,7 +89,7 @@ class PricingRedesignTest extends TestCase
         $response->assertSee('PERSONAL TRAINER');
         $response->assertSee('SINGLE');
         $response->assertSee('Durasi latihan 1–1,5 jam per kedatangan');
-        $response->assertSee('1 orang dengan 1 trainer');
+        $response->assertSee('1 klien dengan 1 trainer');
 
         // Prices & validity days
         $response->assertSee('1 PT (Single)');
@@ -162,17 +162,19 @@ class PricingRedesignTest extends TestCase
     }
 
     /**
-     * Test CTA links carry the selected package to the registration page.
+     * Test membership package preselection in registration form, and ensure PT packages cannot be preselected.
      */
     public function test_package_preselection_in_registration_form(): void
     {
-        $response = $this->get(route('register', ['package' => '4 PT (Single) - Rp 520.000']));
+        $response = $this->get(route('register', ['package' => 'Membership 1 Month']));
         $response->assertStatus(200);
         $response->assertSee('selected', false);
-        $response->assertSee('4 PT Single Session (Rp 520.000 - 10 Hari)');
+        $response->assertSee('Membership 1 Month (Rp 130.000 / 30 Hari)');
 
-        $couplesResponse = $this->get(route('register', ['package' => '8 PT (Couples) - Rp 1.200.000']));
-        $couplesResponse->assertStatus(200);
-        $couplesResponse->assertSee('8 PT Couples Session (Rp 1.200.000 - 30 Hari)');
+        // Memastikan PT tidak muncul sebagai opsi di form registrasi meskipun dikirim via query string
+        $ptAttempt = $this->get(route('register', ['package' => '4 PT (Single)']));
+        $ptAttempt->assertStatus(200);
+        $ptAttempt->assertDontSee('4 PT Single Session');
+        $ptAttempt->assertDontSee('8 PT Couples Session');
     }
 }

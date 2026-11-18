@@ -113,9 +113,9 @@
                         
                         <!-- Form Header -->
                         <div class="border-b border-zinc-100 pb-3 sm:pb-3.5 mb-5">
-                            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-zinc-100 text-zinc-700 text-[10px] font-bold uppercase tracking-wider mb-1.5">
+                            <!-- <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-zinc-100 text-zinc-700 text-[10px] font-bold uppercase tracking-wider mb-1.5">
                                 <span>FORMULIR PENDAFTARAN</span>
-                            </div>
+                            </div> -->
                             <h2 class="font-montserrat font-black text-2xl sm:text-[28px] text-zinc-900 tracking-tight uppercase leading-snug">
                                 Pendaftaran <span class="text-red-600">Member</span>
                             </h2>
@@ -234,88 +234,34 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                                 <div>
                                     <label for="reg_package" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                                        Pilihan Paket <span class="text-red-600">*</span>
+                                        Pilihan Paket Membership <span class="text-red-600">*</span>
                                     </label>
                                     <select id="reg_package"
                                             name="package"
                                             required
                                             class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition font-medium">
-                                        
-                                        <optgroup label="── Kategori: Membership ──">
-                                            <option value="1 Month - Rp 130.000" {{ str_contains($requestedPackage, '1 Month') ? 'selected' : '' }}>
-                                                1 Month (Rp 130.000)
+                                        <optgroup label="── Paket Membership Resmi ──">
+                                            <option value="Membership 1 Month - Rp 130.000" {{ str_contains($requestedPackage, '1 Month') ? 'selected' : '' }}>
+                                                Membership 1 Month (Rp 130.000 / 30 Hari)
                                             </option>
-                                            <option value="3 Month - Rp 375.000" {{ str_contains($requestedPackage, '3 Month') ? 'selected' : '' }}>
-                                                3 Month (Rp 375.000) - Terpopuler
+                                            <option value="Membership 3 Month - Rp 375.000" {{ str_contains($requestedPackage, '3 Month') ? 'selected' : '' }}>
+                                                Membership 3 Month (Rp 375.000 / 90 Hari) — Populer
                                             </option>
-                                            <option value="6 Month - Rp 750.000" {{ str_contains($requestedPackage, '6 Month') ? 'selected' : '' }}>
-                                                6 Month (Rp 750.000)
+                                            <option value="Membership 6 Month - Rp 750.000" {{ str_contains($requestedPackage, '6 Month') ? 'selected' : '' }}>
+                                                Membership 6 Month (Rp 750.000 / 180 Hari)
                                             </option>
-                                            <option value="12 Month - Rp 1.450.000" {{ str_contains($requestedPackage, '12 Month') ? 'selected' : '' }}>
-                                                12 Month (Rp 1.450.000) - 1 Tahun
+                                            <option value="Membership 12 Month - Rp 1.450.000" {{ str_contains($requestedPackage, '12 Month') ? 'selected' : '' }}>
+                                                Membership 12 Month (Rp 1.450.000 / 365 Hari) — Hemat 1 Tahun
                                             </option>
                                             <option value="Mahasiswa - Rp 110.000" {{ str_contains($requestedPackage, 'Mahasiswa') ? 'selected' : '' }}>
-                                                Mahasiswa / KTM (Rp 110.000)
+                                                Mahasiswa / KTM (Rp 110.000 / 30 Hari)
                                             </option>
-                                            <option value="Pelajar (maksimal SMA) - Rp 100.000" {{ str_contains($requestedPackage, 'Pelajar') ? 'selected' : '' }}>
-                                                Pelajar SMP/SMA (Rp 100.000)
-                                            </option>
-                                            <option value="Insidentil - Rp 30.000" {{ str_contains($requestedPackage, 'Insidentil') ? 'selected' : '' }}>
-                                                Insidentil Harian (Rp 30.000)
-                                            </option>
-                                            <option value="Regular Membership - Rp 20.000" {{ str_contains($requestedPackage, 'Regular Membership') ? 'selected' : '' }}>
-                                                Regular Membership / Kartu (Rp 20.000)
-                                            </option>
-                                        </optgroup>
-
-                                        <optgroup label="── Kategori: Personal Trainer (Single Session) ──">
-                                            <option value="1 PT (Single) - Rp 130.000" {{ str_contains($requestedPackage, '1 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                1 PT Single Session (Rp 130.000)
-                                            </option>
-                                            <option value="4 PT (Single) - Rp 520.000" {{ str_contains($requestedPackage, '4 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                4 PT Single Session (Rp 520.000 - 10 Hari)
-                                            </option>
-                                            <option value="8 PT (Single) - Rp 950.000" {{ str_contains($requestedPackage, '8 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                8 PT Single Session (Rp 950.000 - 20 Hari)
-                                            </option>
-                                            <option value="12 PT (Single) - Rp 1.150.000" {{ str_contains($requestedPackage, '12 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                12 PT Single Session (Rp 1.150.000 - 30 Hari)
-                                            </option>
-                                            <option value="16 PT (Single) - Rp 1.450.000" {{ str_contains($requestedPackage, '16 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                16 PT Single Session (Rp 1.450.000 - 40 Hari)
-                                            </option>
-                                            <option value="20 PT (Single) - Rp 1.850.000" {{ str_contains($requestedPackage, '20 PT') && !str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                20 PT Single Session (Rp 1.850.000 - 50-60 Hari)
-                                            </option>
-                                        </optgroup>
-
-                                        <optgroup label="── Kategori: Personal Trainer (Couples Session) ──">
-                                            <option value="1 PT (Couples) - Rp 210.000" {{ str_contains($requestedPackage, '1 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                1 PT Couples Session (Rp 210.000 - 2 Orang)
-                                            </option>
-                                            <option value="4 PT (Couples) - Rp 950.000" {{ str_contains($requestedPackage, '4 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                4 PT Couples Session (Rp 950.000 - 15 Hari)
-                                            </option>
-                                            <option value="8 PT (Couples) - Rp 1.200.000" {{ str_contains($requestedPackage, '8 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                8 PT Couples Session (Rp 1.200.000 - 30 Hari)
-                                            </option>
-                                            <option value="12 PT (Couples) - Rp 1.850.000" {{ str_contains($requestedPackage, '12 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                12 PT Couples Session (Rp 1.850.000 - 30 Hari)
-                                            </option>
-                                            <option value="16 PT (Couples) - Rp 2.150.000" {{ str_contains($requestedPackage, '16 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                16 PT Couples Session (Rp 2.150.000 - 40 Hari)
-                                            </option>
-                                            <option value="20 PT (Couples) - Rp 2.650.000" {{ str_contains($requestedPackage, '20 PT') && str_contains($requestedPackage, 'Couples') ? 'selected' : '' }}>
-                                                20 PT Couples Session (Rp 2.650.000 - 60 Hari)
-                                            </option>
-                                        </optgroup>
-
-                                        <optgroup label="── Kategori: Tiket Tamu Harian Kasir ──">
-                                            <option value="Daily Pass - Rp 25.000" {{ str_contains($requestedPackage, 'Daily Pass') ? 'selected' : '' }}>
-                                                Daily Pass Harian Kasir (Rp 25.000)
+                                            <option value="Pelajar - Rp 100.000" {{ str_contains($requestedPackage, 'Pelajar') ? 'selected' : '' }}>
+                                                Pelajar SMP/SMA (Rp 100.000 / 30 Hari)
                                             </option>
                                         </optgroup>
                                     </select>
+                                    <p class="text-[11px] text-zinc-500 mt-1">Pendaftaran online khusus paket Membership. Layanan Personal Trainer dipesan terpisah via admin.</p>
                                 </div>
 
                                 <div>
