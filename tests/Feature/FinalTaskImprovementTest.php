@@ -82,7 +82,7 @@ class FinalTaskImprovementTest extends TestCase
 
         $response->assertRedirect(route('register'));
         $response->assertSessionHas('success');
-        $response->assertSessionHas('wa_redirect_url');
+        $response->assertSessionMissing('wa_redirect_url');
 
         // 2. Pastikan data calon member tersimpan di database dengan status pending_verification
         $this->assertDatabaseHas('members', [
@@ -103,7 +103,23 @@ class FinalTaskImprovementTest extends TestCase
         $adminListResponse->assertSee($candidateName);
         $adminListResponse->assertSee($member->card_id);
 
-        // 4. Uji pencegahan pendaftaran ganda dengan nomor telepon yang sama
+        // 4. Uji pendaftaran tanpa alamat (alamat bersifat opsional)
+        $noAddressPhone = '0813'.rand(10000000, 99999999);
+        $noAddressResponse = $this->post(route('guest.register'), [
+            'name' => 'Member Tanpa Alamat',
+            'phone' => $noAddressPhone,
+            'package' => '1 Month - Rp 130.000',
+            'gender' => 'Perempuan',
+            'address' => '', // kosong/opsional
+        ]);
+        $noAddressResponse->assertSessionHas('success');
+        $this->assertDatabaseHas('members', [
+            'name' => 'Member Tanpa Alamat',
+            'phone' => $noAddressPhone,
+            'status' => 'pending_verification',
+        ]);
+
+        // 5. Uji pencegahan pendaftaran ganda dengan nomor telepon yang sama (nomor hp sebagai acuan utama)
         $duplicateResponse = $this->post(route('guest.register'), [
             'name' => 'Nama Lain Nomor Sama',
             'phone' => $uniquePhone,
@@ -115,6 +131,15 @@ class FinalTaskImprovementTest extends TestCase
         $duplicateResponse->assertSessionHas('info');
         // Pastikan tidak ada data baru yang dibuat
         $this->assertEquals(1, Member::where('phone', $uniquePhone)->count());
+
+        // 6. Uji validasi nomor HP wajib diisi
+        $emptyPhoneResponse = $this->post(route('guest.register'), [
+            'name' => 'Member Tanpa HP',
+            'phone' => '',
+            'package' => '1 Month - Rp 130.000',
+            'gender' => 'Laki-laki',
+        ]);
+        $emptyPhoneResponse->assertSessionHasErrors('phone');
     }
 
     /**

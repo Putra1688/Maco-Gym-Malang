@@ -175,21 +175,22 @@ class FrontdeskController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'nullable|string|max:25',
             'package_id' => 'required|exists:packages,id',
-            'payment_method' => 'required|in:cash,qris,transfer',
+            'payment_method' => 'required|in:cash,qris,transfer,qris_transfer',
             'notes' => 'nullable|string|max:255',
         ]);
 
         $package = Package::findOrFail($request->package_id);
         $invoiceCode = 'INV-'.now()->format('YmdHis').'-'.strtoupper(substr(uniqid(), -4));
+        $paymentMethod = in_array($request->payment_method, ['qris', 'transfer', 'qris_transfer']) ? 'qris' : 'cash';
 
-        DB::transaction(function () use ($package, $request, $invoiceCode) {
+        DB::transaction(function () use ($package, $request, $invoiceCode, $paymentMethod) {
             Transaction::create([
                 'invoice_code' => $invoiceCode,
                 'package_id' => $package->id,
                 'customer_name' => $request->name,
                 'customer_phone' => $request->phone,
                 'amount' => $package->price,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $paymentMethod,
                 'created_by' => auth()->id() ?? 1,
                 'created_at' => now(),
             ]);
@@ -202,8 +203,8 @@ class FrontdeskController extends Controller
             ]);
         });
 
-        $methodName = in_array(strtolower($request->payment_method), ['qris', 'transfer']) ? 'QRIS / TRANSFER' : 'CASH';
+        $methodLabel = $paymentMethod === 'cash' ? 'CASH' : 'QRIS / TF';
 
-        return back()->with('success', "Tamu harian atas nama {$request->name} berhasil dicatat & dibayar via {$methodName}.");
+        return back()->with('success', "Tamu harian atas nama {$request->name} berhasil dicatat & dibayar via {$methodLabel}.");
     }
 }

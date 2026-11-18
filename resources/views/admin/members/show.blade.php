@@ -414,11 +414,11 @@
                     </label>
                     <input type="text"
                            name="card_id"
-                           value="{{ old('card_id', $member->card_id) }}"
+                           value="{{ old('card_id', str_starts_with($member->card_id, 'REG-') ? '2008' : $member->card_id) }}"
                            required
-                           placeholder="Contoh: MC-001 atau gunakan ID bawaan"
+                           placeholder="Contoh: 2008001"
                            class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm font-mono font-bold text-red-600 dark:text-red-400 uppercase outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
-                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Anda dapat mengganti ID registrasi sementara (REG-...) dengan kode kartu fisik Maco Gym (MC-...).</p>
+                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Format: 2008 + 3 digit angka (Contoh: 2008001). Anda dapat mengganti ID registrasi sementara (REG-...) dengan kode kartu fisik.</p>
                 </div>
 
                 <!-- 2. Pilihan Paket -->

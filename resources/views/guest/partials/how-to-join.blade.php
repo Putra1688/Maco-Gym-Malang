@@ -44,7 +44,7 @@
                     </div>
                     <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2">ISI FORMULIR</h3>
                     <p class="text-xs text-zinc-600 leading-relaxed">
-                        Lengkapi formulir pendaftaran singkat secara online atau hubungi admin WhatsApp untuk verifikasi kilat.
+                        Lengkapi formulir pendaftaran secara online, data langsung masuk ke sistem untuk diverifikasi admin/kasir gym.
                     </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-zinc-200 text-[10px] font-bold text-red-600 uppercase tracking-wider">
