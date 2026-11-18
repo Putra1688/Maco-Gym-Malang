@@ -1,3 +1,4 @@
+{{-- Testimonials Section (Dinonaktifkan Sementara)
 <!-- Testimonials Section (Clean Light Theme with Red Accents) -->
 <section class="py-24 bg-zinc-50 border-t border-zinc-200 relative">
     <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
@@ -87,3 +88,4 @@
 
     </div>
 </section>
+--}}

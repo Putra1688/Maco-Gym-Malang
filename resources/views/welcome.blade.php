@@ -52,8 +52,8 @@
         <!-- Schedule & How to Join (Cara Daftar) -->
         @include('guest.partials.how-to-join')
 
-        <!-- Testimonials (What Our Members Say) -->
-        @include('guest.partials.testimonials')
+        <!-- Testimonials (What Our Members Say) - Dinonaktifkan sementara -->
+        {{-- @include('guest.partials.testimonials') --}}
 
         <!-- FAQ Section (Questions & Answers) -->
         @include('guest.partials.faq')
