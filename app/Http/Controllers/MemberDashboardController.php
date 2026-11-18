@@ -51,7 +51,7 @@ class MemberDashboardController extends Controller
 
         $recentAttendances = $member->attendances()
             ->latest('checkin_time')
-            ->limit(15)
+            ->limit(10)
             ->get();
 
         return view('member.dashboard', compact(

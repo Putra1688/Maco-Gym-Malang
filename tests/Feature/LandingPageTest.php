@@ -96,7 +96,7 @@ class LandingPageTest extends TestCase
         $response = $this->get('/fasilitas');
 
         $response->assertStatus(200);
-        $response->assertSee('FASILITAS LENGKAP');
+        $response->assertSee('FASILITAS LENGKAP &');
         $response->assertSee('PROGRAM LATIHAN');
         $response->assertSee('Free Weights Zone');
         $response->assertSee('Plate-Loaded Machines');
