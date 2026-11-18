@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fasilitas Gym & Program Latihan | Maco Gym Malang</title>
-    <meta name="description" content="Jelajahi fasilitas lengkap Maco Gym Malang: Free Weights Zone, Plate-Loaded Machines, Cardio Theater, Shower Air Hangat, Musholla Ber-AC, dan program latihan terarah.">
-    <meta name="keywords" content="fasilitas gym malang, alat gym lengkap malang, program latihan fitness malang, kelas gym mahasiswa malang, personal trainer malang">
+    <title>Fasilitas Lengkap & Peralatan Gym | Maco Gym Malang</title>
+    <meta name="description" content="Jelajahi fasilitas resmi dan peralatan modern Maco Gym Malang: Power Rack, Leg Press, Chest Press, Treadmill, Free Refill Water, Locker Room, dan Maco Cafe.">
+    <meta name="keywords" content="fasilitas gym malang, alat gym lengkap malang, alat fitness maco gym, maco gym cafe, treadmill malang, power rack malang">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Fasilitas Gym & Program Latihan | Maco Gym Malang">
-    <meta property="og:description" content="Peralatan beban lengkap, cardio theater, locker room bersih air hangat, musholla ber-AC, dan bimbingan Coach profesional di Malang.">
-    <meta property="og:image" content="{{ asset('images/about-gym.jpg') }}">
+    <meta property="og:title" content="Fasilitas Lengkap & Peralatan Gym | Maco Gym Malang">
+    <meta property="og:description" content="Peralatan beban lengkap standar komersial, cardio theater, locker room bersih, water dispenser gratis, dan Maco Cafe di Malang.">
+    <meta property="og:image" content="{{ asset('images/showroom/room-4.png') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,15 +38,18 @@
     <!-- Main Content Area with Fullscreen Hero Matching Home Banner -->
     <main class="flex-grow">
 
-        <!-- ================= 1. HERO SECTION & BREADCRUMB ================= -->
-        <section class="relative h-[100dvh] min-h-[520px] max-h-[920px] flex flex-col justify-center overflow-hidden bg-zinc-950 text-white pt-20 sm:pt-24 lg:pt-28 pb-6 border-b border-zinc-200">
-            <!-- Background Image with Directional Dark Gradient (Exact Match with Home Hero) -->
+        <!-- ================= 1. HERO SECTION & BREADCRUMB (Background: room-4) ================= -->
+        <section class="relative min-h-[620px] lg:min-h-[700px] flex flex-col justify-center overflow-hidden bg-zinc-950 text-white pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 border-b border-zinc-800">
+            <!-- Background Image with Directional Dark Gradient (room-4.png) -->
             <div class="absolute inset-0 z-0">
-                <img src="{{ asset('images/about-gym.jpg') }}"
+                <img src="{{ asset('images/showroom/room-4.png') }}"
                      alt="Fasilitas Maco Gym Malang"
-                     class="w-full h-full object-cover object-center filter brightness-50 contrast-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 sm:via-zinc-950/80 to-transparent w-full md:w-3/4 lg:w-3/5 pointer-events-none"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/30 to-transparent pointer-events-none"></div>
+                     class="w-full h-full object-cover object-center filter brightness-65 contrast-105">
+                
+                <!-- Responsive Directional Dark Gradient Overlay -->
+                <div class="hidden md:block absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent w-4/5 lg:w-3/5"></div>
+                <div class="block md:hidden absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950/85 via-zinc-950/60 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent pointer-events-none"></div>
                 <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
             </div>
 
@@ -62,29 +65,30 @@
                             <span class="text-zinc-600">/</span>
                         </li>
                         <li class="text-red-500 font-bold" aria-current="page">
-                            Fasilitas & Program
+                            Fasilitas Gym
                         </li>
                     </ol>
                 </nav>
 
                 <div class="max-w-3xl space-y-4">
-                    <!-- Eyebrow Tagline -->
-                    <div class="inline-flex items-center gap-2.5">
-                        <span class="w-6 h-[2px] bg-red-500"></span>
+                    <!-- Eyebrow Tagline with Standard Red Lines -->
+                    <div class="inline-flex items-center gap-3">
+                        <span class="w-8 h-[2px] bg-red-600"></span>
                         <span class="text-xs font-bold uppercase tracking-[0.2em] text-red-500 font-montserrat">
-                            STANDAR ALAT & KENYAMANAN MEMBER
+                            STANDAR ALAT & FASILITAS GYM
                         </span>
+                        <span class="w-8 h-[2px] bg-red-600"></span>
                     </div>
 
                     <!-- Main Headline -->
                     <h1 class="font-montserrat text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-tight">
                         FASILITAS LENGKAP & <br>
-                        <span class="text-red-600 drop-shadow-[0_0_25px_rgba(239,68,68,0.4)]">PROGRAM LATIHAN</span>
+                        <span class="text-red-600 drop-shadow-[0_0_25px_rgba(239,68,68,0.4)]">ALAT OLAHRAGA MODERN</span>
                     </h1>
 
                     <!-- Lead Paragraph -->
                     <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal pt-1 max-w-2xl">
-                        Maco Gym Malang menyediakan zonasi latihan terstruktur, mesin beban berkualitas, area kardio modern, serta fasilitas pendukung yang bersih dan nyaman untuk mendukung target fisikmu setiap hari.
+                        Maco Gym Malang menyediakan peralatan gym berstandar komersial, mesin beban isolasi presisi, area kardio modern, serta fasilitas pendukung kenyamanan lengkap untuk mendukung performa latihan terbaikmu setiap hari.
                     </p>
 
                     <!-- Quick Action Buttons -->
@@ -107,497 +111,161 @@
             </div>
         </section>
 
-        <!-- ================= 2. ZONA & FASILITAS LENGKAP (8 ZONASI DETAIL) ================= -->
-        <section id="zonasi-fasilitas" class="py-20 lg:py-24 bg-white border-b border-zinc-200">
+        <!-- ================= 2. DAFTAR LENGKAP FASILITAS & ALAT GYM MACO GYM ================= -->
+        @php
+            $facilities = [
+                [
+                    'title' => 'Multi-Function Power Rack & Squat Station',
+                    'category' => 'Strength & Heavy Lifting',
+                    'image' => 'images/facilities/Multi-Function Power Rack.jpeg',
+                    'description' => 'Fasilitas rak beban multifungsi standar heavy-duty untuk latihan compound fundamental seperti Barbell Squat, Overhead Press, Bench Press, dan Rack Pull. Dilengkapi safety spotter arm kokoh dan multi-angle pull up grip untuk keamanan latihan beban bebas maksimal.',
+                    'highlight' => 'Safety Spotter Arm & Multi-Grip Pull Up',
+                ],
+                [
+                    'title' => '45-Degree Incline Leg Press Machine',
+                    'category' => 'Lower Body Machine',
+                    'image' => 'images/facilities/Leg Press.jpeg',
+                    'description' => 'Mesin leg press sudut 45 derajat dengan lintasan rel bantalan linier halus untuk melatih kekuatan paha depan (quadriceps), paha belakang (hamstrings), dan glutes dengan kapasitas beban tinggi tanpa memberikan beban kompresi berlebih pada tulang belakang.',
+                    'highlight' => 'Kapasitas Beban Berat & Safety Lock Presisi',
+                ],
+                [
+                    'title' => 'Chest Press Machine',
+                    'category' => 'Chest & Upper Body',
+                    'image' => 'images/facilities/Chest press.jpeg',
+                    'description' => 'Mesin isolasi otot dada dengan pin beban terintegrasi yang mudah diatur. Pegangan tangan ganda memungkinkan variasi cengkeraman netral maupun lebar untuk aktivasi maksimal otot pectoral secara aman dan stabil bagi pemula hingga profesional.',
+                    'highlight' => 'Biomekanik Gerak Ergonomis & Pin Beban',
+                ],
+                [
+                    'title' => 'Lat Pulldown & Seated Cable Station',
+                    'category' => 'Back & Latissimus Dorsi',
+                    'image' => 'images/facilities/Lat pull down.jpeg',
+                    'description' => 'Stasiun kabel vertikal presisi tinggi untuk melatih otot punggung (latissimus dorsi, rhomboids, dan trapezius). Bantalan paha dapat disesuaikan tinggi-rendahnya untuk stabilitas posisi saat menarik beban, membantu membentuk siluet punggung V-Taper yang tegap.',
+                    'highlight' => 'Kabel Presisi Halus & Bantalan Paha Adjustable',
+                ],
+                [
+                    'title' => 'Seated Shoulder Press Machine',
+                    'category' => 'Shoulder & Deltoids',
+                    'image' => 'images/facilities/Shoulder press.jpeg',
+                    'description' => 'Mesin dorong bahu dengan posisi duduk bersandar ergonomis untuk melatih ketiga bagian otot deltoid. Mengurangi tekanan pada sendi rotator cuff sekaligus memungkinkan penambahan beban progresif dengan lintasan gerak yang seimbang.',
+                    'highlight' => 'Sandaran Ergonomis & Form Gerak Terarah',
+                ],
+                [
+                    'title' => 'Leg Extension & Quadriceps Machine',
+                    'category' => 'Leg Isolation',
+                    'image' => 'images/facilities/Leg Extension.jpeg',
+                    'description' => 'Mesin isolasi paha depan dengan bantalan busa empuk berkepadatan tinggi. Roller pergelangan kaki dan sudut sandaran dapat disetel secara personal sesuai panjang tungkai, sangat efektif untuk definisi otot paha serta stabilitas tempurung lutut.',
+                    'highlight' => 'Roller Adjustable & Full Range of Motion',
+                ],
+                [
+                    'title' => 'Assisted Chin-Up & Dip Station',
+                    'category' => 'Calisthenics & Bodyweight',
+                    'image' => 'images/facilities/Chin Assist Station.jpeg',
+                    'description' => 'Alat bantu gerakan angkat badan (pull-up) dan celup (dips) yang dilengkapi platform lutut dengan counterweight penopang beban. Membantu member yang belum sanggup mengangkat bobot tubuh penuh agar bisa melakukan repetisi pull-up dan dips dengan teknik sempurna.',
+                    'highlight' => 'Counterweight Assist Platform & Multi-Grip',
+                ],
+                [
+                    'title' => 'Inner & Outer Thigh (Adductor / Abductor)',
+                    'category' => 'Glutes & Hip Mobility',
+                    'image' => 'images/facilities/InnerOuter Thigh Machine.jpeg',
+                    'description' => 'Mesin paha 2-in-1 dengan bantalan lutut yang dapat diputar 180 derajat untuk melatih otot paha bagian dalam (adductor) maupun pinggul dan glutes bagian luar (abductor). Membantu pembentukan kaki kencang, stabilitas pinggul, dan postur bawah tubuh yang seimbang.',
+                    'highlight' => 'Rotary Knee Pad & Dual Exercise Function',
+                ],
+                [
+                    'title' => 'Precision Dumbbell Set & Free Weight Rack',
+                    'category' => 'Free Weights Zone',
+                    'image' => 'images/facilities/Dumbles Set.jpeg',
+                    'description' => 'Koleksi dumbbell karet padat lengkap mulai dari bobot teringan untuk pemanasan/toning hingga beban berat untuk latihan hipertrofi intensif. Tertata rapi di atas rak baja bertingkat anti selip agar area latihan tetap teratur, aman, dan mudah diakses oleh member.',
+                    'highlight' => 'Bobot Lengkap & Rak Bertingkat Rapi',
+                ],
+                [
+                    'title' => 'Commercial Grade Treadmill',
+                    'category' => 'Cardio Theater',
+                    'image' => 'images/facilities/Treadmill.jpeg',
+                    'description' => 'Treadmill komersial premium dengan sistem suspensi peredam kejut bantalan lari yang empuk guna melindungi sendi lutut dan tumit. Dilengkapi pengaturan kecepatan halus, auto-incline otomatis, serta sensor pengukur detak jantung untuk sesi kardio dan fat loss yang optimal.',
+                    'highlight' => 'Shock Absorption Deck & Auto-Incline',
+                ],
+                [
+                    'title' => 'Maco Cafe & Chilled Refreshment Cooler',
+                    'category' => 'Maco Cafe & Nutrisi',
+                    'image' => 'images/facilities/kulkas.png',
+                    'description' => 'Kulkas pendingin khusus Maco Cafe yang menyediakan berbagai minuman dingin segar, susu protein siap minum, minuman isotonik elektrolit, dan air mineral dingin. Memudahkan member memenuhi asupan nutrisi, hidrasi, dan pemulihan energi tepat setelah sesi latihan selesai.',
+                    'highlight' => 'Minuman Protein Dingin & Isotonik Segar',
+                ],
+                [
+                    'title' => 'Free Refill Mineral Water Station',
+                    'category' => 'Fasilitas Hidrasi Member',
+                    'image' => 'images/facilities/Free Refil Water Dispenser.jpeg',
+                    'description' => 'Dispenser air minum higienis dengan sistem filter modern yang menyediakan pilihan air dingin, normal, dan panas. Bebas dinikmati dan diisi ulang tanpa batas (free refill) oleh seluruh member Maco Gym untuk menjaga hidrasi tubuh tetap prima selama berolahraga.',
+                    'highlight' => 'Free Refill Sepuasnya (Dingin & Panas)',
+                ],
+                [
+                    'title' => 'Loker Pribadi & Ruang Penyimpanan Aman',
+                    'category' => 'Keamanan & Kenyamanan',
+                    'image' => 'images/facilities/Loker.jpeg',
+                    'description' => 'Fasilitas loker penyimpanan individu dengan sistem penguncian aman dan berventilasi baik. Member dapat menitipkan tas, pakaian ganti, helm, sepatu, serta barang berharga lainnya dengan tenang dan nyaman saat fokus menjalani sesi latihan di lantai gym.',
+                    'highlight' => 'Loker Bersih, Kokoh & Berkunci Aman',
+                ],
+                [
+                    'title' => 'Freshened-Up Room & Ruang Ganti Bersih',
+                    'category' => 'Ruang Ganti & Bilas',
+                    'image' => 'images/facilities/Freshened up room.jpeg',
+                    'description' => 'Ruang ganti dan bilas yang senantiasa bersih, harum, dan higienis. Dilengkapi cermin grooming luas, pencahayaan terang, dan tata ruang yang rapi agar member dapat menyegarkan diri kembali dengan nyaman sebelum melanjutkan aktivitas harian.',
+                    'highlight' => 'Selalu Higienis, Bersih & Harum',
+                ],
+            ];
+        @endphp
+
+        <section id="daftar-fasilitas" class="py-20 lg:py-24 bg-zinc-50 border-b border-zinc-200">
             <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
                 
-                <!-- Section Header (Clean Centered Athletic Hierarchy) -->
+                <!-- Section Header (Centered Clean Athletic Hierarchy) -->
                 <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
                     <div class="flex items-center justify-center gap-3 mb-1">
                         <span class="w-8 h-[2px] bg-red-600"></span>
-                        <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">GYM FACILITIES</span>
+                        <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">
+                            GYM FACILITIES & EQUIPMENT
+                        </span>
                         <span class="w-8 h-[2px] bg-red-600"></span>
                     </div>
                     <h2 class="font-montserrat text-3xl sm:text-5xl font-black uppercase text-zinc-900 tracking-tight">
-                        8 ZONASI FASILITAS <span class="text-red-600">MACO GYM</span>
+                        FASILITAS & ALAT OLAHRAGA <span class="text-red-600">MACO GYM</span>
                     </h2>
                     <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
-                        Seluruh area dirancang ergonomis dengan sirkulasi udara dingin dan ruang gerak lapang agar sesi latihanmu aman, fokus, dan efektif.
+                        Dokumentasi seluruh peralatan kebugaran, mesin latihan beban, cardio, serta sarana kenyamanan yang tersedia langsung di Maco Gym Malang.
                     </p>
                 </div>
 
-                <!-- 8 Facilities Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                    <!-- Fac 1: Free Weights Zone -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-dumbbell"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 01</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Zona Beban Bebas</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Free Weights Zone
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Dumbbell set presisi dari bobot 1 kg hingga 50 kg, Olympic Barbells standar kompetisi, Incline/Flat Bench kokoh, dan Squat Racks heavy-duty.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Rubber floor tebal antislip
-                        </div>
-                    </div>
-
-                    <!-- Fac 2: Plate-Loaded & Selectorized Machines -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-weight-hanging"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 02</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Mesin Beban Isolasi</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Plate-Loaded Machines
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Smith Machine aman, 45-Degree Leg Press, Hack Squat, Lat Pulldown, Cable Crossover ganda, dan Seated Row dengan jalur gerak biomekanik stabil.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Beban plate & pin teratur
-                        </div>
-                    </div>
-
-                    <!-- Fac 3: Cardio Theater -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-heart-pulse"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 03</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Kardio & Stamina</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Cardio Theater
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Treadmill auto-incline peredam getaran, Elliptical Trainer low-impact, Spinning Bike kecepatan tinggi, dan Stairmaster untuk melatih daya tahan kardiovaskular.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Monitor detak jantung & jarak
-                        </div>
-                    </div>
-
-                    <!-- Fac 4: Functional & Calisthenics Zone -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-fire-flame-curved"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 04</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Latihan Fungsional</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Functional Zone
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Battle Ropes berat, variasi Kettlebell cast iron, Plyometric Jump Boxes, Slam Balls, Resistance Bands, dan Pull-Up Rig untuk kelincahan tubuh.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Latihan mobilitas & calisthenics
-                        </div>
-                    </div>
-
-                    <!-- Fac 5: Locker & Shower Air Hangat -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-shower"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 05</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Kenyamanan & Kebersihan</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Locker & Hot Shower
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Loker pribadi berkunci aman untuk menyimpan barang berharga, ruang bilas shower air hangat bersih, wastafel terawat, dan cermin grooming luas.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Rutin dibersihkan setiap sesi
-                        </div>
-                    </div>
-
-                    <!-- Fac 6: Musholla Ber-AC -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-mosque"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 06</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Ibadah Nyaman</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Musholla Ber-AC
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Ruang ibadah terpisah yang tenang, sejuk berpendingin AC, dilengkapi sajadah bersih dan tempat wudhu khusus agar ibadah tetap tepat waktu saat jadwal latihan.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Sajadah, mukena & wudhu bersih
-                        </div>
-                    </div>
-
-                    <!-- Fac 7: Protein & Supplement Bar -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-bottle-water"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 07</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Nutrisi & Pemulihan</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Protein & Supplement Bar
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Tersedia shaker Whey Protein segar racikan dingin, Pre-Workout penambah fokus, BCAA intra-workout, snack energi berprotein, dan air mineral dingin di meja resepsionis.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Ready-to-drink post workout
-                        </div>
-                    </div>
-
-                    <!-- Fac 8: Full AC & High-Energy Audio -->
-                    <div class="group p-6 sm:p-7 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-red-600 hover:bg-white transition-all duration-300 shadow-xs hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center justify-between mb-5">
-                                <div class="w-12 h-12 rounded-xl bg-zinc-900 text-white flex items-center justify-center text-xl group-hover:bg-red-600 transition-colors shadow-sm">
-                                    <i class="fa-solid fa-volume-high"></i>
-                                </div>
-                                <span class="font-mono text-xs font-bold text-zinc-400 tracking-wider">ZONE 08</span>
-                            </div>
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Atmosfer Latihan</span>
-                            <h3 class="font-montserrat text-lg font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors mb-2">
-                                Full AC & Audio System
-                            </h3>
-                            <p class="text-xs text-zinc-600 leading-relaxed mb-4 font-normal">
-                                Udara sejuk berpendingin AC bebas pengap dan sirkulasi bersih, dipadukan alunan playlist musik workout berenergi tinggi untuk menjaga ritme latihan tetap maksimal.
-                            </p>
-                        </div>
-                        <div class="pt-3 border-t border-zinc-200/80 text-[11px] text-zinc-500 font-mono">
-                            ✓ Buka setiap hari 06:00 - 22:00
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ================= 3. PROGRAM LATIHAN & KELAS KEBUGARAN (6 PROGRAM UNGGULAN) ================= -->
-        <section id="program-kelas" class="py-20 lg:py-24 bg-zinc-50 border-b border-zinc-200">
-            <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
-
-                <!-- Header (Clean Line Accent instead of dots) -->
-                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                    <div class="flex items-center justify-center gap-3 mb-1">
-                        <span class="w-8 h-[2px] bg-red-600"></span>
-                        <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">FITNESS PROGRAMS & CLASSES</span>
-                        <span class="w-8 h-[2px] bg-red-600"></span>
-                    </div>
-                    <h2 class="font-montserrat text-3xl sm:text-5xl font-black uppercase text-zinc-900 tracking-tight">
-                        PILIHAN PROGRAM <span class="text-red-600">LATIHAN TERARAH</span>
-                    </h2>
-                    <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
-                        Setiap orang memiliki target tubuh yang berbeda. Di Maco Gym, kamu bebas memilih pola latihan yang sesuai dengan kebutuhan fisikmu.
-                    </p>
-                </div>
-
-                <!-- 6 Programs Cards Grid -->
+                <!-- 14 Facilities Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($facilities as $facility)
+                        <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-600 overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
+                            
+                            <!-- Image Container -->
+                            <div class="relative h-64 sm:h-72 overflow-hidden bg-zinc-950">
+                                <img src="{{ asset($facility['image']) }}"
+                                     alt="{{ $facility['title'] }}"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                            </div>
 
-                    <!-- Program 1: Strength & Powerbuilding -->
-                    <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('images/programs/strength.jpg') }}"
-                                 alt="Strength and Powerbuilding Maco Gym"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                            <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Kekuatan Murni</span>
-                                <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
-                                    Strength & Powerbuilding
+                            <!-- Content Area -->
+                            <div class="p-6 sm:p-7 flex flex-col flex-1">
+                                <h3 class="font-montserrat text-lg sm:text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors leading-snug">
+                                    {{ $facility['title'] }}
                                 </h3>
-                                <p class="text-xs text-zinc-600 leading-relaxed mt-2 font-normal">
-                                    Fokus pada gerakan compound lift fundamental: Barbell Back Squat, Flat Bench Press, dan Deadlift untuk membangun kepadatan tulang serta kekuatan saraf otot.
+                                <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed mt-2.5 font-normal">
+                                    {{ $facility['description'] }}
                                 </p>
                             </div>
-                            <div class="pt-4 border-t border-zinc-100 space-y-2">
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Target:</span>
-                                    <strong class="text-zinc-800">Kekuatan & Massa Otot</strong>
-                                </div>
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Durasi Sesi:</span>
-                                    <strong class="text-zinc-800">45 - 60 Menit</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Program 2: Fat Loss & HIIT Conditioning -->
-                    <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('images/programs/weightloss.jpg') }}"
-                                 alt="Fat Loss & HIIT Conditioning Maco Gym"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
                         </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                            <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Pembakaran Kalori</span>
-                                <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
-                                    Fat Loss & HIIT Conditioning
-                                </h3>
-                                <p class="text-xs text-zinc-600 leading-relaxed mt-2 font-normal">
-                                    Kombinasi sirkuit beban fungsional dan kardio interval yang memicu pembakaran kalori bahkan setelah selesai berolahraga (efek EPOC) tanpa mengorbankan massa otot.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-zinc-100 space-y-2">
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Target:</span>
-                                    <strong class="text-zinc-800">Penurunan Lemak Tubuh</strong>
-                                </div>
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Durasi Sesi:</span>
-                                    <strong class="text-zinc-800">35 - 50 Menit</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Program 3: Hypertrophy & Muscle Sculpting -->
-                    <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('images/programs/muscle.jpg') }}"
-                                 alt="Hypertrophy Program Maco Gym"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                            <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Pembentukan Tubuh</span>
-                                <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
-                                    Hypertrophy & Muscle Sculpting
-                                </h3>
-                                <p class="text-xs text-zinc-600 leading-relaxed mt-2 font-normal">
-                                    Rancangan repetisi 8-12 reps dengan kontrol tempo beban pada mesin isolasi dan kabel untuk mempertegas garis otot bahu, dada, punggung, serta kaki secara proporsional.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-zinc-100 space-y-2">
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Target:</span>
-                                    <strong class="text-zinc-800">Bentuk Tubuh & Proporsi</strong>
-                                </div>
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Durasi Sesi:</span>
-                                    <strong class="text-zinc-800">50 - 70 Menit</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Program 4: Functional Mobility & Active Recovery -->
-                    <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('images/programs/flexibility.jpg') }}"
-                                 alt="Functional Mobility Maco Gym"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                            <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Mobilitas Sendi</span>
-                                <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
-                                    Mobility & Active Recovery
-                                </h3>
-                                <p class="text-xs text-zinc-600 leading-relaxed mt-2 font-normal">
-                                    Rangkaian peregangan dinamis, penguatan otot penopang tulang belakang (core), dan perbaikan rentang gerak sendi untuk mencegah nyeri pinggang serta pegal setelah latihan.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-zinc-100 space-y-2">
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Target:</span>
-                                    <strong class="text-zinc-800">Kelenturan & Bebas Cedera</strong>
-                                </div>
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Durasi Sesi:</span>
-                                    <strong class="text-zinc-800">30 - 45 Menit</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Program 5: Student & Beginner Orientation -->
-                    <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('images/about-gym.jpg') }}"
-                                 alt="Beginner and Student Gym Orientation"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                            <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Ramah Pemula</span>
-                                <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
-                                    Student & Beginner Orientation
-                                </h3>
-                                <p class="text-xs text-zinc-600 leading-relaxed mt-2 font-normal">
-                                    Program khusus bagi member baru atau mahasiswa yang baru pertama kali masuk gym. Staff instruktur akan mendampingi pengenalan fungsi setiap alat dan tata krama gym.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-zinc-100 space-y-2">
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Target:</span>
-                                    <strong class="text-zinc-800">Edukasi Alat & Percaya Diri</strong>
-                                </div>
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Biaya:</span>
-                                    <strong class="text-emerald-600">Gratis untuk Member Baru</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Program 6: 1-on-1 Personal Trainer Coaching -->
-                    <div class="group bg-white rounded-2xl border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
-                        <div class="relative h-56 overflow-hidden">
-                            <img src="{{ asset('images/trainers/coach-rangga.jpg') }}"
-                                 alt="Personal Trainer Maco Gym"
-                                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
-                            <div>
-                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-red-600 block mb-1">Privat & Terarah</span>
-                                <h3 class="font-montserrat text-xl font-bold uppercase text-zinc-900 group-hover:text-red-600 transition-colors">
-                                    1-on-1 Personal Coaching
-                                </h3>
-                                <p class="text-xs text-zinc-600 leading-relaxed mt-2 font-normal">
-                                    Pendampingan privat intensif bersama pelatih berlisensi. Setiap repetisi, pengaturan beban progresif, dan pola nutrisi harian diawasi secara eksklusif.
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-zinc-100 space-y-2">
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Target:</span>
-                                    <strong class="text-zinc-800">Hasil Cepat & Form Presisi</strong>
-                                </div>
-                                <div class="flex items-center justify-between text-xs text-zinc-500 font-mono">
-                                    <span>Paket:</span>
-                                    <strong class="text-red-600">12 Sesi / 30 Hari</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
 
             </div>
         </section>
 
-        <!-- ================= 4. TIM COACH BERLISENSI ================= -->
-        <section class="py-20 lg:py-24 bg-white border-b border-zinc-200">
-            <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
-
-                <!-- Section Header (Clean Centered Athletic Hierarchy) -->
-                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-                    <div class="flex items-center justify-center gap-3 mb-1">
-                        <span class="w-8 h-[2px] bg-red-600"></span>
-                        <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">CERTIFIED COACHES</span>
-                        <span class="w-8 h-[2px] bg-red-600"></span>
-                    </div>
-                    <h2 class="font-montserrat text-3xl sm:text-5xl font-black uppercase text-zinc-900 tracking-tight">
-                        DIDUKUNG OLEH <span class="text-red-600">COACH BERPENGALAMAN</span>
-                    </h2>
-                    <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
-                        Form latihan yang benar adalah kunci utama menghindari cedera. Tim coach Maco Gym siap memberikan koreksi teknik dan konsultasi program.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                    <!-- Coach 1 -->
-                    <div class="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col justify-between space-y-4 hover:border-red-500/60 transition shadow-xs">
-                        <div class="h-64 rounded-xl overflow-hidden relative">
-                            <img src="{{ asset('images/trainers/coach-rangga.jpg') }}" alt="Coach Rangga" class="w-full h-full object-cover object-top">
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-mono font-bold uppercase text-red-600">Head Coach</span>
-                            <h4 class="font-montserrat font-bold text-base text-zinc-900 uppercase">Coach Rangga Pratama, S.Or</h4>
-                            <p class="text-xs text-zinc-500 mt-1">Spesialis Hypertrophy & Body Recomposition (APKI Certified).</p>
-                        </div>
-                    </div>
-
-                    <!-- Coach 2 -->
-                    <div class="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col justify-between space-y-4 hover:border-red-500/60 transition shadow-xs">
-                        <div class="h-64 rounded-xl overflow-hidden relative">
-                            <img src="{{ asset('images/trainers/coach-kevin.jpg') }}" alt="Coach Kevin" class="w-full h-full object-cover object-top">
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-mono font-bold uppercase text-red-600">Senior Coach</span>
-                            <h4 class="font-montserrat font-bold text-base text-zinc-900 uppercase">Coach Kevin Ardian, CPT</h4>
-                            <p class="text-xs text-zinc-500 mt-1">Pakar Fat Loss & High Intensity Cardio (NASM Certified).</p>
-                        </div>
-                    </div>
-
-                    <!-- Coach 3 -->
-                    <div class="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col justify-between space-y-4 hover:border-red-500/60 transition shadow-xs">
-                        <div class="h-64 rounded-xl overflow-hidden relative">
-                            <img src="{{ asset('images/trainers/coach-sarah.jpg') }}" alt="Coach Maya" class="w-full h-full object-cover object-top">
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-mono font-bold uppercase text-red-600">Female Specialist</span>
-                            <h4 class="font-montserrat font-bold text-base text-zinc-900 uppercase">Coach Maya Septiani, CSN</h4>
-                            <p class="text-xs text-zinc-500 mt-1">Program Glutes, Core Strength & Konsultasi Pola Makan Sehat.</p>
-                        </div>
-                    </div>
-
-                    <!-- Coach 4 -->
-                    <div class="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 flex flex-col justify-between space-y-4 hover:border-red-500/60 transition shadow-xs">
-                        <div class="h-64 rounded-xl overflow-hidden relative">
-                            <img src="{{ asset('images/trainers/coach-dimas.jpg') }}" alt="Coach Dimas" class="w-full h-full object-cover object-top">
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-mono font-bold uppercase text-red-600">Power Coach</span>
-                            <h4 class="font-montserrat font-bold text-base text-zinc-900 uppercase">Coach Dimas Wahyu, CSCS</h4>
-                            <p class="text-xs text-zinc-500 mt-1">Spesialis Angkat Beban Berat & Adaptasi Mobilitas Gerak Sendi.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ================= 5. CALL TO ACTION BANNER ================= -->
+        <!-- ================= 3. CALL TO ACTION BANNER ================= -->
         <section class="py-16 sm:py-20 bg-zinc-950 text-white relative overflow-hidden">
             <div class="absolute -top-24 -right-24 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -615,7 +283,7 @@
                 </h2>
 
                 <p class="text-xs sm:text-sm text-zinc-400 max-w-xl mx-auto leading-relaxed font-normal">
-                    Dapatkan akses bebas fasilitas setiap hari, tarif mahasiswa mulai Rp 135 ribu/bulan, tanpa biaya pendaftaran tersembunyi.
+                    Dapatkan akses bebas ke seluruh fasilitas dan peralatan gym setiap hari mulai pukul 06:00 - 22:00 WIB, dengan tarif mahasiswa terjangkau dan tanpa biaya pendaftaran tersembunyi.
                 </p>
 
                 <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
@@ -670,4 +338,3 @@
     </script>
 </body>
 </html>
-

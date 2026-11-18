@@ -1,13 +1,13 @@
 <!-- About Section (Clean Light Theme with Red Accents & Contrasted Photo Box) -->
-<section id="about" class="py-24 bg-white border-t border-zinc-200 relative">
+<section id="about" class="py-20 sm:py-24 bg-white border-t border-zinc-200 relative">
     <div class="w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             
-            <!-- Left: Inspiring Gym Box with "DISCIPLINE FOCUS STRONG CONSISTENT" with Directional Dark Overlay (FIT HUB Style) -->
-            <div class="lg:col-span-4 relative rounded-2xl overflow-hidden border border-zinc-200 p-8 sm:p-10 shadow-xl flex flex-col justify-center min-h-[360px] group">
-                <!-- Background Gym Photo -->
-                <img src="{{ asset('images/about-gym.jpg') }}"
+            <!-- Left: Inspiring Gym Box with "DISCIPLINE FOCUS STRONG CONSISTENT" with Directional Dark Overlay -->
+            <div class="lg:col-span-5 relative rounded-2xl overflow-hidden border border-zinc-200 p-8 sm:p-10 shadow-xl flex flex-col justify-between min-h-[360px] sm:min-h-[400px] group">
+                <!-- Background Gym Photo (room-1.png) -->
+                <img src="{{ asset('images/showroom/room-1.png') }}"
                      alt="Maco Gym Training Atmosphere"
                      class="absolute inset-0 w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700">
                 
@@ -15,8 +15,8 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/60 to-zinc-950/40"></div>
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-red-600/30 blur-3xl rounded-full pointer-events-none"></div>
 
-                <!-- Giant Motivational Stencil Text Overlay -->
-                <div class="relative z-10 space-y-1 font-bold text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight leading-none select-none font-montserrat">
+                <!-- Motivational Stencil Text Overlay (Ukuran Diperkecil Lebih Rapi & Proporsional) -->
+                <div class="relative z-10 space-y-1 font-bold text-xl sm:text-2xl lg:text-3xl uppercase tracking-tight leading-tight select-none font-montserrat my-auto">
                     <div class="text-zinc-300 hover:text-white transition-colors">DISCIPLINE</div>
                     <div class="text-red-500 drop-shadow-[0_0_20px_rgba(239,68,68,0.5)]">FOCUS</div>
                     <div class="text-white">STRONG</div>
@@ -29,8 +29,8 @@
                 </div>
             </div>
 
-            <!-- Middle: About Copy & Action Button -->
-            <div class="lg:col-span-5 space-y-6">
+            <!-- Right: About Copy & Action Button -->
+            <div class="lg:col-span-7 space-y-6 max-w-2xl">
                 <div>
                     <div class="flex items-center gap-2.5 mb-2">
                         <span class="w-6 h-[2px] bg-red-600"></span>
@@ -57,55 +57,6 @@
                         </svg>
                     </a>
                 </div>
-            </div>
-
-            <!-- Right: 2x2 Stats Grid with Athletic Icons -->
-            <div class="lg:col-span-3 grid grid-cols-2 gap-4 sm:gap-6">
-                
-                <!-- Stat 1 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">7+</div>
-                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">YEARS EXPERIENCE</div>
-                    </div>
-                </div>
-
-                <!-- Stat 2 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">1.5K+</div>
-                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">HAPPY MEMBERS</div>
-                    </div>
-                </div>
-
-                <!-- Stat 3 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
-                        <i class="fa-solid fa-dumbbell"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">50+</div>
-                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">MODERN MACHINES</div>
-                    </div>
-                </div>
-
-                <!-- Stat 4 -->
-                <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-xs space-y-2.5">
-                    <div class="w-10 h-10 rounded-lg bg-zinc-900 text-red-500 flex items-center justify-center text-sm shadow-xs">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl sm:text-3xl font-bold text-zinc-900 font-montserrat">100+</div>
-                        <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-montserrat">TRANSFORMATIONS</div>
-                    </div>
-                </div>
-
             </div>
 
         </div>

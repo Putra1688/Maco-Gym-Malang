@@ -10,7 +10,7 @@
                 <span class="w-8 h-[2px] bg-red-600"></span>
             </div>
             <h2 class="font-montserrat text-3xl sm:text-5xl font-bold uppercase text-zinc-900 tracking-tight">
-                PROGRAM LATIHAN <span class="text-red-600">MACO GYM</span>
+                FASILITASh <span class="text-red-600">MACO GYM</span>
             </h2>
             <p class="text-xs sm:text-sm text-zinc-600 max-w-2xl mx-auto leading-relaxed">
                 Dirancang untuk membantu setiap member mencapai target kebugaran secara konsisten, mulai dari pembentukan otot, penurunan berat badan, hingga pemulihan stamina.
