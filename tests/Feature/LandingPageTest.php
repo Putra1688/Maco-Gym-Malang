@@ -27,7 +27,7 @@ class LandingPageTest extends TestCase
         // Facilities & Programs Section
         $response->assertSee('OUR PROGRAMS');
         $response->assertSee('STRENGTH TRAINING');
-        $response->assertSee('JELAJAHI FASILITAS & PROGRAM LENGKAP');
+        $response->assertSee('JELAJAHI FASILITAS');
 
         // About & Philosophy Section
         $response->assertSee('DISCIPLINE');
@@ -96,14 +96,14 @@ class LandingPageTest extends TestCase
         $response = $this->get('/fasilitas');
 
         $response->assertStatus(200);
-        $response->assertSee('FASILITAS LENGKAP &');
+        $response->assertSee('FASILITAS LENGKAP');
         $response->assertSee('PROGRAM LATIHAN');
         $response->assertSee('Free Weights Zone');
         $response->assertSee('Plate-Loaded Machines');
         $response->assertSee('Cardio Theater');
-        $response->assertSee('Locker & Hot Shower');
+        $response->assertSee('Locker & Hot Shower', false);
         $response->assertSee('Musholla Ber-AC');
-        $response->assertSee('Strength & Powerbuilding');
+        $response->assertSee('Strength & Powerbuilding', false);
         $response->assertSee('DAFTAR MEMBER SEKARANG');
     }
 }

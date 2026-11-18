@@ -143,7 +143,7 @@
                         </label>
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 text-xs font-bold text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" {{ in_array(old('payment_method'), ['qris', 'transfer']) ? 'checked' : '' }} class="text-red-600 focus:ring-red-500">
-                            <span>QRIS / TF</span>
+                            <span>QRIS / Transfer</span>
                         </label>
                     </div>
                     <p class="text-[11px] text-zinc-400 font-mono mt-1">* Jika status Pending, transaksi kas baru tercatat saat diverifikasi.</p>

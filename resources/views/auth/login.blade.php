@@ -108,7 +108,7 @@
                     Masuk ke Sistem
                 </h2>
                 <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-                    Silakan gunakan kredensial staf kasir atau nomor member Anda.
+                    Silakan gunakan kredensial akun admin atau nomor kartu member Anda.
                 </p>
             </div>
 
@@ -138,7 +138,7 @@
                                name="phone"
                                id="input-phone"
                                value="{{ old('phone') }}"
-                               placeholder="Contoh: 081234567890 atau MC-001"
+                               placeholder="Contoh: 081234567890 atau 2008092"
                                required
                                autofocus
                                class="w-full pl-9 pr-3 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-900 dark:text-white placeholder-zinc-400 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none transition text-sm">
@@ -165,6 +165,20 @@
                     </div>
                 </div>
 
+                <!-- Remember Me Checkbox -->
+                <div class="flex items-center justify-between text-xs pt-1">
+                    <label for="remember" class="inline-flex items-center gap-2 cursor-pointer select-none text-zinc-700 dark:text-zinc-300">
+                        <input type="checkbox"
+                               name="remember"
+                               id="remember"
+                               value="1"
+                               {{ old('remember') ? 'checked' : '' }}
+                               class="w-4 h-4 rounded text-red-600 bg-zinc-50 dark:bg-zinc-950 border-zinc-300 dark:border-zinc-700 focus:ring-red-600 focus:ring-offset-0 cursor-pointer">
+                        <span class="font-medium">Ingat Saya</span>
+                    </label>
+                    <span class="text-[11px] text-zinc-400">Tetap login di perangkat ini</span>
+                </div>
+
                 <div class="pt-2">
                     <button type="submit"
                             class="w-full py-3 px-4 bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-lg active:scale-[0.99] transition flex items-center justify-center gap-2">
@@ -184,18 +198,12 @@
                     </span>
                     <span class="text-[9px] font-mono text-zinc-400">1-Klik Isi</span>
                 </div>
-                <div class="grid grid-cols-3 gap-2">
+                <div class="grid grid-cols-2 gap-2">
                     <button type="button"
                             @click="fillAccount('081234567890', 'password123')"
                             class="px-2.5 py-2 rounded-md bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-950 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 hover:border-red-600 dark:hover:border-red-600 text-center transition">
                         <span class="block text-xs font-bold text-zinc-900 dark:text-white">Admin</span>
-                        <span class="block text-[9px] text-zinc-500 font-mono">Super</span>
-                    </button>
-                    <button type="button"
-                            @click="fillAccount('081234567891', 'password123')"
-                            class="px-2.5 py-2 rounded-md bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-950 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 hover:border-red-600 dark:hover:border-red-600 text-center transition">
-                        <span class="block text-xs font-bold text-zinc-900 dark:text-white">Staff</span>
-                        <span class="block text-[9px] text-zinc-500 font-mono">Kasir</span>
+                        <span class="block text-[9px] text-zinc-500 font-mono">Super Admin</span>
                     </button>
                     <button type="button"
                             @click="fillAccount('081234567899', 'member123')"

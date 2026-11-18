@@ -20,13 +20,13 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-white text-zinc-800 antialiased selection:bg-red-600 selection:text-white font-sans min-h-screen flex flex-col">
+<body class="bg-white text-zinc-800 antialiased selection:bg-red-600 selection:text-white font-sans min-h-screen flex flex-col overflow-x-hidden">
 
     <!-- Navbar & Top Info Bar -->
     @include('guest.partials.navbar')
 
     <!-- Main Content (Full-width edge-to-edge under navbar) -->
-    <main class="flex-grow pt-[64px] sm:pt-[80px] lg:pt-[106px]">
+    <main class="flex-grow pt-[64px] sm:pt-[80px] lg:pt-[106px] overflow-x-hidden">
         @include('bmi.bmi-calculator')
     </main>
 

@@ -226,8 +226,9 @@
                 </div>
             </div>
 
-            <div class="mt-4 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono">
-                ⚡ Transaksi kasir langsung tercatat ke pembukuan resmi Maco Gym.
+            <div class="mt-4 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 shrink-0"></span>
+                <span>Transaksi kasir langsung tercatat ke pembukuan resmi Maco Gym.</span>
             </div>
         </div>
 
@@ -503,7 +504,7 @@
                         </label>
                         <label class="flex items-center justify-center gap-2 p-2.5 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 font-semibold text-xs text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS / TF</span>
+                            <span>QRIS / Transfer</span>
                         </label>
                     </div>
                 </div>

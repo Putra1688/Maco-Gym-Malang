@@ -23,10 +23,10 @@ class UserSeeder extends Seeder
         User::updateOrCreate(
             ['phone' => '081234567891'],
             [
-                'name' => 'Staff Resepsionis',
-                'email' => 'staff@gym.com',
+                'name' => 'Resepsionis Maco Gym',
+                'email' => 'resepsionis@gym.com',
                 'password' => Hash::make('password123'),
-                'role' => 'staff',
+                'role' => 'admin',
             ]
         );
     }

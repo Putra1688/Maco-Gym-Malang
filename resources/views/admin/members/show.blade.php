@@ -250,7 +250,7 @@
                     <div class="text-right">
                         <p class="font-bold text-zinc-900 dark:text-white font-mono">Rp {{ number_format($tx->amount, 0, ',', '.') }}</p>
                         <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] uppercase bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/50">
-                            {{ in_array(strtolower($tx->payment_method), ['qris', 'transfer', 'qris_transfer']) ? 'QRIS / TF' : strtoupper($tx->payment_method) }}
+                            {{ in_array(strtolower($tx->payment_method), ['qris', 'transfer']) ? 'QRIS / Transfer' : 'Cash' }}
                         </span>
                     </div>
                 </div>
@@ -354,7 +354,7 @@
                         </label>
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS / TF</span>
+                            <span>QRIS / Transfer</span>
                         </label>
                     </div>
                 </div>
@@ -467,7 +467,7 @@
                         </label>
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS / TF</span>
+                            <span>QRIS / Transfer</span>
                         </label>
                     </div>
                 </div>

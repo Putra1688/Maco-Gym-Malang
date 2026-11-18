@@ -74,15 +74,32 @@ class GuestController extends Controller
         $rawPhone = trim($validated['phone']);
         $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
 
-        // Nomor HP sebagai acuan utama pendaftaran (dukung format 08xx dan 628xx)
-        $phoneVariants = array_unique(array_filter([
-            $rawPhone,
-            $cleanPhone,
-            preg_replace('/^62/', '0', $cleanPhone),
-            preg_replace('/^0/', '62', $cleanPhone),
-        ]));
+        // Validasi paket resmi: Hanya paket Membership yang diperbolehkan untuk registrasi
+        $pkgLower = strtolower($validated['package']);
+        $isForbidden = str_contains($pkgLower, 'pt')
+            || str_contains($pkgLower, 'personal trainer')
+            || str_contains($pkgLower, 'insidentil')
+            || str_contains($pkgLower, 'daily pass')
+            || str_contains($pkgLower, 'joining fee')
+            || str_contains($pkgLower, 'regular membership');
 
-        $existingMember = Member::whereIn('phone', $phoneVariants)->first();
+        $isValidMembership = str_contains($pkgLower, '1 month')
+            || str_contains($pkgLower, '3 month')
+            || str_contains($pkgLower, '6 month')
+            || str_contains($pkgLower, '12 month')
+            || str_contains($pkgLower, 'mahasiswa')
+            || str_contains($pkgLower, 'pelajar');
+
+        if ($isForbidden || ! $isValidMembership) {
+            return back()->withInput()->withErrors([
+                'package' => 'Pilihan paket tidak valid. Registrasi online hanya melayani paket Membership resmi (1 Month, 3 Month, 6 Month, 12 Month, Mahasiswa, Pelajar). Layanan Personal Trainer dan tiket harian diproses langsung melalui Admin.',
+            ]);
+        }
+
+        // Cegah pendaftaran ganda berdasarkan nomor telepon
+        $existingMember = Member::where('phone', $validated['phone'])
+            ->orWhere('phone', $cleanPhone)
+            ->first();
 
         if ($existingMember) {
             if ($existingMember->status === 'active') {

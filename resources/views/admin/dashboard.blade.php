@@ -1045,7 +1045,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (titleEl) titleEl.textContent = 'Grafik Kehadiran Member (Mingguan)';
         if (subtitleEl) subtitleEl.textContent = `Pola kehadiran member per hari pada ${week.label}. Klik batang hari untuk rincian jam.`;
         if (badgeEl) badgeEl.textContent = `Minggu ${week.index}`;
-        if (hintEl) hintEl.textContent = '💡 Klik salah satu batang hari di atas untuk membedah jam kedatangan (06:00 - 22:00 WIB).';
+        if (hintEl) hintEl.textContent = 'Klik salah satu batang hari di atas untuk membedah jam kedatangan (06:00 - 22:00 WIB).';
 
         const labels = week.days.map(d => [d.dayShort, d.dayNum]);
         const counts = week.days.map(d => d.total);
