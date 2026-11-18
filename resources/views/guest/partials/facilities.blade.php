@@ -24,7 +24,7 @@
             <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
                 <!-- Clean Program Image (No Badge) -->
                 <div class="relative h-56 overflow-hidden">
-                    <img src="{{ asset('images/programs/strength.jpg') }}"
+                    <img src="{{ asset('images/showroom/room-1.png') }}"
                          alt="Strength Training Maco Gym"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -45,7 +45,7 @@
             <!-- Program 2: Weight Loss -->
             <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
                 <div class="relative h-56 overflow-hidden">
-                    <img src="{{ asset('images/programs/weightloss.jpg') }}"
+                    <img src="{{ asset('images/showroom/room-2.png') }}"
                          alt="Weight Loss Program Maco Gym"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -66,7 +66,7 @@
             <!-- Program 3: Muscle Building -->
             <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
                 <div class="relative h-56 overflow-hidden">
-                    <img src="{{ asset('images/programs/muscle.jpg') }}"
+                    <img src="{{ asset('images/showroom/room-4.png') }}"
                          alt="Muscle Building Maco Gym"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -84,11 +84,11 @@
                 </div>
             </div>
 
-            <!-- Program 4: Yoga & Flexibility -->
+            <!-- Program 4: Maco Gym Cafe -->
             <div class="group relative rounded-2xl bg-white border border-zinc-200 hover:border-red-500/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-xl">
                 <div class="relative h-56 overflow-hidden">
-                    <img src="{{ asset('images/programs/flexibility.jpg') }}"
-                         alt="Flexibility and Mobility Maco Gym"
+                    <img src="{{ asset('images/showroom/room-3.png') }}"
+                         alt="Maco Gym Cafe"
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                 </div>
@@ -96,10 +96,10 @@
                 <div class="p-6 flex flex-col flex-1 justify-between">
                     <div>
                         <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2 group-hover:text-red-600 transition-colors">
-                            YOGA & FLEXIBILITY
+                            MACO GYM CAFE
                         </h3>
                         <p class="text-xs text-zinc-600 leading-relaxed font-normal">
-                            Meningkatkan mobilitas sendi, elastisitas otot, kestabilan postur tubuh, serta pemulihan fisik setelah sesi latihan beban intensif.
+                            Fasilitas cafe santai di dalam Maco Gym! Nikmati aneka sajian kopi, protein shake bernutrisi, dan minuman segar untuk momen istirahat nyaman dan hangout setelah sesi latihan.
                         </p>
                     </div>
                 </div>
