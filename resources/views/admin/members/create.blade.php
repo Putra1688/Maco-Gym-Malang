@@ -45,11 +45,13 @@
                     </label>
                     <input type="text"
                            name="card_id"
-                           value="{{ old('card_id') }}"
+                           value="{{ old('card_id', '2008') }}"
                            required
-                           placeholder="Contoh: MC-001"
+                           autofocus
+                           onfocus="this.setSelectionRange(this.value.length, this.value.length);"
+                           placeholder="Contoh: 2008001"
                            class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded text-sm font-mono font-bold text-red-600 dark:text-red-400 uppercase outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
-                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Nomor fisik pada kartu RFID/Barcode.</p>
+                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Format: 2008 + 3 digit angka (Contoh: 2008001). Nomor fisik pada kartu RFID/Barcode.</p>
                 </div>
 
                 <!-- Nama Lengkap -->
@@ -134,18 +136,14 @@
                     <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
                         Metode Pembayaran Kas <span class="text-red-600">*</span>
                     </label>
-                    <div class="grid grid-cols-3 gap-2">
+                    <div class="grid grid-cols-2 gap-2">
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 text-xs font-bold text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
                             <span>Cash</span>
                         </label>
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 text-xs font-bold text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="qris" {{ old('payment_method') === 'qris' ? 'checked' : '' }} class="text-red-600 focus:ring-red-500">
-                            <span>QRIS</span>
-                        </label>
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 cursor-pointer hover:border-red-600 text-xs font-bold text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="transfer" {{ old('payment_method') === 'transfer' ? 'checked' : '' }} class="text-red-600 focus:ring-red-500">
-                            <span>Transfer</span>
+                            <input type="radio" name="payment_method" value="qris" {{ in_array(old('payment_method'), ['qris', 'transfer']) ? 'checked' : '' }} class="text-red-600 focus:ring-red-500">
+                            <span>QRIS / TF</span>
                         </label>
                     </div>
                     <p class="text-[11px] text-zinc-400 font-mono mt-1">* Jika status Pending, transaksi kas baru tercatat saat diverifikasi.</p>

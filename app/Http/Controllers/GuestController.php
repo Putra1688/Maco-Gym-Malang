@@ -71,26 +71,32 @@ class GuestController extends Controller
             'notes' => 'nullable|string|max:500',
         ]);
 
-        $cleanPhone = preg_replace('/[^0-9]/', '', $validated['phone']);
+        $rawPhone = trim($validated['phone']);
+        $cleanPhone = preg_replace('/[^0-9]/', '', $rawPhone);
 
-        // Cegah pendaftaran ganda berdasarkan nomor telepon
-        $existingMember = Member::where('phone', $validated['phone'])
-            ->orWhere('phone', $cleanPhone)
-            ->first();
+        // Nomor HP sebagai acuan utama pendaftaran (dukung format 08xx dan 628xx)
+        $phoneVariants = array_unique(array_filter([
+            $rawPhone,
+            $cleanPhone,
+            preg_replace('/^62/', '0', $cleanPhone),
+            preg_replace('/^0/', '62', $cleanPhone),
+        ]));
+
+        $existingMember = Member::whereIn('phone', $phoneVariants)->first();
 
         if ($existingMember) {
             if ($existingMember->status === 'active') {
-                return back()->withInput()->with('warning', "Nomor telepon ({$validated['phone']}) sudah terdaftar sebagai Member Aktif (ID: {$existingMember->card_id}). Silakan lakukan perpanjangan membership atau hubungi admin.");
+                return back()->withInput()->with('warning', "Nomor HP ({$rawPhone}) sudah terdaftar sebagai Member Aktif (ID: {$existingMember->card_id}). Silakan lakukan login atau perpanjangan membership langsung di resepsionis.");
             }
 
             if ($existingMember->status === 'pending_verification') {
-                $waMessage = "Halo Admin Maco Gym Malang, saya telah mendaftar online sebelumnya dengan ID Registrasi {$existingMember->card_id} atas nama {$existingMember->name}. Mohon dipandu untuk verifikasi pembayaran dan aktivasi kartu.";
-                $waUrl = 'https://wa.me/6281250207403?text='.urlencode($waMessage);
-
                 return back()->withInput()
-                    ->with('info', "Pendaftaran atas nama {$existingMember->name} (ID: {$existingMember->card_id}) sudah tercatat di sistem kami dan sedang menunggu verifikasi resepsionis.")
-                    ->with('wa_redirect_url', $waUrl)
-                    ->with('registered_member_id', $existingMember->id);
+                    ->with('info', "Pendaftaran dengan nomor HP ({$rawPhone}) atas nama {$existingMember->name} sudah tercatat di sistem (ID: {$existingMember->card_id}) dan sedang menunggu verifikasi oleh kasir/admin.")
+                    ->with('registered_member', [
+                        'card_id' => $existingMember->card_id,
+                        'phone' => $existingMember->phone,
+                        'package_name' => $existingMember->package_name ?? 'Regular',
+                    ]);
             }
         }
 
@@ -114,37 +120,34 @@ class GuestController extends Controller
             $regCardId = 'REG-'.now()->format('ymd').'-'.strtoupper(substr(uniqid(), -4));
         } while (Member::where('card_id', $regCardId)->exists());
 
-        $member = DB::transaction(function () use ($regCardId, $validated, $genderEnum, $startDate) {
-            return Member::create([
+        $member = DB::transaction(function () use ($regCardId, $validated, $rawPhone, $genderEnum, $startDate) {
+            $memberData = [
                 'card_id' => $regCardId,
                 'name' => $validated['name'],
-                'phone' => $validated['phone'],
+                'phone' => $rawPhone,
                 'gender' => $genderEnum,
                 'join_date' => $startDate,
                 'current_expiry_date' => $startDate,
                 'status' => 'pending_verification',
-                'package_name' => $validated['package'],
-            ]);
+            ];
+
+            try {
+                if (Schema::hasColumn('members', 'package_name')) {
+                    $memberData['package_name'] = $validated['package'];
+                }
+            } catch (\Throwable $e) {
+                // Skema tanpa kolom package_name tetap aman
+            }
+
+            return Member::create($memberData);
         });
 
-        // Susun pesan WhatsApp untuk verifikasi kilat ke resepsionis
-        $genderLabel = $genderEnum === 'male' ? 'Laki-laki' : ($genderEnum === 'female' ? 'Perempuan' : '-');
-        $waMessage = "Halo Admin Maco Gym Malang, saya ingin mengonfirmasi pendaftaran member baru:\n\n"
-            ."• *ID Registrasi:* {$member->card_id}\n"
-            ."• *Nama Lengkap:* {$member->name}\n"
-            ."• *No. WhatsApp:* {$member->phone}\n"
-            ."• *Pilihan Paket:* {$validated['package']}\n"
-            ."• *Jenis Kelamin:* {$genderLabel}\n"
-            .'• *Alamat Domisili:* '.($validated['address'] ?? '-')."\n"
-            ."• *Rencana Mulai:* {$startDate}\n"
-            .(! empty($validated['notes']) ? "• *Catatan:* {$validated['notes']}\n\n" : "\n")
-            .'Data pendaftaran saya telah tersimpan di sistem Maco Gym. Mohon dipandu untuk pembayaran QRIS dan pencetakan ID kartu fisik. Terima kasih!';
-
-        $waUrl = 'https://wa.me/6281250207403?text='.urlencode($waMessage);
-
         return redirect()->route('register')
-            ->with('success', "Pendaftaran Anda berhasil dicatat dengan ID Registrasi {$member->card_id}. Data telah tersimpan di sistem dan dapat diverifikasi di Admin Console.")
-            ->with('wa_redirect_url', $waUrl)
-            ->with('registered_member', $member);
+            ->with('success', "Pendaftaran Anda berhasil! Data telah masuk ke sistem Maco Gym (ID Registrasi: {$member->card_id}) dan berstatus Menunggu Verifikasi Admin. Silakan kunjungi meja kasir/resepsionis untuk verifikasi dan aktivasi kartu fisik.")
+            ->with('registered_member', [
+                'card_id' => $member->card_id,
+                'phone' => $member->phone,
+                'package_name' => $member->package_name ?? $validated['package'] ?? 'Regular',
+            ]);
     }
 }

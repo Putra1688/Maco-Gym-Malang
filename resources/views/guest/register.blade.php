@@ -120,7 +120,7 @@
                                 Pendaftaran <span class="text-red-600">Member</span>
                             </h2>
                             <p class="text-zinc-500 text-xs mt-1 leading-relaxed font-sans">
-                                Lengkapi biodata pendaftaran kamu. Data akan otomatis tercatat di sistem Maco Gym dan diteruskan ke kasir untuk verifikasi pembayaran.
+                                Lengkapi data pendaftaran kamu. Data otomatis masuk ke antrean sistem Maco Gym untuk diverifikasi oleh admin/kasir.
                             </p>
                         </div>
 
@@ -131,20 +131,17 @@
                                 <span class="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">✓</span>
                                 <span>{{ session('success') }}</span>
                             </div>
-                            <p class="text-emerald-700">
-                                WhatsApp resepsionis akan segera terbuka. Jika tidak terbuka otomatis, silakan klik tombol di bawah ini:
-                            </p>
-                            @if(session('wa_redirect_url'))
-                            <div class="pt-1">
-                                <a href="{{ session('wa_redirect_url') }}"
-                                   target="_blank"
-                                   rel="noopener noreferrer"
-                                   class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-lg shadow-sm transition">
-                                    <span>Buka Chat WhatsApp Kasir</span>
-                                    <span>&rarr;</span>
-                                </a>
+                            @if(session('registered_member'))
+                            <div class="p-3 bg-white/80 border border-emerald-200 rounded-lg text-emerald-800 space-y-1">
+                                <div><strong>ID Registrasi:</strong> <span class="font-mono font-bold">{{ data_get(session('registered_member'), 'card_id') }}</span></div>
+                                <div><strong>Nomor HP:</strong> <span class="font-mono font-semibold">{{ data_get(session('registered_member'), 'phone') }}</span></div>
+                                <div><strong>Paket:</strong> {{ data_get(session('registered_member'), 'package_name') ?? 'Regular' }}</div>
+                                <div><strong>Status:</strong> <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">Menunggu Verifikasi Admin/Kasir</span></div>
                             </div>
                             @endif
+                            <p class="text-emerald-700">
+                                Pendaftaran kamu berhasil dikirim langsung ke sistem antrean admin Maco Gym. Silakan kunjungi meja kasir/resepsionis dengan menyebutkan Nomor HP kamu untuk menyelesaikan verifikasi dan aktivasi member.
+                            </p>
                         </div>
                         @endif
 
@@ -165,17 +162,11 @@
                                 <div>
                                     <strong class="font-bold block mb-0.5">Data Sudah Terdaftar</strong>
                                     <span>{{ session('info') }}</span>
+                                    <p class="mt-1 text-blue-800">
+                                        Data kamu sudah ada di sistem admin kami. Silakan langsung datangi meja kasir Maco Gym dengan menyebutkan nomor HP kamu untuk verifikasi pembayaran atau aktivasi kartu.
+                                    </p>
                                 </div>
                             </div>
-                            @if(session('wa_redirect_url'))
-                            <div class="pt-1">
-                                <a href="{{ session('wa_redirect_url') }}"
-                                   target="_blank"
-                                   class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-lg transition">
-                                    <span>Lanjut Konfirmasi via WhatsApp</span>
-                                </a>
-                            </div>
-                            @endif
                         </div>
                         @endif
 
@@ -200,8 +191,16 @@
                               onsubmit="handleRegistrationSubmit(this, event)"
                               class="space-y-4">
                             @csrf
+
+                            <!-- Info Box: Nomor HP sebagai Acuan Utama -->
+                            <div class="p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-amber-900 text-xs flex items-center gap-2.5">
+                                <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-xs shrink-0">!</span>
+                                <p class="leading-relaxed text-[11px]">
+                                    <strong>Nomor HP / WhatsApp</strong> wajib diisi dan aktif karena menjadi acuan utama verifikasi identitas & presensi di kasir.
+                                </p>
+                            </div>
                             
-                            <!-- 1. Nama Lengkap & No WhatsApp -->
+                            <!-- 1. Nama Lengkap & Nomor HP (Sejajar Rapi) -->
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                                 <div>
                                     <label for="reg_name" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
@@ -218,7 +217,7 @@
 
                                 <div>
                                     <label for="reg_phone" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                                        Nomor WhatsApp <span class="text-red-600">*</span>
+                                        Nomor HP / WhatsApp <span class="text-red-600">*</span>
                                     </label>
                                     <input type="tel"
                                            id="reg_phone"
@@ -230,16 +229,16 @@
                                 </div>
                             </div>
 
-                            <!-- 2. Paket Membership & Gender -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div>
-                                    <label for="reg_package" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                                        Pilihan Paket <span class="text-red-600">*</span>
-                                    </label>
+                            <!-- 2. Pilihan Paket (Full Width Agar Tidak Terpotong) -->
+                            <div>
+                                <label for="reg_package" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                                    Pilihan Paket Membership / PT <span class="text-red-600">*</span>
+                                </label>
+                                <div class="relative">
                                     <select id="reg_package"
                                             name="package"
                                             required
-                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition font-medium">
+                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition font-medium appearance-none cursor-pointer pr-10">
                                         
                                         <optgroup label="── Kategori: Membership ──">
                                             <option value="1 Month - Rp 130.000" {{ str_contains($requestedPackage, '1 Month') ? 'selected' : '' }}>
@@ -316,35 +315,34 @@
                                             </option>
                                         </optgroup>
                                     </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-zinc-500">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
                                 </div>
+                            </div>
 
+                            <!-- 3. Jenis Kelamin & Tanggal Mulai (Sejajar Rapi) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                                 <div>
                                     <label for="reg_gender" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
                                         Jenis Kelamin <span class="text-red-600">*</span>
                                     </label>
-                                    <select id="reg_gender"
-                                            name="gender"
-                                            required
-                                            class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
-                                        <option value="Laki-laki" {{ old('gender') === 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                                        <option value="Perempuan" {{ old('gender') === 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- 3. Alamat Domisili & Tanggal Mulai -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                                <div>
-                                    <label for="reg_address" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                                        Alamat Domisili <span class="text-red-600">*</span>
-                                    </label>
-                                    <input type="text"
-                                           id="reg_address"
-                                           name="address"
-                                           required
-                                           value="{{ old('address') }}"
-                                           placeholder="Contoh: Lowokwaru / Jl. Soekarno Hatta"
-                                           class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
+                                    <div class="relative">
+                                        <select id="reg_gender"
+                                                name="gender"
+                                                required
+                                                class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition appearance-none cursor-pointer pr-10">
+                                            <option value="Laki-laki" {{ old('gender') === 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                            <option value="Perempuan" {{ old('gender') === 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-zinc-500">
+                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div>
@@ -360,30 +358,49 @@
                                 </div>
                             </div>
 
-                            <!-- 4. Catatan Tambahan -->
+                            <!-- 4. Alamat Domisili (Opsional) -->
                             <div>
-                                <label for="reg_notes" class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                                    Catatan Tambahan (Opsional)
-                                </label>
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <label for="reg_address" class="text-xs font-bold uppercase tracking-wider text-zinc-700">
+                                        Alamat Domisili
+                                    </label>
+                                    <span class="text-[11px] text-zinc-400 font-normal">Opsional</span>
+                                </div>
+                                <input type="text"
+                                       id="reg_address"
+                                       name="address"
+                                       value="{{ old('address') }}"
+                                       placeholder="Contoh: Jl. Soekarno Hatta No. 12, Lowokwaru, Malang"
+                                       class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">
+                            </div>
+
+                            <!-- 5. Catatan Tambahan (Opsional) -->
+                            <div>
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <label for="reg_notes" class="text-xs font-bold uppercase tracking-wider text-zinc-700">
+                                        Catatan Tambahan
+                                    </label>
+                                    <span class="text-[11px] text-zinc-400 font-normal">Opsional</span>
+                                </div>
                                 <textarea id="reg_notes"
                                           name="notes"
                                           rows="2"
-                                          placeholder="Misal: Mahasiswa UB semester 4, ada riwayat cedera bahu, ingin program pembentukan otot, dll."
+                                          placeholder="Misal: Mahasiswa UB semester 4, ada riwayat cedera bahu, fokus program fat loss, dll."
                                           class="w-full bg-zinc-50 border border-zinc-300 rounded-xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-red-600 focus:bg-white focus:ring-2 focus:ring-red-600/20 transition">{{ old('notes') }}</textarea>
                             </div>
 
-                            <!-- 5. Submit Button -->
-                            <div class="pt-2">
+                            <!-- 6. Submit Button -->
+                            <div class="pt-3 pb-2">
                                 <button type="submit"
                                         id="submit-register-btn"
-                                        class="w-full py-3.5 px-6 rounded-xl bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white font-montserrat font-bold text-sm uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
-                                    <span id="btn-text">KIRIM PENDAFTARAN KE WHATSAPP ADMIN</span>
+                                        class="w-full py-4 px-6 rounded-xl bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white font-montserrat font-bold text-sm uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <span id="btn-text">KIRIM PENDAFTARAN SEKARANG</span>
                                     <svg id="btn-icon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                                     </svg>
                                 </button>
                                 <p class="text-[11px] text-zinc-400 text-center mt-2.5">
-                                    Data akan tersimpan aman di database Maco Gym dan dikonfirmasi kasir via WhatsApp.
+                                    Data akan langsung masuk ke menu admin kasir dengan status pending verifikasi.
                                 </p>
                             </div>
 
@@ -495,15 +512,6 @@
             }
             return true;
         }
-
-        // Jika terdapat session wa_redirect_url setelah submit, buka WhatsApp secara otomatis
-        @if(session('wa_redirect_url'))
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                window.open("{{ session('wa_redirect_url') }}", '_blank');
-            }, 600);
-        });
-        @endif
 
         // Mobile Nav Toggle Script
         document.addEventListener('DOMContentLoaded', () => {

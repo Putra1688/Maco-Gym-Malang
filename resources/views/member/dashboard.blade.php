@@ -76,11 +76,15 @@
                 <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                     Sisa Masa Aktif
                 </span>
-                <span class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs
+                <span class="w-9 h-9 rounded-xl flex items-center justify-center border shadow-xs transition-colors
                     {{ $isExpired 
-                        ? 'bg-red-100 text-red-600 dark:bg-red-900/40' 
-                        : ($daysRemaining <= 3 ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/40' : 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40') }}">
-                    ⏳
+                        ? 'bg-red-100 dark:bg-red-950/50 text-red-600 dark:text-red-400 border-red-200 dark:border-red-900/60' 
+                        : ($daysRemaining <= 3 
+                            ? 'bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 border-amber-200 dark:border-amber-900/60' 
+                            : 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60') }}">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </span>
             </div>
             
@@ -110,8 +114,10 @@
                 <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                     Jatuh Tempo (Expired)
                 </span>
-                <span class="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center font-bold text-xs">
-                    📅
+                <span class="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60 flex items-center justify-center shadow-xs">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                 </span>
             </div>
 
@@ -131,8 +137,16 @@
                 <span class="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                     Kunjungan Bulan Ini
                 </span>
-                <span class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs border border-blue-200 dark:border-blue-900/60">
-                    🏋️
+                <span class="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-200 dark:border-blue-900/60 shadow-xs">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6.5 6.5 11 11"/>
+                        <path d="m21 21-1-1"/>
+                        <path d="m3 3 1 1"/>
+                        <path d="m18 22 4-4"/>
+                        <path d="m2 6 4-4"/>
+                        <path d="m3 10 7-7"/>
+                        <path d="m14 21 7-7"/>
+                    </svg>
                 </span>
             </div>
 
@@ -159,9 +173,11 @@
             <!-- Card Header -->
             <div class="flex items-center justify-between border-b border-zinc-800/80 pb-4">
                 <div class="flex items-center gap-3">
-                    <img src="{{ asset('images/logo/macogym.jpg') }}"
-                         alt="Maco Gym"
-                         class="h-10 w-auto rounded-lg border border-zinc-700 object-contain">
+                    <div class="h-11 w-11 rounded-xl overflow-hidden border border-zinc-700 bg-zinc-900 shadow-sm shrink-0 flex items-center justify-center">
+                        <img src="{{ asset('images/logo/macogym.jpg') }}"
+                             alt="Maco Gym"
+                             class="h-full w-full object-cover">
+                    </div>
                     <div>
                         <span class="font-montserrat font-black text-lg tracking-wider text-white uppercase leading-none block">
                             MACO<span class="text-red-600">GYM</span>
@@ -233,19 +249,16 @@
     <!-- 4. Log Riwayat Kunjungan Member -->
     <div class="bg-white dark:bg-[#12151b] rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs">
         <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-            <div class="flex items-center gap-2.5">
-                <span class="w-2.5 h-2.5 rounded bg-red-600"></span>
-                <div>
-                    <h3 class="font-montserrat font-bold text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                        Log Riwayat Kunjungan Saya
-                    </h3>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        Catatan riwayat presensi check-in latihan di Maco Gym Malang
-                    </p>
-                </div>
+            <div>
+                <h3 class="font-montserrat font-bold text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                    Log Riwayat Kunjungan Saya
+                </h3>
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                    Catatan riwayat presensi check-in latihan di Maco Gym Malang
+                </p>
             </div>
             <span class="text-xs font-mono font-bold text-zinc-500 dark:text-zinc-400">
-                {{ count($recentAttendances) }} Kunjungan Terakhir
+                {{ min(count($recentAttendances), 10) }} Kunjungan Terakhir
             </span>
         </div>
 
@@ -259,7 +272,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800 font-mono text-xs">
-                    @forelse($recentAttendances as $att)
+                    @forelse($recentAttendances->take(10) as $att)
                     <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/40 transition">
                         <td class="px-4 sm:px-6 py-3 text-zinc-900 dark:text-white font-sans font-semibold">
                             {{ $att->checkin_time->translatedFormat('l, d F Y') }}

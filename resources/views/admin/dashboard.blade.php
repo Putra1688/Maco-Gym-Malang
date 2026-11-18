@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] font-mono">
-                <span class="inline-flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-400">
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     STATUS VALID
                 </span>
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] font-mono">
-                <span class="inline-flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400">
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">
                     <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                     PERLU TINDAKAN
                 </span>
@@ -137,19 +137,16 @@
         <!-- 1. Grafik Pemasukan Bulanan (Full-Width Desktop) -->
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 shadow-xs">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span>
-                    <div>
-                        <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                            Grafik Pemasukan Per Bulan
-                        </h3>
-                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                            Akumulasi arus kas transaksi membership & tiket harian (6 bulan terakhir)
-                        </p>
-                    </div>
+                <div>
+                    <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                        Grafik Pemasukan Per Bulan
+                    </h3>
+                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        Akumulasi arus kas transaksi membership & tiket harian (6 bulan terakhir)
+                    </p>
                 </div>
                 <div class="shrink-0 flex items-center gap-2">
-                    <span class="px-2.5 py-1 rounded bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/60 font-mono font-bold text-xs">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60 font-mono font-medium text-[11px]">
                         Total 6 Bulan: Rp {{ number_format($total6MonthsRevenue, 0, ',', '.') }}
                     </span>
                 </div>
@@ -166,18 +163,15 @@
             <!-- A. Statistik Gender Member -->
             <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 flex flex-col justify-between shadow-xs">
                 <div class="flex items-center justify-between mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded bg-rose-500 shrink-0"></span>
-                        <div>
-                            <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                                Gender Member
-                            </h3>
-                            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                                Rasio Laki-laki vs Perempuan
-                            </p>
-                        </div>
+                    <div>
+                        <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                            Gender Member
+                        </h3>
+                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                            Rasio Laki-laki vs Perempuan
+                        </p>
                     </div>
-                    <span class="px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-mono text-[11px] font-bold">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 font-mono text-[11px] font-medium">
                         {{ $totalGenderMembers }} Member
                     </span>
                 </div>
@@ -213,18 +207,15 @@
             <!-- B. Demografi Umur Member -->
             <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 flex flex-col justify-between shadow-xs">
                 <div class="flex items-center justify-between mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded bg-amber-500 shrink-0"></span>
-                        <div>
-                            <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                                Demografi Umur Member
-                            </h3>
-                            <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                                Distribusi kelompok umur member
-                            </p>
-                        </div>
+                    <div>
+                        <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                            Demografi Umur Member
+                        </h3>
+                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                            Distribusi kelompok umur member
+                        </p>
                     </div>
-                    <span class="px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/60 font-mono font-bold text-[11px] shrink-0">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 font-mono font-medium text-[11px] shrink-0">
                         Dominan: {{ $dominantAgeGroup }}
                     </span>
                 </div>
@@ -244,28 +235,25 @@
         <!-- 3. Grafik Kehadiran Mingguan (Disederhanakan & Compact) -->
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 shadow-xs">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                <div class="flex items-start gap-2.5 min-w-0">
-                    <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0 mt-1"></span>
-                    <div class="min-w-0">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h3 id="attendance-title" class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                                Grafik Rata-Rata Kehadiran Member
-                            </h3>
-                            <button id="attendance-back-btn"
-                                    type="button"
-                                    onclick="backToWeeklyView()"
-                                    style="display: none;"
-                                    class="hidden inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-blue-600 hover:bg-blue-700 text-white transition shadow-xs cursor-pointer shrink-0">
-                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                                </svg>
-                                <span>Kembali ke Mingguan</span>
-                            </button>
-                        </div>
-                        <p id="attendance-subtitle" class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                            Pola kehadiran per hari. Klik batang untuk melihat rincian jam kedatangan.
-                        </p>
+                <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <h3 id="attendance-title" class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                            Grafik Rata-Rata Kehadiran Member
+                        </h3>
+                        <button id="attendance-back-btn"
+                                type="button"
+                                onclick="backToWeeklyView()"
+                                style="display: none;"
+                                class="hidden inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-blue-600 hover:bg-blue-700 text-white transition shadow-xs cursor-pointer shrink-0">
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            <span>Kembali ke Mingguan</span>
+                        </button>
                     </div>
+                    <p id="attendance-subtitle" class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        Pola kehadiran per hari. Klik batang untuk melihat rincian jam kedatangan.
+                    </p>
                 </div>
 
                 <!-- Filter Controls: Bulan & Minggu -->
@@ -297,7 +285,7 @@
                         </select>
                     </div>
 
-                    <span id="attendance-badge" class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-900/60 font-mono font-bold text-[10px]">
+                    <span id="attendance-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60 font-mono font-medium text-[10px]">
                         Minggu 1
                     </span>
                 </div>
@@ -337,23 +325,20 @@
     <!-- ============================================================== -->
     <div id="section-pendaftaran-baru" class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs border-t-2 border-t-blue-600">
         <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-            <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded bg-blue-600 shrink-0"></span>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                            PENDAFTARAN MEMBER BARU
-                        </h3>
-                        @if($totalPendingMembers > 0)
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60">
-                            {{ $totalPendingMembers }} Menunggu
-                        </span>
-                        @endif
-                    </div>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        Menampilkan maksimal 3 pendaftaran Pending terbaru yang membutuhkan verifikasi.
-                    </p>
+            <div>
+                <div class="flex items-center gap-2">
+                    <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                        PENDAFTARAN MEMBER BARU
+                    </h3>
+                    @if($totalPendingMembers > 0)
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60">
+                        {{ $totalPendingMembers }} Menunggu
+                    </span>
+                    @endif
                 </div>
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                    Menampilkan maksimal 3 pendaftaran Pending terbaru yang membutuhkan verifikasi.
+                </p>
             </div>
             <div>
                 <a href="{{ route('admin.members.index', ['status' => 'pending_verification']) }}"
@@ -413,7 +398,7 @@
                             </div>
                         </td>
                         <td class="px-4 py-2.5 hidden md:table-cell">
-                            <span class="inline-block px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-medium border border-zinc-200 dark:border-zinc-700 truncate max-w-[220px]">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-zinc-50 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 text-[11px] font-medium border border-zinc-200 dark:border-zinc-700 truncate max-w-[220px]">
                                 {{ $pending->selected_package_name }}
                             </span>
                         </td>
@@ -421,8 +406,8 @@
                             {{ $pending->created_at ? $pending->created_at->format('d M Y, H:i') : $pending->join_date->format('d M Y') }} WIB
                         </td>
                         <td class="px-4 py-2.5">
-                            <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500"></span>
                                 PENDING
                             </span>
                         </td>
@@ -464,16 +449,13 @@
     <!-- ============================================================== -->
     <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs border-t-2 border-t-amber-500">
         <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-            <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded bg-amber-500 shrink-0"></span>
-                <div>
-                    <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                        MEMBER MENDEKATI JATUH TEMPO (H-3 s/d H-1)
-                    </h3>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        Maksimal 3 member prioritas yang masa aktifnya paling dekat berakhir untuk pengingat WhatsApp.
-                    </p>
-                </div>
+            <div>
+                <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                    MEMBER MENDEKATI JATUH TEMPO (H-3 s/d H-1)
+                </h3>
+                <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                    Maksimal 3 member prioritas yang masa aktifnya paling dekat berakhir untuk pengingat WhatsApp.
+                </p>
             </div>
             <a href="{{ route('admin.members.index') }}"
                class="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition font-montserrat">
@@ -524,8 +506,9 @@
                             {{ $expiring->current_expiry_date->format('d M Y') }}
                         </td>
                         <td class="px-4 py-2.5">
-                            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider
-                                         {{ $daysLeft <= 1 ? 'bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60' : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60' }}">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider
+                                         {{ $daysLeft <= 1 ? 'bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60' : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60' }}">
+                                <span class="w-1.5 h-1.5 rounded-full {{ $daysLeft <= 1 ? 'bg-red-500' : 'bg-amber-500' }}"></span>
                                 SISA {{ max(0, $daysLeft) }} HARI
                             </span>
                         </td>
@@ -568,8 +551,7 @@
         <!-- A. Kas Masuk Terbaru (Maksimal 3 Transaksi) -->
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs">
             <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded bg-red-600"></span>
+                <div>
                     <h4 class="font-montserrat font-bold text-xs uppercase tracking-wider text-zinc-900 dark:text-white">
                         Kas Masuk Terbaru
                     </h4>
@@ -587,7 +569,7 @@
                         <p class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 flex items-center gap-1.5 flex-wrap">
                             <span class="truncate">{{ $tx->package?->name ?? 'Layanan' }}</span>
                             <span class="text-zinc-300 dark:text-zinc-700">•</span>
-                            <span class="uppercase font-mono font-bold text-red-600 dark:text-red-400">{{ $tx->payment_method }}</span>
+                            <span class="uppercase font-mono font-bold text-red-600 dark:text-red-400">{{ in_array(strtolower($tx->payment_method), ['qris', 'transfer', 'qris_transfer']) ? 'QRIS / TF' : strtoupper($tx->payment_method) }}</span>
                         </p>
                     </div>
                     <div class="text-right shrink-0 ml-2">
@@ -606,8 +588,7 @@
         <!-- B. Presensi Terbaru (Maksimal 3 Kunjungan) -->
         <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden shadow-xs">
             <div class="p-3.5 sm:p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded bg-blue-600"></span>
+                <div>
                     <h4 class="font-montserrat font-bold text-xs uppercase tracking-wider text-zinc-900 dark:text-white">
                         Presensi Kedatangan Terakhir
                     </h4>
@@ -621,8 +602,9 @@
                 @forelse($recentAttendances as $att)
                 <div class="flex items-center justify-between p-2.5 rounded bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800">
                     <div class="flex items-center gap-2.5 min-w-0">
-                        <span class="px-1.5 py-0.5 rounded font-mono font-bold text-[9px] uppercase shrink-0 border
-                                     {{ $att->type === 'member' ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-900/60' : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/60' }}">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-mono font-medium text-[10px] uppercase shrink-0 border
+                                     {{ $att->type === 'member' ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/60' : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60' }}">
+                            <span class="w-1.5 h-1.5 rounded-full {{ $att->type === 'member' ? 'bg-blue-500' : 'bg-emerald-500' }}"></span>
                             {{ $att->type === 'member' ? 'MEMBER' : 'TAMU' }}
                         </span>
                         <div class="min-w-0">
@@ -635,7 +617,7 @@
                         </div>
                     </div>
                     <div class="text-right shrink-0 ml-2">
-                        <span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
                             {{ $att->checkin_time->format('H:i') }} WIB
                         </span>
                     </div>

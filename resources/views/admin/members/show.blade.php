@@ -250,7 +250,7 @@
                     <div class="text-right">
                         <p class="font-bold text-zinc-900 dark:text-white font-mono">Rp {{ number_format($tx->amount, 0, ',', '.') }}</p>
                         <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] uppercase bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/50">
-                            {{ $tx->payment_method }}
+                            {{ in_array(strtolower($tx->payment_method), ['qris', 'transfer', 'qris_transfer']) ? 'QRIS / TF' : strtoupper($tx->payment_method) }}
                         </span>
                     </div>
                 </div>
@@ -347,18 +347,14 @@
                     <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
                         Metode Pembayaran Kas <span class="text-red-600">*</span>
                     </label>
-                    <div class="grid grid-cols-3 gap-2">
+                    <div class="grid grid-cols-2 gap-2">
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
                             <span>Cash</span>
                         </label>
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS</span>
-                        </label>
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="transfer" class="text-red-600 focus:ring-red-500">
-                            <span>Transfer</span>
+                            <span>QRIS / TF</span>
                         </label>
                     </div>
                 </div>
@@ -418,11 +414,11 @@
                     </label>
                     <input type="text"
                            name="card_id"
-                           value="{{ old('card_id', $member->card_id) }}"
+                           value="{{ old('card_id', str_starts_with($member->card_id, 'REG-') ? '2008' : $member->card_id) }}"
                            required
-                           placeholder="Contoh: MC-001 atau gunakan ID bawaan"
+                           placeholder="Contoh: 2008001"
                            class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm font-mono font-bold text-red-600 dark:text-red-400 uppercase outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
-                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Anda dapat mengganti ID registrasi sementara (REG-...) dengan kode kartu fisik Maco Gym (MC-...).</p>
+                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Format: 2008 + 3 digit angka (Contoh: 2008001). Anda dapat mengganti ID registrasi sementara (REG-...) dengan kode kartu fisik.</p>
                 </div>
 
                 <!-- 2. Pilihan Paket -->
@@ -464,18 +460,14 @@
                     <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
                         Metode Pembayaran Kas Terverifikasi <span class="text-red-600">*</span>
                     </label>
-                    <div class="grid grid-cols-3 gap-2">
+                    <div class="grid grid-cols-2 gap-2">
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
                             <span>Cash</span>
                         </label>
                         <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
                             <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS</span>
-                        </label>
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="transfer" class="text-red-600 focus:ring-red-500">
-                            <span>Transfer</span>
+                            <span>QRIS / TF</span>
                         </label>
                     </div>
                 </div>
