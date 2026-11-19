@@ -62,11 +62,12 @@
                 </div>
             </div>
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] font-mono">
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 shrink-0">
                     STATUS VALID
                 </span>
-                <span class="text-zinc-400" title="Total: {{ $totalAllMembers }} terdaftar ({{ $totalExpiredMembers }} kedaluwarsa)">Dari {{ $totalAllMembers }} Terdaftar (Exp: {{ $totalExpiredMembers }})</span>
+                <span class="text-zinc-400 whitespace-nowrap shrink-0 text-[11px] font-mono" title="Total: {{ $totalAllMembers }} terdaftar ({{ $totalExpiredMembers }} kedaluwarsa)">
+                    Expired: <strong class="text-zinc-600 dark:text-zinc-300 font-bold font-mono">{{ $totalExpiredMembers }}</strong>
+                </span>
             </div>
         </div>
 
@@ -84,11 +85,10 @@
                 </div>
             </div>
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-[11px] font-mono">
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 shrink-0">
                     PERLU TINDAKAN
                 </span>
-                <a href="{{ route('admin.members.index', ['status' => 'pending_verification']) }}" class="text-blue-600 dark:text-blue-400 hover:underline font-bold">
+                <a href="{{ route('admin.members.index', ['status' => 'pending_verification']) }}" class="text-blue-600 dark:text-blue-400 hover:underline font-bold whitespace-nowrap shrink-0">
                     Tinjau &rarr;
                 </a>
             </div>
@@ -312,7 +312,6 @@
             <!-- Footer Stats & Hint -->
             <div class="mt-3 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                 <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                     <span id="attendance-footer-hint">💡 Klik salah satu batang hari untuk rincian jam kedatangan (06:00 - 22:00 WIB).</span>
                 </div>
                 <div id="attendance-footer-stat">
@@ -358,13 +357,13 @@
             <table class="w-full text-left text-xs">
                 <thead class="bg-zinc-50 dark:bg-zinc-950/60 text-[10px] uppercase font-mono tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
                     <tr>
-                        <th class="px-4 py-2.5 w-32">ID Pendaftaran</th>
+                        <th class="px-4 py-2.5 w-32 whitespace-nowrap">ID Pendaftaran</th>
                         <th class="px-4 py-2.5 min-w-[140px]">Nama Member</th>
-                        <th class="px-4 py-2.5 hidden sm:table-cell w-36">No. WhatsApp</th>
+                        <th class="px-4 py-2.5 hidden sm:table-cell w-36 whitespace-nowrap">No. WhatsApp</th>
                         <th class="px-4 py-2.5 hidden md:table-cell">Paket yang Dipilih</th>
-                        <th class="px-4 py-2.5 hidden lg:table-cell w-36">Tanggal Pendaftaran</th>
-                        <th class="px-4 py-2.5 w-24">Status</th>
-                        <th class="px-4 py-2.5 text-right w-36">Aksi</th>
+                        <th class="px-4 py-2.5 hidden lg:table-cell w-36 whitespace-nowrap">Tanggal Pendaftaran</th>
+                        <th class="px-4 py-2.5 min-w-[100px] whitespace-nowrap">Status</th>
+                        <th class="px-4 py-2.5 text-right w-36 whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800">
@@ -408,9 +407,8 @@
                         <td class="px-4 py-2.5 text-zinc-500 dark:text-zinc-400 font-mono hidden lg:table-cell">
                             {{ $pending->created_at ? $pending->created_at->format('d M Y, H:i') : $pending->join_date->format('d M Y') }} WIB
                         </td>
-                        <td class="px-4 py-2.5">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
-                                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500"></span>
+                        <td class="px-4 py-2.5 whitespace-nowrap">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 shrink-0">
                                 PENDING
                             </span>
                         </td>
@@ -473,12 +471,12 @@
             <table class="w-full text-left text-xs">
                 <thead class="bg-zinc-50 dark:bg-zinc-950/60 text-[10px] uppercase font-mono tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
                     <tr>
-                        <th class="px-4 py-2.5 w-28">ID Kartu</th>
+                        <th class="px-4 py-2.5 w-28 whitespace-nowrap">ID Kartu</th>
                         <th class="px-4 py-2.5 min-w-[140px]">Nama Member</th>
-                        <th class="px-4 py-2.5 hidden sm:table-cell w-36">No. WhatsApp</th>
-                        <th class="px-4 py-2.5 hidden md:table-cell w-32">Jatuh Tempo</th>
-                        <th class="px-4 py-2.5 w-28">Sisa Waktu</th>
-                        <th class="px-4 py-2.5 text-right w-28">Aksi</th>
+                        <th class="px-4 py-2.5 hidden sm:table-cell w-36 whitespace-nowrap">No. WhatsApp</th>
+                        <th class="px-4 py-2.5 hidden md:table-cell w-32 whitespace-nowrap">Jatuh Tempo</th>
+                        <th class="px-4 py-2.5 min-w-[130px] whitespace-nowrap">Sisa Waktu</th>
+                        <th class="px-4 py-2.5 text-right w-28 whitespace-nowrap">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800">
@@ -508,10 +506,9 @@
                         <td class="px-4 py-2.5 text-zinc-600 dark:text-zinc-300 font-mono hidden md:table-cell">
                             {{ $expiring->current_expiry_date->format('d M Y') }}
                         </td>
-                        <td class="px-4 py-2.5">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider
+                        <td class="px-4 py-2.5 whitespace-nowrap">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap shrink-0
                                          {{ $daysLeft <= 1 ? 'bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60' : 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60' }}">
-                                <span class="w-1.5 h-1.5 rounded-full {{ $daysLeft <= 1 ? 'bg-red-500' : 'bg-amber-500' }}"></span>
                                 SISA {{ max(0, $daysLeft) }} HARI
                             </span>
                         </td>
@@ -605,9 +602,8 @@
                 @forelse($recentAttendances as $att)
                 <div class="flex items-center justify-between p-2.5 rounded bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800">
                     <div class="flex items-center gap-2.5 min-w-0">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-mono font-medium text-[10px] uppercase shrink-0 border
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-mono font-bold text-[10px] uppercase shrink-0 border whitespace-nowrap
                                      {{ $att->type === 'member' ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800/60' : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60' }}">
-                            <span class="w-1.5 h-1.5 rounded-full {{ $att->type === 'member' ? 'bg-blue-500' : 'bg-emerald-500' }}"></span>
                             {{ $att->type === 'member' ? 'MEMBER' : 'TAMU' }}
                         </span>
                         <div class="min-w-0">

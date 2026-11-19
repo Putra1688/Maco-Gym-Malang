@@ -45,9 +45,16 @@ class MemberController extends Controller
             $query->orderBy('name', 'asc');
         }
 
-        $members = $query->paginate(15)->withQueryString();
+        $perPage = (int) $request->input('per_page', 10);
+        if (! in_array($perPage, [10, 15, 25, 50, 100], true)) {
+            $perPage = 10;
+        }
 
-        return view('admin.members.index', compact('members'));
+        $members = $query->paginate($perPage)
+            ->onEachSide(1)
+            ->withQueryString();
+
+        return view('admin.members.index', compact('members', 'perPage'));
     }
 
     public function create(): View

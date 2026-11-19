@@ -19,18 +19,15 @@
                         </h2>
                         <!-- Status Keaktifan Badge -->
                         @if($isExpired)
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-400 border border-red-200 dark:border-red-900/60 uppercase">
-                                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-400 border border-red-200 dark:border-red-900/60 uppercase">
                                 KADALUARSA
                             </span>
                         @elseif($daysRemaining <= 3)
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200 dark:border-amber-900/60 uppercase">
-                                <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200 dark:border-amber-900/60 uppercase">
                                 HAMPIR HABIS
                             </span>
                         @else
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/60 uppercase">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/60 uppercase">
                                 STATUS AKTIF
                             </span>
                         @endif
@@ -281,8 +278,7 @@
                             {{ $att->checkin_time->format('H:i') }} WIB
                         </td>
                         <td class="px-4 sm:px-6 py-3">
-                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60">
                                 {{ $att->notes ?? 'Presensi Berhasil' }}
                             </span>
                         </td>
