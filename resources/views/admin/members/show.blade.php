@@ -125,7 +125,6 @@
         @if($member->status === 'pending_verification')
         <div class="mb-6 p-4 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-900 dark:text-amber-200">
             <div class="flex items-center gap-3">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
                 <div>
                     <strong class="font-bold font-montserrat block text-amber-950 dark:text-amber-100 uppercase tracking-wider">
                         Pendaftaran Menunggu Verifikasi Pembayaran & Aktivasi
@@ -149,24 +148,24 @@
                     {{ strtoupper(substr($member->name, 0, 2)) }}
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-mono text-xs font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-900/60">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-mono text-xs font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 rounded-full border border-red-200 dark:border-red-900/60 whitespace-nowrap">
                             {{ $member->card_id }}
                         </span>
                         @if($member->status === 'pending_verification')
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60 shrink-0">
                             PENDING VERIFIKASI
                         </span>
                         @elseif($isExpired)
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60 shrink-0">
                             EXPIRED
                         </span>
                         @elseif($daysLeft <= 3)
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60 shrink-0">
                             H-{{ max(0, $daysLeft) }}
                         </span>
                         @else
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60 shrink-0">
                             AKTIF (SISA {{ $daysLeft }} HARI)
                         </span>
                         @endif
@@ -274,14 +273,11 @@
             
             <!-- Sticky Header -->
             <div class="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-zinc-100 dark:border-zinc-800 shrink-0 bg-white dark:bg-zinc-900">
-                <div class="flex items-center gap-2.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0"></span>
-                    <div>
-                        <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
-                            Perpanjang Masa Aktif Membership
-                        </h3>
-                        <p class="text-xs text-zinc-500 font-mono mt-0.5">{{ $member->name }} • {{ $member->card_id }}</p>
-                    </div>
+                <div>
+                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
+                        Perpanjang Masa Aktif Membership
+                    </h3>
+                    <p class="text-xs text-zinc-500 font-mono mt-0.5">{{ $member->name }} • {{ $member->card_id }}</p>
                 </div>
                 <button type="button"
                         @click="if(!isSubmitting) showRenewModal = false"
@@ -401,14 +397,11 @@
             
             <!-- Sticky Header -->
             <div class="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-zinc-100 dark:border-zinc-800 shrink-0 bg-white dark:bg-zinc-900">
-                <div class="flex items-center gap-2.5">
-                    <!-- <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0 animate-pulse"></span> -->
-                    <div>
-                        <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
-                            Verifikasi & Aktivasi Member Baru
-                        </h3>
-                        <p class="text-xs text-zinc-500 font-mono mt-0.5">{{ $member->name }} • {{ $member->card_id }}</p>
-                    </div>
+                <div>
+                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
+                        Verifikasi & Aktivasi Member Baru
+                    </h3>
+                    <p class="text-xs text-zinc-500 font-mono mt-0.5">{{ $member->name }} • {{ $member->card_id }}</p>
                 </div>
                 <button type="button"
                         @click="if(!isSubmitting) showVerifyModal = false"

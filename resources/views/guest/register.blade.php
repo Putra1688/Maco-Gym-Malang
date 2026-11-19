@@ -47,8 +47,7 @@
                     <div class="relative z-10 flex flex-col h-full justify-between space-y-6 max-w-xl mx-auto lg:max-w-none lg:mx-0 w-full">
                         <div>
                             <!-- Eyebrow Badge -->
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/50 backdrop-blur-md mb-4 shadow-sm">
-                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                            <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-950/80 border border-red-500/50 backdrop-blur-md mb-4 shadow-sm">
                                 <span class="text-[10px] font-bold uppercase tracking-widest text-red-400 font-montserrat">
                                     ONLINE REGISTRATION
                                 </span>
@@ -371,8 +370,7 @@
                         </div>
                         
                         <div class="relative z-10 text-center flex flex-col items-center">
-                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest font-montserrat mb-3 shadow-md">
-                                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                            <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest font-montserrat mb-3 shadow-md">
                                 <span>PAKET HEMAT MACO GYM</span>
                             </div>
 
@@ -399,8 +397,7 @@
                         <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-zinc-900/5 rounded-full blur-2xl pointer-events-none"></div>
 
                         <div class="relative z-10 flex flex-col items-center">
-                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 text-[10px] font-bold uppercase tracking-widest font-montserrat mb-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                            <div class="inline-flex items-center px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700 text-[10px] font-bold uppercase tracking-widest font-montserrat mb-3">
                                 <span>CUSTOMER SUPPORT</span>
                             </div>
 

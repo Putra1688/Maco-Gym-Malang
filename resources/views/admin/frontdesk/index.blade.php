@@ -71,8 +71,7 @@
                             Presensi Cepat Member (Scan / ID Kartu)
                         </h3>
                     </div>
-                    <span class="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60 shrink-0 self-start sm:self-auto">
-                        <!-- <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> -->
+                    <span class="inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-900/60 shrink-0 self-start sm:self-auto whitespace-nowrap">
                         SISTEM STANDBY
                     </span>
                 </div>
@@ -224,7 +223,6 @@
             </div>
 
             <div class="mt-4 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 shrink-0"></span>
                 <span>Transaksi kasir langsung tercatat ke pembukuan resmi Maco Gym.</span>
             </div>
         </div>
@@ -240,7 +238,6 @@
         <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
-                    <!-- <span class="w-2.5 h-2.5 rounded-full {{ ($isToday ?? true) ? 'bg-emerald-500 animate-pulse' : 'bg-blue-500' }}"></span> -->
                     <div>
                         <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
                             {{ ($isToday ?? true) ? 'Riwayat Kedatangan Hari Ini (Live Check-in)' : 'Riwayat Presensi: ' . \Carbon\Carbon::parse($selectedDate ?? today())->translatedFormat('d F Y') }}
@@ -343,13 +340,13 @@
                         <td class="px-4 py-2.5 font-mono font-bold text-red-600 dark:text-red-400 whitespace-nowrap">
                             {{ $att->checkin_time->format('H:i:s') }} WIB
                         </td>
-                        <td class="px-4 py-2.5">
+                        <td class="px-4 py-2.5 whitespace-nowrap">
                             @if($att->type === 'member')
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60 shrink-0">
                                 MEMBER
                             </span>
                             @else
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60 shrink-0">
                                 TAMU HARIAN
                             </span>
                             @endif
@@ -553,8 +550,7 @@
                     <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl font-black mx-auto mb-2.5 border-2 border-emerald-500/40">
                         ✓
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-600 text-white uppercase tracking-wider shadow-xs">
-                        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-600 text-white uppercase tracking-wider shadow-xs">
                         CHECK-IN BERHASIL — MEMBER AKTIF
                     </span>
                 @elseif($modalStatus === 'expiring_soon')

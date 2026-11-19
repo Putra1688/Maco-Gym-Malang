@@ -394,8 +394,7 @@
                                         Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat registrasi perdana di meja kasir.
                                     </td>
                                     <td class="px-5 py-4 text-right whitespace-nowrap">
-                                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-zinc-200 whitespace-nowrap">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-zinc-200 whitespace-nowrap">
                                             <span>Biaya Registrasi Awal</span>
                                         </span>
                                     </td>
@@ -417,8 +416,7 @@
                                         Akses 1 sesi latihan ke seluruh area gym & shower air hangat untuk tamu non-member tanpa ikatan langganan membership.
                                     </td>
                                     <td class="px-5 py-4 text-right whitespace-nowrap">
-                                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-amber-200 whitespace-nowrap">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-amber-200 whitespace-nowrap">
                                             <span>Bayar Langsung di Kasir</span>
                                         </span>
                                     </td>
@@ -449,8 +447,7 @@
                             </p>
                             <div class="pt-2 border-t border-zinc-200 flex items-center justify-between text-xs">
                                 <span class="text-zinc-500 font-mono text-[11px]">Informasi Kasir:</span>
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[10px] uppercase tracking-wider border border-zinc-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[10px] uppercase tracking-wider border border-zinc-200">
                                     <span>Biaya Registrasi Awal</span>
                                 </span>
                             </div>
@@ -476,8 +473,7 @@
                             </p>
                             <div class="pt-2 border-t border-zinc-200 flex items-center justify-between text-xs">
                                 <span class="text-zinc-500 font-mono text-[11px]">Informasi Kasir:</span>
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 font-montserrat font-bold text-[10px] uppercase tracking-wider border border-amber-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 font-montserrat font-bold text-[10px] uppercase tracking-wider border border-amber-200">
                                     <span>Bayar Langsung di Kasir</span>
                                 </span>
                             </div>
