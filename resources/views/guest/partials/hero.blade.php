@@ -27,6 +27,12 @@
                  alt="Maco Gym Showroom 4"
                  class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
         </div>
+        <!-- Slide 4 -->
+        <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+            <img src="{{ asset('images/showroom/gym.png') }}"
+                 alt="Maco Gym Showroom 5"
+                 class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
+        </div>
     </div>
 
     <!-- Directional Dark Gradient Overlays (Responsive Conditional) -->

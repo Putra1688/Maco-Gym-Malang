@@ -34,8 +34,8 @@ class LandingPageTest extends TestCase
         $response->assertSee('CONSISTENT');
         $response->assertSee('ABOUT MACO GYM');
 
-        // Testimonials Section
-        $response->assertSee('WHAT OUR MEMBERS SAY');
+        // Testimonials Section (Dinonaktifkan sementara di welcome.blade.php)
+        // $response->assertSee('WHAT OUR MEMBERS SAY');
 
         // Pricing Section (3 Main Categories: Membership, PT Single, PT Couples)
         $response->assertSee('CHOOSE YOUR');
@@ -71,7 +71,7 @@ class LandingPageTest extends TestCase
         $response->assertSee('Maco Gym');
         $response->assertSee('Pendaftaran');
         $response->assertSee('Alamat Domisili');
-        $response->assertSee('KIRIM PENDAFTARAN KE WHATSAPP ADMIN');
+        $response->assertSee('KIRIM PENDAFTARAN SEKARANG');
     }
 
     /**
@@ -96,14 +96,16 @@ class LandingPageTest extends TestCase
         $response = $this->get('/fasilitas');
 
         $response->assertStatus(200);
-        $response->assertSee('FASILITAS LENGKAP &');
-        $response->assertSee('PROGRAM LATIHAN');
-        $response->assertSee('Free Weights Zone');
-        $response->assertSee('Plate-Loaded Machines');
-        $response->assertSee('Cardio Theater');
-        $response->assertSee('Locker & Hot Shower', false);
-        $response->assertSee('Musholla Ber-AC');
-        $response->assertSee('Strength & Powerbuilding', false);
+        $response->assertSee('FASILITAS LENGKAP &', false);
+        $response->assertSee('ALAT OLAHRAGA MODERN');
+        $response->assertSee('Multi-Function Power Rack');
+        $response->assertSee('Leg Press');
+        $response->assertSee('Chest Press');
+        $response->assertSee('Lat Pulldown');
+        $response->assertSee('Treadmill');
+        $response->assertSee('Free Refill Mineral Water');
+        $response->assertSee('Maco Cafe');
+        $response->assertSee('Fitness Nutrition & Supplement Station');
         $response->assertSee('DAFTAR MEMBER SEKARANG');
     }
 }

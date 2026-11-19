@@ -24,46 +24,90 @@
     @include('guest.partials.navbar')
 
     <!-- Main Content -->
-    <main class="flex-grow pt-[64px] sm:pt-[80px] lg:pt-[106px]">
+    <main class="flex-grow">
 
-        <!-- Breadcrumb & Header Hero -->
-        <section class="bg-zinc-950 text-white py-12 sm:py-16 relative overflow-hidden border-b border-zinc-800">
-            <!-- Background Image with Dark Contrast Overlay -->
+        <!-- ================= 1. HERO SECTION & BREADCRUMB ================= -->
+        <section class="relative min-h-[620px] lg:min-h-[700px] flex flex-col justify-center overflow-hidden bg-zinc-950 text-white pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 border-b border-zinc-800">
+            <!-- Background Image with Directional Dark Gradient -->
             <div class="absolute inset-0 z-0">
                 <img src="{{ asset('images/programs/flexibility.jpg') }}"
                      alt="Personal Trainer Couples Maco Gym"
-                     class="w-full h-full object-cover object-center filter brightness-[0.25] contrast-125">
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
+                     class="w-full h-full object-cover object-center filter brightness-65 contrast-105">
+                
+                <!-- Responsive Directional Dark Gradient Overlay -->
+                <div class="hidden md:block absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent w-4/5 lg:w-3/5"></div>
+                <div class="block md:hidden absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950/85 via-zinc-950/60 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
             </div>
 
-            <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="relative z-10 w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 my-auto text-left flex flex-col items-start space-y-4 sm:space-y-5">
+                
                 <!-- Breadcrumbs -->
-                <nav class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-6">
-                    <a href="{{ route('home') }}" class="hover:text-red-500 transition-colors">Beranda</a>
-                    <span>/</span>
-                    <a href="{{ route('home') }}#pricing" class="hover:text-red-500 transition-colors">Pricing</a>
-                    <span>/</span>
-                    <span class="text-white font-bold">Personal Trainer Couples</span>
+                <nav aria-label="Breadcrumb">
+                    <ol class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                        <li>
+                            <a href="{{ route('home') }}" class="hover:text-red-500 transition-colors">Beranda</a>
+                        </li>
+                        <li>
+                            <span class="text-zinc-600">/</span>
+                        </li>
+                        <li>
+                            <a href="{{ route('home') }}#pricing" class="hover:text-red-500 transition-colors">Pricing</a>
+                        </li>
+                        <li>
+                            <span class="text-zinc-600">/</span>
+                        </li>
+                        <li class="text-red-500 font-bold" aria-current="page">
+                            Personal Trainer Couples
+                        </li>
+                    </ol>
                 </nav>
 
-                <!-- Header Title -->
-                <div class="max-w-3xl space-y-3">
-                    <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/40 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
-                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
-                        PARTNER WORKOUT (2 ORANG)
-                    </div> -->
-                    <h1 class="font-montserrat text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
-                        PERSONAL TRAINER <span class="text-red-600">COUPLES</span>
+                <div class="max-w-3xl space-y-4">
+                    <!-- Eyebrow Tagline with Standard Red Lines -->
+                    <div class="inline-flex items-center gap-3">
+                        <span class="w-8 h-[2px] bg-red-600"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-red-500 font-montserrat">
+                            PARTNER WORKOUT (2 ORANG)
+                        </span>
+                        <span class="w-8 h-[2px] bg-red-600"></span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="font-montserrat text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-tight">
+                        PERSONAL TRAINER <span class="text-red-600 drop-shadow-[0_0_25px_rgba(239,68,68,0.4)]">COUPLES</span>
                     </h1>
-                    <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-sans">
+
+                    <!-- Lead Paragraph -->
+                    <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal pt-1 max-w-2xl">
                         Program bimbingan kebugaran berpasangan (suami-istri, pasangan, sahabat, atau rekan kerja). Ditujukan untuk <span class="text-white font-bold">dua orang bersama satu personal trainer</span> profesional agar latihan lebih konsisten, seru, dan hemat biaya.
                     </p>
+
+                    <!-- Quick Action Buttons -->
+                    <div class="pt-4 flex flex-wrap items-center gap-3.5">
+                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin konsultasi dan reservasi Personal Trainer Couples.') }}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
+                            <span>KONSULTASI VIA WHATSAPP</span>
+                            <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+
+                        <a href="#tabel-harga"
+                           class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-white hover:text-zinc-950 border border-zinc-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition">
+                            <span>LIHAT DAFTAR HARGA</span>
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </section>
 
         <!-- Pricing Content Container -->
-        <section class="py-12 sm:py-16">
+        <section id="tabel-harga" class="py-12 sm:py-16">
             <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
                 <!-- Catatan Ketentuan Resmi Banner -->

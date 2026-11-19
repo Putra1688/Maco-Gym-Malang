@@ -43,6 +43,7 @@ Route::get('/member-preview', [MemberDashboardController::class, 'preview'])->na
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', fn () => redirect()->route('admin.frontdesk.index'));
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Frontdesk

@@ -242,7 +242,7 @@
                                         
                                         <optgroup label="── Kategori: Membership ──">
                                             <option value="1 Month - Rp 130.000" {{ str_contains($requestedPackage, '1 Month') ? 'selected' : '' }}>
-                                                1 Month (Rp 130.000)
+                                                Membership 1 Month (Rp 130.000 / 30 Hari)
                                             </option>
                                             <option value="Membership 3 Month - Rp 375.000" {{ str_contains($requestedPackage, '3 Month') ? 'selected' : '' }}>
                                                 Membership 3 Month (Rp 375.000 / 90 Hari) — Populer

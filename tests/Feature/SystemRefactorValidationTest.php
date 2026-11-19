@@ -175,7 +175,7 @@ class SystemRefactorValidationTest extends TestCase
             'remember' => '1',
         ]);
 
-        $response->assertRedirect(route('admin.dashboard'));
+        $response->assertRedirect(route('admin.frontdesk.index'));
         $this->assertAuthenticatedAs($admin);
 
         // Refresh user dari database untuk memverifikasi remember_token terisi
@@ -207,7 +207,7 @@ class SystemRefactorValidationTest extends TestCase
             // remember tidak dikirim
         ]);
 
-        $response->assertRedirect(route('admin.dashboard'));
+        $response->assertRedirect(route('admin.frontdesk.index'));
         $this->assertAuthenticatedAs($admin);
 
         // Cookie remember_web_* tidak boleh ada

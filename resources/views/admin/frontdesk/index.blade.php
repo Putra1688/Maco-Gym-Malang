@@ -31,9 +31,9 @@
                 <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Member Terdaftar</span>
                 <h4 class="text-3xl font-black font-montserrat text-blue-600 dark:text-blue-400 mt-1">
                     {{ number_format($todayStats['member']) }}
-                    <span class="text-xs font-normal text-zinc-400 font-sans">Presensi</span>
+                    <span class="text-xs font-normal text-zinc-400 font-sans">Orang</span>
                 </h4>
-                <p class="text-[10px] text-zinc-400 font-mono mt-1">Tap kartu RFID & ID member</p>
+                <p class="text-[10px] text-zinc-400 font-mono mt-1">Dihitung 1 orang unik / hari</p>
             </div>
             <div class="w-10 h-10 rounded bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs uppercase shrink-0 border border-blue-200 dark:border-blue-900/60 font-mono">
                 MBR
