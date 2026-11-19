@@ -4,10 +4,10 @@
 
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
-            <div class="flex items-center justify-center gap-2 mb-1">
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+            <div class="flex items-center justify-center gap-3 mb-1">
+                <span class="w-8 h-[2px] bg-red-600"></span>
                 <span class="tagline text-xs font-bold uppercase tracking-[0.2em] text-red-600 font-montserrat">OFFICIAL PRICE LIST</span>
-                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <span class="w-8 h-[2px] bg-red-600"></span>
             </div>
             <h2 class="font-montserrat text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-zinc-900 tracking-tight">
                 CHOOSE YOUR <span class="text-red-600">PLAN</span>
@@ -25,7 +25,7 @@
                 <div>
                     <!-- Representative Image -->
                     <div class="relative h-56 sm:h-60 w-full overflow-hidden bg-zinc-900">
-                        <img src="{{ asset('images/about-gym.jpg') }}"
+                        <img src="{{ asset('images/card.png') }}"
                              alt="Membership Maco Gym Malang"
                              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter brightness-90 contrast-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>

@@ -69,9 +69,11 @@
                 <div class="flex items-center gap-6">
                     <a href="{{ route('member.dashboard') }}" class="flex items-center gap-3 group">
                         <div class="relative">
-                            <img src="{{ asset('images/logo/macogym.jpg') }}"
-                                 alt="Maco Gym Malang"
-                                 class="h-9 sm:h-11 w-auto object-contain rounded-xl border border-zinc-200 dark:border-zinc-800 group-hover:border-red-500/80 transition-all duration-300 shadow-xs">
+                            <div class="h-10 w-10 sm:h-11 sm:w-11 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 group-hover:border-red-500/80 transition-all duration-300 shadow-xs flex items-center justify-center bg-zinc-950">
+                                <img src="{{ asset('images/logo/macogym.jpg') }}"
+                                     alt="Maco Gym Malang"
+                                     class="h-full w-full object-cover">
+                            </div>
                             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-red-600 ring-2 ring-white dark:ring-[#0e1014]"></span>
                         </div>
                         <div class="flex flex-col">

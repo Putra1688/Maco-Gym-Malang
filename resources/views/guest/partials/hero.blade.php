@@ -5,33 +5,45 @@
     <div id="hero-slider" class="absolute inset-0 z-0">
         <!-- Slide 1 -->
         <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
-            <img src="{{ asset('images/hero-model.jpg') }}"
-                 alt="Maco Gym Athletes Training"
-                 class="w-full h-full object-cover object-right md:object-center filter brightness-95 contrast-105 scale-100">
+            <img src="{{ asset('images/showroom/room-1.png') }}"
+                 alt="Maco Gym Showroom 1"
+                 class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
         </div>
         <!-- Slide 2 -->
         <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-            <img src="{{ asset('images/about-gym.jpg') }}"
-                 alt="Maco Gym Facilities"
-                 class="w-full h-full object-cover object-right md:object-center filter brightness-95 contrast-105 scale-100">
+            <img src="{{ asset('images/showroom/room-2.png') }}"
+                 alt="Maco Gym Showroom 2"
+                 class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
         </div>
         <!-- Slide 3 -->
         <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-            <img src="{{ asset('images/programs/strength.jpg') }}"
-                 alt="Strength Training"
-                 class="w-full h-full object-cover object-right md:object-center filter brightness-95 contrast-105 scale-100">
+            <img src="{{ asset('images/showroom/room-3.png') }}"
+                 alt="Maco Gym Showroom 3"
+                 class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
         </div>
         <!-- Slide 4 -->
         <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-            <img src="{{ asset('images/programs/muscle.jpg') }}"
-                 alt="Muscle Building"
-                 class="w-full h-full object-cover object-right md:object-center filter brightness-95 contrast-105 scale-100">
+            <img src="{{ asset('images/showroom/room-4.png') }}"
+                 alt="Maco Gym Showroom 4"
+                 class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
+        </div>
+        <!-- Slide 4 -->
+        <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+            <img src="{{ asset('images/showroom/gym.png') }}"
+                 alt="Maco Gym Showroom 5"
+                 class="w-full h-full object-cover object-center filter brightness-100 md:brightness-95 contrast-105 scale-100">
         </div>
     </div>
 
-    <!-- Directional Dark Gradient Overlay (Exact Match with FIT HUB Reference: Dark on left text side, Open & Bright on photo side) -->
-    <div class="absolute inset-0 z-1 bg-gradient-to-r from-zinc-950 via-zinc-950/90 sm:via-zinc-950/80 to-transparent w-full md:w-3/4 lg:w-3/5 pointer-events-none"></div>
-    <div class="absolute inset-0 z-1 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent md:hidden pointer-events-none"></div>
+    <!-- Directional Dark Gradient Overlays (Responsive Conditional) -->
+    <!-- 1. Tampilan Layar Mobile (< md): Shadow lebih lembut agar foto showroom tetap terlihat terang & menarik -->
+    <div class="block md:hidden absolute inset-0 z-1 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-r from-zinc-950/80 via-zinc-950/50 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/50 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- 2. Tampilan Layar Laptop & Desktop (>= md): Shadow pekat & tebal seperti sebelumnya agar teks judul berkontras tinggi dan sangat mudah dibaca -->
+    <div class="hidden md:block absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent w-4/5 lg:w-3/5"></div>
 
     <!-- Hero Content (Positioned on the Left over the Dark Gradient for Maximum Readability) -->
     <div class="relative z-10 w-full max-w-[1720px] mx-auto px-5 sm:px-8 lg:px-12 my-auto text-left flex flex-col items-start space-y-4 sm:space-y-5 py-2 sm:py-4">
@@ -44,14 +56,14 @@
         </div>
 
         <!-- Headline (Proportional & Compact like FIT HUB Reference) -->
-        <h1 class="font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[44px] font-bold uppercase text-white tracking-tight leading-tight max-w-lg lg:max-w-xl drop-shadow-md">
+        <h1 class="font-montserrat text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[44px] font-bold uppercase text-white tracking-tight leading-tight max-w-lg lg:max-w-xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.85)]">
             BECOME THE <br>
-            <span class="text-red-500 drop-shadow-[0_0_20px_rgba(239,68,68,0.4)]">BEST VERSION</span> <br>
+            <span class="text-red-500 drop-shadow-[0_0_20px_rgba(239,68,68,0.5)]">BEST VERSION</span> <br>
             OF YOURSELF
         </h1>
 
         <!-- Subheading -->
-        <p class="text-xs sm:text-sm md:text-base text-zinc-300 max-w-lg font-normal leading-relaxed drop-shadow">
+        <p class="text-xs sm:text-sm md:text-base text-zinc-200 max-w-lg font-normal leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
             Modern equipment. Expert trainers. Supportive community. Everything you need to achieve your fitness goals at Maco Gym Malang.
         </p>
 
@@ -89,7 +101,7 @@
     </div>
 </section>
 
-<!-- Auto Slideshow Script (2 seconds interval with smooth fade transition) -->
+<!-- Auto Slideshow Script (4.5 seconds interval with smooth fade transition) -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const slides = document.querySelectorAll('.hero-slide');
@@ -116,7 +128,7 @@
                     dots[currentSlide].classList.remove('w-2', 'bg-white/40');
                     dots[currentSlide].classList.add('w-6', 'bg-red-600');
                 }
-            }, 2000);
+            }, 4500);
         }
     });
 </script>

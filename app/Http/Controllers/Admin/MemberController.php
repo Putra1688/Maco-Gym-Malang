@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class MemberController extends Controller
@@ -74,7 +75,7 @@ class MemberController extends Controller
             'gender' => 'nullable|in:male,female',
             'status' => 'nullable|in:active,pending_verification',
             'package_id' => 'required|exists:packages,id',
-            'payment_method' => 'required|in:cash,qris,transfer',
+            'payment_method' => 'required|in:cash,qris,transfer,qris_transfer',
             'checkin_now' => 'nullable|boolean',
         ]);
 
@@ -83,8 +84,9 @@ class MemberController extends Controller
         $invoiceCode = 'INV-'.now()->format('YmdHis').'-'.strtoupper(substr(uniqid(), -4));
         $status = $request->input('status', 'active');
         $isPending = ($status === 'pending_verification');
+        $paymentMethod = in_array($request->payment_method, ['qris', 'transfer', 'qris_transfer']) ? 'qris' : 'cash';
 
-        $member = DB::transaction(function () use ($request, $package, $cardId, $invoiceCode, $isPending) {
+        $member = DB::transaction(function () use ($request, $package, $cardId, $invoiceCode, $isPending, $paymentMethod) {
             // 1. Buat atau hubungkan akun User untuk portal member
             $user = User::where('phone', $request->phone)->first();
             if (! $user) {
@@ -101,7 +103,7 @@ class MemberController extends Controller
                 ? now()->toDateString()
                 : now()->startOfDay()->addDays($package->duration_days)->toDateString();
 
-            $createdMember = Member::create([
+            $memberData = [
                 'user_id' => $user->id,
                 'card_id' => $cardId,
                 'name' => $request->name,
@@ -110,8 +112,16 @@ class MemberController extends Controller
                 'join_date' => now()->toDateString(),
                 'current_expiry_date' => $expiryDate,
                 'status' => $isPending ? 'pending_verification' : 'active',
-                'package_name' => $package->name,
-            ]);
+            ];
+
+            try {
+                if (Schema::hasColumn('members', 'package_name')) {
+                    $memberData['package_name'] = $package->name;
+                }
+            } catch (\Throwable $e) {
+            }
+
+            $createdMember = Member::create($memberData);
 
             // 3. Catat transaksi pembayaran kas HANYA jika status aktif
             if (! $isPending) {
@@ -122,7 +132,7 @@ class MemberController extends Controller
                     'customer_name' => $request->name,
                     'customer_phone' => $request->phone,
                     'amount' => $package->price,
-                    'payment_method' => $request->payment_method,
+                    'payment_method' => $paymentMethod,
                     'created_by' => auth()->id() ?? 1,
                     'created_at' => now(),
                 ]);
@@ -220,7 +230,7 @@ class MemberController extends Controller
     {
         $request->validate([
             'package_id' => 'required|exists:packages,id',
-            'payment_method' => 'required|in:cash,qris,transfer',
+            'payment_method' => 'required|in:cash,qris,transfer,qris_transfer',
         ]);
 
         $package = Package::findOrFail($request->package_id);
@@ -236,8 +246,9 @@ class MemberController extends Controller
         $newExpiry = $baseDate->copy()->addDays($package->duration_days);
 
         $invoiceCode = 'INV-'.now()->format('YmdHis').'-'.strtoupper(substr(uniqid(), -4));
+        $paymentMethod = in_array($request->payment_method, ['qris', 'transfer', 'qris_transfer']) ? 'qris' : 'cash';
 
-        DB::transaction(function () use ($member, $package, $newExpiry, $invoiceCode, $request) {
+        DB::transaction(function () use ($member, $package, $newExpiry, $invoiceCode, $paymentMethod) {
             if (! $member->user) {
                 $user = User::firstOrCreate(
                     ['phone' => $member->phone],
@@ -250,11 +261,19 @@ class MemberController extends Controller
                 $member->user_id = $user->id;
             }
 
-            $member->update([
+            $updateData = [
                 'current_expiry_date' => $newExpiry->toDateString(),
                 'status' => 'active',
-                'package_name' => $package->name,
-            ]);
+            ];
+
+            try {
+                if (Schema::hasColumn('members', 'package_name')) {
+                    $updateData['package_name'] = $package->name;
+                }
+            } catch (\Throwable $e) {
+            }
+
+            $member->update($updateData);
 
             Transaction::create([
                 'invoice_code' => $invoiceCode,
@@ -263,7 +282,7 @@ class MemberController extends Controller
                 'customer_name' => $member->name,
                 'customer_phone' => $member->phone,
                 'amount' => $package->price,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $paymentMethod,
                 'created_by' => auth()->id() ?? 1,
                 'created_at' => now(),
             ]);
@@ -277,7 +296,7 @@ class MemberController extends Controller
         $request->validate([
             'card_id' => 'nullable|string|max:50|unique:members,card_id,'.$member->id,
             'package_id' => 'required|exists:packages,id',
-            'payment_method' => 'required|in:cash,qris,transfer',
+            'payment_method' => 'required|in:cash,qris,transfer,qris_transfer',
             'checkin_now' => 'nullable|boolean',
         ]);
 
@@ -286,8 +305,9 @@ class MemberController extends Controller
         $now = now()->startOfDay();
         $newExpiry = $now->copy()->addDays($package->duration_days);
         $invoiceCode = 'INV-'.now()->format('YmdHis').'-'.strtoupper(substr(uniqid(), -4));
+        $paymentMethod = in_array($request->payment_method, ['qris', 'transfer', 'qris_transfer']) ? 'qris' : 'cash';
 
-        DB::transaction(function () use ($member, $package, $cardId, $newExpiry, $invoiceCode, $request) {
+        DB::transaction(function () use ($member, $package, $cardId, $newExpiry, $invoiceCode, $paymentMethod, $request) {
             // 1. Hubungkan akun user jika belum ada
             if (! $member->user) {
                 $user = User::firstOrCreate(
@@ -302,13 +322,21 @@ class MemberController extends Controller
             }
 
             // 2. Update status member ke active
-            $member->update([
+            $updateData = [
                 'card_id' => $cardId,
                 'status' => 'active',
-                'package_name' => $package->name,
                 'join_date' => today()->toDateString(),
                 'current_expiry_date' => $newExpiry->toDateString(),
-            ]);
+            ];
+
+            try {
+                if (Schema::hasColumn('members', 'package_name')) {
+                    $updateData['package_name'] = $package->name;
+                }
+            } catch (\Throwable $e) {
+            }
+
+            $member->update($updateData);
 
             // 3. Catat transaksi pembayaran kas
             Transaction::create([
@@ -318,7 +346,7 @@ class MemberController extends Controller
                 'customer_name' => $member->name,
                 'customer_phone' => $member->phone,
                 'amount' => $package->price,
-                'payment_method' => $request->payment_method,
+                'payment_method' => $paymentMethod,
                 'created_by' => auth()->id() ?? 1,
                 'created_at' => now(),
             ]);

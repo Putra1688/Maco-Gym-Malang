@@ -20,6 +20,8 @@ class DashboardController extends Controller
             ->where('current_expiry_date', '>=', $now->toDateString())
             ->count();
 
+        $totalAllMembers = Member::count();
+
         $totalPendingMembers = Member::where('status', 'pending_verification')->count();
 
         $totalExpiredMembers = Member::where(function ($q) use ($now) {
@@ -49,17 +51,21 @@ class DashboardController extends Controller
             ->where('is_active', true)
             ->get();
 
+        $startOfToday = $now->copy()->startOfDay();
+        $endOfToday = $now->copy()->endOfDay();
+
         $todayMemberAttendance = Attendance::where('type', 'member')
-            ->whereDate('checkin_time', today())
-            ->count();
+            ->whereBetween('checkin_time', [$startOfToday, $endOfToday])
+            ->distinct()
+            ->count('member_id');
 
         $todayGuestAttendance = Attendance::where('type', 'daily_guest')
-            ->whereDate('checkin_time', today())
+            ->whereBetween('checkin_time', [$startOfToday, $endOfToday])
             ->count();
 
         $todayAttendance = $todayMemberAttendance + $todayGuestAttendance;
 
-        $todayRevenue = (float) Transaction::whereDate('created_at', today())->sum('amount');
+        $todayRevenue = (float) Transaction::whereBetween('created_at', [$startOfToday, $endOfToday])->sum('amount');
 
         $monthRevenue = (float) Transaction::whereYear('created_at', $now->year)
             ->whereMonth('created_at', $now->month)
@@ -71,7 +77,8 @@ class DashboardController extends Controller
             ->get();
 
         $recentAttendances = Attendance::with('member')
-            ->latest('checkin_time')
+            ->orderBy('checkin_time', 'desc')
+            ->orderBy('id', 'desc')
             ->limit(3)
             ->get();
 
@@ -262,6 +269,7 @@ class DashboardController extends Controller
 
         return view('admin.dashboard', compact(
             'totalActiveMembers',
+            'totalAllMembers',
             'totalPendingMembers',
             'totalExpiredMembers',
             'totalExpiringCount',

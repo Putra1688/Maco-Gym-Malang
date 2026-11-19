@@ -71,7 +71,7 @@
 
             <!-- Sidebar Header / Brand -->
             <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between shrink-0 h-16">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 group overflow-hidden" x-show="sidebarOpen || mobileMenuOpen">
+                <a href="{{ route('admin.frontdesk.index') }}" class="flex items-center gap-2.5 group overflow-hidden" x-show="sidebarOpen || mobileMenuOpen">
                     <img src="{{ asset('images/logo/macogym.jpg') }}"
                          alt="Maco Gym"
                          class="h-9 w-auto object-contain rounded border border-zinc-200 dark:border-zinc-700 shrink-0">
@@ -153,7 +153,7 @@
                         </svg>
                     </button>
                     <div>
-                        <h2 class="font-montserrat text-sm sm:text-base font-bold uppercase tracking-wider text-zinc-900 dark:text-white leading-tight">@yield('header', 'Dashboard Monitoring')</h2>
+                        <h2 class="font-montserrat text-sm sm:text-base font-bold uppercase tracking-wider text-zinc-900 dark:text-white leading-tight">@yield('header', 'Frontdesk & Meja Kasir')</h2>
                         <p class="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">{{ now()->translatedFormat('l, d F Y') }}</p>
                     </div>
                 </div>

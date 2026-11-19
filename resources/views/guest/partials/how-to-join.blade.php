@@ -44,7 +44,7 @@
                     </div>
                     <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2">ISI FORMULIR</h3>
                     <p class="text-xs text-zinc-600 leading-relaxed">
-                        Lengkapi formulir pendaftaran singkat secara online atau hubungi admin WhatsApp untuk verifikasi kilat.
+                        Lengkapi formulir pendaftaran secara online, data langsung masuk ke sistem untuk diverifikasi admin/kasir gym.
                     </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-zinc-200 text-[10px] font-bold text-red-600 uppercase tracking-wider">
@@ -58,13 +58,13 @@
                     <div class="w-12 h-12 rounded-xl bg-red-600 text-white font-bold text-xl flex items-center justify-center mb-5 shadow-md shadow-red-600/20">
                         03
                     </div>
-                    <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2">PEMBAYARAN</h3>
+                    <h3 class="font-montserrat text-base font-bold uppercase text-zinc-900 mb-2">PEMBAYARAN & DATANG KE GYM</h3>
                     <p class="text-xs text-zinc-600 leading-relaxed">
-                        Pembayaran praktis via QRIS (BCA, Mandiri, BRI, Gopay, OVO, ShopeePay) atau tunai di kasir gym.
+                        Selesaikan pembayaran praktis via QRIS (BCA, Mandiri, BRI, e-wallet) atau tunai di kasir, lalu datang langsung ke Maco Gym untuk aktivasi member.
                     </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-zinc-200 text-[10px] font-bold text-red-600 uppercase tracking-wider">
-                    Step 3: Secure Payment
+                    Step 3: Payment & Check-in
                 </div>
             </div>
 

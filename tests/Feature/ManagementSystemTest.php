@@ -27,7 +27,7 @@ class ManagementSystemTest extends TestCase
             'password' => 'password123',
         ]);
 
-        $response->assertRedirect(route('admin.dashboard'));
+        $response->assertRedirect(route('admin.frontdesk.index'));
 
         $dashboardResponse = $this->actingAs($admin)->get(route('admin.dashboard'));
         $dashboardResponse->assertStatus(200);

@@ -98,7 +98,7 @@
                         <li><a href="#facilities" class="hover:text-red-400 transition-colors">Strength Training</a></li>
                         <li><a href="#facilities" class="hover:text-red-400 transition-colors">Weight Loss & Fat Burn</a></li>
                         <li><a href="#facilities" class="hover:text-red-400 transition-colors">Muscle Building (Hypertrophy)</a></li>
-                        <li><a href="#facilities" class="hover:text-red-400 transition-colors">Yoga & Flexibility</a></li>
+                        <li><a href="#facilities" class="hover:text-red-400 transition-colors">Maco Gym Cafe</a></li>
                         <li><a href="#pricing" class="hover:text-red-400 transition-colors">Paket Khusus Mahasiswa</a></li>
                         <li><a href="#trainers" class="hover:text-red-400 transition-colors">1-on-1 Personal Trainer</a></li>
                     </ul>
