@@ -274,7 +274,7 @@ class FrontdeskKasirUIRefactorTest extends TestCase
             'notes' => 'Sore gym lagi',
         ]);
 
-        $response = $this->actingAs($admin)->get(route('admin.frontdesk.index'));
+        $response = $this->actingAs($admin)->get(route('admin.frontdesk.index', ['search' => $member->card_id]));
         $response->assertStatus(200);
 
         // 1. Verify stats: member is counted only 1 time in stats despite 2 logs

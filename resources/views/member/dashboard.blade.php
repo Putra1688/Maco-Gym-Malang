@@ -299,48 +299,34 @@
         </div>
     </div>
 
-    <!-- 5. Modal Barcode Layar Penuh (Untuk Memudahkan Scan di HP saat di Meja Kasir) -->
+    <!-- 5. Modal Barcode Layar Penuh (Khusus Barcode Murni Bersih Tanpa Gangguan Teks/Objek Lain) -->
     <div x-cloak x-show="showBarcodeFullscreen"
-         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
          @keydown.escape.window="showBarcodeFullscreen = false">
         
-        <div class="relative w-full max-w-sm bg-white rounded-3xl p-6 sm:p-8 text-zinc-900 shadow-2xl text-center"
+        <!-- Tombol Tutup Mengambang di Luar Card -->
+        <button @click="showBarcodeFullscreen = false"
+                type="button"
+                class="absolute top-5 right-5 text-white/70 hover:text-white p-2.5 rounded-full bg-zinc-800/80 hover:bg-zinc-700 transition cursor-pointer z-10"
+                title="Tutup (Esc)">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Container Putih Bersih: HANYA Barcode Murni -->
+        <div class="relative w-full max-w-md sm:max-w-lg bg-white rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col items-center justify-center text-center"
              @click.away="showBarcodeFullscreen = false">
             
-            <button @click="showBarcodeFullscreen = false"
-                    type="button"
-                    class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-800 p-1.5 rounded-full hover:bg-zinc-100 transition cursor-pointer">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-700 text-[10px] font-mono font-bold uppercase mb-2">
-                Barcode Check-in Kasir
-            </span>
-
-            <h3 class="font-montserrat font-black text-xl text-zinc-950 uppercase">
-                {{ $member->name }}
-            </h3>
-            <p class="font-mono font-bold text-xs text-zinc-500 mb-5">
-                ID: {{ $member->card_id }}
-            </p>
-
-            <!-- Big Barcode in Modal -->
-            <div class="bg-white p-3 border-2 border-zinc-900 rounded-xl mb-4">
-                <svg id="member-barcode-modal" class="w-full h-24 mx-auto"></svg>
+            <!-- Canvas Barcode Bersih dengan Quiet Zone Luas -->
+            <div class="w-full flex items-center justify-center py-4 bg-white">
+                <svg id="member-barcode-modal" class="w-full max-w-full mx-auto"></svg>
             </div>
 
-            <!-- Big QR in Modal -->
-            <div class="p-3 bg-zinc-50 border border-zinc-200 rounded-xl flex items-center justify-center mb-5">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data={{ urlencode($member->card_id) }}"
-                     alt="QR Fullscreen"
-                     class="w-36 h-36 rounded-md">
-            </div>
-
+            <!-- Tombol Tutup Minimalis -->
             <button @click="showBarcodeFullscreen = false"
                     type="button"
-                    class="w-full py-2.5 bg-zinc-900 hover:bg-zinc-800 text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-xl transition cursor-pointer">
+                    class="mt-6 px-6 py-2 bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-montserrat font-bold text-xs uppercase tracking-wider rounded-xl transition cursor-pointer">
                 Tutup Tampilan Barcode
             </button>
         </div>
@@ -367,17 +353,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Render Barcode di Modal Pop-up
+    // Render Barcode di Modal Pop-up (Besar, Tebal & Kontras Tinggi Khusus Scanner)
     if (typeof JsBarcode !== 'undefined' && document.getElementById('member-barcode-modal')) {
         JsBarcode("#member-barcode-modal", cardId, {
             format: "CODE128",
-            width: 2.2,
-            height: 70,
+            width: 3.0,
+            height: 120,
             displayValue: true,
             font: "monospace",
-            fontSize: 14,
-            textMargin: 4,
-            lineColor: "#000000"
+            fontSize: 18,
+            textMargin: 8,
+            lineColor: "#000000",
+            margin: 15,
+            background: "#ffffff"
         });
     }
 });

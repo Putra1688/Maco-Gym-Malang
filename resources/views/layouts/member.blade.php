@@ -215,9 +215,9 @@
         @yield('content')
     </main>
 
-    <!-- Global Barcode & QR Scanner Modal (Pop-up Layar Penuh Terang untuk Scanner Meja Resepsionis) -->
+    <!-- Global Barcode Scanner Modal (Khusus Barcode Murni Bersih Tanpa Gangguan Teks/Objek Lain) -->
     <div x-cloak x-show="showQrModal"
-         class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+         class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
          x-transition:enter="transition ease-out duration-200"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100"
@@ -226,7 +226,18 @@
          x-transition:leave-end="opacity-0"
          @keydown.escape.window="showQrModal = false">
         
-        <div class="relative w-full max-w-sm bg-white rounded-3xl p-6 sm:p-8 text-zinc-900 shadow-2xl border border-zinc-200 text-center"
+        <!-- Tombol Tutup Mengambang di Luar Card -->
+        <button @click="showQrModal = false"
+                type="button"
+                class="absolute top-5 right-5 text-white/70 hover:text-white p-2.5 rounded-full bg-zinc-800/80 hover:bg-zinc-700 transition cursor-pointer z-10"
+                title="Tutup (Esc)">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Container Putih Bersih: HANYA Barcode Murni -->
+        <div class="relative w-full max-w-md sm:max-w-lg bg-white rounded-3xl p-6 sm:p-10 shadow-2xl flex flex-col items-center justify-center text-center"
              @click.away="showQrModal = false"
              x-transition:enter="transition ease-out duration-200 transform"
              x-transition:enter-start="scale-95 opacity-0"
@@ -235,94 +246,16 @@
              x-transition:leave-start="scale-100 opacity-100"
              x-transition:leave-end="scale-95 opacity-0">
             
-            <!-- Close Button -->
+            <!-- Canvas Barcode Bersih dengan Quiet Zone Luas -->
+            <div class="w-full flex items-center justify-center py-4 bg-white">
+                <svg id="global-member-barcode" class="w-full max-w-full mx-auto"></svg>
+            </div>
+
+            <!-- Tombol Tutup Minimalis -->
             <button @click="showQrModal = false"
                     type="button"
-                    class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-800 p-1.5 rounded-full hover:bg-zinc-100 transition cursor-pointer">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-
-            <!-- Modal Header -->
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600/10 text-red-600 text-[10px] font-bold uppercase tracking-wider mb-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
-                <span>Presensi Frontdesk Kasir</span>
-            </div>
-
-            <h3 class="font-montserrat font-extrabold text-xl text-zinc-950 uppercase tracking-tight">
-                {{ auth()->user()->name ?? 'Bima Arya' }}
-            </h3>
-            
-            <!-- Copy ID Pill Button -->
-            <div class="flex items-center justify-center gap-2 mt-1 mb-5">
-                <button type="button"
-                        @click="copyCardId('{{ auth()->user()->member?->card_id ?? 'MC-001' }}')"
-                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-mono font-bold transition cursor-pointer">
-                    <span>ID: {{ auth()->user()->member?->card_id ?? 'MC-001' }}</span>
-                    <svg x-show="!copiedId" class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                    </svg>
-                    <svg x-show="copiedId" class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-                    </svg>
-                </button>
-                <span x-show="copiedId" x-transition class="text-[10px] font-bold text-emerald-600">Tersalin!</span>
-            </div>
-
-            <!-- Barcode Visual Representation (High Contrast Ultra Crisp) -->
-            <div class="bg-white border-2 border-zinc-900 rounded-2xl p-4 sm:p-5 mb-4 shadow-sm">
-                <!-- SVG Code 128 / Barcode Simulation -->
-                <svg class="w-full h-24 mx-auto" viewBox="0 0 280 90" fill="currentColor">
-                    <!-- Quiet zone -->
-                    <rect x="0" y="0" width="280" height="90" fill="#ffffff" />
-                    <!-- Barcode stripes -->
-                    <g fill="#000000">
-                        <rect x="20" y="8" width="4" height="60" />
-                        <rect x="28" y="8" width="2" height="60" />
-                        <rect x="34" y="8" width="6" height="60" />
-                        <rect x="44" y="8" width="2" height="60" />
-                        <rect x="50" y="8" width="4" height="60" />
-                        <rect x="58" y="8" width="8" height="60" />
-                        <rect x="70" y="8" width="2" height="60" />
-                        <rect x="76" y="8" width="6" height="60" />
-                        <rect x="86" y="8" width="4" height="60" />
-                        <rect x="94" y="8" width="2" height="60" />
-                        <rect x="100" y="8" width="8" height="60" />
-                        <rect x="112" y="8" width="4" height="60" />
-                        <rect x="120" y="8" width="2" height="60" />
-                        <rect x="126" y="8" width="6" height="60" />
-                        <rect x="136" y="8" width="2" height="60" />
-                        <rect x="142" y="8" width="8" height="60" />
-                        <rect x="154" y="8" width="4" height="60" />
-                        <rect x="162" y="8" width="2" height="60" />
-                        <rect x="168" y="8" width="6" height="60" />
-                        <rect x="178" y="8" width="4" height="60" />
-                        <rect x="186" y="8" width="2" height="60" />
-                        <rect x="192" y="8" width="8" height="60" />
-                        <rect x="204" y="8" width="4" height="60" />
-                        <rect x="212" y="8" width="6" height="60" />
-                        <rect x="222" y="8" width="2" height="60" />
-                        <rect x="228" y="8" width="4" height="60" />
-                        <rect x="236" y="8" width="8" height="60" />
-                        <rect x="248" y="8" width="4" height="60" />
-                        <rect x="256" y="8" width="2" height="60" />
-                    </g>
-                    <!-- Text under barcode -->
-                    <text x="140" y="82" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle" fill="#000000" letter-spacing="4">
-                        *{{ auth()->user()->member?->card_id ?? 'MC-001' }}*
-                    </text>
-                </svg>
-            </div>
-
-            <p class="text-[11px] text-zinc-500 leading-relaxed mb-5">
-                Tunjukkan layar ini ke scanner kasir meja depan Maco Gym Pandanwangi / Lowokwaru saat tiba untuk check-in otomatis.
-            </p>
-
-            <button @click="showQrModal = false"
-                    type="button"
-                    class="w-full py-2.5 px-4 bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition cursor-pointer">
-                Tutup Layar Scan
+                    class="mt-6 px-6 py-2 bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-montserrat font-bold text-xs uppercase tracking-wider rounded-xl transition cursor-pointer">
+                Tutup Tampilan Barcode
             </button>
         </div>
     </div>
@@ -341,5 +274,29 @@
         </div>
     </footer>
 
+    <!-- Script Generator JsBarcode Global (Besar, Tebal & Kontras Tinggi Khusus Scanner) -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const globalCardId = @json(auth()->user()->member?->card_id ?? 'MC-001');
+        if (typeof JsBarcode !== 'undefined' && document.getElementById('global-member-barcode')) {
+            try {
+                JsBarcode("#global-member-barcode", globalCardId, {
+                    format: "CODE128",
+                    width: 3.0,
+                    height: 120,
+                    displayValue: true,
+                    font: "monospace",
+                    fontSize: 18,
+                    textMargin: 8,
+                    lineColor: "#000000",
+                    margin: 15,
+                    background: "#ffffff"
+                });
+            } catch (err) {
+                console.error("Gagal generate barcode global:", err);
+            }
+        }
+    });
+    </script>
 </body>
 </html>
