@@ -245,8 +245,7 @@
             </button>
 
             <!-- Modal Header -->
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600/10 text-red-600 text-[10px] font-bold uppercase tracking-wider mb-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-red-600/10 text-red-600 text-[10px] font-bold uppercase tracking-wider mb-2">
                 <span>Presensi Frontdesk Kasir</span>
             </div>
 

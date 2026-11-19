@@ -31,9 +31,9 @@
                 <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Member Terdaftar</span>
                 <h4 class="text-3xl font-black font-montserrat text-blue-600 dark:text-blue-400 mt-1">
                     {{ number_format($todayStats['member']) }}
-                    <span class="text-xs font-normal text-zinc-400 font-sans">Orang</span>
+                    <span class="text-xs font-normal text-zinc-400 font-sans">Presensi</span>
                 </h4>
-                <p class="text-[10px] text-zinc-400 font-mono mt-1">Dihitung 1 orang unik / hari</p>
+                <p class="text-[10px] text-zinc-400 font-mono mt-1">Tap kartu RFID & ID member</p>
             </div>
             <div class="w-10 h-10 rounded bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-xs uppercase shrink-0 border border-blue-200 dark:border-blue-900/60 font-mono">
                 MBR
@@ -65,19 +65,19 @@
         <div class="lg:col-span-7 xl:col-span-8 bg-white dark:bg-zinc-900 rounded-lg p-4 sm:p-5 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between shadow-xs border-t-2 border-t-red-600">
             <div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
-                    <div>
+                    <div class="flex items-center gap-2">
+                        <!-- <span class="w-2.5 h-2.5 rounded bg-red-600 shrink-0"></span> -->
                         <h3 class="text-xs sm:text-sm font-montserrat font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
                             Presensi Cepat Member (Scan / ID Kartu)
                         </h3>
                     </div>
-                    <span class="inline-flex items-center gap-1.5 text-[10px] font-mono font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800/60 shrink-0 self-start sm:self-auto">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        TERMINAL READY
+                    <span class="inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-900/60 shrink-0 self-start sm:self-auto whitespace-nowrap">
+                        SISTEM STANDBY
                     </span>
                 </div>
 
                 <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-3.5">
-                    Tempelkan kartu RFID ke reader, atau ketik ID Kartu (<code class="text-red-600 dark:text-red-400 font-mono font-bold">2008001</code>) / No. WhatsApp, lalu tekan <kbd class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-[10px] font-mono border border-zinc-200 dark:border-zinc-700">Enter</kbd>
+                    Tempelkan kartu RFID ke reader, atau ketik ID Kartu (<code class="text-red-600 dark:text-red-400 font-mono font-bold">MC-001</code>) / No. WhatsApp, lalu tekan <kbd class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-[10px] font-mono border border-zinc-200 dark:border-zinc-700">Enter</kbd>
                 </p>
 
                 <!-- Check-in Form -->
@@ -96,7 +96,7 @@
                         <input type="text"
                                id="card-search-input"
                                name="search"
-                               placeholder="Tap kartu RFID atau ketik ID Kartu member (Contoh: 2008001)..."
+                               placeholder="Tap kartu RFID atau ketik ID Kartu member..."
                                autofocus
                                autocomplete="off"
                                required
@@ -129,16 +129,11 @@
                 {{ $status === 'expired' ? 'bg-red-50 dark:bg-red-950/40 border-red-300 dark:border-red-800 text-red-900 dark:text-red-200' : '' }}
                 {{ $status === 'not_found' ? 'bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200' : '' }}">
                 <div class="flex items-center gap-2 min-w-0">
-                    <span class="inline-flex items-center gap-1.5 font-medium uppercase font-mono px-2.5 py-0.5 rounded-full text-[10px] border
-                        {{ $status === 'active' ? 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-300 dark:border-emerald-800/60' : '' }}
-                        {{ $status === 'expiring_soon' ? 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800/60' : '' }}
-                        {{ $status === 'expired' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-950/40 dark:text-red-300 dark:border-red-900/60' : '' }}
-                        {{ $status === 'not_found' ? 'bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-700' : '' }}">
-                        <span class="w-1.5 h-1.5 rounded-full
-                            {{ $status === 'active' ? 'bg-emerald-500' : '' }}
-                            {{ $status === 'expiring_soon' ? 'bg-amber-500' : '' }}
-                            {{ $status === 'expired' ? 'bg-red-500' : '' }}
-                            {{ $status === 'not_found' ? 'bg-zinc-400' : '' }}"></span>
+                    <span class="font-bold uppercase font-mono px-1.5 py-0.5 rounded text-[10px]
+                        {{ $status === 'active' ? 'bg-emerald-600 text-white' : '' }}
+                        {{ $status === 'expiring_soon' ? 'bg-amber-500 text-zinc-950' : '' }}
+                        {{ $status === 'expired' ? 'bg-red-600 text-white' : '' }}
+                        {{ $status === 'not_found' ? 'bg-zinc-600 text-white' : '' }}">
                         {{ strtoupper($status) }}
                     </span>
                     <span class="truncate font-semibold">
@@ -166,7 +161,8 @@
         <!-- 3. AKSI MEJA DEPAN (Col 8-12 di Desktop) -->
         <div class="lg:col-span-5 xl:col-span-4 bg-white dark:bg-zinc-900 rounded-lg p-4 sm:p-5 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between shadow-xs border-t-2 border-t-zinc-800 dark:border-t-zinc-200">
             <div>
-                <div class="pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
+                <div class="flex items-center gap-2 pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
+                    <!-- <span class="w-2.5 h-2.5 rounded bg-zinc-800 dark:bg-zinc-200 shrink-0"></span> -->
                     <h3 class="text-xs sm:text-sm font-montserrat font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
                         Aksi Meja Depan
                     </h3>
@@ -227,7 +223,6 @@
             </div>
 
             <div class="mt-4 pt-2.5 border-t border-zinc-100 dark:border-zinc-800 text-[11px] text-zinc-400 font-mono flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 shrink-0"></span>
                 <span>Transaksi kasir langsung tercatat ke pembukuan resmi Maco Gym.</span>
             </div>
         </div>
@@ -242,25 +237,29 @@
         <!-- Header & Filter Bar -->
         <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800 space-y-3">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                    <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
-                        {{ ($isToday ?? true) ? 'Riwayat Kedatangan Hari Ini (Live Check-in)' : 'Riwayat Presensi: ' . \Carbon\Carbon::parse($selectedDate ?? today())->translatedFormat('d F Y') }}
-                    </h3>
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        Menampilkan {{ $todayAttendances->total() }} presensi tercatat {{ $search ? '(Filter Pencarian: "' . $search . '")' : '' }}
-                    </p>
+                <div class="flex items-center gap-2">
+                    <div>
+                        <h3 class="font-montserrat font-bold text-xs sm:text-sm uppercase tracking-wider text-zinc-900 dark:text-white">
+                            {{ ($isToday ?? true) ? 'Riwayat Kedatangan Hari Ini (Live Check-in)' : 'Riwayat Presensi: ' . \Carbon\Carbon::parse($selectedDate ?? today())->translatedFormat('d F Y') }}
+                        </h3>
+                        <!-- <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
+                            Menampilkan {{ $todayAttendances->total() }} presensi tercatat {{ $search ? '(Filter Pencarian: "' . $search . '")' : '' }}
+                        </p> -->
+                    </div>
                 </div>
 
                 <!-- Total Badge -->
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700 self-start sm:self-auto shrink-0">
+                <span class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-xs font-mono font-bold text-zinc-700 dark:text-zinc-300 self-start sm:self-auto shrink-0">
                     Total: {{ $todayAttendances->total() }} Presensi
                 </span>
             </div>
 
             <!-- Filter Controls Form -->
             <form method="GET" action="{{ route('admin.frontdesk.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5 pt-1">
-                <!-- 1. Date Picker (3 cols) -->
-                <div class="lg:col-span-3">
+                <input type="hidden" name="per_page" value="{{ $perPage ?? 10 }}">
+
+                <!-- 1. Date Picker (4 cols) -->
+                <div class="lg:col-span-4">
                     <label for="filter-date" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
                         Tanggal:
                     </label>
@@ -296,8 +295,8 @@
                     </select>
                 </div>
 
-                <!-- 3. Search Name / Card ID (4 cols) -->
-                <div class="lg:col-span-4">
+                <!-- 3. Search Name / Card ID (5 cols) -->
+                <div class="lg:col-span-5">
                     <label for="filter-search" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
                         Cari Nama / ID Kartu / No. WA:
                     </label>
@@ -320,21 +319,6 @@
                         @endif
                     </div>
                 </div>
-
-                <!-- 4. Per Page Selector (2 cols) -->
-                <div class="lg:col-span-2">
-                    <label for="filter-per-page" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
-                        Per Halaman:
-                    </label>
-                    <select id="filter-per-page"
-                            name="per_page"
-                            onchange="this.form.submit()"
-                            class="w-full px-2.5 py-1.5 text-xs font-mono font-semibold rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-1 focus:ring-red-500 outline-none transition cursor-pointer">
-                        <option value="10" {{ ($perPage ?? 10) == 10 ? 'selected' : '' }}>10 Baris</option>
-                        <option value="25" {{ ($perPage ?? 10) == 25 ? 'selected' : '' }}>25 Baris</option>
-                        <option value="50" {{ ($perPage ?? 10) == 50 ? 'selected' : '' }}>50 Baris</option>
-                    </select>
-                </div>
             </form>
         </div>
 
@@ -344,10 +328,9 @@
                 <thead class="bg-zinc-50 dark:bg-zinc-950/60 text-[10px] uppercase font-mono tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800">
                     <tr>
                         <th class="px-4 py-2.5 w-28">Waktu</th>
-                        <th class="px-4 py-2.5 min-w-[150px]">Pengunjung / Member</th>
-                        <th class="px-4 py-2.5 hidden sm:table-cell w-36">ID Kartu</th>
                         <th class="px-4 py-2.5 w-32">Tipe</th>
-                        <th class="px-4 py-2.5 w-28">Status</th>
+                        <th class="px-4 py-2.5 min-w-[150px]">Nama Pengunjung</th>
+                        <th class="px-4 py-2.5 hidden sm:table-cell w-36">ID Kartu</th>
                         <th class="px-4 py-2.5 hidden md:table-cell">Catatan</th>
                     </tr>
                 </thead>
@@ -356,6 +339,17 @@
                     <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/40 transition">
                         <td class="px-4 py-2.5 font-mono font-bold text-red-600 dark:text-red-400 whitespace-nowrap">
                             {{ $att->checkin_time->format('H:i:s') }} WIB
+                        </td>
+                        <td class="px-4 py-2.5 whitespace-nowrap">
+                            @if($att->type === 'member')
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-900/60 shrink-0">
+                                MEMBER
+                            </span>
+                            @else
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60 shrink-0">
+                                TAMU HARIAN
+                            </span>
+                            @endif
                         </td>
                         <td class="px-4 py-2.5">
                             <div class="font-bold text-zinc-900 dark:text-white truncate max-w-[220px]">
@@ -370,30 +364,13 @@
                         <td class="px-4 py-2.5 text-xs font-mono text-zinc-600 dark:text-zinc-400 hidden sm:table-cell">
                             {{ $att->type === 'member' ? ($att->member?->card_id ?? '-') : '-' }}
                         </td>
-                        <td class="px-4 py-2.5">
-                            @if($att->type === 'member')
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/60">
-                                Member
-                            </span>
-                            @else
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
-                                Tamu Harian
-                            </span>
-                            @endif
-                        </td>
-                        <td class="px-4 py-2.5">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
-                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                Hadir
-                            </span>
-                        </td>
                         <td class="px-4 py-2.5 text-xs text-zinc-500 dark:text-zinc-400 hidden md:table-cell">
                             <span class="truncate block max-w-xs">{{ $att->notes ?? 'Presensi reguler' }}</span>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="px-4 py-10 text-center text-xs text-zinc-400">
+                        <td colspan="5" class="px-4 py-10 text-center text-xs text-zinc-400">
                             <div class="flex flex-col items-center gap-1.5">
                                 <div class="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-400 flex items-center justify-center">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -416,19 +393,8 @@
             </table>
         </div>
 
-        <!-- Pagination Bar -->
-        @if($todayAttendances->hasPages() || $todayAttendances->total() > 0)
-        <div class="p-3.5 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-zinc-500 dark:text-zinc-400">
-            <div>
-                Menampilkan <span class="font-bold font-mono text-zinc-800 dark:text-zinc-200">{{ $todayAttendances->firstItem() ?? 0 }}</span>
-                s/d <span class="font-bold font-mono text-zinc-800 dark:text-zinc-200">{{ $todayAttendances->lastItem() ?? 0 }}</span>
-                dari <span class="font-bold font-mono text-zinc-800 dark:text-zinc-200">{{ $todayAttendances->total() }}</span> presensi
-            </div>
-            <div>
-                {{ $todayAttendances->links() }}
-            </div>
-        </div>
-        @endif
+        <!-- Area Footer Tabel: Informasi Data + Dropdown Per Halaman + Navigasi Jump Pagination + Ke Halaman [GO] -->
+        <x-pagination-footer :paginator="$todayAttendances" id="frontdesk-per-page-bottom" itemLabel="data" />
     </div>
 
     <!-- ============================================================== -->
@@ -441,9 +407,12 @@
         <div @click.away="showGuestModal = false; focusCardInput()"
              class="bg-white dark:bg-zinc-900 rounded-lg max-w-lg w-full p-6 border border-zinc-200 dark:border-zinc-800 shadow-2xl">
             <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                <div>
-                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">Input Tiket Tamu Harian</h3>
-                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Tiket masuk non-member (1 hari latihan gym).</p>
+                <div class="flex items-center gap-2">
+                    <!-- <span class="w-2.5 h-2.5 rounded bg-emerald-600"></span> -->
+                    <div>
+                        <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">Input Tiket Tamu Harian</h3>
+                        <p class="text-xs text-zinc-500 dark:text-zinc-400">Tiket masuk non-member (1 hari latihan gym).</p>
+                    </div>
                 </div>
                 <button @click="showGuestModal = false; focusCardInput()" class="p-1 rounded text-zinc-400 hover:text-zinc-600 dark:hover:text-white cursor-pointer">
                     ✕
@@ -581,32 +550,28 @@
                     <div class="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl font-black mx-auto mb-2.5 border-2 border-emerald-500/40">
                         ✓
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800/60 uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-600 text-white uppercase tracking-wider shadow-xs">
                         CHECK-IN BERHASIL — MEMBER AKTIF
                     </span>
                 @elseif($modalStatus === 'expiring_soon')
                     <div class="w-14 h-14 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl font-black mx-auto mb-2.5 border-2 border-amber-500/40">
                         !
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60 uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                        PERINGATAN: MASA AKTIF HAMPIR HABIS
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500 text-zinc-950 uppercase tracking-wider shadow-xs">
+                        ⚠️ PERINGATAN: MASA AKTIF HAMPIR HABIS
                     </span>
                 @elseif($modalStatus === 'expired')
                     <div class="w-14 h-14 rounded-full bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center text-2xl font-black mx-auto mb-2.5 border-2 border-red-600/40">
                         ✕
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-300 border border-red-300 dark:border-red-800/60 uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-600 text-white uppercase tracking-wider shadow-xs">
                         AKSES DITOLAK — MASA AKTIF HABIS
                     </span>
                 @else
                     <div class="w-14 h-14 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 flex items-center justify-center text-2xl font-black mx-auto mb-2.5">
                         ?
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-700 uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-zinc-400"></span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-zinc-700 text-white uppercase tracking-wider">
                         KARTU TIDAK TERDAFTAR
                     </span>
                 @endif

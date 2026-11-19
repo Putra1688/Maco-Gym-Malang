@@ -365,34 +365,37 @@
                         </p>
                     </div>
 
-                    <div class="overflow-x-auto">
+                    <!-- Desktop & Tablet Table (>= md) -->
+                    <div class="hidden md:block overflow-x-auto">
                         <table class="w-full text-left text-sm">
                             <thead class="bg-zinc-50 text-[10px] uppercase font-mono tracking-wider text-zinc-500 border-b border-zinc-200">
                                 <tr>
-                                    <th class="px-5 py-3.5">Layanan</th>
-                                    <th class="px-5 py-3.5">Tarif Resmi</th>
-                                    <th class="px-5 py-3.5">Frekuensi Bayar</th>
-                                    <th class="px-5 py-3.5 hidden md:table-cell">Keterangan</th>
-                                    <th class="px-5 py-3.5 text-right">Informasi Kasir</th>
+                                    <th class="px-5 py-3.5 w-[26%] min-w-[210px]">Layanan</th>
+                                    <th class="px-5 py-3.5 w-[16%] min-w-[120px] whitespace-nowrap">Tarif Resmi</th>
+                                    <th class="px-5 py-3.5 w-[16%] min-w-[130px] whitespace-nowrap">Frekuensi Bayar</th>
+                                    <th class="px-5 py-3.5 w-[24%] min-w-[200px]">Keterangan</th>
+                                    <th class="px-5 py-3.5 w-[18%] min-w-[180px] text-right whitespace-nowrap">Informasi Kasir</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-zinc-100 font-sans">
                                 <!-- Regular Membership (Joining Fee) -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">Regular Membership (Joining Fee)</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">Biaya Pendaftaran & Kartu Fisik</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900 leading-snug">Regular Membership (Joining Fee)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">Biaya Pendaftaran & Kartu Fisik</div>
                                     </td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 20.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600">1x di Awal</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden md:table-cell">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 font-medium whitespace-nowrap">
+                                        1x di Awal
+                                    </td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed">
                                         Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat registrasi perdana di meja kasir.
                                     </td>
-                                    <td class="px-5 py-4 text-right">
-                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-zinc-200">
-                                            Biaya Registrasi Awal
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-zinc-200 whitespace-nowrap">
+                                            <span>Biaya Registrasi Awal</span>
                                         </span>
                                     </td>
                                 </tr>
@@ -400,24 +403,81 @@
                                 <!-- Insidentil -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">Insidentil</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">Tiket Harian Non-Member</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900 leading-snug">Insidentil</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">Tiket Harian Non-Member</div>
                                     </td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 30.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600">Per Kedatangan</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden md:table-cell">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 font-medium whitespace-nowrap">
+                                        Per Kedatangan
+                                    </td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed">
                                         Akses 1 sesi latihan ke seluruh area gym & shower air hangat untuk tamu non-member tanpa ikatan langganan membership.
                                     </td>
-                                    <td class="px-5 py-4 text-right">
-                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-amber-200">
-                                            Bayar Langsung di Kasir
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
+                                        <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-amber-50 text-amber-800 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-amber-200 whitespace-nowrap">
+                                            <span>Bayar Langsung di Kasir</span>
                                         </span>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- Mobile Alternative Card List (< md) -->
+                    <div class="block md:hidden divide-y divide-zinc-100 p-4 space-y-4">
+                        <!-- Card 1: Joining Fee -->
+                        <div class="bg-zinc-50/70 rounded-xl p-4 border border-zinc-200/80 space-y-3">
+                            <div class="flex items-start justify-between gap-2">
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-zinc-900">Regular Membership (Joining Fee)</h3>
+                                    <p class="text-[11px] text-zinc-500 font-mono">Biaya Pendaftaran & Kartu Fisik</p>
+                                </div>
+                                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase bg-zinc-200/80 text-zinc-700 border border-zinc-300 shrink-0">
+                                    1x di Awal
+                                </span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-montserrat font-black text-xl text-zinc-900">Rp 20.000</span>
+                                <span class="text-xs text-zinc-500 font-mono">/ pendaftaran perdana</span>
+                            </div>
+                            <p class="text-xs text-zinc-600 leading-relaxed">
+                                Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat registrasi perdana di meja kasir.
+                            </p>
+                            <div class="pt-2 border-t border-zinc-200 flex items-center justify-between text-xs">
+                                <span class="text-zinc-500 font-mono text-[11px]">Informasi Kasir:</span>
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[10px] uppercase tracking-wider border border-zinc-200">
+                                    <span>Biaya Registrasi Awal</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Insidentil -->
+                        <div class="bg-zinc-50/70 rounded-xl p-4 border border-zinc-200/80 space-y-3 pt-4">
+                            <div class="flex items-start justify-between gap-2">
+                                <div>
+                                    <h3 class="font-montserrat font-bold text-base text-zinc-900">Insidentil</h3>
+                                    <p class="text-[11px] text-zinc-500 font-mono">Tiket Harian Non-Member</p>
+                                </div>
+                                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase bg-amber-100 text-amber-800 border border-amber-200 shrink-0">
+                                    Per Kedatangan
+                                </span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-montserrat font-black text-xl text-zinc-900">Rp 30.000</span>
+                                <span class="text-xs text-zinc-500 font-mono">/ sesi kedatangan</span>
+                            </div>
+                            <p class="text-xs text-zinc-600 leading-relaxed">
+                                Akses 1 sesi latihan ke seluruh area gym & shower air hangat untuk tamu non-member tanpa ikatan langganan membership.
+                            </p>
+                            <div class="pt-2 border-t border-zinc-200 flex items-center justify-between text-xs">
+                                <span class="text-zinc-500 font-mono text-[11px]">Informasi Kasir:</span>
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 font-montserrat font-bold text-[10px] uppercase tracking-wider border border-amber-200">
+                                    <span>Bayar Langsung di Kasir</span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Catatan Biaya Tambahan -->

@@ -24,132 +24,88 @@
     @include('guest.partials.navbar')
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main class="flex-grow pt-[64px] sm:pt-[80px] lg:pt-[106px]">
 
-        <!-- ================= 1. HERO SECTION & BREADCRUMB ================= -->
-        <section class="relative min-h-[620px] lg:min-h-[700px] flex flex-col justify-center overflow-hidden bg-zinc-950 text-white pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 border-b border-zinc-800">
-            <!-- Background Image with Directional Dark Gradient -->
+        <!-- Breadcrumb & Header Hero -->
+        <section class="bg-zinc-950 text-white py-12 sm:py-16 relative overflow-hidden border-b border-zinc-800">
+            <!-- Background Image with Dark Contrast Overlay -->
             <div class="absolute inset-0 z-0">
                 <img src="{{ asset('images/trainers/coach-kevin.jpg') }}"
                      alt="Personal Trainer Single Maco Gym"
-                     class="w-full h-full object-cover object-top filter brightness-65 contrast-105">
-                
-                <!-- Responsive Directional Dark Gradient Overlay -->
-                <div class="hidden md:block absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent w-4/5 lg:w-3/5"></div>
-                <div class="block md:hidden absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-zinc-950/85 via-zinc-950/60 to-transparent"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent pointer-events-none"></div>
-                <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                     class="w-full h-full object-cover object-top filter brightness-[0.25] contrast-125">
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent"></div>
             </div>
 
-            <div class="relative z-10 w-full max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 my-auto text-left flex flex-col items-start space-y-4 sm:space-y-5">
-                
+            <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <!-- Breadcrumbs -->
-                <nav aria-label="Breadcrumb">
-                    <ol class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
-                        <li>
-                            <a href="{{ route('home') }}" class="hover:text-red-500 transition-colors">Beranda</a>
-                        </li>
-                        <li>
-                            <span class="text-zinc-600">/</span>
-                        </li>
-                        <li>
-                            <a href="{{ route('home') }}#pricing" class="hover:text-red-500 transition-colors">Pricing</a>
-                        </li>
-                        <li>
-                            <span class="text-zinc-600">/</span>
-                        </li>
-                        <li class="text-red-500 font-bold" aria-current="page">
-                            Personal Trainer Single
-                        </li>
-                    </ol>
+                <nav class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-6">
+                    <a href="{{ route('home') }}" class="hover:text-red-500 transition-colors">Beranda</a>
+                    <span>/</span>
+                    <a href="{{ route('home') }}#pricing" class="hover:text-red-500 transition-colors">Pricing</a>
+                    <span>/</span>
+                    <span class="text-white font-bold">Personal Trainer Single</span>
                 </nav>
 
-                <div class="max-w-3xl space-y-4">
-                    <!-- Eyebrow Tagline with Standard Red Lines -->
-                    <div class="inline-flex items-center gap-3">
-                        <span class="w-8 h-[2px] bg-red-600"></span>
-                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-red-500 font-montserrat">
-                            1-ON-1 PRIVATE COACHING
-                        </span>
-                        <span class="w-8 h-[2px] bg-red-600"></span>
-                    </div>
-
-                    <!-- Main Headline -->
-                    <h1 class="font-montserrat text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-tight">
-                        PERSONAL TRAINER <span class="text-red-600 drop-shadow-[0_0_25px_rgba(239,68,68,0.4)]">SINGLE</span>
+                <!-- Header Title -->
+                <div class="max-w-3xl space-y-3">
+                    <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/80 border border-red-500/40 text-red-400 text-xs font-mono font-bold uppercase tracking-wider">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        1-ON-1 PRIVATE COACHING
+                    </div> -->
+                    <h1 class="font-montserrat text-3xl sm:text-5xl font-black uppercase tracking-tight text-white">
+                        PERSONAL TRAINER <span class="text-red-600">SINGLE</span>
                     </h1>
-
-                    <!-- Lead Paragraph -->
-                    <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal pt-1 max-w-2xl">
+                    <p class="text-sm sm:text-base text-zinc-300 leading-relaxed font-sans">
                         Program bimbingan privat eksklusif 1 orang dengan 1 personal trainer profesional Maco Gym Malang. Target kebugaran, koreksi biomekanik gerak, dan hasil yang terukur optimal.
                     </p>
-
-                    <!-- Quick Action Buttons -->
-                    <div class="pt-4 flex flex-wrap items-center gap-3.5">
-                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin konsultasi dan reservasi Personal Trainer Single.') }}"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
-                            <span>KONSULTASI VIA WHATSAPP</span>
-                            <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-
-                        <a href="#tabel-harga"
-                           class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-white hover:text-zinc-950 border border-zinc-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition">
-                            <span>LIHAT DAFTAR HARGA</span>
-                        </a>
-                    </div>
                 </div>
-
             </div>
         </section>
 
         <!-- Pricing Content Container -->
-        <section id="tabel-harga" class="py-12 sm:py-16">
-            <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <section class="py-12 sm:py-16">
+            <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
                 <!-- Catatan Ketentuan Resmi Banner -->
-                <div class="bg-red-950/30 border border-red-600/30 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="bg-red-50/60 border border-red-200/80 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-2xs">
                     <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-red-600/20 text-red-600 flex items-center justify-center shrink-0 border border-red-600/30">
+                        <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0 shadow-xs shadow-red-600/20">
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
                         <div>
-                            <h2 class="font-montserrat font-black text-sm uppercase tracking-wider text-red-600">
+                            <h2 class="font-montserrat font-bold text-sm uppercase tracking-wider text-zinc-900">
                                 Ketentuan Resmi Jasa Personal Trainer Single (1-on-1)
                             </h2>
-                            <p class="text-xs sm:text-sm text-zinc-700 mt-1">
-                                <strong class="text-zinc-900 font-semibold">Durasi latihan 1–1,5 jam per kedatangan</strong> bersama Coach profesional Maco Gym Malang. Khusus privat 1 klien dengan 1 trainer. Jasa Personal Trainer merupakan pendampingan latihan privat dan terpisah dari keanggotaan gym.
+                            <p class="text-xs sm:text-sm text-zinc-600 mt-1 leading-relaxed">
+                                <strong class="text-zinc-900 font-semibold">Durasi latihan 1–1,5 jam per kedatangan</strong> bersama Coach profesional Maco Gym Malang. Khusus privat <span class="font-semibold text-zinc-900">1 klien dengan 1 trainer</span>. Jasa Personal Trainer merupakan pendampingan latihan privat dan terpisah dari keanggotaan gym.
                             </p>
                         </div>
                     </div>
-                    <div class="text-xs font-mono text-zinc-600 shrink-0 bg-white px-3 py-1.5 rounded-lg border border-zinc-200">
+                    <div class="text-xs font-mono font-bold text-zinc-700 shrink-0 bg-white px-3 py-1.5 rounded-lg border border-zinc-200 whitespace-nowrap self-start md:self-auto">
                         1 Klien : 1 Trainer
                     </div>
                 </div>
 
                 <!-- Navigation between Categories & WhatsApp Floating Contact -->
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-200">
-                    <div class="flex flex-wrap items-center gap-3">
+                    <div class="flex flex-wrap items-center gap-2.5">
                         <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider">Kategori Lain:</span>
                         <a href="{{ route('pricing.membership') }}"
-                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
+                           class="px-3.5 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
                             &larr; Membership Reguler
                         </a>
                         <a href="{{ route('pricing.pt-couples') }}"
-                           class="px-4 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
+                           class="px-3.5 py-2 rounded-lg bg-white hover:bg-zinc-100 text-zinc-800 border border-zinc-300 font-montserrat font-bold text-xs uppercase tracking-wider transition-colors">
                             Personal Trainer Couples &rarr;
                         </a>
                     </div>
 
                     <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym, saya ingin menanyakan informasi paket Personal Trainer Single (1-on-1).') }}"
                        target="_blank"
-                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all shadow-sm">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-all shadow-sm shrink-0 whitespace-nowrap">
+                        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
                             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                         </svg>
                         <span>Konsultasi Trainer via WhatsApp</span>
@@ -180,33 +136,33 @@
                         <table class="w-full text-left text-sm">
                             <thead class="bg-zinc-50 text-[10px] uppercase font-mono tracking-wider text-zinc-500 border-b border-zinc-200">
                                 <tr>
-                                    <th class="px-5 py-3.5">Jumlah Sesi</th>
-                                    <th class="px-5 py-3.5">Masa Aktif</th>
-                                    <th class="px-5 py-3.5">Harga Resmi</th>
-                                    <th class="px-5 py-3.5 hidden md:table-cell">Efektif / Sesi</th>
-                                    <th class="px-5 py-3.5 hidden sm:table-cell">Rekomendasi Tujuan</th>
-                                    <th class="px-5 py-3.5 text-right">Pemesanan Sesi</th>
+                                    <th class="px-5 py-3.5 w-[22%] min-w-[170px]">Jumlah Sesi</th>
+                                    <th class="px-5 py-3.5 w-[12%] min-w-[100px] whitespace-nowrap">Masa Aktif</th>
+                                    <th class="px-5 py-3.5 w-[18%] min-w-[130px] whitespace-nowrap">Harga Resmi</th>
+                                    <th class="px-5 py-3.5 w-[16%] min-w-[130px] whitespace-nowrap hidden md:table-cell">Efektif / Sesi</th>
+                                    <th class="px-5 py-3.5 w-[20%] min-w-[180px] hidden sm:table-cell">Rekomendasi Tujuan</th>
+                                    <th class="px-5 py-3.5 w-[12%] min-w-[160px] text-right whitespace-nowrap">Pemesanan Sesi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-zinc-200 text-zinc-800">
                                 <!-- 1 PT -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">1 PT (Single)</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">1 Sesi Latihan</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900 leading-snug">1 PT (Single)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">1 Sesi Latihan</div>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600">-</td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-500 whitespace-nowrap">-</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 130.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 130.000 / sesi</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Trial sesi perdana atau koreksi teknik spesifik</td>
-                                    <td class="px-5 py-4 text-right">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 whitespace-nowrap hidden md:table-cell">Rp 130.000 / sesi</td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed hidden sm:table-cell">Trial sesi perdana atau koreksi teknik spesifik</td>
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Single Session (1 PT Single - Rp 130.000).') }}"
                                            target="_blank"
                                            rel="noopener noreferrer"
-                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 min-w-[150px] rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs whitespace-nowrap">
+                                            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                             <span>Pesan via Admin</span>
                                         </a>
                                     </td>
@@ -215,21 +171,21 @@
                                 <!-- 4 PT -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">4 PT (Single)</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">4 Sesi Latihan</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900 leading-snug">4 PT (Single)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">4 Sesi Latihan</div>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800">10 hari</td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 whitespace-nowrap">10 hari</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 520.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 137.500 / sesi</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Adaptasi latihan & pengenalan split program</td>
-                                    <td class="px-5 py-4 text-right">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 whitespace-nowrap hidden md:table-cell">Rp 137.500 / sesi</td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed hidden sm:table-cell">Adaptasi latihan & pengenalan split program</td>
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Single Session (4 PT Single - Rp 520.000).') }}"
                                            target="_blank"
                                            rel="noopener noreferrer"
-                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 min-w-[150px] rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs whitespace-nowrap">
+                                            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                             <span>Pesan via Admin</span>
                                         </a>
                                     </td>
@@ -238,49 +194,49 @@
                                 <!-- 8 PT -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">8 PT (Single)</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">8 Sesi Latihan</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900 leading-snug">8 PT (Single)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">8 Sesi Latihan</div>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800">20 hari</td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 whitespace-nowrap">20 hari</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 950.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 118.750 / sesi</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Fokus penguasaan form & peningkatan stamina</td>
-                                    <td class="px-5 py-4 text-right">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 whitespace-nowrap hidden md:table-cell">Rp 118.750 / sesi</td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed hidden sm:table-cell">Fokus penguasaan form & peningkatan stamina</td>
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Single Session (8 PT Single - Rp 950.000).') }}"
                                            target="_blank"
                                            rel="noopener noreferrer"
-                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 min-w-[150px] rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs whitespace-nowrap">
+                                            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                             <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
 
                                 <!-- 12 PT (Highlight / Populer) -->
-                                <tr class="bg-red-50/40 hover:bg-red-50/70 transition-colors border-l-4 border-l-red-600">
+                                <tr class="bg-red-50/40 hover:bg-red-50/70 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="flex items-center gap-2">
-                                            <span class="font-montserrat font-bold text-base text-zinc-900">12 PT (Single)</span>
-                                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-red-600 text-white uppercase tracking-wider">
+                                        <div class="flex items-center gap-2 whitespace-nowrap">
+                                            <span class="font-montserrat font-bold text-base text-zinc-900 leading-snug">12 PT (Single)</span>
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-red-600 text-white uppercase tracking-wider shrink-0">
                                                 Populer
                                             </span>
                                         </div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">12 Sesi Latihan (1 Bulan)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">12 Sesi Latihan (1 Bulan)</div>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-bold text-red-700">30 hari</td>
-                                    <td class="px-5 py-4">
-                                        <span class="font-montserrat font-black text-xl text-red-600">Rp 1.150.000</span>
+                                    <td class="px-5 py-4 font-mono text-xs font-bold text-red-700 whitespace-nowrap">30 hari</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">
+                                        <span class="font-montserrat font-black text-lg text-red-600">Rp 1.150.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-bold text-zinc-800 hidden md:table-cell">Rp 95.833 / sesi</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-700 hidden sm:table-cell">Program 1 bulan intensif: fat loss / muscle building</td>
-                                    <td class="px-5 py-4 text-right">
+                                    <td class="px-5 py-4 font-mono text-xs font-bold text-zinc-800 whitespace-nowrap hidden md:table-cell">Rp 95.833 / sesi</td>
+                                    <td class="px-5 py-4 text-xs text-zinc-700 leading-relaxed hidden sm:table-cell">Program 1 bulan intensif: fat loss / muscle building</td>
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Single Session (12 PT Single - Rp 1.150.000).') }}"
                                            target="_blank"
                                            rel="noopener noreferrer"
-                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm shadow-red-600/30">
-                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 min-w-[150px] rounded-lg bg-red-600 hover:bg-red-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs shadow-red-600/30 whitespace-nowrap">
+                                            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                             <span>Pesan via Admin</span>
                                         </a>
                                     </td>
@@ -289,49 +245,49 @@
                                 <!-- 16 PT -->
                                 <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="font-montserrat font-bold text-base text-zinc-900">16 PT (Single)</div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">16 Sesi Latihan</div>
+                                        <div class="font-montserrat font-bold text-base text-zinc-900 leading-snug">16 PT (Single)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">16 Sesi Latihan</div>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800">40 hari</td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 whitespace-nowrap">40 hari</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 1.450.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 hidden md:table-cell">Rp 90.625 / sesi</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Konsistensi jangka menengah & hipertrofi otot</td>
-                                    <td class="px-5 py-4 text-right">
+                                    <td class="px-5 py-4 font-mono text-xs text-zinc-600 whitespace-nowrap hidden md:table-cell">Rp 90.625 / sesi</td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed hidden sm:table-cell">Konsistensi jangka menengah & hipertrofi otot</td>
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Single Session (16 PT Single - Rp 1.450.000).') }}"
                                            target="_blank"
                                            rel="noopener noreferrer"
-                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 min-w-[150px] rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs whitespace-nowrap">
+                                            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                             <span>Pesan via Admin</span>
                                         </a>
                                     </td>
                                 </tr>
 
                                 <!-- 20 PT (Best Value) -->
-                                <tr class="bg-zinc-50/50 hover:bg-zinc-100/60 transition-colors">
+                                <tr class="hover:bg-zinc-50/80 transition-colors">
                                     <td class="px-5 py-4">
-                                        <div class="flex items-center gap-2">
-                                            <span class="font-montserrat font-bold text-base text-zinc-900">20 PT (Single)</span>
-                                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-zinc-900 text-white uppercase tracking-wider">
+                                        <div class="flex items-center gap-2 whitespace-nowrap">
+                                            <span class="font-montserrat font-bold text-base text-zinc-900 leading-snug">20 PT (Single)</span>
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-zinc-900 text-white uppercase tracking-wider shrink-0">
                                                 Best Value
                                             </span>
                                         </div>
-                                        <div class="text-[11px] text-zinc-500 font-mono">20 Sesi Latihan (2 Bulan)</div>
+                                        <div class="text-[11px] text-zinc-500 font-mono mt-0.5">20 Sesi Latihan (2 Bulan)</div>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800">50–60 hari</td>
-                                    <td class="px-5 py-4">
+                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 whitespace-nowrap">50–60 hari</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">
                                         <span class="font-montserrat font-black text-lg text-zinc-900">Rp 1.850.000</span>
                                     </td>
-                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 hidden md:table-cell">Rp 92.500 / sesi</td>
-                                    <td class="px-5 py-4 text-xs text-zinc-600 hidden sm:table-cell">Total body transformation & evaluasi progres menyeluruh</td>
-                                    <td class="px-5 py-4 text-right">
+                                    <td class="px-5 py-4 font-mono text-xs font-semibold text-zinc-800 whitespace-nowrap hidden md:table-cell">Rp 92.500 / sesi</td>
+                                    <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed hidden sm:table-cell">Total body transformation & evaluasi progres menyeluruh</td>
+                                    <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin memesan jasa Personal Trainer Single Session (20 PT Single - Rp 1.850.000).') }}"
                                            target="_blank"
                                            rel="noopener noreferrer"
-                                           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
-                                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                           class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 min-w-[150px] rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-montserrat font-bold text-xs uppercase tracking-wider transition-colors shadow-xs whitespace-nowrap">
+                                            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                             <span>Pesan via Admin</span>
                                         </a>
                                     </td>

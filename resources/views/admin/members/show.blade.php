@@ -125,7 +125,6 @@
         @if($member->status === 'pending_verification')
         <div class="mb-6 p-4 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-900 dark:text-amber-200">
             <div class="flex items-center gap-3">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
                 <div>
                     <strong class="font-bold font-montserrat block text-amber-950 dark:text-amber-100 uppercase tracking-wider">
                         Pendaftaran Menunggu Verifikasi Pembayaran & Aktivasi
@@ -149,24 +148,24 @@
                     {{ strtoupper(substr($member->name, 0, 2)) }}
                 </div>
                 <div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-mono text-xs font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2 py-0.5 rounded border border-red-200 dark:border-red-900/60">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-mono text-xs font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 rounded-full border border-red-200 dark:border-red-900/60 whitespace-nowrap">
                             {{ $member->card_id }}
                         </span>
                         @if($member->status === 'pending_verification')
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60 shrink-0">
                             PENDING VERIFIKASI
                         </span>
                         @elseif($isExpired)
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-900/60 shrink-0">
                             EXPIRED
                         </span>
                         @elseif($daysLeft <= 3)
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-900/60 shrink-0">
                             H-{{ max(0, $daysLeft) }}
                         </span>
                         @else
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider whitespace-nowrap bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/60 shrink-0">
                             AKTIF (SISA {{ $daysLeft }} HARI)
                         </span>
                         @endif
@@ -267,104 +266,112 @@
     <!-- ============================================================== -->
     <div x-show="showRenewModal"
          x-cloak
-         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs"
+         class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xs"
          style="display: none;">
         <div @click.away="if(!isSubmitting) showRenewModal = false"
-             class="bg-white dark:bg-zinc-900 rounded-2xl max-w-lg w-full p-6 sm:p-7 border border-zinc-200 dark:border-zinc-800 shadow-2xl">
+             class="bg-white dark:bg-zinc-900 rounded-2xl max-w-lg w-full border border-zinc-200 dark:border-zinc-800 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
             
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+            <!-- Sticky Header -->
+            <div class="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-zinc-100 dark:border-zinc-800 shrink-0 bg-white dark:bg-zinc-900">
                 <div>
-                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">Perpanjang Masa Aktif Membership</h3>
+                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
+                        Perpanjang Masa Aktif Membership
+                    </h3>
                     <p class="text-xs text-zinc-500 font-mono mt-0.5">{{ $member->name }} • {{ $member->card_id }}</p>
                 </div>
-                <button type="button" @click="if(!isSubmitting) showRenewModal = false" class="p-1 rounded text-zinc-400 hover:text-zinc-700 dark:hover:text-white cursor-pointer">
+                <button type="button"
+                        @click="if(!isSubmitting) showRenewModal = false"
+                        class="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-700 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition cursor-pointer">
                     ✕
                 </button>
             </div>
 
+            <!-- Scrollable Body & Form -->
             <form action="{{ route('admin.members.renew', $member) }}"
                   method="POST"
                   @submit="handleFormSubmit($event)"
-                  class="space-y-4">
+                  class="flex flex-col flex-1 overflow-hidden m-0">
                 @csrf
                 
-                <!-- 1. Pilihan Paket -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
-                        Pilih Paket Perpanjangan <span class="text-red-600">*</span>
-                    </label>
-                    <select name="package_id"
-                            x-model="selectedPackageId"
-                            required
-                            class="w-full px-3 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 font-semibold text-zinc-900 dark:text-white cursor-pointer">
-                        @foreach($packages as $pkg)
-                        <option value="{{ $pkg->id }}">
-                            {{ $pkg->name }} ({{ $pkg->duration_days }} Hari) — Rp {{ number_format($pkg->price, 0, ',', '.') }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <!-- 2. Preview Dinamis Perhitungan Masa Aktif & Harga -->
-                <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 space-y-3">
-                    <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 block border-b border-zinc-200 dark:border-zinc-800 pb-1">
-                        Ringkasan Pembaruan Masa Aktif
-                    </span>
-
-                    <div class="grid grid-cols-2 gap-3 text-xs">
-                        <div>
-                            <span class="text-zinc-500 dark:text-zinc-400 text-[11px] block">Biaya Paket:</span>
-                            <span class="font-mono font-bold text-sm text-zinc-900 dark:text-white" x-text="getSelectedPackage().price_formatted">
-                                Rp 0
-                            </span>
-                        </div>
-                        <div>
-                            <span class="text-zinc-500 dark:text-zinc-400 text-[11px] block">Durasi Tambahan:</span>
-                            <span class="font-mono font-bold text-sm text-zinc-900 dark:text-white" x-text="(getSelectedPackage().duration_days || 0) + ' Hari'">
-                                0 Hari
-                            </span>
-                        </div>
+                <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4">
+                    <!-- 1. Pilihan Paket -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
+                            Pilih Paket Perpanjangan <span class="text-red-600">*</span>
+                        </label>
+                        <select name="package_id"
+                                x-model="selectedPackageId"
+                                required
+                                class="w-full px-3 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 font-semibold text-zinc-900 dark:text-white cursor-pointer">
+                            @foreach($packages as $pkg)
+                            <option value="{{ $pkg->id }}">
+                                {{ $pkg->name }} ({{ $pkg->duration_days }} Hari) — Rp {{ number_format($pkg->price, 0, ',', '.') }}
+                            </option>
+                            @endforeach
+                        </select>
                     </div>
 
-                    <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                        <div>
-                            <span class="text-[11px] font-bold text-zinc-600 dark:text-zinc-300 block">Jatuh Tempo Baru:</span>
-                            <span class="text-base font-black font-mono text-emerald-600 dark:text-emerald-400" x-text="getCalculatedExpiry()">
-                                -
-                            </span>
-                        </div>
-                        <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                            AKAN AKTIF
+                    <!-- 2. Preview Dinamis Perhitungan Masa Aktif & Harga -->
+                    <div class="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 space-y-3">
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 block border-b border-zinc-200 dark:border-zinc-800 pb-1">
+                            Ringkasan Pembaruan Masa Aktif
                         </span>
+
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <div>
+                                <span class="text-zinc-500 dark:text-zinc-400 text-[11px] block">Biaya Paket:</span>
+                                <span class="font-mono font-bold text-sm text-zinc-900 dark:text-white" x-text="getSelectedPackage().price_formatted">
+                                    Rp 0
+                                </span>
+                            </div>
+                            <div>
+                                <span class="text-zinc-500 dark:text-zinc-400 text-[11px] block">Durasi Tambahan:</span>
+                                <span class="font-mono font-bold text-sm text-zinc-900 dark:text-white" x-text="(getSelectedPackage().duration_days || 0) + ' Hari'">
+                                    0 Hari
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-[11px] font-bold text-zinc-600 dark:text-zinc-300 block">Jatuh Tempo Baru:</span>
+                                <span class="text-base font-black font-mono text-emerald-600 dark:text-emerald-400" x-text="getCalculatedExpiry()">
+                                    -
+                                </span>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                                AKAN AKTIF
+                            </span>
+                        </div>
+
+                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans" x-text="getCalculationNote()">
+                        </p>
                     </div>
 
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans" x-text="getCalculationNote()">
-                    </p>
-                </div>
-
-                <!-- 3. Metode Pembayaran -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
-                        Metode Pembayaran Kas <span class="text-red-600">*</span>
-                    </label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
-                            <span>Cash</span>
+                    <!-- 3. Metode Pembayaran -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
+                            Metode Pembayaran Kas <span class="text-red-600">*</span>
                         </label>
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS / Transfer</span>
-                        </label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white transition">
+                                <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
+                                <span>Cash</span>
+                            </label>
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white transition">
+                                <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
+                                <span>QRIS / Transfer</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 4. Tombol Konfirmasi 1-Klik -->
-                <div class="pt-4 flex items-center justify-end gap-2.5 border-t border-zinc-100 dark:border-zinc-800">
+                <!-- Sticky Footer -->
+                <div class="px-5 sm:px-6 py-4 flex items-center justify-end gap-2.5 border-t border-zinc-100 dark:border-zinc-800 shrink-0 bg-zinc-50/50 dark:bg-zinc-900/50">
                     <button type="button"
                             @click="if(!isSubmitting) showRenewModal = false"
                             :disabled="isSubmitting"
-                            class="px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer disabled:opacity-50">
+                            class="px-4 py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition cursor-pointer disabled:opacity-50">
                         Batal
                     </button>
                     <button type="submit"
@@ -383,120 +390,141 @@
     <!-- ============================================================== -->
     <div x-show="showVerifyModal"
          x-cloak
-         class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs"
+         class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-xs"
          style="display: none;">
         <div @click.away="if(!isSubmitting) showVerifyModal = false"
-             class="bg-white dark:bg-zinc-900 rounded-2xl max-w-lg w-full p-6 sm:p-7 border border-zinc-200 dark:border-zinc-800 shadow-2xl">
+             class="bg-white dark:bg-zinc-900 rounded-2xl max-w-lg w-full border border-zinc-200 dark:border-zinc-800 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
             
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+            <!-- Sticky Header -->
+            <div class="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-zinc-100 dark:border-zinc-800 shrink-0 bg-white dark:bg-zinc-900">
                 <div>
-                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                        <span>Verifikasi & Aktivasi Member Baru</span>
+                    <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
+                        Verifikasi & Aktivasi Member Baru
                     </h3>
                     <p class="text-xs text-zinc-500 font-mono mt-0.5">{{ $member->name }} • {{ $member->card_id }}</p>
                 </div>
-                <button type="button" @click="if(!isSubmitting) showVerifyModal = false" class="p-1 rounded text-zinc-400 hover:text-zinc-700 dark:hover:text-white cursor-pointer">
+                <button type="button"
+                        @click="if(!isSubmitting) showVerifyModal = false"
+                        class="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-700 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition cursor-pointer">
                     ✕
                 </button>
             </div>
 
+            <!-- Scrollable Body & Form -->
             <form action="{{ route('admin.members.verify', $member) }}"
                   method="POST"
                   @submit="handleFormSubmit($event)"
-                  class="space-y-4">
+                  class="flex flex-col flex-1 overflow-hidden m-0">
                 @csrf
                 
-                <!-- 1. Nomor ID Kartu Fisik -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
-                        Nomor ID Kartu Fisik Resmi <span class="text-red-600">*</span>
-                    </label>
-                    <input type="text"
-                           name="card_id"
-                           value="{{ old('card_id', str_starts_with($member->card_id, 'REG-') ? '2008' : $member->card_id) }}"
-                           required
-                           placeholder="Contoh: 2008001"
-                           class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm font-mono font-bold text-red-600 dark:text-red-400 uppercase outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
-                    <p class="text-[11px] text-zinc-400 font-mono mt-1">Format: 2008 + 3 digit angka (Contoh: 2008001). Anda dapat mengganti ID registrasi sementara (REG-...) dengan kode kartu fisik.</p>
-                </div>
-
-                <!-- 2. Pilihan Paket -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
-                        Pilihan Paket Membership <span class="text-red-600">*</span>
-                    </label>
-                    <select name="package_id"
-                            x-model="verifyPackageId"
-                            required
-                            class="w-full px-3 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 font-semibold text-zinc-900 dark:text-white cursor-pointer">
-                        @foreach($packages as $pkg)
-                        <option value="{{ $pkg->id }}">
-                            {{ $pkg->name }} ({{ $pkg->duration_days }} Hari) — Rp {{ number_format($pkg->price, 0, ',', '.') }}
-                        </option>
-                        @endforeach
-                    </select>
-                    @if($member->package_name)
-                    <p class="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
-                        Paket yang dipilih saat registrasi: <strong class="text-zinc-900 dark:text-white">{{ $member->package_name }}</strong>
-                    </p>
-                    @endif
-                </div>
-
-                <!-- Preview Biaya Paket -->
-                <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs">
-                    <div>
-                        <span class="text-zinc-500 dark:text-zinc-400 block text-[11px]">Durasi Keanggotaan:</span>
-                        <span class="font-mono font-bold text-zinc-900 dark:text-white text-sm" x-text="(getVerifyPackage().duration_days || 0) + ' Hari'"></span>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-zinc-500 dark:text-zinc-400 block text-[11px]">Total Tagihan Kasir:</span>
-                        <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-base" x-text="getVerifyPackage().price_formatted"></span>
-                    </div>
-                </div>
-
-                <!-- 3. Metode Pembayaran -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
-                        Metode Pembayaran Kas Terverifikasi <span class="text-red-600">*</span>
-                    </label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
-                            <span>Cash</span>
-                        </label>
-                        <label class="flex items-center justify-center gap-1.5 p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white">
-                            <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
-                            <span>QRIS / Transfer</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- 4. Opsi Checkin Langsung -->
-                <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="checkbox"
-                               name="checkin_now"
-                               value="1"
-                               class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500">
-                        <div>
-                            <span class="text-xs font-bold text-zinc-900 dark:text-white">Langsung catat presensi latihan hari ini</span>
-                            <p class="text-[11px] text-zinc-500">Member langsung dapat menggunakan fasilitas gym saat verifikasi.</p>
+                <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4">
+                    <!-- Ringkasan Informasi Registrasi -->
+                    <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 space-y-1.5 text-xs font-mono">
+                        <div class="flex items-center justify-between">
+                            <span class="text-zinc-500 dark:text-zinc-400">Nama Lengkap:</span>
+                            <span class="font-bold text-zinc-900 dark:text-white font-sans">{{ $member->name }}</span>
                         </div>
-                    </label>
+                        <div class="flex items-center justify-between">
+                            <span class="text-zinc-500 dark:text-zinc-400">WhatsApp:</span>
+                            <span class="font-bold text-zinc-900 dark:text-white">{{ $member->phone }}</span>
+                        </div>
+                        @if($member->package_name)
+                        <div class="flex items-center justify-between">
+                            <span class="text-zinc-500 dark:text-zinc-400">Paket Registrasi:</span>
+                            <span class="font-bold text-emerald-600 dark:text-emerald-400 font-sans">{{ $member->package_name }}</span>
+                        </div>
+                        @endif
+                    </div>
+
+                    <!-- 1. Nomor ID Kartu Fisik -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
+                            Nomor ID Kartu Fisik Resmi <span class="text-red-600">*</span>
+                        </label>
+                        <input type="text"
+                               name="card_id"
+                               value="{{ old('card_id', $member->card_id) }}"
+                               required
+                               placeholder="Contoh: MC-001 atau gunakan ID bawaan"
+                               class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm font-mono font-bold text-red-600 dark:text-red-400 uppercase outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
+                        <p class="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono mt-1">Anda dapat mengganti ID registrasi sementara (REG-...) dengan kode kartu fisik Maco Gym (2009...).</p>
+                    </div>
+
+                    <!-- 2. Pilihan Paket -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
+                            Pilihan Paket Membership <span class="text-red-600">*</span>
+                        </label>
+                        <select name="package_id"
+                                x-model="verifyPackageId"
+                                required
+                                class="w-full px-3 py-2.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded-lg text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 font-semibold text-zinc-900 dark:text-white cursor-pointer">
+                            @foreach($packages as $pkg)
+                            <option value="{{ $pkg->id }}">
+                                {{ $pkg->name }} ({{ $pkg->duration_days }} Hari) — Rp {{ number_format($pkg->price, 0, ',', '.') }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <!-- Preview Biaya Paket -->
+                    <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs">
+                        <div>
+                            <span class="text-zinc-500 dark:text-zinc-400 block text-[11px]">Durasi Keanggotaan:</span>
+                            <span class="font-mono font-bold text-zinc-900 dark:text-white text-sm" x-text="(getVerifyPackage().duration_days || 0) + ' Hari'"></span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-zinc-500 dark:text-zinc-400 block text-[11px]">Total Tagihan Kasir:</span>
+                            <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-base" x-text="getVerifyPackage().price_formatted"></span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Metode Pembayaran -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-300 mb-1.5">
+                            Metode Pembayaran Kas Terverifikasi <span class="text-red-600">*</span>
+                        </label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white transition">
+                                <input type="radio" name="payment_method" value="cash" checked class="text-red-600 focus:ring-red-500">
+                                <span>Cash</span>
+                            </label>
+                            <label class="flex items-center justify-center gap-1.5 p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 text-xs font-bold cursor-pointer hover:border-red-600 text-zinc-900 dark:text-white transition">
+                                <input type="radio" name="payment_method" value="qris" class="text-red-600 focus:ring-red-500">
+                                <span>QRIS / Transfer</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Opsi Checkin Langsung -->
+                    <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+                        <label class="flex items-center gap-2.5 cursor-pointer">
+                            <input type="checkbox"
+                                   name="checkin_now"
+                                   value="1"
+                                   class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer">
+                            <div>
+                                <span class="text-xs font-bold text-zinc-900 dark:text-white">Langsung catat presensi latihan hari ini</span>
+                                <p class="text-[11px] text-zinc-500">Member langsung dapat menggunakan fasilitas gym saat verifikasi selesai.</p>
+                            </div>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- 5. Tombol Aksi -->
-                <div class="pt-4 flex items-center justify-end gap-2.5 border-t border-zinc-100 dark:border-zinc-800">
+                <!-- Sticky Footer -->
+                <div class="px-5 sm:px-6 py-4 flex items-center justify-end gap-2.5 border-t border-zinc-100 dark:border-zinc-800 shrink-0 bg-zinc-50/50 dark:bg-zinc-900/50">
                     <button type="button"
                             @click="if(!isSubmitting) showVerifyModal = false"
                             :disabled="isSubmitting"
-                            class="px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer disabled:opacity-50">
+                            class="px-4 py-2.5 border border-zinc-300 dark:border-zinc-700 rounded-lg text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition cursor-pointer disabled:opacity-50">
                         Batal
                     </button>
                     <button type="submit"
                             :disabled="isSubmitting"
                             class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-montserrat font-bold text-xs uppercase tracking-wider rounded-lg shadow-md shadow-emerald-600/30 transition flex items-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
+                        <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                        </svg>
                         <span x-show="!isSubmitting">Setujui & Aktifkan Member</span>
                         <span x-show="isSubmitting">Memproses Aktivasi...</span>
                     </button>
