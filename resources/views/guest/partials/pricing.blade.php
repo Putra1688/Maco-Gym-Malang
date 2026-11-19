@@ -25,7 +25,7 @@
                 <div>
                     <!-- Representative Image -->
                     <div class="relative h-56 sm:h-60 w-full overflow-hidden bg-zinc-900">
-                        <img src="{{ asset('images/about-gym.jpg') }}"
+                        <img src="{{ asset('images/card.png') }}"
                              alt="Membership Maco Gym Malang"
                              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter brightness-90 contrast-105">
                         <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-zinc-950/20 to-transparent"></div>

@@ -105,6 +105,7 @@ class LandingPageTest extends TestCase
         $response->assertSee('Treadmill');
         $response->assertSee('Free Refill Mineral Water');
         $response->assertSee('Maco Cafe');
+        $response->assertSee('Fitness Nutrition & Supplement Station');
         $response->assertSee('DAFTAR MEMBER SEKARANG');
     }
 }

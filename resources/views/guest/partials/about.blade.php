@@ -7,7 +7,7 @@
             <!-- Left: Inspiring Gym Box with "DISCIPLINE FOCUS STRONG CONSISTENT" with Directional Dark Overlay -->
             <div class="lg:col-span-5 relative rounded-2xl overflow-hidden border border-zinc-200 p-8 sm:p-10 shadow-xl flex flex-col justify-between min-h-[360px] sm:min-h-[400px] group">
                 <!-- Background Gym Photo (room-1.png) -->
-                <img src="{{ asset('images/showroom/room-1.png') }}"
+                <img src="{{ asset('images/showroom/gym.png') }}"
                      alt="Maco Gym Training Atmosphere"
                      class="absolute inset-0 w-full h-full object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700">
                 
