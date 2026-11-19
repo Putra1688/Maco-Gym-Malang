@@ -159,7 +159,7 @@ class FinalTaskImprovementTest extends TestCase
     {
         $admin = User::where('role', 'admin')->first();
         $package = Package::where('type', 'membership')->first();
-        $uniqueCardId = 'MC-WALK-'.rand(100, 999);
+        $uniqueCardId = 'MC-WALK-'.uniqid();
         $uniquePhone = '0877'.rand(10000000, 99999999);
         $walkinName = 'Member Walkin Langsung Latihan';
 
@@ -231,7 +231,7 @@ class FinalTaskImprovementTest extends TestCase
         // Kasus B: Member Kedaluwarsa (misal sudah expired 10 hari yang lalu)
         $pastExpiry = today()->subDays(10);
         $expiredMember = Member::create([
-            'card_id' => 'MC-TEST-EXP-'.rand(100, 999),
+            'card_id' => 'MC-TEST-EXP-'.uniqid(),
             'name' => 'Member Expired Uji Perpanjang',
             'phone' => '0814'.rand(10000000, 99999999),
             'join_date' => today()->subDays(40)->toDateString(),

@@ -72,8 +72,8 @@
                         </h3>
                     </div>
                     <span class="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-900/60 shrink-0 self-start sm:self-auto">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        TERMINAL READY
+                        <!-- <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> -->
+                        SISTEM STANDBY
                     </span>
                 </div>
 
@@ -259,8 +259,10 @@
 
             <!-- Filter Controls Form -->
             <form method="GET" action="{{ route('admin.frontdesk.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5 pt-1">
-                <!-- 1. Date Picker (3 cols) -->
-                <div class="lg:col-span-3">
+                <input type="hidden" name="per_page" value="{{ $perPage ?? 10 }}">
+
+                <!-- 1. Date Picker (4 cols) -->
+                <div class="lg:col-span-4">
                     <label for="filter-date" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
                         Tanggal:
                     </label>
@@ -296,8 +298,8 @@
                     </select>
                 </div>
 
-                <!-- 3. Search Name / Card ID (4 cols) -->
-                <div class="lg:col-span-4">
+                <!-- 3. Search Name / Card ID (5 cols) -->
+                <div class="lg:col-span-5">
                     <label for="filter-search" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
                         Cari Nama / ID Kartu / No. WA:
                     </label>
@@ -319,21 +321,6 @@
                         </a>
                         @endif
                     </div>
-                </div>
-
-                <!-- 4. Per Page Selector (2 cols) -->
-                <div class="lg:col-span-2">
-                    <label for="filter-per-page" class="block text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1">
-                        Per Halaman:
-                    </label>
-                    <select id="filter-per-page"
-                            name="per_page"
-                            onchange="this.form.submit()"
-                            class="w-full px-2.5 py-1.5 text-xs font-mono font-semibold rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-1 focus:ring-red-500 outline-none transition cursor-pointer">
-                        <option value="10" {{ ($perPage ?? 10) == 10 ? 'selected' : '' }}>10 Baris</option>
-                        <option value="25" {{ ($perPage ?? 10) == 25 ? 'selected' : '' }}>25 Baris</option>
-                        <option value="50" {{ ($perPage ?? 10) == 50 ? 'selected' : '' }}>50 Baris</option>
-                    </select>
                 </div>
             </form>
         </div>
@@ -409,19 +396,8 @@
             </table>
         </div>
 
-        <!-- Pagination Bar -->
-        @if($todayAttendances->hasPages() || $todayAttendances->total() > 0)
-        <div class="p-3.5 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-zinc-500 dark:text-zinc-400">
-            <div>
-                Menampilkan <span class="font-bold font-mono text-zinc-800 dark:text-zinc-200">{{ $todayAttendances->firstItem() ?? 0 }}</span>
-                s/d <span class="font-bold font-mono text-zinc-800 dark:text-zinc-200">{{ $todayAttendances->lastItem() ?? 0 }}</span>
-                dari <span class="font-bold font-mono text-zinc-800 dark:text-zinc-200">{{ $todayAttendances->total() }}</span> presensi
-            </div>
-            <div>
-                {{ $todayAttendances->links() }}
-            </div>
-        </div>
-        @endif
+        <!-- Area Footer Tabel: Informasi Data + Dropdown Per Halaman + Navigasi Jump Pagination + Ke Halaman [GO] -->
+        <x-pagination-footer :paginator="$todayAttendances" id="frontdesk-per-page-bottom" itemLabel="data" />
     </div>
 
     <!-- ============================================================== -->
@@ -435,7 +411,7 @@
              class="bg-white dark:bg-zinc-900 rounded-lg max-w-lg w-full p-6 border border-zinc-200 dark:border-zinc-800 shadow-2xl">
             <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-100 dark:border-zinc-800">
                 <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded bg-emerald-600"></span>
+                    <!-- <span class="w-2.5 h-2.5 rounded bg-emerald-600"></span> -->
                     <div>
                         <h3 class="font-montserrat text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-white">Input Tiket Tamu Harian</h3>
                         <p class="text-xs text-zinc-500 dark:text-zinc-400">Tiket masuk non-member (1 hari latihan gym).</p>

@@ -9,6 +9,7 @@
     <!-- Bar Aksi Atas: Filter & Tambah Member -->
     <div class="bg-white dark:bg-zinc-900 rounded-lg p-4 sm:p-5 border border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <form method="GET" action="{{ route('admin.members.index') }}" class="flex flex-wrap items-center gap-2.5 flex-1">
+            <input type="hidden" name="per_page" value="{{ $perPage ?? 10 }}">
             <div class="relative flex-1 min-w-[220px]">
                 <input type="text"
                        name="search"
@@ -33,7 +34,7 @@
                 Filter
             </button>
             @if(request()->hasAny(['search', 'status']))
-            <a href="{{ route('admin.members.index') }}" class="text-xs text-zinc-500 hover:text-red-500 font-semibold">
+            <a href="{{ route('admin.members.index', ['per_page' => $perPage ?? 10]) }}" class="text-xs text-zinc-500 hover:text-red-500 font-semibold">
                 Reset
             </a>
             @endif
@@ -163,11 +164,8 @@
             </table>
         </div>
 
-        @if($members->hasPages())
-        <div class="p-4 border-t border-zinc-200 dark:border-zinc-800">
-            {{ $members->links() }}
-        </div>
-        @endif
+        <!-- Area Footer Tabel: Informasi Data + Dropdown Per Halaman + Navigasi Jump Pagination + Ke Halaman [GO] -->
+        <x-pagination-footer :paginator="$members" id="member-per-page-bottom" itemLabel="data" />
     </div>
 
 </div>

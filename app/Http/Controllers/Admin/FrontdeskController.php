@@ -41,8 +41,8 @@ class FrontdeskController extends Controller
         // Filter riwayat kehadiran
         $search = trim((string) $request->query('search', ''));
         $type = (string) $request->query('type', 'all');
-        $perPage = (int) $request->query('per_page', 10);
-        if (! in_array($perPage, [10, 25, 50])) {
+        $perPage = (int) $request->input('per_page', 10);
+        if (! in_array($perPage, [10, 15, 25, 50, 100], true)) {
             $perPage = 10;
         }
 
@@ -72,6 +72,7 @@ class FrontdeskController extends Controller
         $todayAttendances = $query
             ->latest('checkin_time')
             ->paginate($perPage)
+            ->onEachSide(1)
             ->withQueryString();
 
         return view('admin.frontdesk.index', compact(
