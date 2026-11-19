@@ -89,9 +89,9 @@
 
                     @auth
                         @if(auth()->user()->isAdmin())
-                            <a href="{{ route('admin.dashboard') }}"
+                            <a href="{{ route('admin.frontdesk.index') }}"
                                class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md shadow-red-600/20 transform hover:-translate-y-0.5 transition-all">
-                                <span>DASHBOARD</span>
+                                <span>FRONTDESK</span>
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
@@ -164,9 +164,9 @@
         <div class="pt-4 border-t border-zinc-200 flex flex-col gap-3">
             @auth
                 @if(auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}"
+                    <a href="{{ route('admin.frontdesk.index') }}"
                        class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3 text-sm font-bold uppercase text-white bg-red-600 hover:bg-red-700 rounded-md shadow-md">
-                        <span>DASHBOARD ADMIN &rarr;</span>
+                        <span>FRONTDESK KASIR &rarr;</span>
                     </a>
                 @elseif(auth()->user()->isMember())
                     <a href="{{ route('member.dashboard') }}"

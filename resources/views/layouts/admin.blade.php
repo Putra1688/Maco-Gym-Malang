@@ -71,7 +71,7 @@
 
             <!-- Sidebar Header / Brand -->
             <div class="p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between shrink-0 h-16">
-                <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5 group overflow-hidden" x-show="sidebarOpen || mobileMenuOpen">
+                <a href="{{ route('admin.frontdesk.index') }}" class="flex items-center gap-2.5 group overflow-hidden" x-show="sidebarOpen || mobileMenuOpen">
                     <img src="{{ asset('images/logo/macogym.jpg') }}"
                          alt="Maco Gym"
                          class="h-9 w-auto object-contain rounded border border-zinc-200 dark:border-zinc-700 shrink-0">
@@ -107,8 +107,8 @@
             <nav class="flex-1 p-3 space-y-1 overflow-y-auto">
                 @php
                     $navItems = [
-                        ['route' => 'admin.dashboard', 'routeIs' => 'admin.dashboard', 'label' => 'Dashboard', 'icon' => 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'],
                         ['route' => 'admin.frontdesk.index', 'routeIs' => 'admin.frontdesk.*', 'label' => 'Frontdesk & Kasir', 'icon' => 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2'],
+                        ['route' => 'admin.dashboard', 'routeIs' => 'admin.dashboard', 'label' => 'Dashboard Monitoring', 'icon' => 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'],
                         ['route' => 'admin.members.index', 'routeIs' => 'admin.members.*', 'label' => 'Data Member', 'icon' => 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'],
                     ];
                 @endphp
@@ -153,7 +153,7 @@
                         </svg>
                     </button>
                     <div>
-                        <h2 class="font-montserrat text-sm sm:text-base font-bold uppercase tracking-wider text-zinc-900 dark:text-white leading-tight">@yield('header', 'Dashboard Monitoring')</h2>
+                        <h2 class="font-montserrat text-sm sm:text-base font-bold uppercase tracking-wider text-zinc-900 dark:text-white leading-tight">@yield('header', 'Frontdesk & Meja Kasir')</h2>
                         <p class="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">{{ now()->translatedFormat('l, d F Y') }}</p>
                     </div>
                 </div>

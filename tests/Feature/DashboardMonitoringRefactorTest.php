@@ -68,6 +68,8 @@ class DashboardMonitoringRefactorTest extends TestCase
         $response->assertSee('Pemasukan Hari Ini');
         $response->assertSee('PERLU TINDAKAN');
         $response->assertSee('STATUS VALID');
+        $response->assertViewHas('totalAllMembers', Member::count());
+        $response->assertSee('/ '.number_format(Member::count()));
 
         // 4. Chart Section
         $response->assertSee('Grafik Pemasukan Per Bulan');

@@ -86,9 +86,11 @@
 
                     <!-- Quick Action Buttons -->
                     <div class="pt-4 flex flex-wrap items-center gap-3.5">
-                        <a href="{{ route('register', ['package' => '4 PT (Couples) - Rp 950.000']) }}"
+                        <a href="https://wa.me/6281250207403?text={{ urlencode('Halo Admin Maco Gym Malang, saya ingin konsultasi dan reservasi Personal Trainer Couples.') }}"
+                           target="_blank"
+                           rel="noopener noreferrer"
                            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white font-montserrat font-bold text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 transition transform hover:-translate-y-0.5">
-                            <span>DAFTAR SEKARANG</span>
+                            <span>KONSULTASI VIA WHATSAPP</span>
                             <svg class="w-4 h-4 font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>

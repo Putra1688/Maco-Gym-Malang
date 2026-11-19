@@ -50,7 +50,10 @@
             <div class="flex items-start justify-between">
                 <div>
                     <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Total Member Aktif</span>
-                    <h3 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white font-montserrat mt-1">{{ number_format($totalActiveMembers) }}</h3>
+                    <h3 class="text-2xl sm:text-3xl font-black text-zinc-900 dark:text-white font-montserrat mt-1 flex items-baseline gap-1">
+                        <span>{{ number_format($totalActiveMembers) }}</span>
+                        <span class="text-base sm:text-lg font-bold text-zinc-400 dark:text-zinc-500 font-montserrat" title="Total keseluruhan member terdaftar">/ {{ number_format($totalAllMembers) }}</span>
+                    </h3>
                 </div>
                 <div class="w-9 h-9 rounded bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0 border border-red-200 dark:border-red-900/60">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,7 +66,7 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     STATUS VALID
                 </span>
-                <span class="text-zinc-400">Expired: {{ $totalExpiredMembers }}</span>
+                <span class="text-zinc-400" title="Total: {{ $totalAllMembers }} terdaftar ({{ $totalExpiredMembers }} kedaluwarsa)">Dari {{ $totalAllMembers }} Terdaftar (Exp: {{ $totalExpiredMembers }})</span>
             </div>
         </div>
 

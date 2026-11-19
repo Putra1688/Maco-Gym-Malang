@@ -50,7 +50,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->isAdmin()) {
-                return redirect()->intended(route('admin.dashboard'));
+                return redirect()->intended(route('admin.frontdesk.index'));
             }
 
             if ($user->isMember()) {

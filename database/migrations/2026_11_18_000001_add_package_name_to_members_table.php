@@ -16,6 +16,11 @@ return new class extends Migration
                 $table->string('package_name')->nullable()->after('status');
             }
         });
+
+        if (Schema::hasColumn('users', 'role')) {
+            DB::table('users')->where('role', 'staff')->update(['role' => 'admin']);
+            DB::statement("ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'member') NOT NULL DEFAULT 'member'");
+        }
     }
 
     /**
