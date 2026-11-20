@@ -4,7 +4,36 @@
 @section('header', 'Pendaftaran Member Baru (Walk-in)')
 
 @section('content')
-<div class="max-w-3xl mx-auto space-y-6">
+@php
+    $packagesJson = $packages->map(function($p) {
+        return [
+            'id' => $p->id,
+            'name' => $p->name,
+            'duration_days' => (int) $p->duration_days,
+            'price' => (float) $p->price,
+            'price_formatted' => 'Rp ' . number_format($p->price, 0, ',', '.'),
+        ];
+    })->values();
+    $defaultPkgId = old('package_id', $packages->first()?->id ?? '');
+@endphp
+
+<div class="max-w-3xl mx-auto space-y-6"
+     x-data="{
+         selectedPackageId: '{{ $defaultPkgId }}',
+         status: '{{ old('status', 'active') }}',
+         packagesList: {{ json_encode($packagesJson) }},
+         cardFee: 20000,
+         getSelectedPackage() {
+             return this.packagesList.find(p => p.id == this.selectedPackageId) || this.packagesList[0] || {};
+         },
+         getTotalAmount() {
+             const pkg = this.getSelectedPackage();
+             return (pkg.price || 0) + this.cardFee;
+         },
+         getTotalFormatted() {
+             return 'Rp ' + this.getTotalAmount().toLocaleString('id-ID');
+         }
+     }">
 
     <div class="flex items-center justify-between">
         <a href="{{ route('admin.members.index') }}" class="text-xs font-semibold text-zinc-500 hover:text-red-600 transition flex items-center gap-1.5">
@@ -103,6 +132,7 @@
                         Status Pendaftaran <span class="text-red-600">*</span>
                     </label>
                     <select name="status"
+                            x-model="status"
                             class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 text-zinc-900 dark:text-white font-semibold">
                         <option value="active" {{ old('status', 'active') === 'active' ? 'selected' : '' }}>AKTIF (Pembayaran Lunas & Verifikasi Langsung)</option>
                         <option value="pending_verification" {{ old('status') === 'pending_verification' ? 'selected' : '' }}>PENDING (Menunggu Pembayaran & Verifikasi)</option>
@@ -118,6 +148,7 @@
                         Paket Membership yang Dipilih <span class="text-red-600">*</span>
                     </label>
                     <select name="package_id"
+                            x-model="selectedPackageId"
                             required
                             class="w-full px-3 py-2 bg-zinc-50 dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-700 rounded text-sm outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600 text-zinc-900 dark:text-white font-semibold">
                         <option value="">-- Pilih Paket Membership --</option>
@@ -127,6 +158,32 @@
                         </option>
                         @endforeach
                     </select>
+
+                    <!-- Preview Rincian Tagihan Invoice Transparan -->
+                    <div x-show="selectedPackageId" class="mt-3 p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 space-y-2 text-xs">
+                        <div class="flex items-center justify-between text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-1">
+                            <span>Rincian Tagihan Pendaftaran Baru</span>
+                            <span class="text-red-600 dark:text-red-400 font-bold">1 Transaksi Membership</span>
+                        </div>
+                        <div class="flex items-center justify-between text-zinc-600 dark:text-zinc-400">
+                            <span>Paket Membership:</span>
+                            <span class="font-mono font-bold text-zinc-900 dark:text-white" x-text="getSelectedPackage().price_formatted">Rp 0</span>
+                        </div>
+                        <div class="flex items-center justify-between text-zinc-600 dark:text-zinc-400">
+                            <span class="flex items-center gap-1.5">
+                                <span>Kartu Member:</span>
+                                <span class="text-[10px] text-zinc-400 font-mono">(1x registrasi perdana)</span>
+                            </span>
+                            <span class="font-mono font-bold text-zinc-900 dark:text-white">Rp 20.000</span>
+                        </div>
+                        <div class="pt-1.5 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between font-bold text-zinc-900 dark:text-white">
+                            <span>Total Pembayaran:</span>
+                            <span class="font-mono font-black text-red-600 dark:text-red-400 text-sm" x-text="getTotalFormatted()">Rp 0</span>
+                        </div>
+                        <p class="text-[11px] text-zinc-400 leading-relaxed pt-0.5">
+                            * Biaya kartu fisik Rp 20.000 otomatis menjadi komponen invoice pendaftaran baru. Bebas biaya kartu saat perpanjangan.
+                        </p>
+                    </div>
                 </div>
             </div>
 

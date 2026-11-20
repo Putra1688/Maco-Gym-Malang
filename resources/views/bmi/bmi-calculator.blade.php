@@ -19,9 +19,9 @@
                     
                     <!-- Form Header -->
                     <div class="border-b border-zinc-100 pb-3 sm:pb-3.5">
-                        <div class="inline-flex items-center px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-red-50 text-red-600 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mb-2">
+                        <!-- <div class="inline-flex items-center px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-red-50 text-red-600 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mb-2">
                             <span>FORMULIR KALKULATOR</span>
-                        </div>
+                        </div> -->
                         <h2 class="font-montserrat font-black text-xl xs:text-2xl sm:text-[28px] text-zinc-900 tracking-tight uppercase leading-snug">
                             Kalkulator <span class="text-red-600">BMI</span>
                         </h2>
@@ -470,7 +470,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 items-stretch">
             
-            <!-- Promo Badge 1: Membership Mulai dari Rp135 ribu/bulan -->
+            <!-- Promo Badge 1: Membership Mulai dari Rp130 ribu/bulan -->
             <div class="relative rounded-3xl overflow-hidden shadow-2xl min-h-[260px] sm:min-h-[300px] flex flex-col justify-end p-5 sm:p-8 text-white group border-2 border-zinc-900 hover:border-red-600 transition-all duration-500 bg-zinc-950">
                 <img src="{{ asset('images/about-gym.jpg') }}" 
                      alt="Maco Gym Membership Promo" 

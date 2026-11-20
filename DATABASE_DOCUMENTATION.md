@@ -182,10 +182,14 @@ Daftar paket resmi yang di-seed ke dalam database dan telah disinkronkan dengan 
 
 | ID | Nama Paket | Tipe | Durasi | Harga Baku | Keterangan di Tampilan |
 | :---: | :--- | :--- | :---: | :---: | :--- |
-| **1** | **Daily Pass / Visit Harian** | `daily_visit` | 1 Hari | **Rp 25.000** | Tiket masuk gym non-member per kedatangan |
-| **2** | **1 Bulan Reguler (Basic Plan)** | `membership` | 30 Hari | **Rp 175.000** | Akses gym unlimited 30 hari penuh |
-| **3** | **3 Bulan Hemat (Standard/Popular)** | `membership` | 90 Hari | **Rp 450.000** | Paket terpopuler (hemat Rp 75.000) |
-| **4** | **1 Bulan Mahasiswa (Student KTM)** | `membership` | 30 Hari | **Rp 135.000** | Tarif spesial pelajar & mahasiswa Malang |
-| **5** | **3 Bulan Mahasiswa (Student Hemat)**| `membership` | 90 Hari | **Rp 360.000** | Tarif hemat mahasiswa Malang |
-| **6** | **Personal Trainer 12 Sesi** | `personal_trainer` | 30 Hari | **Rp 1.250.000** | Program pendampingan privat bersama coach |
+| **1** | **Daily Pass (Visit Harian)** | `daily_visit` | 1 Hari | **Rp 25.000** | Tiket masuk gym non-member per kedatangan (Insidentil: Rp 30.000) |
+| **2** | **Membership 1 Month** | `membership` | 30 Hari | **Rp 130.000** | Akses gym unlimited 30 hari penuh (+ Kartu Rp 20.000 pendaftaran baru) |
+| **3** | **Membership 3 Month** | `membership` | 90 Hari | **Rp 375.000** | Paket terpopuler (+ Kartu Rp 20.000 pendaftaran baru) |
+| **4** | **Membership 6 Month** | `membership` | 180 Hari | **Rp 750.000** | Paket setengah tahun (+ Kartu Rp 20.000 pendaftaran baru) |
+| **5** | **Membership 12 Month** | `membership` | 365 Hari | **Rp 1.450.000** | Paket 1 tahun penuh (+ Kartu Rp 20.000 pendaftaran baru) |
+| **6** | **Mahasiswa** | `membership` | 30 Hari | **Rp 110.000** | Tarif spesial mahasiswa Malang (+ Kartu Rp 20.000 pendaftaran baru) |
+| **7** | **Pelajar** | `membership` | 30 Hari | **Rp 100.000** | Tarif spesial pelajar SMP/SMA (+ Kartu Rp 20.000 pendaftaran baru) |
+
+### Biaya Tambahan:
+- **Biaya Kartu Member Fisik Resmi**: **Rp 20.000** (Dikenakan 1x otomatis pada invoice saat pendaftaran membership baru, bebas biaya saat perpanjangan).
 

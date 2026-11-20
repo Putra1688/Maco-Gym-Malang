@@ -183,11 +183,13 @@ class PendingMemberDashboardMonitoringTest extends TestCase
         $expectedExpiry = today()->addDays($package->duration_days)->toDateString();
         $this->assertEquals($expectedExpiry, $member->current_expiry_date->toDateString());
 
-        // Transaksi pembayaran kas resmi tercatat
+        // Transaksi pembayaran kas resmi tercatat (Paket + Biaya Kartu Rp 20.000)
         $this->assertDatabaseHas('transactions', [
             'member_id' => $member->id,
             'package_id' => $package->id,
-            'amount' => $package->price,
+            'amount' => $package->price + 20000,
+            'package_price' => $package->price,
+            'card_fee' => 20000,
             'payment_method' => 'qris',
         ]);
 

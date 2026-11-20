@@ -131,11 +131,30 @@
                                 <span>{{ session('success') }}</span>
                             </div>
                             @if(session('registered_member'))
-                            <div class="p-3 bg-white/80 border border-emerald-200 rounded-lg text-emerald-800 space-y-1">
-                                <div><strong>ID Registrasi:</strong> <span class="font-mono font-bold">{{ data_get(session('registered_member'), 'card_id') }}</span></div>
-                                <div><strong>Nomor HP:</strong> <span class="font-mono font-semibold">{{ data_get(session('registered_member'), 'phone') }}</span></div>
-                                <div><strong>Paket:</strong> {{ data_get(session('registered_member'), 'package_name') ?? 'Regular' }}</div>
-                                <div><strong>Status:</strong> <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">Menunggu Verifikasi Admin/Kasir</span></div>
+                            <div class="p-3.5 bg-white/90 border border-emerald-200 rounded-xl text-emerald-950 space-y-2">
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <div><strong>ID Registrasi:</strong> <span class="font-mono font-bold">{{ data_get(session('registered_member'), 'card_id') }}</span></div>
+                                    <div><strong>Nomor HP:</strong> <span class="font-mono font-semibold">{{ data_get(session('registered_member'), 'phone') }}</span></div>
+                                </div>
+                                <div class="text-xs"><strong>Paket Pendaftaran:</strong> {{ data_get(session('registered_member'), 'package_name') ?? 'Regular' }}</div>
+
+                                <!-- Rincian Invoice Pendaftaran Baru -->
+                                <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs space-y-1">
+                                    <div class="flex items-center justify-between text-emerald-800">
+                                        <span>Paket Membership:</span>
+                                        <span class="font-mono font-semibold">Rp {{ number_format(data_get(session('registered_member'), 'package_price', 130000), 0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-emerald-800">
+                                        <span>Kartu Member:</span>
+                                        <span class="font-mono font-semibold">Rp {{ number_format(data_get(session('registered_member'), 'card_fee', 20000), 0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="pt-1 border-t border-emerald-200 flex items-center justify-between font-bold text-emerald-950">
+                                        <span>Total Pembayaran:</span>
+                                        <span class="font-mono font-black text-sm">Rp {{ number_format(data_get(session('registered_member'), 'total_amount', 150000), 0, ',', '.') }}</span>
+                                    </div>
+                                </div>
+
+                                <div><strong>Status:</strong> <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">Menunggu Pembayaran & Verifikasi di Meja Kasir</span></div>
                             </div>
                             @endif
                             <p class="text-emerald-700">
@@ -265,6 +284,32 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </div>
+                                </div>
+
+                                <!-- Rincian Biaya Registrasi & Invoice Transparan -->
+                                <div id="registration-invoice-box" class="mt-3 p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 space-y-2 text-xs font-sans">
+                                    <div class="flex items-center justify-between text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500 border-b border-zinc-200 pb-1.5">
+                                        <span>Rincian Tagihan Pendaftaran Baru</span>
+                                        <span class="text-red-600 font-bold">1 Transaksi Membership</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-zinc-600">
+                                        <span>Paket Membership:</span>
+                                        <span id="preview-pkg-price" class="font-mono font-bold text-zinc-900">Rp 130.000</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-zinc-600">
+                                        <span class="flex items-center gap-1.5">
+                                            <span>Kartu Member:</span>
+                                            <span class="text-[10px] text-zinc-400 font-mono">(1x registrasi perdana)</span>
+                                        </span>
+                                        <span class="font-mono font-bold text-zinc-900">Rp 20.000</span>
+                                    </div>
+                                    <div class="pt-1.5 border-t border-zinc-200 flex items-center justify-between font-bold text-zinc-900">
+                                        <span class="text-xs sm:text-sm">Total Pembayaran:</span>
+                                        <span id="preview-total-price" class="font-mono font-black text-red-600 text-sm sm:text-base">Rp 150.000</span>
+                                    </div>
+                                    <p class="text-[11px] text-zinc-400 leading-relaxed pt-0.5">
+                                        * Biaya kartu fisik resmi Rp 20.000 otomatis disertakan pada pendaftaran pertama. Bebas biaya kartu saat perpanjangan keanggotaan.
+                                    </p>
                                 </div>
                             </div>
 
@@ -440,6 +485,35 @@
     <script>
         let isSubmitting = false;
 
+        const packagePriceMap = {
+            '1 month': 130000,
+            '3 month': 375000,
+            '6 month': 750000,
+            '12 month': 1450000,
+            'mahasiswa': 110000,
+            'pelajar': 100000
+        };
+        const cardFeeAmount = 20000;
+
+        function updateRegistrationPricePreview() {
+            const select = document.getElementById('reg_package');
+            const pkgPriceEl = document.getElementById('preview-pkg-price');
+            const totalPriceEl = document.getElementById('preview-total-price');
+            if (!select || !pkgPriceEl || !totalPriceEl) return;
+
+            const val = (select.value || '').toLowerCase();
+            let basePrice = 130000;
+            for (const [key, price] of Object.entries(packagePriceMap)) {
+                if (val.includes(key)) {
+                    basePrice = price;
+                    break;
+                }
+            }
+
+            pkgPriceEl.textContent = 'Rp ' + basePrice.toLocaleString('id-ID');
+            totalPriceEl.textContent = 'Rp ' + (basePrice + cardFeeAmount).toLocaleString('id-ID');
+        }
+
         function handleRegistrationSubmit(form, event) {
             if (isSubmitting) {
                 event.preventDefault();
@@ -456,8 +530,14 @@
             return true;
         }
 
-        // Mobile Nav Toggle Script
+        // Mobile Nav Toggle Script & Price Preview
         document.addEventListener('DOMContentLoaded', () => {
+            const packageSelect = document.getElementById('reg_package');
+            if (packageSelect) {
+                packageSelect.addEventListener('change', updateRegistrationPricePreview);
+                updateRegistrationPricePreview();
+            }
+
             const menuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const hamburgerIcon = document.getElementById('hamburger-icon');

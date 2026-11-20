@@ -96,6 +96,25 @@ class GuestController extends Controller
             ]);
         }
 
+        // Hitung rincian biaya resmi (Paket + Biaya Kartu Fisik Rp 20.000)
+        $pkgLower = strtolower($validated['package']);
+        $packagePrice = 130000;
+        if (str_contains($pkgLower, '3 month') || str_contains($pkgLower, '3 bulan')) {
+            $packagePrice = 375000;
+        } elseif (str_contains($pkgLower, '6 month') || str_contains($pkgLower, '6 bulan')) {
+            $packagePrice = 750000;
+        } elseif (str_contains($pkgLower, '12 month') || str_contains($pkgLower, '12 bulan') || str_contains($pkgLower, '1 tahun')) {
+            $packagePrice = 1450000;
+        } elseif (str_contains($pkgLower, 'mahasiswa')) {
+            $packagePrice = 110000;
+        } elseif (str_contains($pkgLower, 'pelajar')) {
+            $packagePrice = 100000;
+        } elseif (str_contains($pkgLower, '1 month') || str_contains($pkgLower, '1 bulan')) {
+            $packagePrice = 130000;
+        }
+        $cardFee = 20000;
+        $totalAmount = $packagePrice + $cardFee;
+
         // Cegah pendaftaran ganda berdasarkan nomor telepon
         $existingMember = Member::where('phone', $validated['phone'])
             ->orWhere('phone', $cleanPhone)
@@ -113,6 +132,9 @@ class GuestController extends Controller
                         'card_id' => $existingMember->card_id,
                         'phone' => $existingMember->phone,
                         'package_name' => $existingMember->package_name ?? 'Regular',
+                        'package_price' => $packagePrice,
+                        'card_fee' => $cardFee,
+                        'total_amount' => $totalAmount,
                     ]);
             }
         }
@@ -165,6 +187,9 @@ class GuestController extends Controller
                 'card_id' => $member->card_id,
                 'phone' => $member->phone,
                 'package_name' => $member->package_name ?? $validated['package'] ?? 'Regular',
+                'package_price' => $packagePrice,
+                'card_fee' => $cardFee,
+                'total_amount' => $totalAmount,
             ]);
     }
 }
