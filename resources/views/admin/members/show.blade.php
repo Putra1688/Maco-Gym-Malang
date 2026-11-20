@@ -11,6 +11,8 @@
     $waText = "Halo Kak {$member->name}, membership Maco Gym kamu berakhir pada {$member->current_expiry_date->format('d/m/Y')}. Yuk perpanjang agar latihanmu tetap rutin!";
     $waUrl = "https://wa.me/{$phoneFormatted}?text=" . urlencode($waText);
 
+    $hasCardFeePaid = $member->transactions()->where('card_fee', '>', 0)->exists();
+
     $packagesJson = $packages->map(function($p) {
         return [
             'id' => $p->id,
@@ -40,6 +42,7 @@
          selectedPackageId: '{{ $defaultPackageId }}',
          verifyPackageId: '{{ $defaultPackageId }}',
          packagesList: {{ json_encode($packagesJson) }},
+         cardFeeAmount: {{ $hasCardFeePaid ? 0 : 20000 }},
          isMemberActive: {{ ($member->isActive() ? 'true' : 'false') }},
          expiryDateStr: '{{ $memberExpiryIso }}',
          isSubmitting: false,
@@ -50,6 +53,15 @@
 
          getVerifyPackage() {
              return this.packagesList.find(p => p.id == this.verifyPackageId) || this.packagesList[0] || {};
+         },
+
+         getVerifyTotalAmount() {
+             const pkg = this.getVerifyPackage();
+             return (pkg.price || 0) + this.cardFeeAmount;
+         },
+
+         getVerifyTotalFormatted() {
+             return 'Rp ' + this.getVerifyTotalAmount().toLocaleString('id-ID');
          },
 
          getCalculatedExpiry() {
@@ -241,16 +253,43 @@
             <h4 class="font-montserrat font-bold text-xs uppercase tracking-wider text-zinc-900 dark:text-white mb-4">Riwayat Pembayaran & Perpanjangan</h4>
             <div class="space-y-2 max-h-96 overflow-y-auto pr-1">
                 @forelse($member->transactions as $tx)
-                <div class="flex items-center justify-between p-3 rounded bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 text-xs">
-                    <div>
-                        <p class="font-bold text-zinc-900 dark:text-white">{{ $tx->package?->name ?? 'Membership' }}</p>
-                        <p class="text-zinc-400 font-mono text-[11px]">{{ $tx->invoice_code }} • {{ $tx->created_at->format('d/m/Y H:i') }}</p>
+                <div class="p-3.5 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800 text-xs space-y-2">
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <p class="font-bold text-zinc-900 dark:text-white">{{ $tx->package?->name ?? 'Membership' }}</p>
+                                @if($tx->card_fee > 0)
+                                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                                    + Kartu Fisik Rp 20.000
+                                </span>
+                                @endif
+                            </div>
+                            <p class="text-zinc-400 font-mono text-[11px] mt-0.5">{{ $tx->invoice_code }} • {{ $tx->created_at->format('d/m/Y H:i') }} WIB</p>
+                        </div>
+                        <div class="text-right shrink-0">
+                            <p class="font-bold text-zinc-900 dark:text-white font-mono">Rp {{ number_format($tx->amount, 0, ',', '.') }}</p>
+                            <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] uppercase bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/50">
+                                {{ in_array(strtolower($tx->payment_method), ['qris', 'transfer']) ? 'QRIS / Transfer' : 'Cash' }}
+                            </span>
+                        </div>
                     </div>
-                    <div class="text-right">
-                        <p class="font-bold text-zinc-900 dark:text-white font-mono">Rp {{ number_format($tx->amount, 0, ',', '.') }}</p>
-                        <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] uppercase bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-900/50">
-                            {{ in_array(strtolower($tx->payment_method), ['qris', 'transfer']) ? 'QRIS / Transfer' : 'Cash' }}
-                        </span>
+
+                    <!-- Rincian Tagihan Invoice Transparan -->
+                    <div class="pt-2 border-t border-zinc-200/80 dark:border-zinc-800/80 text-[11px] space-y-1 bg-white/70 dark:bg-zinc-900/70 p-2.5 rounded border border-zinc-200/60 dark:border-zinc-800">
+                        <div class="flex items-center justify-between text-zinc-600 dark:text-zinc-400">
+                            <span>Paket Membership:</span>
+                            <span class="font-mono font-semibold text-zinc-900 dark:text-zinc-200">Rp {{ number_format($tx->package_price, 0, ',', '.') }}</span>
+                        </div>
+                        @if($tx->card_fee > 0)
+                        <div class="flex items-center justify-between text-zinc-600 dark:text-zinc-400">
+                            <span>Kartu Member:</span>
+                            <span class="font-mono font-semibold text-zinc-900 dark:text-zinc-200">Rp {{ number_format($tx->card_fee, 0, ',', '.') }}</span>
+                        </div>
+                        @endif
+                        <div class="pt-1 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between font-bold text-zinc-900 dark:text-white">
+                            <span>Total Pembayaran:</span>
+                            <span class="font-mono font-black text-red-600 dark:text-red-400 text-xs">Rp {{ number_format($tx->amount, 0, ',', '.') }}</span>
+                        </div>
                     </div>
                 </div>
                 @empty
@@ -330,6 +369,11 @@
                                     0 Hari
                                 </span>
                             </div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400 pt-1">
+                            <span>Biaya Kartu Member:</span>
+                            <span class="font-mono font-semibold text-emerald-600 dark:text-emerald-400">Rp 0 (Bebas Biaya Perpanjangan)</span>
                         </div>
 
                         <div class="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
@@ -467,15 +511,26 @@
                         </select>
                     </div>
 
-                    <!-- Preview Biaya Paket -->
-                    <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs">
-                        <div>
-                            <span class="text-zinc-500 dark:text-zinc-400 block text-[11px]">Durasi Keanggotaan:</span>
-                            <span class="font-mono font-bold text-zinc-900 dark:text-white text-sm" x-text="(getVerifyPackage().duration_days || 0) + ' Hari'"></span>
+                    <!-- Preview Rincian Tagihan Kasir -->
+                    <div class="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 space-y-2 text-xs">
+                        <div class="flex items-center justify-between text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-800 pb-1">
+                            <span>Rincian Tagihan Pendaftaran Baru</span>
+                            <span class="text-emerald-600 dark:text-emerald-400 font-bold" x-text="(getVerifyPackage().duration_days || 0) + ' Hari'"></span>
                         </div>
-                        <div class="text-right">
-                            <span class="text-zinc-500 dark:text-zinc-400 block text-[11px]">Total Tagihan Kasir:</span>
-                            <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-base" x-text="getVerifyPackage().price_formatted"></span>
+                        <div class="flex items-center justify-between text-zinc-600 dark:text-zinc-300">
+                            <span>Paket Membership:</span>
+                            <span class="font-mono font-bold text-zinc-900 dark:text-white" x-text="getVerifyPackage().price_formatted">Rp 0</span>
+                        </div>
+                        <div class="flex items-center justify-between text-zinc-600 dark:text-zinc-300">
+                            <span class="flex items-center gap-1.5">
+                                <span>Kartu Member:</span>
+                                <span class="text-[10px] text-zinc-400 font-mono" x-text="cardFeeAmount > 0 ? '(1x pendaftaran baru)' : '(Sudah dibayar)'"></span>
+                            </span>
+                            <span class="font-mono font-bold text-zinc-900 dark:text-white" x-text="cardFeeAmount > 0 ? 'Rp 20.000' : 'Rp 0 (Bebas Biaya)'">Rp 20.000</span>
+                        </div>
+                        <div class="pt-1.5 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between font-bold text-zinc-900 dark:text-white">
+                            <span>Total Pembayaran:</span>
+                            <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-base" x-text="getVerifyTotalFormatted()">Rp 0</span>
                         </div>
                     </div>
 

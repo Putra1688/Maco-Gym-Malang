@@ -391,7 +391,7 @@
                                         1x di Awal
                                     </td>
                                     <td class="px-5 py-4 text-xs text-zinc-600 leading-relaxed">
-                                        Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat registrasi perdana di meja kasir.
+                                        Biaya kartu member fisik otomatis dimasukkan ke dalam invoice saat pendaftaran baru (Total: Harga Paket + Rp 20.000). Hanya dibayar 1x di awal dan bebas biaya kartu saat perpanjangan.
                                     </td>
                                     <td class="px-5 py-4 text-right whitespace-nowrap">
                                         <span class="inline-flex items-center px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-700 font-montserrat font-bold text-[11px] uppercase tracking-wider border border-zinc-200 whitespace-nowrap">
@@ -443,7 +443,7 @@
                                 <span class="text-xs text-zinc-500 font-mono">/ pendaftaran perdana</span>
                             </div>
                             <p class="text-xs text-zinc-600 leading-relaxed">
-                                Biaya administrasi dan pencetakan ID card fisik resmi member Maco Gym. Hanya dibayar sekali saat registrasi perdana di meja kasir.
+                                Biaya kartu member fisik otomatis dimasukkan ke dalam invoice saat pendaftaran baru (Total: Harga Paket + Rp 20.000). Hanya dibayar 1x di awal dan bebas biaya kartu saat perpanjangan.
                             </p>
                             <div class="pt-2 border-t border-zinc-200 flex items-center justify-between text-xs">
                                 <span class="text-zinc-500 font-mono text-[11px]">Informasi Kasir:</span>

@@ -125,13 +125,19 @@ class MemberController extends Controller
 
             // 3. Catat transaksi pembayaran kas HANYA jika status aktif
             if (! $isPending) {
+                $packagePrice = (float) $package->price;
+                $cardFee = Transaction::CARD_FEE;
+                $totalAmount = $packagePrice + $cardFee;
+
                 Transaction::create([
                     'invoice_code' => $invoiceCode,
                     'member_id' => $createdMember->id,
                     'package_id' => $package->id,
                     'customer_name' => $request->name,
                     'customer_phone' => $request->phone,
-                    'amount' => $package->price,
+                    'amount' => $totalAmount,
+                    'package_price' => $packagePrice,
+                    'card_fee' => $cardFee,
                     'payment_method' => $paymentMethod,
                     'created_by' => auth()->id() ?? 1,
                     'created_at' => now(),
@@ -275,13 +281,19 @@ class MemberController extends Controller
 
             $member->update($updateData);
 
+            $packagePrice = (float) $package->price;
+            $cardFee = 0.00;
+            $totalAmount = $packagePrice;
+
             Transaction::create([
                 'invoice_code' => $invoiceCode,
                 'member_id' => $member->id,
                 'package_id' => $package->id,
                 'customer_name' => $member->name,
                 'customer_phone' => $member->phone,
-                'amount' => $package->price,
+                'amount' => $totalAmount,
+                'package_price' => $packagePrice,
+                'card_fee' => $cardFee,
                 'payment_method' => $paymentMethod,
                 'created_by' => auth()->id() ?? 1,
                 'created_at' => now(),
@@ -293,6 +305,12 @@ class MemberController extends Controller
 
     public function verify(Request $request, Member $member): RedirectResponse
     {
+        // Cegah eksekusi ganda jika member sudah aktif / diverifikasi sebelumnya
+        if ($member->status === 'active') {
+            return redirect()->route('admin.members.show', $member)
+                ->with('info', "Member '{$member->name}' sudah berstatus AKTIF dan transaksi pembayarannya telah tercatat.");
+        }
+
         $request->validate([
             'card_id' => 'nullable|string|max:50|unique:members,card_id,'.$member->id,
             'package_id' => 'required|exists:packages,id',
@@ -338,14 +356,23 @@ class MemberController extends Controller
 
             $member->update($updateData);
 
-            // 3. Catat transaksi pembayaran kas
+            // 3. Catat transaksi pembayaran kas:
+            // Biaya kartu Rp 20.000 hanya dikenakan satu kali saat pendaftaran membership pertama.
+            // Tidak dikenakan kembali jika sudah pernah tercatat (cegah double charge).
+            $alreadyChargedCard = $member->transactions()->where('card_fee', '>', 0)->exists();
+            $cardFee = ! $alreadyChargedCard ? Transaction::CARD_FEE : 0.00;
+            $packagePrice = (float) $package->price;
+            $totalAmount = $packagePrice + $cardFee;
+
             Transaction::create([
                 'invoice_code' => $invoiceCode,
                 'member_id' => $member->id,
                 'package_id' => $package->id,
                 'customer_name' => $member->name,
                 'customer_phone' => $member->phone,
-                'amount' => $package->price,
+                'amount' => $totalAmount,
+                'package_price' => $packagePrice,
+                'card_fee' => $cardFee,
                 'payment_method' => $paymentMethod,
                 'created_by' => auth()->id() ?? 1,
                 'created_at' => now(),

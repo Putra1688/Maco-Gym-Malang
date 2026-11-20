@@ -197,12 +197,15 @@ class FrontdeskController extends Controller
         $paymentMethod = in_array($request->payment_method, ['qris', 'transfer', 'qris_transfer']) ? 'qris' : 'cash';
 
         DB::transaction(function () use ($package, $request, $invoiceCode, $paymentMethod) {
+            $packagePrice = (float) $package->price;
             Transaction::create([
                 'invoice_code' => $invoiceCode,
                 'package_id' => $package->id,
                 'customer_name' => $request->name,
                 'customer_phone' => $request->phone,
-                'amount' => $package->price,
+                'amount' => $packagePrice,
+                'package_price' => $packagePrice,
+                'card_fee' => 0.00,
                 'payment_method' => $paymentMethod,
                 'created_by' => auth()->id() ?? 1,
                 'created_at' => now(),

@@ -10,7 +10,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Maco Gym Malang | Train Hard. Stay Strong.">
-    <meta property="og:description" content="Alat gym lengkap standar internasional, promo mahasiswa mulai Rp 135k/bulan, bimbingan Coach profesional, dan shower air hangat.">
+    <meta property="og:description" content="Alat gym lengkap standar internasional, membership mulai Rp 100k/bulan, bimbingan Coach profesional, dan shower air hangat.">
     <meta property="og:image" content="{{ asset('images/logo/macogym.jpg') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & Montserrat -->
