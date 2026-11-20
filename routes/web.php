@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MemberDashboardController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,4 +65,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 */
 Route::middleware(['auth', 'role:member'])->prefix('member')->name('member.')->group(function () {
     Route::get('/dashboard', [MemberDashboardController::class, 'index'])->name('dashboard');
+});
+
+Route::get('/run-migrate', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+
+        return response('<pre>'.Artisan::output().'</pre>');
+    } catch (Throwable $e) {
+        return response('<pre>Error: '.$e->getMessage().'</pre>', 500);
+    }
 });
